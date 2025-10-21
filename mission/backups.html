@@ -432,42 +432,49 @@
         <div class="header">
             <h1>🔄 Vérification des Backups</h1>
             <div class="subtitle">Procédure Novares - Documentation Technique</div>
-            <!-- Compétences E4 dans le header -->
-<div class="competences-header">
-    <h3>🎯 Compétences E4 validées</h3>
-    <div class="competence-list">
-        <div class="competence-item">
-            <span class="competence-badge">C4.1.4</span>
-            <span class="competence-text">Continuité d'activité</span>
-        </div>
-        <div class="competence-item">
-            <span class="competence-badge">C4.1.5</span>
-            <span class="competence-text">Gestion des sauvegardes</span>
-        </div>
-        <div class="competence-item">
-            <span class="competence-badge">C4.1.6</span>
-            <span class="competence-text">Respect des règles</span>
+<div class="header" style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
+    <!-- Titre principal à gauche -->
+    <div>
+        <h1>🔄 Vérification des Backups</h1>
+        <div class="subtitle">Procédure Novares - Documentation Technique</div>
+    </div>
+    
+    <!-- Compétences sur le côté droit -->
+    <div class="competences-sidebar">
+        <h3>🎯 Compétences E4 validées</h3>
+        <div class="competence-list">
+            <div class="competence-item">
+                <span class="competence-badge">C4.1.4</span>
+                <span class="competence-text">Continuité d'activité</span>
+            </div>
+            <div class="competence-item">
+                <span class="competence-badge">C4.1.5</span>
+                <span class="competence-text">Gestion des sauvegardes</span>
+            </div>
+            <div class="competence-item">
+                <span class="competence-badge">C4.1.6</span>
+                <span class="competence-text">Respect des règles</span>
+            </div>
         </div>
     </div>
 </div>
 
 <style>
-.competences-header {
+.competences-sidebar {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     border-radius: 10px;
     padding: 20px;
-    margin-top: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.competences-header h3 {
+.competences-sidebar h3 {
     color: white;
     margin-bottom: 15px;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 .competence-list {
@@ -502,57 +509,13 @@
     color: white;
     font-weight: 500;
 }
-</style>
-<style>
-.competences-header {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
 
-.competences-header h3 {
-    color: white;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.2em;
-}
-
-.competence-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.competence-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.competence-badge {
-    background: white;
-    color: #24292f;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8em;
-    font-weight: 600;
-    min-width: 70px;
-    text-align: center;
-}
-
-.competence-text {
-    font-size: 0.9em;
-    color: white;
-    font-weight: 500;
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
 }
 </style>
         </div>
@@ -816,46 +779,38 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
     document.head.appendChild(style);
 
-     // Détecter le gradient en fonction de la page
-    const header = document.querySelector('.header');
-    let gradient = 'linear-gradient(135deg, #0969da, #218bff)'; // Par défaut
-    
-    if (header) {
-        const headerStyle = window.getComputedStyle(header);
-        const headerBg = headerStyle.backgroundImage;
-        if (headerBg && headerBg.includes('gradient')) {
-            gradient = headerBg;
-        }
-    }
-    
-    // Appliquer le gradient au bouton
-    document.documentElement.style.setProperty('--btn-gradient', gradient);
-
-    // Cibler le bouton
+<script>
+document.addEventListener('DOMContentLoaded', function () {
     const btn = document.getElementById('backToTop');
-    if (!btn) return;
 
-    // Changer le texte
-    btn.textContent = 'Retour';
+    // Masquer sur GitHub Pages
+    if (window.location.hostname.includes('github.io') || window.location.hostname.includes('github.com')) {
+        btn.style.display = 'none';
+        return;
+    }
 
-    // Rediriger au clic avec historique
-    btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        history.go(-1);
-    });
-
-    // Afficher le bouton après défilement
     window.addEventListener('scroll', function () {
-        if (window.scrollY > 300) {
+        if (window.scrollY > 100) {
             btn.classList.add('show');
         } else {
             btn.classList.remove('show');
+        }
+    });
+
+    // Retour à la page précédente
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (document.referrer && document.referrer !== window.location.href) {
+            window.history.back();
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     });
 });
 </script>
 </body>
 </html>
+
 
 
 
