@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certification ANSSI</title>
+  <style>
+    body {
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Bouton retour */
+    .back-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #34d399;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 12px 24px;
+      border-radius: 30px;
+      border: 2px solid #34d399;
+      background: rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background: #34d399;
+      color: #0f172a;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(52, 211, 153, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .back-button {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="../tof/mooc/ANSSI.jpg" alt="Certification ANSSI">
+  
+ <a href="javascript:history.back()" class="nav-link" style="position: fixed; bottom: 30px; right: 30px;">
+  ← Retour
+</a>
+</body>
+</html>
