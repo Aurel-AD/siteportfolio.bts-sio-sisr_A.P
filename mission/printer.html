@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation imprimante via serveur d'impression</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292f;
+            background: #f6f8fa;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid #d1d9e0;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            opacity: 0.1;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .info-card {
+            background: #faf5ff;
+            border: 1px solid #c4b5fd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .info-card h3 {
+            color: #6d28d9;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .network-flow {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        
+        .network-flow h3 {
+            color: #0369a1;
+            margin-bottom: 16px;
+        }
+        
+        .flow-steps {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .flow-step {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .flow-icon {
+            font-size: 2em;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .flow-arrow {
+            font-size: 1.5em;
+            color: #6b7280;
+        }
+        
+        .procedure {
+            margin-top: 32px;
+        }
+        
+        .procedure h2 {
+            color: #24292f;
+            border-bottom: 2px solid #7c3aed;
+            padding-bottom: 8px;
+            margin-bottom: 24px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        
+        .step {
+            background: #ffffff;
+            border: 1px solid #d1d9e0;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .step:hover {
+            border-color: #7c3aed;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .step-number {
+            background: #7c3aed;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .step h3 {
+            color: #24292f;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            color: #656d76;
+            line-height: 1.6;
+        }
+        
+        .user-action {
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+        
+        .user-action h4 {
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+        
+        .tech-info {
+            background: #eff6ff;
+            border: 1px solid #3b82f6;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .tech-info strong {
+            color: #1d4ed8;
+        }
+        
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .procedure-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 1px solid #d1d9e0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .procedure-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        
+        .image-caption {
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #656d76;
+            font-style: italic;
+            font-weight: 500;
+        }
+        
+        .windows-dialog {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .dialog-header {
+            background: #7c3aed;
+            color: white;
+            margin: -16px -16px 16px -16px;
+            padding: 12px 16px;
+            border-radius: 8px 8px 0 0;
+            font-weight: 600;
+        }
+        
+        .status-indicator {
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 4px;
+            font-size: 0.875em;
+        }
+        
+        .status-ok {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .status-failed {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .highlight strong {
+            color: #92400e;
+        }
+        
+        .footer {
+            background: #24292f;
+            color: #f0f6fc;
+            text-align: center;
+            padding: 24px;
+            font-size: 0.9em;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            font-size: 1.5em;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 8px;
+            }
+            
+            .header {
+                padding: 24px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 24px;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .step-number {
+                margin-right: 0;
+            }
+            
+            .flow-steps {
+                flex-direction: column;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🖨️ Installation imprimante réseau</h1>
+            <div class="subtitle">Poste utilisateur via serveur d'impression - Procédure Novares</div>
+        </div>
+        
+        <div class="content">
+            <div class="info-card">
+                <h3>📋 Contexte de la procédure</h3>
+                <p>Installation d'une imprimante partagée sur un poste utilisateur Windows via le serveur d'impression de l'entreprise. Le pilote est automatiquement déployé depuis le serveur.</p>
+            </div>
+            
+            <div class="network-flow">
+                <h3>🔗 Flux d'installation réseau</h3>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <span class="flow-icon">👤</span>
+                        <div>Poste utilisateur</div>
+                    </div>
+                    <div class="flow-arrow">➡️</div>
+                    <div class="flow-step">
+                        <span class="flow-icon">🌐</span>
+                        <div>Réseau</div>
+                    </div>
+                    <div class="flow-arrow">➡️</div>
+                    <div class="flow-step">
+                        <span class="flow-icon">🖥️</span>
+                        <div>Serveur d'impression</div>
+                    </div>
+                    <div class="flow-arrow">➡️</div>
+                    <div class="flow-step">
+                        <span class="flow-icon">🖨️</span>
+                        <div>Imprimante</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <strong>🎯 Avantage serveur d'impression :</strong> Le pilote est automatiquement téléchargé depuis le serveur - aucune installation manuelle requise de la part de l'utilisateur.
+            </div>
+            
+            <div class="procedure">
+                <h2>⚙️ Procédure d'installation utilisateur</h2>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <h3>Ouvrir les paramètres d'imprimantes</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Accéder aux paramètres des imprimantes via le menu Démarrer de Windows.</p>
+                        
+                        <div class="image-container">
+                            <img src="../tof/printer/print1.png" alt="Paramètres Windows imprimantes" class="procedure-image">
+                            <div class="image-caption">⚙️ Panneau de configuration > Périphériques et imprimantes</div>
+                        </div>
+                        
+                        <div class="user-action">
+                            <h4>Méthode rapide :</h4>
+                            <p>Windows + R → taper "control printers" → Entrée</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <h3>Ajouter une imprimante réseau</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Cliquer sur "Ajouter une imprimante" et sélectionner l'option d'imprimante réseau.</p>
+                        
+                        <div class="image-container">
+                            <img src="../tof/printer/print2.png" alt="Ajout imprimante réseau" class="procedure-image">
+                            <div class="image-caption">➕ Ajout d'une imprimante réseau</div>
+                        </div>
+                        
+                        <div class="user-action">
+                            <h4>Navigation :</h4>
+                            <p>"Ajouter une imprimante" → "L'imprimante que je veux n'est pas dans la liste"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <h3>Sélection par nom</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Choisir "Sélectionner une imprimante par nom" et entrer le chemin du serveur.</p>
+                        
+                        <div class="windows-dialog">
+                            <div class="dialog-header">Ajouter une imprimante</div>
+                            <p><strong>Option :</strong> Sélectionner une imprimante par nom</p>
+                            <p><strong>Chemin :</strong> \\SRV-PRINT-01\IMP_Service_Admin</p>
+                            <p><button style="background: #7c3aed; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Suivant</button></p>
+                        </div>
+                        
+                        <div class="tech-info">
+                            <strong>💡 Format :</strong> Utiliser le format \\NOM_SERVEUR\NOM_PARTAGE
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">4</span>
+                        <h3>Téléchargement automatique du pilote</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Windows contacte le serveur d'impression et télécharge automatiquement le pilote.</p>
+                        
+                        <div class="image-container">
+                            <img src="../tof/printer/print3.png" alt="Téléchargement automatique pilote" class="procedure-image">
+                            <div class="image-caption">🔧 Installation automatique depuis le serveur</div>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>🎯 Installation silencieuse :</strong> L'utilisateur n'a rien à faire - le pilote approprié est automatiquement sélectionné et installé depuis le serveur.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">5</span>
+                        <h3>Confirmation d'installation</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Windows confirme la réussite de l'installation de l'imprimante.</p>
+                        
+                        <div class="windows-dialog">
+                            <div class="dialog-header">Installation de l'imprimante</div>
+                            <p><strong>Statut :</strong> <span class="status-ok">Installation réussie</span></p>
+                            <p><strong>Imprimante :</strong> IMP_Service_Admin sur SRV-PRINT-01</p>
+                            <p><strong>Pilote :</strong> HP Universal Printing PCL 6 (installé depuis le serveur)</p>
+                        </div>
+                        
+                        <div class="user-action">
+                            <h4>Option recommandée :</h4>
+                            <p>Cocher "Définir comme imprimante par défaut" si nécessaire</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">6</span>
+                        <h3>Test d'impression</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Effectuer un test d'impression pour valider le fonctionnement.</p>
+                        
+                        <div class="image-container">
+                            <img src="../tof/printer/print4.png" alt="Test d'impression" class="procedure-image">
+                            <div class="image-caption">🖨️ Test d'impression depuis le poste utilisateur</div>
+                        </div>
+                        
+                        <div class="user-action">
+                            <h4>Méthode de test :</h4>
+                            <p>Clique droit sur l'imprimante → "Propriétés de l'imprimante" → "Imprimer une page de test"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">7</span>
+                        <h3>Vérification finale</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Vérifier que l'imprimante apparaît correctement dans la liste des périphériques.</p>
+                        
+                        <div style="overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9em;">
+                                <thead>
+                                    <tr style="background: #f6f8fa;">
+                                        <th style="border: 1px solid #d1d9e0; padding: 12px; text-align: left;">Élément</th>
+                                        <th style="border: 1px solid #d1d9e0; padding: 12px; text-align: left;">Valeur attendue</th>
+                                        <th style="border: 1px solid #d1d9e0; padding: 12px; text-align: left;">Statut</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="border: 1px solid #d1d9e0; padding: 12px;">Imprimante visible</td>
+                                        <td style="border: 1px solid #d1d9e0; padding: 12px;">IMP_Service_Admin</td>
+                                        <td style="border: 1px solid #d1d9e0; padding: 12px;"><span class="status-ok">OK</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #d1d9e0; padding: 12px;">Statut</td>
+                                        <td style="border: 1px solid #d1d9e0; padding: 12px;">Prêt</td>
+                                        <td style="border: 1px solid #d1d9e0; padding: 12px;"><span class="status-ok">OK</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #d1d9e0; padding: 12px;">Test d'impression</td>
+                                        <td style="border: 1px solid #d1d9e0; padding: 12px;">Page de test réussie</td>
+                                        <td style="border: 1px solid #d1d9e0; padding: 12px;"><span class="status-ok">OK</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #d1d9e0; padding: 12px;">Pilote installé</td>
+                                        <td style="border: 1px solid #d1d9e0; padding: 12px;">Depuis serveur</td>
+                                        <td style="border: 1px solid #d1d9e0; padding: 12px;"><span class="status-ok">OK</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h3>🔑 Bénéfices de l'installation via serveur</h3>
+                <div style="margin-top: 12px;">
+                    <div style="margin: 8px 0;">✅ <strong>Simplicité :</strong> Installation en 3 clics pour l'utilisateur</div>
+                    <div style="margin: 8px 0;">✅ <strong>Standardisation :</strong> Pilote unique et approuvé par l'IT</div>
+                    <div style="margin: 8px 0;">✅ <strong>Maintenance :</strong> Mises à jour centralisées sur le serveur</div>
+                    <div style="margin: 8px 0;">✅ <strong>Sécurité :</strong> Pas de téléchargement de sources externes</div>
+                    <div style="margin: 8px 0;">✅ <strong>Support :</strong> Résolution rapide des problèmes</div>
+                </div>
+            </div>
+            
+            <div class="tech-info">
+                <h3>🛠️ Résolution des problèmes courants</h3>
+                <div style="margin-top: 12px;">
+                    <div style="margin: 8px 0;"><strong>Problème :</strong> "Impossible de se connecter à l'imprimante"</div>
+                    <div style="margin: 8px 0; padding-left: 20px;"><strong>Solution :</strong> Vérifier la connectivité réseau vers le serveur (ping SRV-PRINT-01)</div>
+                    
+                    <div style="margin: 8px 0;"><strong>Problème :</strong> "Pilote non disponible"</div>
+                    <div style="margin: 8px 0; padding-left: 20px;"><strong>Solution :</strong> Contacter l'IT pour vérifier les pilotes sur le serveur</div>
+                    
+                    <div style="margin: 8px 0;"><strong>Problème :</strong> "Accès refusé"</div>
+                    <div style="margin: 8px 0; padding-left: 20px;"><strong>Solution :</strong> Vérifier les permissions sur le partage d'imprimante</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Documentation technique Novares - Installation poste utilisateur</p>
+            <p>© 2025 Novares Group. Tous droits réservés.</p>
+        </div>
+    </div>
+    
+<!-- Bouton retour vers le haut -->
+<a href="#" class="back-to-top" id="backToTop">↑</a>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Ajouter le style personnalisé pour le bouton
+    const style = document.createElement('style');
+    style.textContent = `
+        #backToTop {
+            position: fixed !important;
+            bottom: 30px !important;
+            right: 30px !important;
+            z-index: 9999 !important;
+            width: auto !important;
+            height: auto !important;
+            padding: 12px 18px !important;
+            background: var(--btn-gradient) !important;
+            color: white !important;
+            text-align: center !important;
+            text-decoration: none !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            border-radius: 24px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease !important;
+            border: none;
+            cursor: pointer;
+        }
+
+        #backToTop.show {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        #backToTop:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        @media (max-width: 768px) {
+            #backToTop {
+                bottom: 20px !important;
+                right: 20px !important;
+                padding: 10px 16px !important;
+                font-size: 0.95rem !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Détecter le gradient en fonction de la page
+    const header = document.querySelector('.header');
+    let gradient = 'linear-gradient(135deg, #0969da, #218bff)'; // Par défaut
+    
+    if (header) {
+        const headerStyle = window.getComputedStyle(header);
+        const headerBg = headerStyle.backgroundImage;
+        if (headerBg && headerBg.includes('gradient')) {
+            gradient = headerBg;
+        }
+    }
+    
+    // Appliquer le gradient au bouton
+    document.documentElement.style.setProperty('--btn-gradient', gradient);
+
+    // Cibler le bouton
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    // Changer le texte
+    btn.textContent = 'Retour';
+
+    // Rediriger au clic avec historique
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        history.go(-1);
+    });
+
+    // Afficher le bouton après défilement
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 300) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
+        }
+    });
+});
+</script>
+</body>
+</html>
