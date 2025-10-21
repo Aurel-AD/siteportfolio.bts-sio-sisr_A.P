@@ -1,153 +1,492 @@
-<div class="header" style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
-    <div>
-        <h1>🎧 Assistance Distante</h1>
-        <div class="subtitle">Support utilisateurs via outils dédiés</div>
-    </div>
-    <div class="competences-sidebar">
-        <h3>🎯 Compétences E4</h3>
-        <div class="competence-list">
-            <div class="competence-item">
-                <span class="competence-badge">C4.1.4</span>
-                <span class="competence-text">Continuité activité</span>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistance à Distance - E4</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292f;
+            background: #f6f8fa;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid #d1d9e0;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            opacity: 0.1;
+        }
+        
+        .header-main {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .competences-sidebar {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .competences-sidebar h3 {
+            color: white;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1em;
+        }
+
+        .competence-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .competence-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .competence-badge {
+            background: white;
+            color: #24292f;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .competence-text {
+            font-size: 0.9em;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+
+        .info-card {
+            background: #dbeafe;
+            border: 1px solid #93c5fd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-card h3 {
+            color: #1e40af;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+
+        .info-card p {
+            color: #1e3a8a;
+            line-height: 1.7;
+        }
+        
+        .demo-section {
+            background: white;
+            border: 1px solid #d1d9e0;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .demo-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .tool-demo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 2px solid #667eea;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .tool-card-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .tool-card h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            color: #586069;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            background: #f6f8fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        .feature-list h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .feature-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            color: #24292f;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: #2ea44f;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .citrix-info {
+            background: #eff6ff;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .citrix-info h3 {
+            color: #1e40af;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .citrix-info p {
+            color: #1e3a8a;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .highlight-box strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .footer {
+            background: #24292f;
+            color: #f0f6fc;
+            text-align: center;
+            padding: 24px;
+            font-size: 0.9em;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            width: auto;
+            height: auto;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 24px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 24px;
+            }
+            
+            .tool-demo {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                padding: 10px 16px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-main">
+                <h1>🖥️ Assistance à Distance</h1>
+                <p class="subtitle">Support technique via infrastructure Citrix</p>
             </div>
-            <div class="competence-item">
-                <span class="competence-badge">C4.2.1</span>
-                <span class="competence-text">Évaluer service</span>
-            </div>
-            <div class="competence-item">
-                <span class="competence-badge">C4.4.3</span>
-                <span class="competence-text">Accompagner utilisateurs</span>
+            
+            <div class="competences-sidebar">
+                <h3>🎯 Compétences E4 validées</h3>
+                <div class="competence-list">
+                    <div class="competence-item">
+                        <span class="competence-badge">E4.1</span>
+                        <span class="competence-text">Participation projet</span>
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-badge">E4.2</span>
+                        <span class="competence-text">Support utilisateur</span>
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-badge">E4.3</span>
+                        <span class="competence-text">Mise en service</span>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div class="content">
+            <div class="info-card">
+                <h3>📋 Contexte professionnel</h3>
+                <p>Dans le cadre de mes missions de support technique, j'interviens à distance sur les postes de travail des utilisateurs via des outils professionnels. L'infrastructure repose sur des serveurs Citrix qui centralisent l'accès aux applications d'assistance à distance. Les connexions sont sécurisées par authentification multi-facteurs et toutes les sessions sont tracées pour garantir la sécurité et la conformité.</p>
+            </div>
+
+            <div class="demo-section">
+                <h2>🛠️ Outils d'assistance à distance</h2>
+                
+                <p style="color: #586069; margin-bottom: 30px;">Pour réaliser mes interventions à distance, j'utilise trois outils professionnels complémentaires adaptés à différents contextes :</p>
+
+                <div class="tool-demo" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="tool-card">
+                        <span class="tool-card-icon">🖥️</span>
+                        <h3>Remote Desktop Protocol (RDP)</h3>
+                        <p>Protocole Microsoft permettant de prendre le contrôle d'un ordinateur distant. Fonctionne sur le port 3389 et offre une interface complète du poste utilisateur. J'utilise RDP pour les interventions standard nécessitant un accès au bureau Windows complet. Déployé via Citrix.</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <span class="tool-card-icon">🔧</span>
+                        <h3>DameWare Remote Support</h3>
+                        <p>Solution professionnelle développée par SolarWinds. Plus avancé que RDP, il permet d'accéder directement aux outils système (invite de commandes, gestionnaire des tâches, registre) et supporte le Wake-on-LAN pour démarrer des machines éteintes. Déployé via Citrix.</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <span class="tool-card-icon">🌐</span>
+                        <h3>TeamViewer</h3>
+                        <p>Solution cloud indépendante, idéale pour les interventions rapides ou pour assister des utilisateurs hors réseau d'entreprise (télétravail, sites distants). Fonctionne via Internet sans configuration réseau complexe, je me connect en admin.pc avec le mot de passe obtenu dans l'active directory où avec un simple ID et mot de passe temporaire.</p>
+                    </div>
+                </div>
+
+                <div class="feature-list">
+                    <h4>Fonctionnalités techniques utilisées :</h4>
+                    <ul>
+                        <li>Prise de contrôle à distance via RDP (port 3389), DameWare ou TeamViewer selon le contexte</li>
+                        <li>Transfert de fichiers entre mon poste et le poste utilisateur</li>
+                        <li>Messagerie instantanée intégrée pour communiquer avec l'utilisateur pendant l'intervention</li>
+                        <li>Accès aux outils Windows : Observateur d'événements, Gestionnaire des tâches, Services</li>
+                        <li>Consultation des partages réseau et configuration des imprimantes</li>
+                        <li>Enregistrement des sessions d'assistance pour la documentation et le suivi (RDP/DameWare)</li>
+                        <li>Connexion simplifiée via ID TeamViewer pour les utilisateurs en télétravail</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2>🖧 Infrastructure et déploiement</h2>
+                
+                <div class="citrix-info">
+                    <h3>Infrastructure Citrix (RDP & DameWare)</h3>
+                    <p><strong>Principe de fonctionnement :</strong> Citrix est une plateforme de virtualisation qui permet de publier des applications sur des serveurs centralisés. Au lieu d'installer RDP et DameWare sur chaque poste de technicien, ces outils sont hébergés sur les serveurs Citrix et accessibles depuis n'importe quel navigateur web.</p>
+                    <p><strong>Processus de connexion :</strong> Je me connecte au portail Citrix avec mes identifiants → J'accède aux applications publiées (RDP ou DameWare) → Je lance l'outil désiré → L'application s'exécute sur le serveur Citrix → Je peux alors me connecter au poste de l'utilisateur final.</p>
+                    <p><strong>Avantages :</strong> Cette architecture centralise la gestion (pas besoin d'installer les outils sur chaque poste), améliore la sécurité (les connexions passent par un point contrôlé), et garantit que tous les techniciens utilisent la même version des logiciels.</p>
+                </div>
+
+                <div class="citrix-info" style="margin-top: 20px;">
+                    <h3>TeamViewer (Solution cloud)</h3>
+                    <p><strong>Fonctionnement :</strong> TeamViewer est une solution cloud qui fonctionne en mode SaaS (Software as a Service). Le logiciel installé sur les postes crée une connexion sécurisée via les serveurs TeamViewer sur Internet, sans nécessiter de configuration réseau complexe (pas de règles de pare-feu ou de port forwarding).</p>
+                    <p><strong>Usage typique :</strong> L'utilisateur lance TeamViewer, me communique son ID (numéro à 9 chiffres) et son mot de passe temporaire. Je rentre ces informations dans mon client TeamViewer et la connexion s'établit automatiquement.</p>
+                    <p><strong>Cas d'utilisation :</strong> Particulièrement utile pour assister des utilisateurs en télétravail sur leur réseau personnel, des sites distants sans VPN configuré, ou lors de dépannages d'urgence nécessitant une connexion rapide sans passer par l'infrastructure interne.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>🔐 Sécurité et traçabilité</strong>
+                    <strong>Authentification :</strong> Connexion sécurisée avec identifiant et mot de passe Active Directory, complétée par une authentification à double facteur (code reçu sur smartphone ou clé de sécurité).<br><br>
+                    <strong>Chiffrement :</strong> Toutes les communications sont chiffrées pour protéger les données échangées entre les serveurs et les postes de travail.<br><br>
+                    <strong>Contrôle d'accès :</strong> Seuls les techniciens autorisés (appartenant aux groupes Active Directory appropriés) peuvent accéder aux outils d'assistance. Des règles de pare-feu limitent également les accès par adresse IP.<br><br>
+                    <strong>Traçabilité :</strong> Chaque session d'assistance est enregistrée dans les journaux système (qui s'est connecté, quand, sur quel poste) pour assurer un suivi complet et respecter les obligations de sécurité (RGPD, audits).
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2>📊 Cas d'usage typiques</h2>
+                
+                <div class="feature-list">
+                    <h4>Interventions techniques courantes :</h4>
+                    <ul>
+                        <li>Diagnostic réseau : utilisation de commandes ipconfig, ping, tracert pour identifier les problèmes de connexion</li>
+                        <li>Gestion des services Windows : démarrage/arrêt de services via la console services.msc</li>
+                        <li>Installation de logiciels : déploiement silencieux d'applications avec les paramètres appropriés</li>
+                        <li>Analyse des journaux d'événements Windows pour identifier les erreurs système ou applicatives</li>
+                        <li>Modification de paramètres système via le registre Windows (avec précaution)</li>
+                        <li>Vérification de la connectivité réseau et des configurations IP</li>
+                        <li>Application de stratégies de groupe (GPO) : utilisation de gpupdate pour forcer la mise à jour</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>💡 Bénéfices de cette solution</h3>
+                    <p><strong>Efficacité opérationnelle :</strong> L'assistance à distance réduit considérablement les temps d'intervention. Plus besoin de se déplacer physiquement, ce qui permet de traiter plus de demandes et de résoudre les incidents plus rapidement.</p>
+                    <p><strong>Disponibilité :</strong> Les outils sont accessibles depuis n'importe où via le portail Citrix, ce qui facilite le télétravail et les interventions en dehors des horaires de bureau si nécessaire.</p>
+                    <p><strong>Standardisation :</strong> Tous les techniciens utilisent les mêmes outils et versions, ce qui simplifie la formation, le partage de connaissances et assure une qualité de service homogène.</p>
+                    <p><strong>Supervision :</strong> Les responsables peuvent suivre l'activité des techniciens, identifier les postes problématiques récurrents et améliorer continuellement les processus de support.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Assistance à Distance - Compétences E4</strong></p>
+            <p>© 2024 - Portfolio BTS SIO</p>
+        </div>
+
+        <a href="#" class="back-to-top" id="backToTop">Retour</a>
     </div>
-</div>
-<style>
-.competences-sidebar {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
 
-.competences-sidebar h3 {
-    color: white;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.1em;
-}
-
-.competence-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.competence-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.competence-badge {
-    background: white;
-    color: #24292f;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8em;
-    font-weight: 600;
-    min-width: 70px;
-    text-align: center;
-}
-
-.competence-text {
-    font-size: 0.9em;
-    color: white;
-    font-weight: 500;
-}
-
-@media (max-width: 768px) {
-    .header {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-    }
-}
-</style>
-<!-- Bouton retour flottant -->
-<a href="#" class="back-to-top" id="backToTop">Retour</a>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const btn = document.getElementById('backToTop');
-    if (!btn) return;
-
-    // Masquer sur GitHub Pages
-    if (window.location.hostname.includes('github.io') || window.location.hostname.includes('github.com')) {
-        btn.style.display = 'none';
-        return;
-    }
-
-    // Afficher/masquer le bouton au scroll
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 300) {
-            btn.classList.add('show');
-        } else {
-            btn.classList.remove('show');
-        }
-    });
-
-    // Action du bouton - retour à la page précédente
-    btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        history.go(-1);
-    });
-});
-</script>
-
-<style>
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 9999;
-    padding: 12px 18px;
-    background: linear-gradient(135deg, #0969da, #218bff);
-    color: white;
-    text-decoration: none;
-    border-radius: 24px;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-}
-
-.back-to-top.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.back-to-top:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-}
-
-@media (max-width: 768px) {
-    .back-to-top {
-        bottom: 20px;
-        right: 20px;
-        padding: 10px 16px;
-        font-size: 0.95rem;
-    }
-}
-</style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            backToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                history.go(-1);
+            });
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
