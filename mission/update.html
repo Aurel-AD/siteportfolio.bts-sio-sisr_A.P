@@ -607,9 +607,21 @@
                 }
             }
         `;
-        document.head.appendChild(style);
+    document.head.appendChild(style);
 
-           // Appliquer le gradient au bouton
+    // Détecter le gradient en fonction de la page
+    const header = document.querySelector('.header');
+    let gradient = 'linear-gradient(135deg, #0969da, #218bff)'; // Par défaut
+    
+    if (header) {
+        const headerStyle = window.getComputedStyle(header);
+        const headerBg = headerStyle.backgroundImage;
+        if (headerBg && headerBg.includes('gradient')) {
+            gradient = headerBg;
+        }
+    }
+    
+    // Appliquer le gradient au bouton
     document.documentElement.style.setProperty('--btn-gradient', gradient);
 
     // Cibler le bouton
@@ -633,7 +645,7 @@
             btn.classList.remove('show');
         }
     });
-});
 </script>
 </body>
+
 </html>
