@@ -119,3 +119,4 @@
 		$('.scrolly').scrolly({
 			speed: 1000
 		});
+	})(jQuery);
