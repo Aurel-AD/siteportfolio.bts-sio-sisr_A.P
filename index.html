@@ -678,120 +678,121 @@
 									</div>
 								</div>
 							</section>
-
-<!-- Attestations -->
-							<section id="attestations" class="main special">
-							<header class="major">
-								<h2>Certifications & Attestations</h2>
-								<p>Expertise RGPD & Cybersécurité ANSSI</p>
-							</header>
-
-							<!-- Certifications RGPD -->
-							<h3 style="margin-bottom: 30px;"><i class="fas fa-shield-alt"></i> Certifications RGPD</h3>
-							<div class="cert-grid">
-								<div class="cert-card">
-								<i class="fas fa-user-shield icon"></i>
-								<h4>Certification RGPD 1</h4>
-								<p>Conformité et audits DPO</p>
-								<ul class="actions special">
-									<li><a href="#" class="button small" onclick="showCertificate('attestation/rgpd1.html', event); return false;">Voir</a></li>
-								</ul>
-								</div>
-
-								<div class="cert-card">
-								<i class="fas fa-exclamation-triangle icon"></i>
-								<h4>Certification RGPD 2</h4>
-								<p>Gestion des risques</p>
-								<ul class="actions special">
-									<li><a href="#" class="button small" onclick="showCertificate('attestation/rgpd2.html', event); return false;">Voir</a></li>
-								</ul>
-								</div>
-
-								<div class="cert-card">
-								<i class="fas fa-server icon"></i>
-								<h4>Certification RGPD 3</h4>
-								<p>Systèmes d'information</p>
-								<ul class="actions special">
-									<li><a href="#" class="button small" onclick="showCertificate('attestation/rgpd3.html', event); return false;">Voir</a></li>
-								</ul>
-								</div>
-
-								<div class="cert-card">
-								<i class="fas fa-clipboard-check icon"></i>
-								<h4>Certification RGPD 4</h4>
-								<p>Audit interne</p>
-								<ul class="actions special">
-									<li><a href="#" class="button small" onclick="showCertificate('attestation/rgpd4.html', event); return false;">Voir</a></li>
-								</ul>
-								</div>
-
-								<div class="cert-card">
-								<i class="fas fa-chalkboard-teacher icon"></i>
-								<h4>Certification RGPD 5</h4>
-								<p>Formation des équipes</p>
-								<ul class="actions special">
-									<li><a href="#" class="button small" onclick="showCertificate('attestation/rgpd5.html', event); return false;">Voir</a></li>
-								</ul>
-								</div>
-
-								<div class="cert-card">
-								<i class="fas fa-user-lock icon"></i>
-								<h4>Certification RGPD 6</h4>
-								<p>Violations de données</p>
-								<ul class="actions special">
-									<li><a href="#" class="button small" onclick="showCertificate('attestation/rgpd6.html', event); return false;">Voir</a></li>
-								</ul>
-								</div>
-							</div>
-
-							<!-- Certification ANSSI -->
-							<h3 style="margin-top: 50px; margin-bottom: 30px;"><i class="fas fa-shield-virus"></i> Certification ANSSI</h3>
-							<div class="cert-highlight">
-								<i class="fas fa-shield-virus icon"></i>
-								<div class="content">
-								<h4>Cybersécurité ANSSI</h4>
-								<p>Formation avancée certifiée par l'ANSSI : protection des systèmes critiques et réponse aux incidents.</p>
-								<ul class="actions">
-									<li><a href="#" class="button primary small" onclick="showCertificate('attestation/anssi.html', event); return false;">Voir la certification</a></li>
-								</ul>
-								</div>
-							</div>
-
-							<!-- Zone d'affichage dynamique -->
-							<div id="certificate-viewer" style="display:none; margin-top:2rem; text-align:center;">
-								<iframe id="certificate-frame" src="" width="90%" height="600" style="border:none; border-radius:10px; background:#fff; box-shadow:0 0 15px rgba(0,0,0,0.2);"></iframe>
-								<div style="margin-top:10px;">
-								<button class="button small" onclick="closeCertificate()">Fermer</button>
-								</div>
-							</div>
-							</section>
-							
-							<script>
-							let lastClickPosition = 0;
-							
-							function showCertificate(url, event) {
-							if (event) {
-								event.preventDefault();
-								// Sauvegarder la position actuelle
-								lastClickPosition = window.pageYOffset || document.documentElement.scrollTop;
-							}
-							const viewer = document.getElementById('certificate-viewer');
-							const frame = document.getElementById('certificate-frame');
-							frame.src = url;
-							viewer.style.display = 'block';
-							viewer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-							}
-
-							function closeCertificate() {
-							const viewer = document.getElementById('certificate-viewer');
-							const frame = document.getElementById('certificate-frame');
-							frame.src = '';
-							viewer.style.display = 'none';
-							// Revenir à la position sauvegardée
-							window.scrollTo({ top: lastClickPosition, behavior: 'smooth' });
-							}
-							</script>
-
+						<!-- Attestations -->
+						<section id="attestations" class="main special">
+						    <header class="major">
+						        <h2>Certifications & Attestations</h2>
+						        <p>Expertise RGPD & Cybersécurité ANSSI</p>
+						    </header>
+						
+						    <!-- Certifications RGPD -->
+						    <h3 style="margin-bottom: 30px;"><i class="fas fa-shield-alt"></i> Certifications RGPD</h3>
+						    <div class="cert-grid">
+						        <div class="cert-card">
+						            <i class="fas fa-user-shield icon"></i>
+						            <h4>Certification RGPD 1</h4>
+						            <p>Conformité et audits DPO</p>
+						            <ul class="actions special">
+						                <li><a href="#" class="button small" onclick="showCertificate('attestation/rgpd1.html', event); return false;">Voir</a></li>
+						            </ul>
+						        </div>
+						
+						        <div class="cert-card">
+						            <i class="fas fa-exclamation-triangle icon"></i>
+						            <h4>Certification RGPD 2</h4>
+						            <p>Gestion des risques</p>
+						            <ul class="actions special">
+						                <li><a href="#" class="button small" onclick="showCertificate('attestation/rgpd2.html', event); return false;">Voir</a></li>
+						            </ul>
+						        </div>
+						
+						        <div class="cert-card">
+						            <i class="fas fa-server icon"></i>
+						            <h4>Certification RGPD 3</h4>
+						            <p>Systèmes d'information</p>
+						            <ul class="actions special">
+						                <li><a href="#" class="button small" onclick="showCertificate('attestation/rgpd3.html', event); return false;">Voir</a></li>
+						            </ul>
+						        </div>
+						
+						        <div class="cert-card">
+						            <i class="fas fa-clipboard-check icon"></i>
+						            <h4>Certification RGPD 4</h4>
+						            <p>Audit interne</p>
+						            <ul class="actions special">
+						                <li><a href="#" class="button small" onclick="showCertificate('attestation/rgpd4.html', event); return false;">Voir</a></li>
+						            </ul>
+						        </div>
+						
+						        <div class="cert-card">
+						            <i class="fas fa-chalkboard-teacher icon"></i>
+						            <h4>Certification RGPD 5</h4>
+						            <p>Formation des équipes</p>
+						            <ul class="actions special">
+						                <li><a href="#" class="button small" onclick="showCertificate('attestation/rgpd5.html', event); return false;">Voir</a></li>
+						            </ul>
+						        </div>
+						
+						        <div class="cert-card">
+						            <i class="fas fa-user-lock icon"></i>
+						            <h4>Certification RGPD 6</h4>
+						            <p>Violations de données</p>
+						            <ul class="actions special">
+						                <li><a href="#" class="button small" onclick="showCertificate('attestation/rgpd6.html', event); return false;">Voir</a></li>
+						            </ul>
+						        </div>
+						    </div>
+						
+						    <!-- Certification ANSSI -->
+						    <h3 style="margin-top: 50px; margin-bottom: 30px;"><i class="fas fa-shield-virus"></i> Certification ANSSI</h3>
+						    <div class="cert-highlight">
+						        <!-- Icône ANSSI centrée avec un fond blanc pour une meilleure visibilité -->
+						        <div style="display: flex; align-items: center; justify-content: center; background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+						            <i class="fas fa-shield-virus icon" style="font-size: 4rem; color: #007bff;"></i>
+						        </div>
+						        <div class="content">
+						            <h4>Cybersécurité ANSSI</h4>
+						            <p>Formation avancée certifiée par l'ANSSI : protection des systèmes critiques et réponse aux incidents.</p>
+						            <ul class="actions">
+						                <li><a href="#" class="button primary small" onclick="showCertificate('attestation/anssi.html', event); return false;">Voir la certification</a></li>
+						            </ul>
+						        </div>
+						    </div>
+						
+						    <!-- Zone d'affichage dynamique -->
+						    <div id="certificate-viewer" style="display:none; margin-top:2rem; text-align:center;">
+						        <iframe id="certificate-frame" src="" width="90%" height="600" style="border:none; border-radius:10px; background:#fff; box-shadow:0 0 15px rgba(0,0,0,0.2);"></iframe>
+						        <div style="margin-top:10px;">
+						            <button class="button small" onclick="closeCertificate()">Fermer</button>
+						        </div>
+						    </div>
+						</section>
+						
+						<script>
+						let lastClickPosition = 0;
+						
+						function showCertificate(url, event) {
+						    if (event) {
+						        event.preventDefault();
+						        // Sauvegarder la position actuelle
+						        lastClickPosition = window.pageYOffset || document.documentElement.scrollTop;
+						    }
+						    const viewer = document.getElementById('certificate-viewer');
+						    const frame = document.getElementById('certificate-frame');
+						    frame.src = url;
+						    viewer.style.display = 'block';
+						    viewer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+						}
+						
+						function closeCertificate() {
+						    const viewer = document.getElementById('certificate-viewer');
+						    const frame = document.getElementById('certificate-frame');
+						    frame.src = '';
+						    viewer.style.display = 'none';
+						    // Revenir à la position sauvegardée
+						    window.scrollTo({ top: lastClickPosition, behavior: 'smooth' });
+						}
+						</script>
 						<!-- Contact -->
 							<section id="contact" class="main special">
 								<header class="major">
@@ -835,4 +836,5 @@
 	</body>
 
 </html>
+
 
