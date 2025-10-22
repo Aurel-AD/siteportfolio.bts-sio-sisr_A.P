@@ -3783,6 +3783,15 @@ input, select, textarea {
 			}
 
 		}
+/* Force l'affichage des icônes Font Awesome */
+.icon, i[class^="fa"], i[class*=" fa"] {
+    display: inline-block !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
 
 
 
