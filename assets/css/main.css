@@ -3791,6 +3791,144 @@ input, select, textarea {
     text-rendering: auto !important;
     -webkit-font-smoothing: antialiased !important;
 }
+<style>
+/* Styles unifiés pour les certifications */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    margin-bottom: 3rem;
+}
+
+.cert-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    max-width: 300px;
+    width: 100%;
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cert-card:hover {
+    background: rgba(52, 211, 153, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(52, 211, 153, 0.2);
+    border-color: #34d399;
+}
+
+.cert-card .icon {
+    font-size: 2.5rem;
+    color: #34d399;
+    margin-bottom: 1rem;
+    background: rgba(52, 211, 153, 0.1);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.cert-card h4 {
+    margin: 0.5rem 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.cert-card p {
+    color: #e2e8f0;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* Style pour la certification ANSSI */
+.cert-highlight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(52, 211, 153, 0.1));
+    padding: 2.5rem;
+    border-radius: 15px;
+    border-left: 5px solid #007bff;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.anssi-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    min-height: 200px;
+    min-width: 200px;
+}
+
+.anssi-icon {
+    font-size: 4rem;
+    color: #007bff;
+    margin-bottom: 1.5rem;
+}
+
+.anssi-content {
+    flex: 1;
+}
+
+.anssi-content h4 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.anssi-content p {
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cert-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .cert-highlight {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+    }
+    
+    .anssi-icon-container {
+        min-width: 150px;
+        padding: 1.5rem;
+    }
+    
+    .anssi-icon {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cert-card {
+        max-width: 100%;
+    }
+}
+</style>
+
 
 
 
