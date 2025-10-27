@@ -121,3 +121,18 @@
 		});
 
 })(jQuery);
+
+function showCertificate(imagePath, event) {
+    event.preventDefault();
+    const viewer = document.getElementById('certificate-viewer');
+    const frame = document.getElementById('certificate-frame');
+    frame.src = imagePath;
+    viewer.style.display = 'block';
+    viewer.scrollIntoView({ behavior: 'smooth' });
+}
+
+function closeCertificate() {
+    document.getElementById('certificate-viewer').style.display = 'none';
+    document.getElementById('certificate-frame').src = '';
+}
+
