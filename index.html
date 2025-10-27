@@ -760,66 +760,32 @@
 						     <!-- Zone d'affichage dynamique -->
 							    <div id="certificate-viewer" style="display:none; margin-top:2rem; text-align:center;">
 							        <iframe id="certificate-frame" src="" width="90%" height="600" style="border:none; border-radius:10px; background:#fff; box-shadow:0 0 15px rgba(0,0,0,0.2);"></iframe>
-							        <div style="margin-top:10px;">
+							       <div style="margin-top:10px;">
 							            <button class="button small" onclick="closeCertificate()">Fermer</button>
 							        </div>
 							    </div>
-							</section>
-						
-						<script>
-						let lastClickPosition = 0;
-						
-						function showCertificate(url, event) {
-						    if (event) {
-						        event.preventDefault();
-						        // Sauvegarder la position actuelle
-						        lastClickPosition = window.pageYOffset || document.documentElement.scrollTop;
-						    }
-						    const viewer = document.getElementById('certificate-viewer');
-						    const frame = document.getElementById('certificate-frame');
-						    frame.src = url;
-						    viewer.style.display = 'block';
-						    viewer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-						}
-						
-						function closeCertificate() {
-						    const viewer = document.getElementById('certificate-viewer');
-						    const frame = document.getElementById('certificate-frame');
-						    frame.src = '';
-						    viewer.style.display = 'none';
-						    // Revenir à la position sauvegardée
-						    window.scrollTo({ top: lastClickPosition, behavior: 'smooth' });
-						}
-						</script>
+						</section>
+
 						<!-- Contact -->
-							<section id="contact" class="main special">
-								<header class="major">
-									<h2>Me contacter</h2>
-									<p>N'hésitez pas à me contacter pour toute opportunité ou question</p>
-								</header>
-								<ul class="actions special">
-									<li><a href="aurelienpont@gmail.com" class="button primary icon solid fa-envelope">Email</a></li>
-									<li><a href="https://www.linkedin.com/in/aurelienpont"" class="button icon brands fa-linkedin" target="_blank">LinkedIn</a></li>
-								</ul>
-							</section>
+						<section id="contact" class="main special">
+						    <header class="major">
+						        <h2>Contact</h2>
+						        <p>Restons en contact</p>
+						    </header>
+						    <p>📧 <strong>pont.aurelien.pro@gmail.com</strong></p>
+						    <ul class="icons">
+						        <li><a href="https://www.linkedin.com/in/aurelien-pont/" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a></li>
+						        <li><a href="mailto:pont.aurelien.pro@gmail.com" class="icon solid fa-envelope alt"><span class="label">Email</span></a></li>
+						    </ul>
+						</section>
 
 					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<section>
-							<h2>Aurélien Pont</h2>
-							<p>Portfolio professionnel BTS SIO SISR - Spécialisation cybersécurité et infrastructure réseau. Documentation complète de mes compétences et réalisations en alternance chez Novares.</p>
-						</section>
-						<section>
-							<h2>Liens utiles</h2>
-							<ul class="icons">
-								<li><a href="https://www.linkedin.com/in/aurelienpont" class="icon brands fa-linkedin alt" target="_blank"><span class="label">LinkedIn</span></a></li>
-								<li><a href="aurelienpont@gmail.com" class="icon solid fa-envelope alt"><span class="label">Email</span></a></li>
-							</ul>
-						</section>
-						<p class="copyright">&copy; 2025 Aurélien Pont - BTS SIO SISR.</p>
+						<p class="copyright">&copy; 2025 Aurélien Pont. Tous droits réservés.</p>
 					</footer>
+
 			</div>
 
 		<!-- Scripts -->
@@ -830,10 +796,65 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/counters.js"></script>
-	</body>
 
+			<script>
+				// Fonction d’affichage d’un certificat
+				function showCertificate(src, event) {
+					event.preventDefault();
+					const viewer = document.getElementById('certificate-viewer');
+					const frame = document.getElementById('certificate-frame');
+					frame.src = src;
+					viewer.style.display = 'block';
+					viewer.scrollIntoView({ behavior: 'smooth' });
+				}
+
+				// Fonction de fermeture du certificat
+				function closeCertificate() {
+					const viewer = document.getElementById('certificate-viewer');
+					const frame = document.getElementById('certificate-frame');
+					frame.src = '';
+					viewer.style.display = 'none';
+				}
+
+				// Animation des compteurs (section Novares)
+				const counters = document.querySelectorAll('.counter');
+				const speed = 150;
+
+				const animateCounters = () => {
+					counters.forEach(counter => {
+						const updateCount = () => {
+							const target = parseFloat(counter.getAttribute('data-target'));
+							const count = parseFloat(counter.innerText);
+							const decimal = parseInt(counter.getAttribute('data-decimal')) || 0;
+							const increment = target / speed;
+
+							if (count < target) {
+								counter.innerText = (count + increment).toFixed(decimal);
+								setTimeout(updateCount, 20);
+							} else {
+								counter.innerText = target.toFixed(decimal);
+							}
+						};
+						updateCount();
+					});
+				};
+
+				// Lance l’animation quand la section est visible
+				let animated = false;
+				window.addEventListener('scroll', () => {
+					const novares = document.querySelector('#novares');
+					if (novares && !animated) {
+						const rect = novares.getBoundingClientRect();
+						if (rect.top < window.innerHeight && rect.bottom >= 0) {
+							animateCounters();
+							animated = true;
+						}
+					}
+				});
+			</script>
+	</body>
 </html>
+
 
 
 
