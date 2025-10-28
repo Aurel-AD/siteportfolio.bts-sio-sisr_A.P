@@ -107,12 +107,9 @@
 									// Otherwise, if this section's link is the one that's locked, unlock it.
 										else if ($this.hasClass('active-locked'))
 											$this.removeClass('active-locked');
-
 								}
 							});
-
 					});
-
 		}
 
 	// Scrolly.
@@ -220,3 +217,4 @@ function showCertificate(imagePath, event) {
         }
     };
 }
+
