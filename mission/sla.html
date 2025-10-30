@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freshdesk SLA - Documentation Technique Novares</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292f;
+            background: #f6f8fa;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid #d1d9e0;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            opacity: 0.1;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .info-card {
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .info-card h3 {
+            color: #991b1b;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .sla-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        
+        .sla-card {
+            background: white;
+            border: 2px solid;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        
+        .sla-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .sla-critical {
+            border-color: #dc2626;
+            background: #fef2f2;
+        }
+        
+        .sla-high {
+            border-color: #f59e0b;
+            background: #fffbeb;
+        }
+        
+        .sla-medium {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        
+        .sla-low {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        
+        .sla-card h4 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .sla-critical h4 { color: #dc2626; }
+        .sla-high h4 { color: #f59e0b; }
+        .sla-medium h4 { color: #3b82f6; }
+        .sla-low h4 { color: #10b981; }
+        
+        .sla-time {
+            font-size: 2em;
+            font-weight: 700;
+            margin: 12px 0;
+        }
+        
+        .procedure {
+            margin-top: 32px;
+        }
+        
+        .procedure h2 {
+            color: #24292f;
+            border-bottom: 2px solid #dc2626;
+            padding-bottom: 8px;
+            margin-bottom: 24px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        
+        .step {
+            background: #ffffff;
+            border: 1px solid #d1d9e0;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .step:hover {
+            border-color: #dc2626;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .step-number {
+            background: #dc2626;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .step h3 {
+            color: #24292f;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            color: #656d76;
+            line-height: 1.6;
+        }
+        
+        .tech-info {
+            background: #fef2f2;
+            border: 1px solid #ef4444;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .tech-info strong {
+            color: #b91c1c;
+        }
+        
+        .highlight {
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .highlight strong {
+            color: #dc2626;
+        }
+        
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .procedure-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 1px solid #d1d9e0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .procedure-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        
+        .image-caption {
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #656d76;
+            font-style: italic;
+            font-weight: 500;
+        }
+        
+        .mock-ticket {
+            background: #f9fafb;
+            border: 1px solid #d1d9e0;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.875em;
+        }
+        
+        .mock-ticket .title-bar {
+            background: #1f2937;
+            color: #f9fafb;
+            margin: -16px -16px 12px -16px;
+            padding: 8px 16px;
+            border-radius: 8px 8px 0 0;
+            font-weight: 600;
+        }
+        
+        .ticket-line {
+            margin: 8px 0;
+            padding: 4px;
+            color: #374151;
+        }
+        
+        .ticket-line strong {
+            color: #dc2626;
+        }
+        
+        .status-indicator {
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 4px;
+            font-size: 0.875em;
+        }
+        
+        .status-ok {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .status-warning {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+        
+        .status-critical {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-left: 4px solid #f59e0b;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .warning-box strong {
+            color: #92400e;
+        }
+        
+        .critical-box {
+            background: #fee2e2;
+            border: 1px solid #f87171;
+            border-left: 4px solid #dc2626;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .critical-box strong {
+            color: #991b1b;
+        }
+        
+        .checklist {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        .checklist-item {
+            padding: 8px;
+            margin: 4px 0;
+            border-left: 3px solid transparent;
+        }
+        
+        .checklist-item.done {
+            border-left-color: #10b981;
+            background: #ecfdf5;
+        }
+        
+        .footer {
+            background: #24292f;
+            color: #f0f6fc;
+            text-align: center;
+            padding: 24px;
+            font-size: 0.9em;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            width: auto;
+            height: auto;
+            padding: 12px 18px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 8px;
+            }
+            
+            .header {
+                padding: 24px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 24px;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .step-number {
+                margin-right: 0;
+            }
+            
+            .sla-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                padding: 10px 16px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎫 Traitement des Tickets Freshdesk</h1>
+            <div class="subtitle">Procédure de Respect des SLA - Support IT Novares</div>
+        </div>
+        
+        <div class="content">
+            <div class="competences-sidebar">
+                <h3>🎯 Compétences E4</h3>
+                <div class="competence-list">
+                    <div class="competence-item">
+                        <span class="competence-badge">B1, B2, B3</span>
+                        <span class="competence-text">Traitement tickets et respect SLA</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h3>📋 Contexte de la procédure</h3>
+                <p>Cette procédure définit les processus de traitement des tickets via Freshdesk et les règles de respect des SLA (Service Level Agreement) pour garantir un support IT réactif et de qualité chez Novares.</p>
+            </div>
+            
+            <div class="highlight">
+                <strong>🎯 Objectif :</strong> Assurer un traitement efficace et dans les délais impartis de toutes les demandes utilisateurs, en respectant les niveaux de priorité définis.
+            </div>
+            
+            <h2 style="color: #24292f; border-bottom: 2px solid #dc2626; padding-bottom: 8px; margin: 32px 0 24px 0; font-size: 1.5em; font-weight: 600;">⏱️ Niveaux de Priorité et SLA</h2>
+            
+            <div class="sla-grid">
+                <div class="sla-card sla-critical">
+                    <h4>🔴 CRITIQUE</h4>
+                    <div class="sla-time">1h</div>
+                    <p style="color: #991b1b; font-weight: 500;">Temps de première réponse</p>
+                    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #fca5a5;">
+                        <small style="color: #7f1d1d;">Résolution : 4h</small>
+                    </div>
+                </div>
+                
+                <div class="sla-card sla-high">
+                    <h4>🟠 ÉLEVÉ</h4>
+                    <div class="sla-time">4h</div>
+                    <p style="color: #92400e; font-weight: 500;">Temps de première réponse</p>
+                    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #fde68a;">
+                        <small style="color: #78350f;">Résolution : 8h</small>
+                    </div>
+                </div>
+                
+                <div class="sla-card sla-medium">
+                    <h4>🟡 MOYEN</h4>
+                    <div class="sla-time">8h</div>
+                    <p style="color: #1e40af; font-weight: 500;">Temps de première réponse</p>
+                    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #93c5fd;">
+                        <small style="color: #1e3a8a;">Résolution : 24h</small>
+                    </div>
+                </div>
+                
+                <div class="sla-card sla-low">
+                    <h4>🟢 FAIBLE</h4>
+                    <div class="sla-time">24h</div>
+                    <p style="color: #065f46; font-weight: 500;">Temps de première réponse</p>
+                    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #6ee7b7;">
+                        <small style="color: #064e3b;">Résolution : 72h</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="critical-box">
+                <strong>⚠️ Attention SLA :</strong> Le non-respect des délais SLA peut impacter la satisfaction utilisateur et les indicateurs de performance du service IT.
+            </div>
+            
+            <div class="procedure">
+                <h2>⚙️ Procédure de traitement</h2>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <h3>Réception et qualification du ticket</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Dès réception d'un nouveau ticket dans Freshdesk, procéder à sa qualification immédiate.</p>
+                        
+                        <div class="image-container">
+                            <img src="../freshdesk/freshdesk_inbox.png" alt="Interface Freshdesk" class="procedure-image">
+                            <div class="image-caption">📬 Vue de la file d'attente des tickets Freshdesk</div>
+                        </div>
+                        
+                        <div class="mock-ticket">
+                            <div class="title-bar">Ticket #12345 - Exemple</div>
+                            <div class="ticket-line"><strong>Demandeur :</strong> jean.dupont@novares.com</div>
+                            <div class="ticket-line"><strong>Sujet :</strong> Impossibilité de connexion VPN</div>
+                            <div class="ticket-line"><strong>Description :</strong> Message d'erreur lors de la connexion</div>
+                            <div class="ticket-line"><strong>Priorité :</strong> <span class="status-critical">ÉLEVÉ</span></div>
+                            <div class="ticket-line"><strong>SLA :</strong> Première réponse dans 4h</div>
+                        </div>
+                        
+                        <div class="tech-info">
+                            <strong>💡 Qualification :</strong> Évaluer rapidement la criticité en fonction de l'impact sur l'activité de l'utilisateur et le nombre d'utilisateurs affectés.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <h3>Attribution de la priorité et du SLA</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Attribuer le niveau de priorité approprié selon les critères établis.</p>
+                        
+                        <div class="checklist">
+                            <h4 style="margin-bottom: 12px; color: #24292f;">Critères de priorisation :</h4>
+                            <div class="checklist-item done">
+                                <strong>🔴 CRITIQUE :</strong> Arrêt complet de production, perte de données, sécurité compromise
+                            </div>
+                            <div class="checklist-item done">
+                                <strong>🟠 ÉLEVÉ :</strong> Impact majeur sur un service essentiel, plusieurs utilisateurs bloqués
+                            </div>
+                            <div class="checklist-item done">
+                                <strong>🟡 MOYEN :</strong> Gêne fonctionnelle, contournement possible, utilisateur unique
+                            </div>
+                            <div class="checklist-item done">
+                                <strong>🟢 FAIBLE :</strong> Demande d'information, amélioration, question générale
+                            </div>
+                        </div>
+                        
+                        <div class="warning-box">
+                            <strong>⚠️ Important :</strong> La priorité peut être réévaluée en cours de traitement si de nouvelles informations modifient l'impact du problème.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <h3>Première réponse et accusé de réception</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Envoyer une première réponse dans le délai SLA pour accuser réception et informer l'utilisateur.</p>
+                        
+                        <div class="image-container">
+                            <img src="../freshdesk/freshdesk_response.png" alt="Réponse au ticket" class="procedure-image">
+                            <div class="image-caption">💬 Interface de réponse au ticket</div>
+                        </div>
+                        
+                        <div class="tech-info">
+                            <strong>📝 Contenu de la première réponse :</strong>
+                            <ul style="margin-top: 8px; margin-left: 20px;">
+                                <li>Accusé de réception de la demande</li>
+                                <li>Confirmation de la priorité attribuée</li>
+                                <li>Délai estimé de résolution</li>
+                                <li>Demandes d'informations complémentaires si nécessaire</li>
+                                <li>Référence du ticket pour suivi</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin: 16px 0;">
+                            <h4 style="margin-bottom: 8px;">Points de contrôle :</h4>
+                            <span class="status-ok">✅ Réponse envoyée dans le délai SLA</span><br>
+                            <span class="status-ok">✅ Langage clair et professionnel</span><br>
+                            <span class="status-ok">✅ Informations complètes demandées</span><br>
+                            <span class="status-ok">✅ Délai de résolution communiqué</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">4</span>
+                        <h3>Diagnostic et investigation</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Analyser le problème en profondeur et identifier la cause racine.</p>
+                        
+                        <div class="mock-ticket">
+                            <div class="title-bar">Processus de diagnostic</div>
+                            <div class="ticket-line">🔍 Reproduction du problème</div>
+                            <div class="ticket-line">📊 Vérification des logs système</div>
+                            <div class="ticket-line">🔧 Test des configurations</div>
+                            <div class="ticket-line">📞 Contact avec l'utilisateur si besoin</div>
+                            <div class="ticket-line">📚 Consultation de la base de connaissances</div>
+                        </div>
+                        
+                        <div class="tech-info">
+                            <strong>💡 Escalade :</strong> Si le problème dépasse votre niveau de compétence ou nécessite des accès spécifiques, escalader vers le niveau 2 ou 3 sans attendre.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">5</span>
+                        <h3>Résolution et mise en œuvre</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Appliquer la solution identifiée et vérifier son efficacité.</p>
+                        
+                        <div class="image-container">
+                            <img src="../freshdesk/freshdesk_resolution.png" alt="Résolution du ticket" class="procedure-image">
+                            <div class="image-caption">✅ Processus de résolution et validation</div>
+                        </div>
+                        
+                        <div class="checklist">
+                            <h4 style="margin-bottom: 12px; color: #24292f;">Étapes de résolution :</h4>
+                            <div class="checklist-item done">
+                                ✅ Application de la solution
+                            </div>
+                            <div class="checklist-item done">
+                                ✅ Test de fonctionnement
+                            </div>
+                            <div class="checklist-item done">
+                                ✅ Validation avec l'utilisateur
+                            </div>
+                            <div class="checklist-item done">
+                                ✅ Documentation de la solution
+                            </div>
+                            <div class="checklist-item done">
+                                ✅ Mise à jour du ticket
+                            </div>
+                        </div>
+                        
+                        <div class="highlight">
+                            <strong>🎯 Validation :</strong> Toujours confirmer avec l'utilisateur que le problème est résolu avant de clôturer le ticket.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">6</span>
+                        <h3>Communication et mises à jour régulières</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Maintenir l'utilisateur informé de l'avancement, particulièrement pour les tickets de haute priorité.</p>
+                        
+                        <div style="margin: 16px 0;">
+                            <h4 style="margin-bottom: 8px;">Fréquence des mises à jour :</h4>
+                            <span class="status-critical">🔴 CRITIQUE : Toutes les heures</span><br>
+                            <span class="status-warning">🟠 ÉLEVÉ : Toutes les 2-4 heures</span><br>
+                            <span class="status-ok">🟡 MOYEN : Une fois par jour</span><br>
+                            <span class="status-ok">🟢 FAIBLE : Tous les 2 jours</span>
+                        </div>
+                        
+                        <div class="tech-info">
+                            <strong>📞 Communication :</strong> Utiliser les mises à jour internes de Freshdesk pour la traçabilité et les réponses publiques pour informer l'utilisateur.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">7</span>
+                        <h3>Clôture et suivi qualité</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Clôturer le ticket correctement et collecter le retour utilisateur.</p>
+                        
+                        <div class="mock-ticket">
+                            <div class="title-bar">Processus de clôture</div>
+                            <div class="ticket-line">✅ Confirmation de résolution par l'utilisateur</div>
+                            <div class="ticket-line">📝 Documentation complète de la solution</div>
+                            <div class="ticket-line">🏷️ Catégorisation correcte du ticket</div>
+                            <div class="ticket-line">⭐ Demande d'évaluation satisfaction</div>
+                            <div class="ticket-line">📊 Vérification du respect du SLA</div>
+                            <div class="ticket-line">🔒 Clôture du ticket</div>
+                        </div>
+                        
+                        <div class="warning-box">
+                            <strong>⚠️ Attention :</strong> Ne jamais clôturer un ticket sans la confirmation explicite de l'utilisateur que le problème est résolu.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">8</span>
+                        <h3>Analyse et amélioration continue</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>Enrichir la base de connaissances et identifier les opportunités d'amélioration.</p>
+                        
+                        <div class="tech-info">
+                            <strong>📚 Base de connaissances :</strong> Pour chaque problème récurrent ou solution complexe, créer ou mettre à jour un article dans la base de connaissances Freshdesk.
+                        </div>
+                        
+                        <div style="margin: 16px 0;">
+                            <h4 style="margin-bottom: 8px;">Actions post-résolution :</h4>
+                            <span class="status-ok">✅ Création/Mise à jour KB si pertinent</span><br>
+                            <span class="status-ok">✅ Signalement de bug si applicable</span><br>
+                            <span class="status-ok">✅ Suggestion d'amélioration processus</span><br>
+                            <span class="status-ok">✅ Retour d'expérience en équipe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h3>🎯 Indicateurs de performance</h3>
+                <div style="margin-top: 12px;">
+                    <div style="margin: 8px 0;">📊 <strong>Taux de respect SLA :</strong> Objectif > 95%</div>
+                    <div style="margin: 8px 0;">⏱️ <strong>Temps moyen de résolution :</strong> Suivre et optimiser</div
