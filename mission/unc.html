@@ -37,6 +37,10 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
         }
         
         .header::before {
@@ -50,19 +54,73 @@
             opacity: 0.1;
         }
         
+        .header-content {
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+        
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
             font-weight: 600;
-            position: relative;
-            z-index: 1;
         }
         
         .header .subtitle {
             font-size: 1.1em;
             opacity: 0.9;
+        }
+        
+        .competences-sidebar {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             z-index: 1;
+        }
+
+        .competences-sidebar h3 {
+            color: white;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1em;
+        }
+
+        .competence-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .competence-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .competence-badge {
+            background: white;
+            color: #24292f;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .competence-text {
+            font-size: 0.9em;
+            color: white;
+            font-weight: 500;
         }
         
         .content {
@@ -252,6 +310,12 @@
             
             .header {
                 padding: 24px;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .header-content {
+                text-align: center;
             }
             
             .header h1 {
@@ -280,81 +344,25 @@
             }
         }
     </style>
-<style>
-.competences-sidebar {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.competences-sidebar h3 {
-    color: white;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.1em;
-}
-
-.competence-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.competence-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.competence-badge {
-    background: white;
-    color: #24292f;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8em;
-    font-weight: 600;
-    min-width: 70px;
-    text-align: center;
-}
-
-.competence-text {
-    font-size: 0.9em;
-    color: white;
-    font-weight: 500;
-}
-
-@media (max-width: 768px) {
-    .header {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-    }
-}
-</style>
 </head>
 <body>
-     <div class="container">
+    <div class="container">
         <div class="header">
-            <h1>🔒 Mise à jour du VPN 7.2.11 → 7.2.12</h1>
-            <div class="subtitle">Procédure via Accès UNC - Documentation Technique</div>
+            <div class="header-content">
+                <h1>🔒 Mise à jour du VPN 7.2.11 → 7.2.12</h1>
+                <div class="subtitle">Procédure via Accès UNC - Documentation Technique</div>
+            </div>
+            <div class="competences-sidebar">
+                <h3>🎯 Compétences E4</h3>
+                <div class="competence-list">
+                    <div class="competence-item">
+                        <span class="competence-badge">A1, B2, E2</span>
+                        <span class="competence-text">Installation logiciels via UNC, Software Center...</span>
+                    </div>
+                </div>
+            </div>
         </div>
-		<div class="competences-sidebar">
-		        <h3>🎯 Compétences E4</h3>
-		        <div class="competence-list">
-		            <div class="competence-item">
-		                <span class="competence-badge">A1, B2, E2</span>
-		                <span class="competence-text">Installation logiciels via UNC, Software Cente...</span>
-		            </div>
-		        </div>
-		    </div>
-		 </div>
+
         <div class="content">
             <div class="info-card">
                 <h3>📋 Contexte de la procédure</h3>
@@ -436,8 +444,7 @@
                             <img src="../tof/unc/unc4.png" alt="Vérification du VPN" class="procedure-image">
                             <div class="image-caption">🔍 Vérification si VPN en 7.2.12</div>
                         </div>
-                    </div>
-                </div>
+                        
                         <div class="tech-info">
                             <strong>✅ Version attendue :</strong> 7.2.12 (Build xxxxx)
                         </div>
@@ -482,96 +489,88 @@
         </div>
     </div>
 
-<!-- Bouton retour vers le haut -->
-<a href="#" class="back-to-top" id="backToTop">↑</a>
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Ajouter le style personnalisé pour le bouton
-    const style = document.createElement('style');
-    style.textContent = `
-        #backToTop {
-            position: fixed !important;
-            bottom: 30px !important;
-            right: 30px !important;
-            z-index: 9999 !important;
-            width: auto !important;
-            height: auto !important;
-            padding: 12px 18px !important;
-            background: var(--btn-gradient) !important;
-            color: white !important;
-            text-align: center !important;
-            text-decoration: none !important;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 1rem !important;
-            font-weight: 600 !important;
-            border-radius: 24px !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease !important;
-            border: none;
-            cursor: pointer;
-        }
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const style = document.createElement('style');
+            style.textContent = `
+                #backToTop {
+                    position: fixed !important;
+                    bottom: 30px !important;
+                    right: 30px !important;
+                    z-index: 9999 !important;
+                    width: auto !important;
+                    height: auto !important;
+                    padding: 12px 18px !important;
+                    background: var(--btn-gradient) !important;
+                    color: white !important;
+                    text-align: center !important;
+                    text-decoration: none !important;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                    font-size: 1rem !important;
+                    font-weight: 600 !important;
+                    border-radius: 24px !important;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.3s ease !important;
+                    border: none;
+                    cursor: pointer;
+                }
 
-        #backToTop.show {
-            opacity: 1 !important;
-            visibility: visible !important;
-        }
+                #backToTop.show {
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                }
 
-        #backToTop:hover {
-            transform: translateY(-3px) !important;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
-        }
+                #backToTop:hover {
+                    transform: translateY(-3px) !important;
+                    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
+                }
 
-        @media (max-width: 768px) {
-            #backToTop {
-                bottom: 20px !important;
-                right: 20px !important;
-                padding: 10px 16px !important;
-                font-size: 0.95rem !important;
+                @media (max-width: 768px) {
+                    #backToTop {
+                        bottom: 20px !important;
+                        right: 20px !important;
+                        padding: 10px 16px !important;
+                        font-size: 0.95rem !important;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            const header = document.querySelector('.header');
+            let gradient = 'linear-gradient(135deg, #1e40af, #3b82f6)';
+            
+            if (header) {
+                const headerStyle = window.getComputedStyle(header);
+                const headerBg = headerStyle.backgroundImage;
+                if (headerBg && headerBg.includes('gradient')) {
+                    gradient = headerBg;
+                }
             }
-        }
-    `;
-    document.head.appendChild(style);
+            
+            document.documentElement.style.setProperty('--btn-gradient', gradient);
 
-    // Détecter le gradient en fonction de la page
-    const header = document.querySelector('.header');
-    let gradient = 'linear-gradient(135deg, #0969da, #218bff)'; // Par défaut
-    
-    if (header) {
-        const headerStyle = window.getComputedStyle(header);
-        const headerBg = headerStyle.backgroundImage;
-        if (headerBg && headerBg.includes('gradient')) {
-            gradient = headerBg;
-        }
-    }
-    
-    // Appliquer le gradient au bouton
-    document.documentElement.style.setProperty('--btn-gradient', gradient);
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
 
-    // Cibler le bouton
-    const btn = document.getElementById('backToTop');
-    if (!btn) return;
+            btn.textContent = 'Retour';
 
-    // Changer le texte
-    btn.textContent = 'Retour';
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                history.go(-1);
+            });
 
-    // Rediriger au clic avec historique
-    btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        history.go(-1);
-    });
-
-    // Afficher le bouton après défilement
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 300) {
-            btn.classList.add('show');
-        } else {
-            btn.classList.remove('show');
-        }
-    });
-});
-</script>
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 300) {
+                    btn.classList.add('show');
+                } else {
+                    btn.classList.remove('show');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
