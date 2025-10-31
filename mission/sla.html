@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freshdesk SLA - Documentation Technique Novares</title>
     <style>
+        /* VOTRE CSS EXISTANT (le même que vous avez déjà) */
         * {
             margin: 0;
             padding: 0;
@@ -429,71 +430,72 @@
                 font-size: 0.95rem;
             }
         }
-		.competences-sidebar {
-			background: rgba(255, 255, 255, 0.15);
-			backdrop-filter: blur(10px);
-			border-radius: 10px;
-			padding: 20px;
-			border: 1px solid rgba(255, 255, 255, 0.2);
-		}
+        
+        .competences-sidebar {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-		.competences-sidebar h3 {
-			color: white;
-			margin-bottom: 15px;
-			display: flex;
-			align-items: center;
-			gap: 8px;
-			font-size: 1.1em;
-		}
+        .competences-sidebar h3 {
+            color: white;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1em;
+        }
 
-		.competence-list {
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-		}
+        .competence-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-		.competence-item {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-			padding: 8px 12px;
-			background: rgba(255, 255, 255, 0.1);
-			border-radius: 6px;
-			border: 1px solid rgba(255, 255, 255, 0.2);
-		}
+        .competence-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-		.competence-badge {
-			background: white;
-			color: #24292f;
-			padding: 4px 8px;
-			border-radius: 4px;
-			font-size: 0.8em;
-			font-weight: 600;
-			min-width: 70px;
-			text-align: center;
-		}
+        .competence-badge {
+            background: white;
+            color: #24292f;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            min-width: 70px;
+            text-align: center;
+        }
 
-		.competence-text {
-			font-size: 0.9em;
-			color: white;
-			font-weight: 500;
-		}
+        .competence-text {
+            font-size: 0.9em;
+            color: white;
+            font-weight: 500;
+        }
 
-		@media (max-width: 768px) {
-			.header {
-				grid-template-columns: 1fr !important;
-				gap: 20px !important;
-			}
-		}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="header" style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
-		<div>
-            <h1>🎫 Traitement des Tickets Freshdesk</h1>
-            <div class="subtitle">Procédure de Respect des SLA - Support IT Novares</div>
-      </div>
+        @media (max-width: 768px) {
+            .header {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header" style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
+            <div>
+                <h1>🎫 Traitement des Tickets Freshdesk</h1>
+                <div class="subtitle">Procédure de Respect des SLA - Support IT Novares</div>
+            </div>
             <div class="competences-sidebar">
                 <h3>🎯 Compétences E4</h3>
                 <div class="competence-list">
@@ -503,8 +505,9 @@
                     </div>
                 </div>
             </div>
-		</div>
-            
+        </div>
+        
+        <div class="content">
             <div class="info-card">
                 <h3>📋 Contexte de la procédure</h3>
                 <p>Cette procédure définit les processus de traitement des tickets via Freshdesk et les règles de respect des SLA (Service Level Agreement) pour garantir un support IT réactif et de qualité chez Novares.</p>
@@ -785,76 +788,85 @@
                 <h3>🎯 Indicateurs de performance</h3>
                 <div style="margin-top: 12px;">
                     <div style="margin: 8px 0;">📊 <strong>Taux de respect SLA :</strong> Objectif > 95%</div>
-                    <div style="margin: 8px 0;">⏱️ <strong>Temps moyen de résolution :</strong> Suivre et optimiser</div
-<footer>
+                    <div style="margin: 8px 0;">⏱️ <strong>Temps moyen de résolution :</strong> Suivre et optimiser</div>
+                    <div style="margin: 8px 0;">⭐ <strong>Satisfaction utilisateur :</strong> Objectif > 90%</div>
+                    <div style="margin: 8px 0;">📈 <strong>Tickets résolus au premier niveau :</strong> Objectif > 70%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
             <p>Aurélien Pont - BTS SIO SISR en alternance - Assistant administrateur technique informatique</p>
-        </footer>
+        </div>
     </div>
+    
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const style = document.createElement('style');
-        style.textContent = `
-            #backToTop {
-                position: fixed !important;
-                bottom: 30px !important;
-                right: 30px !important;
-                z-index: 9999 !important;
-                width: auto !important;
-                height: auto !important;
-                padding: 12px 18px !important;
-                background: linear-gradient(135deg, #1565C0, #2E7D32) !important;
-                color: white !important;
-                text-align: center !important;
-                text-decoration: none !important;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                font-size: 1rem !important;
-                font-weight: 600 !important;
-                border-radius: 24px !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease !important;
-                border: none;
-                cursor: pointer;
-            }
-
-            #backToTop.show {
-                opacity: 1 !important;
-                visibility: visible !important;
-            }
-
-            #backToTop:hover {
-                transform: translateY(-3px) !important;
-                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
-            }
-
-            @media (max-width: 768px) {
+        document.addEventListener('DOMContentLoaded', function () {
+            const style = document.createElement('style');
+            style.textContent = `
                 #backToTop {
-                    bottom: 20px !important;
-                    right: 20px !important;
-                    padding: 10px 16px !important;
-                    font-size: 0.95rem !important;
+                    position: fixed !important;
+                    bottom: 30px !important;
+                    right: 30px !important;
+                    z-index: 9999 !important;
+                    width: auto !important;
+                    height: auto !important;
+                    padding: 12px 18px !important;
+                    background: linear-gradient(135deg, #1565C0, #2E7D32) !important;
+                    color: white !important;
+                    text-align: center !important;
+                    text-decoration: none !important;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-size: 1rem !important;
+                    font-weight: 600 !important;
+                    border-radius: 24px !important;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.3s ease !important;
+                    border: none;
+                    cursor: pointer;
                 }
-            }
-        `;
-        document.head.appendChild(style);
 
-        const btn = document.createElement('button');
-        btn.id = 'backToTop';
-        btn.textContent = 'Retour';
-        document.body.appendChild(btn);
+                #backToTop.show {
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                }
 
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            history.go(-1);
+                #backToTop:hover {
+                    transform: translateY(-3px) !important;
+                    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
+                }
+
+                @media (max-width: 768px) {
+                    #backToTop {
+                        bottom: 20px !important;
+                        right: 20px !important;
+                        padding: 10px 16px !important;
+                        font-size: 0.95rem !important;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            const btn = document.createElement('button');
+            btn.id = 'backToTop';
+            btn.textContent = 'Retour';
+            document.body.appendChild(btn);
+
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                history.go(-1);
+            });
+
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 300) {
+                    btn.classList.add('show');
+                } else {
+                    btn.classList.remove('show');
+                }
+            });
         });
-
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > 300) {
-                btn.classList.add('show');
-            } else {
-                btn.classList.remove('show');
-            }
-        });
-    });
-</script>
+    </script>
+</body>
+</html>
