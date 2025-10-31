@@ -429,73 +429,71 @@
                 font-size: 0.95rem;
             }
         }
-    </style>
-    <style>
-.competences-sidebar {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
+		.competences-sidebar {
+			background: rgba(255, 255, 255, 0.15);
+			backdrop-filter: blur(10px);
+			border-radius: 10px;
+			padding: 20px;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+		}
 
-.competences-sidebar h3 {
-    color: white;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.1em;
-}
+		.competences-sidebar h3 {
+			color: white;
+			margin-bottom: 15px;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			font-size: 1.1em;
+		}
 
-.competence-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+		.competence-list {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
 
-.competence-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
+		.competence-item {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 8px 12px;
+			background: rgba(255, 255, 255, 0.1);
+			border-radius: 6px;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+		}
 
-.competence-badge {
-    background: white;
-    color: #24292f;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8em;
-    font-weight: 600;
-    min-width: 70px;
-    text-align: center;
-}
+		.competence-badge {
+			background: white;
+			color: #24292f;
+			padding: 4px 8px;
+			border-radius: 4px;
+			font-size: 0.8em;
+			font-weight: 600;
+			min-width: 70px;
+			text-align: center;
+		}
 
-.competence-text {
-    font-size: 0.9em;
-    color: white;
-    font-weight: 500;
-}
+		.competence-text {
+			font-size: 0.9em;
+			color: white;
+			font-weight: 500;
+		}
 
-@media (max-width: 768px) {
-    .header {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-    }
-}
-</style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
+		@media (max-width: 768px) {
+			.header {
+				grid-template-columns: 1fr !important;
+				gap: 20px !important;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header" style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
+		<div>
             <h1>🎫 Traitement des Tickets Freshdesk</h1>
             <div class="subtitle">Procédure de Respect des SLA - Support IT Novares</div>
-        </div>
-        <div class="content">
+      </div>
             <div class="competences-sidebar">
                 <h3>🎯 Compétences E4</h3>
                 <div class="competence-list">
@@ -505,6 +503,7 @@
                     </div>
                 </div>
             </div>
+		</div>
             
             <div class="info-card">
                 <h3>📋 Contexte de la procédure</h3>
@@ -568,7 +567,7 @@
                         <h3>Réception et qualification du ticket</h3>
                     </div>
                     <div class="step-content">
-                        <p>Dès réception d'un nouveau ticket dans Freshdesk, procéder à sa qualification immédiate.</p>
+                        <p>Réception d'un nouveau ticket dans Freshdesk, est sa qualification immédiate.</p>
                         
                         <div class="image-container">
                             <img src="../freshdesk/freshdesk_inbox.png" alt="Interface Freshdesk" class="procedure-image">
@@ -596,7 +595,7 @@
                         <h3>Attribution de la priorité et du SLA</h3>
                     </div>
                     <div class="step-content">
-                        <p>Attribuer le niveau de priorité approprié selon les critères établis.</p>
+                        <p>Chaque niveau de priorité est approprié selon les critères établis.</p>
                         
                         <div class="checklist">
                             <h4 style="margin-bottom: 12px; color: #24292f;">Critères de priorisation :</h4>
@@ -637,8 +636,6 @@
                             <strong>📝 Contenu de la première réponse :</strong>
                             <ul style="margin-top: 8px; margin-left: 20px;">
                                 <li>Accusé de réception de la demande</li>
-                                <li>Confirmation de la priorité attribuée</li>
-                                <li>Délai estimé de résolution</li>
                                 <li>Demandes d'informations complémentaires si nécessaire</li>
                                 <li>Référence du ticket pour suivi</li>
                             </ul>
@@ -756,7 +753,7 @@
                         </div>
                         
                         <div class="warning-box">
-                            <strong>⚠️ Attention :</strong> Ne jamais clôturer un ticket sans la confirmation explicite de l'utilisateur que le problème est résolu.
+                            <strong>⚠️ Attention :</strong> Ne jamais clôturer un ticket sans la confirmation explicite de l'utilisateur ou vérifier par l'IT que le problème est résolu .
                         </div>
                     </div>
                 </div>
