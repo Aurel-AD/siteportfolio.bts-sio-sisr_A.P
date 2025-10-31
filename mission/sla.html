@@ -786,3 +786,75 @@
                 <div style="margin-top: 12px;">
                     <div style="margin: 8px 0;">📊 <strong>Taux de respect SLA :</strong> Objectif > 95%</div>
                     <div style="margin: 8px 0;">⏱️ <strong>Temps moyen de résolution :</strong> Suivre et optimiser</div
+<footer>
+            <p>Aurélien Pont - BTS SIO SISR en alternance - Assistant administrateur technique informatique</p>
+        </footer>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const style = document.createElement('style');
+        style.textContent = `
+            #backToTop {
+                position: fixed !important;
+                bottom: 30px !important;
+                right: 30px !important;
+                z-index: 9999 !important;
+                width: auto !important;
+                height: auto !important;
+                padding: 12px 18px !important;
+                background: linear-gradient(135deg, #1565C0, #2E7D32) !important;
+                color: white !important;
+                text-align: center !important;
+                text-decoration: none !important;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 1rem !important;
+                font-weight: 600 !important;
+                border-radius: 24px !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease !important;
+                border: none;
+                cursor: pointer;
+            }
+
+            #backToTop.show {
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+
+            #backToTop:hover {
+                transform: translateY(-3px) !important;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
+            }
+
+            @media (max-width: 768px) {
+                #backToTop {
+                    bottom: 20px !important;
+                    right: 20px !important;
+                    padding: 10px 16px !important;
+                    font-size: 0.95rem !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        const btn = document.createElement('button');
+        btn.id = 'backToTop';
+        btn.textContent = 'Retour';
+        document.body.appendChild(btn);
+
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            history.go(-1);
+        });
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        });
+    });
+</script>
