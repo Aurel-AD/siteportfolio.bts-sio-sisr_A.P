@@ -45,13 +45,6 @@
 					});
 
 			// Links.
-				var $nav_a = $nav.find('a');
-
-				$nav_a
-					.scrolly({
-						speed: 1000,
-						offset: function() { return $nav.height(); }
-					})
 					.on('click', function() {
 
 						var $this = $(this);
@@ -111,11 +104,6 @@
 							});
 					});
 		}
-
-	// Scrolly.
-		$('.scrolly').scrolly({
-			speed: 1000
-		});
 
 })(jQuery);
 
@@ -217,4 +205,5 @@ function showCertificate(imagePath, event) {
         }
     };
 }
+
 
