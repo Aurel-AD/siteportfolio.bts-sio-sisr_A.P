@@ -5,6 +5,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Veille Technologique - Cloud Computing</title>
+    <!-- Carte "veille en évolution" avec animation -->
+  <div class="evolution-note">
+    🔄 Cette veille technologique est un projet en <strong>évolution constante</strong>.<br>
+    De nouvelles informations pourront y être ajoutées pour suivre l’avancée du <strong>Cloud Computing</strong>.
+  </div>
+</header>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -294,6 +300,38 @@
       .toc-sticky ol { gap: 10px; }
       .floating-back-btn { bottom: 20px; right: 20px; padding: 12px 18px; }
     }
+    .evolution-note {
+  text-align: center;
+  font-size: 0.95em;
+  color: var(--muted);
+  margin-top: 25px;
+  margin-bottom: 40px;
+  font-style: italic;
+  background: var(--highlight);
+  padding: 15px 25px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 10px var(--shadow);
+  display: inline-block;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
   </style>
 </head>
 <body>
@@ -685,6 +723,7 @@
   </script>
 </body>
 </html>
+
 
 
 
