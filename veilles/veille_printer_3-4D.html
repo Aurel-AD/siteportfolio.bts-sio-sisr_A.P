@@ -82,16 +82,18 @@
       position: relative;
     }
 
-    h1 {
+     h1 {
       font-size: clamp(2.5em, 4vw, 3.2em);
       margin: 0;
-      color: var(--primary);
+      color: #3498db;
       font-weight: 300;
+      text-shadow: 0 0 10px rgba(52,152,219,0.6); /* effet lumineux doux */
     }
-
+    
+    /* Curseur clignotant */
     h1::after {
       content: "_";
-      color: var(--primary);
+      color: #3498db;
       opacity: 1;
       animation: blink 1.2s step-end infinite;
     }
@@ -712,6 +714,7 @@
   </script>
 </body>
 </html>
+
 
 
 
