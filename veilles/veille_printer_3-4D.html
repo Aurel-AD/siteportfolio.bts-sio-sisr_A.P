@@ -106,6 +106,40 @@
       font-weight: 600;
     }
 
+    /* === Carte "veille en évolution" === */
+    .evolution-note {
+      text-align: center;
+      font-size: 0.95em;
+      color: var(--muted);
+      margin-top: 25px;
+      margin-bottom: 40px;
+      font-style: italic;
+      background: var(--highlight);
+      padding: 15px 25px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 10px var(--shadow);
+      display: inline-block;
+      width: 100%;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* === Navigation fixe === */
     .toc-sticky {
       position: sticky;
@@ -373,8 +407,15 @@
 
   <div class="container">
     <header>
-      <h1>Les imprimantes 3D et 4D</span></h1>
+      <h1>Les imprimantes 3D et 4D</h1>
+
+      <!-- Carte évolution constante -->
+      <div class="evolution-note">
+        🔄 Cette veille technologique est un projet en <strong>évolution constante</strong>.<br>
+        De nouvelles informations pourront y être ajoutées pour suivre l’avancée du <strong>secteur des imprimantes 3D et 4D</strong>.
+      </div>
     </header>
+
 
     <div class="content">
 
@@ -671,6 +712,7 @@
   </script>
 </body>
 </html>
+
 
 
 
