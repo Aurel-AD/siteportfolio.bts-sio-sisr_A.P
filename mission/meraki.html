@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion WiFi Meraki - Documentation Technique Novares</title>
+    <title>Ajout d'utilisateur Meraki - Novares</title>
     <style>
-        /* VOTRE CSS EXISTANT (le même que vous avez déjà) */
         * {
             margin: 0;
             padding: 0;
@@ -32,7 +31,7 @@
         }
         
         .header {
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            background: linear-gradient(135deg, #78be20, #5a9e18);
             color: white;
             padding: 40px;
             text-align: center;
@@ -68,367 +67,6 @@
         
         .content {
             padding: 40px;
-        }
-        
-        .info-card {
-            background: #e0f2fe;
-            border: 1px solid #7dd3fc;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 24px;
-        }
-        
-        .info-card h3 {
-            color: #0369a1;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .sla-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
-        }
-        
-        .sla-card {
-            background: white;
-            border: 2px solid;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            transition: all 0.2s ease;
-        }
-        
-        .sla-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .sla-critical {
-            border-color: #dc2626;
-            background: #fef2f2;
-        }
-        
-        .sla-high {
-            border-color: #f59e0b;
-            background: #fffbeb;
-        }
-        
-        .sla-medium {
-            border-color: #3b82f6;
-            background: #eff6ff;
-        }
-        
-        .sla-low {
-            border-color: #10b981;
-            background: #ecfdf5;
-        }
-        
-        .sla-card h4 {
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        
-        .sla-critical h4 { color: #dc2626; }
-        .sla-high h4 { color: #f59e0b; }
-        .sla-medium h4 { color: #3b82f6; }
-        .sla-low h4 { color: #10b981; }
-        
-        .sla-time {
-            font-size: 2em;
-            font-weight: 700;
-            margin: 12px 0;
-        }
-        
-        .procedure {
-            margin-top: 32px;
-        }
-        
-        .procedure h2 {
-            color: #24292f;
-            border-bottom: 2px solid #3b82f6;
-            padding-bottom: 8px;
-            margin-bottom: 24px;
-            font-size: 1.5em;
-            font-weight: 600;
-        }
-        
-        .step {
-            background: #ffffff;
-            border: 1px solid #d1d9e0;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 16px;
-            transition: all 0.2s ease;
-        }
-        
-        .step:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .step-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-        
-        .step-number {
-            background: #3b82f6;
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 14px;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-        
-        .step h3 {
-            color: #24292f;
-            margin: 0;
-            font-weight: 600;
-        }
-        
-        .step-content {
-            color: #656d76;
-            line-height: 1.6;
-        }
-        
-        .tech-info {
-            background: #eff6ff;
-            border: 1px solid #93c5fd;
-            padding: 16px;
-            border-radius: 8px;
-            margin: 16px 0;
-        }
-        
-        .tech-info strong {
-            color: #1e40af;
-        }
-        
-        .highlight {
-            background: #eff6ff;
-            border: 1px solid #93c5fd;
-            padding: 16px;
-            border-radius: 8px;
-            margin: 16px 0;
-        }
-        
-        .highlight strong {
-            color: #3b82f6;
-        }
-        
-        .image-container {
-            margin: 20px 0;
-            text-align: center;
-        }
-        
-        .procedure-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            border: 1px solid #d1d9e0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .procedure-image:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-        }
-        
-        .image-caption {
-            margin-top: 8px;
-            font-size: 0.9em;
-            color: #656d76;
-            font-style: italic;
-            font-weight: 500;
-        }
-        
-        .mock-ticket {
-            background: #f9fafb;
-            border: 1px solid #d1d9e0;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 16px 0;
-            font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 0.875em;
-        }
-        
-        .mock-ticket .title-bar {
-            background: #1f2937;
-            color: #f9fafb;
-            margin: -16px -16px 12px -16px;
-            padding: 8px 16px;
-            border-radius: 8px 8px 0 0;
-            font-weight: 600;
-        }
-        
-        .ticket-line {
-            margin: 8px 0;
-            padding: 4px;
-            color: #374151;
-        }
-        
-        .ticket-line strong {
-            color: #3b82f6;
-        }
-        
-        .status-indicator {
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-weight: 600;
-            display: inline-block;
-            margin: 4px;
-            font-size: 0.875em;
-        }
-        
-        .status-ok {
-            background: #dcfce7;
-            color: #166534;
-            border: 1px solid #bbf7d0;
-        }
-        
-        .status-warning {
-            background: #fef3c7;
-            color: #92400e;
-            border: 1px solid #fde68a;
-        }
-        
-        .status-critical {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fecaca;
-        }
-        
-        .warning-box {
-            background: #fef3c7;
-            border: 1px solid #fbbf24;
-            border-left: 4px solid #f59e0b;
-            padding: 16px;
-            border-radius: 8px;
-            margin: 16px 0;
-        }
-        
-        .warning-box strong {
-            color: #92400e;
-        }
-        
-        .critical-box {
-            background: #fee2e2;
-            border: 1px solid #f87171;
-            border-left: 4px solid #dc2626;
-            padding: 16px;
-            border-radius: 8px;
-            margin: 16px 0;
-        }
-        
-        .critical-box strong {
-            color: #991b1b;
-        }
-        
-        .checklist {
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 16px 0;
-        }
-        
-        .checklist-item {
-            padding: 8px;
-            margin: 4px 0;
-            border-left: 3px solid transparent;
-        }
-        
-        .checklist-item.done {
-            border-left-color: #10b981;
-            background: #ecfdf5;
-        }
-        
-        .footer {
-            background: #24292f;
-            color: #f0f6fc;
-            text-align: center;
-            padding: 24px;
-            font-size: 0.9em;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999;
-            width: auto;
-            height: auto;
-            padding: 12px 18px;
-            border-radius: 24px;
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            color: white;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-        
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                border-radius: 8px;
-            }
-            
-            .header {
-                padding: 24px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .content {
-                padding: 24px;
-            }
-            
-            .step-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-            
-            .step-number {
-                margin-right: 0;
-            }
-            
-            .sla-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                padding: 10px 16px;
-                font-size: 0.95rem;
-            }
         }
         
         .competences-sidebar {
@@ -480,11 +118,214 @@
             color: white;
             font-weight: 500;
         }
-
+        
+        .info-card {
+            background: #dcfce7;
+            border: 1px solid #86efac;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .info-card h3 {
+            color: #166534;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .procedure {
+            margin-top: 32px;
+        }
+        
+        .procedure h2 {
+            color: #24292f;
+            border-bottom: 2px solid #78be20;
+            padding-bottom: 8px;
+            margin-bottom: 24px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        
+        .step {
+            background: #ffffff;
+            border: 1px solid #d1d9e0;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .step:hover {
+            border-color: #78be20;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .step-number {
+            background: #78be20;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .step h3 {
+            color: #24292f;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            color: #656d76;
+            line-height: 1.6;
+        }
+        
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .procedure-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 1px solid #d1d9e0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .procedure-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        
+        .image-caption {
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #656d76;
+            font-style: italic;
+            font-weight: 500;
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .highlight strong {
+            color: #92400e;
+        }
+        
+        .tech-info {
+            background: #dcfce7;
+            border: 1px solid #78be20;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .tech-info strong {
+            color: #166534;
+        }
+        
+        .footer {
+            background: #24292f;
+            color: #f0f6fc;
+            text-align: center;
+            padding: 24px;
+            font-size: 0.9em;
+        }
+        
+        .footer a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #78be20, #5a9e18);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            font-size: 1.5em;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
         @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 8px;
+            }
+            
             .header {
+                padding: 24px;
                 grid-template-columns: 1fr !important;
                 gap: 20px !important;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 24px;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .step-number {
+                margin-right: 0;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
             }
         }
     </style>
@@ -493,101 +334,44 @@
     <div class="container">
         <div class="header" style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
             <div>
-                <h1>📶 Gestion WiFi avec Meraki</h1>
-                <div class="subtitle">Procédure de gestion et maintenance - Support IT Novares</div>
+                <h1>👥 Ajout d'utilisateur Meraki</h1>
+                <div class="subtitle">Procédure Novares - Gestion des accès Cisco Meraki</div>
             </div>
+            
             <div class="competences-sidebar">
-                <h3>🎯 Compétences E4</h3>
+                <h3>🎯 Compétences E4 validées</h3>
                 <div class="competence-list">
                     <div class="competence-item">
-                        <span class="competence-badge">B1, B2, B3</span>
-                        <span class="competence-text">Gestion infrastructure WiFi</span>
+                        <span class="competence-badge">A1, A2</span>
+                        <span class="competence-text">Gestion des droits d'accès réseau</span>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="content">
             <div class="info-card">
                 <h3>📋 Contexte de la procédure</h3>
-                <p>Cette procédure définit les processus de gestion, surveillance et maintenance du réseau WiFi utilisant la plateforme Cisco Meraki pour garantir une connectivité optimale et sécurisée chez Novares.</p>
+                <p>Ajout sécurisé d'un nouvel utilisateur dans le système Cisco Meraki pour permettre l'accès au réseau sans-fil de l'entreprise. Cette procédure garantit un contrôle strict des accès et la traçabilité des connexions.</p>
             </div>
             
             <div class="highlight">
-                <strong>🎯 Objectif :</strong> Assurer une connectivité WiFi fiable, performante et sécurisée pour tous les utilisateurs et équipements de l'entreprise.
-            </div>
-            
-            <h2 style="color: #24292f; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; margin: 32px 0 24px 0; font-size: 1.5em; font-weight: 600;">⏱️ Niveaux d'Intervention</h2>
-            
-            <div class="sla-grid">
-                <div class="sla-card sla-critical">
-                    <h4>🔴 CRITIQUE</h4>
-                    <div class="sla-time">30 min</div>
-                    <p style="color: #991b1b; font-weight: 500;">Intervention immédiate</p>
-                    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #fca5a5;">
-                        <small style="color: #7f1d1d;">Résolution : 2h max</small>
-                    </div>
-                </div>
-                
-                <div class="sla-card sla-high">
-                    <h4>🟠 ÉLEVÉ</h4>
-                    <div class="sla-time">2h</div>
-                    <p style="color: #92400e; font-weight: 500;">Intervention rapide</p>
-                    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #fde68a;">
-                        <small style="color: #78350f;">Résolution : 4h max</small>
-                    </div>
-                </div>
-                
-                <div class="sla-card sla-medium">
-                    <h4>🟡 MOYEN</h4>
-                    <div class="sla-time">4h</div>
-                    <p style="color: #1e40af; font-weight: 500;">Intervention planifiée</p>
-                    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #93c5fd;">
-                        <small style="color: #1e3a8a;">Résolution : 8h max</small>
-                    </div>
-                </div>
-                
-                <div class="sla-card sla-low">
-                    <h4>🟢 FAIBLE</h4>
-                    <div class="sla-time">24h</div>
-                    <p style="color: #065f46; font-weight: 500;">Maintenance préventive</p>
-                    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #6ee7b7;">
-                        <small style="color: #064e3b;">Résolution : 48h max</small>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="critical-box">
-                <strong>⚠️ Attention :</strong> Les pannes WiFi critiques impactent directement la productivité des utilisateurs et doivent être traitées en priorité absolue.
+                <strong>🎯 Déclenchement :</strong> La procédure est initiée par une demande validée via Freshdesk, après autorisation du responsable hiérarchique et vérification des besoins d'accès.
             </div>
             
             <div class="procedure">
-                <h2>⚙️ Procédure de gestion WiFi Meraki</h2>
+                <h2>⚙️ Procédure technique détaillée</h2>
                 
                 <div class="step">
                     <div class="step-header">
                         <span class="step-number">1</span>
-                        <h3>Surveillance du tableau de bord Meraki</h3>
+                        <h3>Connexion au portail Cisco Meraki</h3>
                     </div>
                     <div class="step-content">
-                        <p>Surveillance quotidienne du tableau de bord Meraki pour détecter les anomalies et problèmes potentiels.</p>
-                        
-                        <div class="image-container">
-                            <img src="../tof/meraki/meraki1.png" alt="Tableau de bord Meraki" class="procedure-image">
-                            <div class="image-caption">📊 Vue d'ensemble du réseau WiFi Meraki</div>
-                        </div>
-                        
-                        <div class="mock-ticket">
-                            <div class="title-bar">Indicateurs à surveiller</div>
-                            <div class="ticket-line"><strong>État des AP :</strong> <span class="status-ok">Tous en ligne</span></div>
-                            <div class="ticket-line"><strong>Utilisation bande passante :</strong> <span class="status-ok">Dans les normes</span></div>
-                            <div class="ticket-line"><strong>Clients connectés :</strong> <span class="status-ok">Nombre normal</span></div>
-                            <div class="ticket-line"><strong>Alertes actives :</strong> <span class="status-ok">Aucune</span></div>
-                            <div class="ticket-line"><strong>Performance :</strong> <span class="status-ok">Optimale</span></div>
-                        </div>
+                        <p>Accès au tableau de bord Cisco Meraki via une connexion sécurisée avec authentification administrateur.</p>
                         
                         <div class="tech-info">
-                            <strong>💡 Surveillance proactive :</strong> Configurer des alertes automatiques pour les événements critiques (AP hors ligne, utilisation anormale, etc.)
+                            <strong>🔐 Sécurité :</strong> L'accès au portail Meraki nécessite des identifiants administrateur avec des privilèges de gestion des utilisateurs. La connexion est sécurisée via HTTPS et peut nécessiter une authentification multi-facteurs.
                         </div>
                     </div>
                 </div>
@@ -595,283 +379,185 @@
                 <div class="step">
                     <div class="step-header">
                         <span class="step-number">2</span>
-                        <h3>Diagnostic des problèmes WiFi</h3>
+                        <h3>Navigation vers la gestion des utilisateurs</h3>
                     </div>
                     <div class="step-content">
-                        <p>Procédure de diagnostic pour identifier la source des problèmes WiFi signalés.</p>
+                        <p>Accès au menu de gestion des utilisateurs dans l'interface d'administration Meraki.</p>
                         
-                        <div class="checklist">
-                            <h4 style="margin-bottom: 12px; color: #24292f;">Étapes de diagnostic :</h4>
-                            <div class="checklist-item done">
-                                <strong>🔍 Vérification état AP :</strong> Statut en ligne dans le dashboard
-                            </div>
-                            <div class="checklist-item done">
-                                <strong>📡 Analyse interférences :</strong> Scanner les canaux WiFi
-                            </div>
-                            <div class="checklist-item done">
-                                <strong>📊 Performance client :</strong> Analyser les logs de connexion
-                            </div>
-                            <div class="checklist-item done">
-                                <strong>🔒 Sécurité :</strong> Vérifier les tentatives d'intrusion
-                            </div>
-                            <div class="checklist-item done">
-                                <strong>🌐 Connectivité :</strong> Tester la connectivité Internet
-                            </div>
+                        <div class="tech-info">
+                            <strong>📍 Navigation :</strong> Network-wide > Configure > Users and Splash Access
                         </div>
                         
-                        <div class="warning-box">
-                            <strong>⚠️ Important :</strong> Utiliser les outils de diagnostic intégrés à Meraki pour une analyse précise des problèmes.
-                        </div>
+                        <p>Cette section permet de gérer l'ensemble des comptes utilisateurs ayant accès au réseau sans-fil de l'organisation.</p>
                     </div>
                 </div>
                 
                 <div class="step">
                     <div class="step-header">
                         <span class="step-number">3</span>
-                        <h3>Gestion des points d'accès (AP)</h3>
+                        <h3>Création du nouvel utilisateur</h3>
                     </div>
                     <div class="step-content">
-                        <p>Procédures de gestion et maintenance des points d'accès Meraki.</p>
+                        <p>Saisie des informations de l'utilisateur et configuration de ses paramètres d'accès.</p>
                         
-                        <div class="image-container">
-                            <img src="../tof/meraki/meraki2.png" alt="Gestion des AP" class="procedure-image">
-                            <div class="image-caption">📡 Interface de gestion des points d'accès</div>
-                        </div>
-                        
-                        <div class="tech-info">
-                            <strong>🔧 Actions courantes :</strong>
-                            <ul style="margin-top: 8px; margin-left: 20px;">
-                                <li>Redémarrage à distance des AP</li>
-                                <li>Mise à jour des firmware</li>
-                                <li>Ajustement de la puissance radio</li>
-                                <li>Changement de canaux WiFi</li>
+                        <div style="margin: 16px 0;">
+                            <h4 style="margin-bottom: 8px;">Informations requises :</h4>
+                            <ul style="margin-left: 20px; color: #656d76;">
+                                <li><strong>Nom complet</strong> : Prénom et nom de l'utilisateur</li>
+                                <li><strong>Adresse email</strong> : Adresse professionnelle obligatoire</li>
+                                <li><strong>Durée</strong> : Temps que la personne reste dans l'entreprise( heures, jours, semaines</li>
                             </ul>
                         </div>
                         
-                        <div style="margin: 16px 0;">
-                            <h4 style="margin-bottom: 8px;">Points de contrôle :</h4>
-                            <span class="status-ok">✅ Firmware à jour</span><br>
-                            <span class="status-ok">✅ Configuration optimisée</span><br>
-                            <span class="status-ok">✅ Couverture adéquate</span><br>
-                            <span class="status-ok">✅ Performance satisfaisante</span>
+                         <div class="tech-info">
+                            <strong>🛡️ Principe du moindre privilège :</strong> Chaque utilisateur ne reçoit que les droits strictement nécessaires à l'exercice de ses fonctions, limitant ainsi les risques de sécurité.
                         </div>
                     </div>
                 </div>
+                
                 
                 <div class="step">
                     <div class="step-header">
                         <span class="step-number">4</span>
-                        <h3>Gestion des SSID et politiques de sécurité</h3>
+                        <h3>Validation et enregistrement</h3>
                     </div>
                     <div class="step-content">
-                        <p>Configuration et maintenance des réseaux WiFi (SSID) et des politiques de sécurité.</p>
-                        
-                        <div class="mock-ticket">
-                            <div class="title-bar">Configuration SSID standard</div>
-                            <div class="ticket-line">🏢 <strong>SSID Corporate :</strong> WPA2-Enterprise</div>
-                            <div class="ticket-line">👥 <strong>SSID Invités :</strong> Captive Portal</div>
-                            <div class="ticket-line">📱 <strong>SSID IoT :</strong> VLAN isolé</div>
-                            <div class="ticket-line">🔒 <strong>Politiques :</strong> Basées sur les groupes</div>
-                            <div class="ticket-line">📋 <strong>Authentification :</strong> Radius/Active Directory</div>
-                        </div>
-                        
-                        <div class="tech-info">
-                            <strong>💡 Bonnes pratiques :</strong> Segmenter le trafic par VLAN et appliquer des politiques de sécurité adaptées à chaque type d'utilisateur.
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-header">
-                        <span class="step-number">5</span>
-                        <h3>Résolution des incidents WiFi</h3>
-                    </div>
-                    <div class="step-content">
-                        <p>Procédure de résolution des problèmes WiFi courants.</p>
-                        
-                        <div class="image-container">
-                            <img src="../tof/meraki/meraki3.png" alt="Résolution incidents" class="procedure-image">
-                            <div class="image-caption">🛠️ Outils de diagnostic et résolution</div>
-                        </div>
-                        
-                        <div class="checklist">
-                            <h4 style="margin-bottom: 12px; color: #24292f;">Problèmes courants et solutions :</h4>
-                            <div class="checklist-item done">
-                                ✅ <strong>Connexion lente :</strong> Optimiser canaux et puissance
-                            </div>
-                            <div class="checklist-item done">
-                                ✅ <strong>Déconnexions fréquentes :</strong> Vérifier interférences
-                            </div>
-                            <div class="checklist-item done">
-                                ✅ <strong>AP hors ligne :</strong> Vérifier alimentation PoE
-                            </div>
-                            <div class="checklist-item done">
-                                ✅ <strong>Authentification échouée :</strong> Vérifier serveur Radius
-                            </div>
-                            <div class="checklist-item done">
-                                ✅ <strong>Couverture faible :</strong> Ajouter/redéployer AP
-                            </div>
-                        </div>
+                        <p>Vérification des informations saisies et activation du compte utilisateur.</p>
                         
                         <div class="highlight">
-                            <strong>🎯 Escalade :</strong> Pour les problèmes complexes nécessitant une expertise avancée, contacter le support Meraki ou l'ingénieur réseau.
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-header">
-                        <span class="step-number">6</span>
-                        <h3>Maintenance préventive et optimisation</h3>
-                    </div>
-                    <div class="step-content">
-                        <p>Activités de maintenance régulières pour garantir des performances optimales.</p>
-                        
-                        <div style="margin: 16px 0;">
-                            <h4 style="margin-bottom: 8px;">Planning de maintenance :</h4>
-                            <span class="status-ok">📅 <strong>Quotidien :</strong> Surveillance tableau de bord</span><br>
-                            <span class="status-ok">📅 <strong>Hebdomadaire :</strong> Analyse des performances</span><br>
-                            <span class="status-ok">📅 <strong>Mensuel :</strong> Rapport d'utilisation</span><br>
-                            <span class="status-ok">📅 <strong>Trimestriel :</strong> Audit de sécurité</span>
+                            <strong>✅ Contrôle qualité :</strong> Vérifier la correspondance email/identité,  et l'attribution du mot de passe se fait par e-mail et c'est la plateforme qui fournit le mot de passe.
                         </div>
                         
-                        <div class="tech-info">
-                            <strong>📊 Optimisation :</strong> Utiliser les rapports Meraki pour identifier les tendances et optimiser la configuration du réseau WiFi.
-                        </div>
+                        <p>Une fois validé, le compte est immédiatement actif et l'utilisateur peut se connecter au réseau Wi-Fi avec ses identifiants.</p>
                     </div>
                 </div>
                 
                 <div class="step">
                     <div class="step-header">
                         <span class="step-number">7</span>
-                        <h3>Sécurité et conformité</h3>
+                        <h3>Documentation et clôture</h3>
                     </div>
                     <div class="step-content">
-                        <p>Mise en œuvre et vérification des mesures de sécurité WiFi.</p>
-                        
-                        <div class="mock-ticket">
-                            <div class="title-bar">Checklist sécurité WiFi</div>
-                            <div class="ticket-line">✅ Politiques de mot de passe robustes</div>
-                            <div class="ticket-line">✅ Authentification 802.1X activée</div>
-                            <div class="ticket-line">✅ Isolation clients invités</div>
-                            <div class="ticket-line">✅ Surveillance des rogue AP</div>
-                            <div class="ticket-line">✅ Chiffrement WPA3 lorsque possible</div>
-                            <div class="ticket-line">✅ Mises à jour de sécurité appliquées</div>
-                        </div>
-                        
-                        <div class="warning-box">
-                            <strong>⚠️ Sécurité :</strong> Effectuer régulièrement des tests d'intrusion WiFi pour vérifier la robustesse des mesures de sécurité.
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-header">
-                        <span class="step-number">8</span>
-                        <h3>Documentation et amélioration continue</h3>
-                    </div>
-                    <div class="step-content">
-                        <p>Maintenir la documentation à jour et identifier les opportunités d'amélioration.</p>
-                        
-                        <div class="tech-info">
-                            <strong>📚 Documentation :</strong> Tenir à jour l'inventaire des équipements, la cartographie de couverture et les procédures spécifiques.
-                        </div>
+                        <p>Mise à jour des registres et fermeture du ticket de demande.</p>
                         
                         <div style="margin: 16px 0;">
-                            <h4 style="margin-bottom: 8px;">Actions d'amélioration :</h4>
-                            <span class="status-ok">✅ Analyse des tendances d'utilisation</span><br>
-                            <span class="status-ok">✅ Benchmark des performances</span><br>
-                            <span class="status-ok">✅ Évaluation des nouvelles technologies</span><br>
-                            <span class="status-ok">✅ Retour d'expérience utilisateurs</span>
+                            <h4 style="margin-bottom: 8px;">Actions de finalisation :</h4>
+                            <ul style="margin-left: 20px; color: #656d76;">
+                                <li>Mise à jour du registre des accès réseau</li>
+                                <li>Documentation dans le ticket Freshdesk</li>
+                                <li>Notification au demandeur de la création du compte</li>
+                                <li>Archivage pour traçabilité et audits</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tech-info">
+                            <strong>📝 Traçabilité :</strong> Chaque création de compte est documentée avec la date, l'auteur de la demande, le valideur et le profil attribué pour assurer la conformité avec les politiques de sécurité.
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="info-card">
-                <h3>🎯 Indicateurs de performance WiFi</h3>
+                <h3>🔑 Points de contrôle essentiels</h3>
                 <div style="margin-top: 12px;">
-                    <div style="margin: 8px 0;">📊 <strong>Disponibilité réseau :</strong> Objectif > 99.5%</div>
-                    <div style="margin: 8px 0;">⚡ <strong>Débit moyen :</strong> Suivre et optimiser</div>
-                    <div style="margin: 8px 0;">👥 <strong>Utilisateurs simultanés :</strong> Capacité adaptée</div>
-                    <div style="margin: 8px 0;">🛡️ <strong>Incidents sécurité :</strong> Objectif 0</div>
-                    <div style="margin: 8px 0;">⏱️ <strong>Temps résolution incidents :</strong> Respect des SLA</div>
+                    <div style="margin: 8px 0;">✅ <strong>Autorisation :</strong> Validation hiérarchique obligatoire</div>
+                    <div style="margin: 8px 0;">✅ <strong>Identité :</strong> Vérification de la correspondance email/personne</div>
+                    <div style="margin: 8px 0;">✅ <strong>Droits :</strong> Attribution du profil approprié au rôle</div>
+                    <div style="margin: 8px 0;">✅ <strong>Sécurité :</strong> Politique de mot de passe respectée</div>
+                    <div style="margin: 8px 0;">✅ <strong>Communication :</strong> Transmission sécurisée des identifiants</div>
+                    <div style="margin: 8px 0;">✅ <strong>Documentation :</strong> Traçabilité complète dans Freshdesk</div>
                 </div>
             </div>
         </div>
         
         <div class="footer">
-            <p>Aurélien Pont - BTS SIO SISR en alternance - Assistant administrateur technique informatique</p>
+            <p>Documentation technique Novares - Gestion des accès Cisco Meraki</p>
+            <p>© 2024-2026 Novares Group. Tous droits réservés.</p>
         </div>
     </div>
     
+    <a href="#" class="back-to-top" id="backToTop">Retour</a>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const style = document.createElement('style');
-            style.textContent = `
+    document.addEventListener('DOMContentLoaded', function () {
+        const style = document.createElement('style');
+        style.textContent = `
+            #backToTop {
+                position: fixed !important;
+                bottom: 30px !important;
+                right: 30px !important;
+                z-index: 9999 !important;
+                width: auto !important;
+                height: auto !important;
+                padding: 12px 18px !important;
+                background: var(--btn-gradient) !important;
+                color: white !important;
+                text-align: center !important;
+                text-decoration: none !important;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                font-size: 1rem !important;
+                font-weight: 600 !important;
+                border-radius: 24px !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease !important;
+                border: none;
+                cursor: pointer;
+            }
+
+            #backToTop.show {
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+
+            #backToTop:hover {
+                transform: translateY(-3px) !important;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
+            }
+
+            @media (max-width: 768px) {
                 #backToTop {
-                    position: fixed !important;
-                    bottom: 30px !important;
-                    right: 30px !important;
-                    z-index: 9999 !important;
-                    width: auto !important;
-                    height: auto !important;
-                    padding: 12px 18px !important;
-                    background: linear-gradient(135deg, #1e3a8a, #3b82f6) !important;
-                    color: white !important;
-                    text-align: center !important;
-                    text-decoration: none !important;
-                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                    font-size: 1rem !important;
-                    font-weight: 600 !important;
-                    border-radius: 24px !important;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
-                    opacity: 0;
-                    visibility: hidden;
-                    transition: all 0.3s ease !important;
-                    border: none;
-                    cursor: pointer;
+                    bottom: 20px !important;
+                    right: 20px !important;
+                    padding: 10px 16px !important;
+                    font-size: 0.95rem !important;
                 }
+            }
+        `;
+        document.head.appendChild(style);
 
-                #backToTop.show {
-                    opacity: 1 !important;
-                    visibility: visible !important;
-                }
+        const header = document.querySelector('.header');
+        let gradient = 'linear-gradient(135deg, #78be20, #5a9e18)';
+        
+        if (header) {
+            const headerStyle = window.getComputedStyle(header);
+            const headerBg = headerStyle.backgroundImage;
+            if (headerBg && headerBg.includes('gradient')) {
+                gradient = headerBg;
+            }
+        }
+        
+        document.documentElement.style.setProperty('--btn-gradient', gradient);
 
-                #backToTop:hover {
-                    transform: translateY(-3px) !important;
-                    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
-                }
+        const btn = document.getElementById('backToTop');
+        if (!btn) return;
 
-                @media (max-width: 768px) {
-                    #backToTop {
-                        bottom: 20px !important;
-                        right: 20px !important;
-                        padding: 10px 16px !important;
-                        font-size: 0.95rem !important;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
+        btn.textContent = 'Retour';
 
-            const btn = document.createElement('button');
-            btn.id = 'backToTop';
-            btn.textContent = 'Retour';
-            document.body.appendChild(btn);
-
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                history.go(-1);
-            });
-
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 300) {
-                    btn.classList.add('show');
-                } else {
-                    btn.classList.remove('show');
-                }
-            });
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            history.go(-1);
         });
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        });
+    });
     </script>
 </body>
 </html>
