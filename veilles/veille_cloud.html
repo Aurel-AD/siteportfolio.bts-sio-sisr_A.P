@@ -69,25 +69,29 @@
       border: 1px solid var(--border);
     }
     header {
-      background: linear-gradient(135deg, #1e3a52 0%, #2c5282 100%);
+      background: linear-gradient(135deg, #1e3a52 0%, #2c5282 100%); /* fond bleu comme 3D */
       color: white;
       text-align: center;
       padding: 60px 20px;
       position: relative;
     }
+    
     h1 {
       font-size: clamp(2.5em, 4vw, 3.2em);
       margin: 0;
-      color: #ffffff; /* <<< visible sur fond bleu */
+      color: #ffffff; /* visible sur fond bleu */
       font-weight: 300;
+      text-shadow: 0 0 10px rgba(52,152,219,0.6); /* effet lumineux doux */
     }
     
+    /* Curseur clignotant */
     h1::after {
       content: "_";
       color: #ffffff;
       opacity: 1;
       animation: blink 1.2s step-end infinite;
     }
+    
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
@@ -722,6 +726,7 @@
   </script>
 </body>
 </html>
+
 
 
 
