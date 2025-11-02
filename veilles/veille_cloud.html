@@ -78,12 +78,13 @@
     h1 {
       font-size: clamp(2.5em, 4vw, 3.2em);
       margin: 0;
-      color: white;
+      color: #ffffff; /* <<< visible sur fond bleu */
       font-weight: 300;
     }
+    
     h1::after {
       content: "_";
-      color: var(--primary);
+      color: #ffffff;
       opacity: 1;
       animation: blink 1.2s step-end infinite;
     }
@@ -721,6 +722,7 @@
   </script>
 </body>
 </html>
+
 
 
 
