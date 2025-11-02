@@ -114,7 +114,12 @@
 					});
 
 		}
-
+	
+	// Scrolly.
+		$('.scrolly').scrolly({
+			speed: 1000
+		});
+	
 })(jQuery);
 
 // ============================================
@@ -215,6 +220,7 @@ function showCertificate(imagePath, event) {
         }
     };
 }
+
 
 
 
