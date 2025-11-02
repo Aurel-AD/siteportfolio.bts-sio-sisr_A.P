@@ -45,6 +45,13 @@
 					});
 
 			// Links.
+				var $nav_a = $nav.find('a');
+
+				$nav_a
+					.scrolly({
+						speed: 1000,
+						offset: function() { return $nav.height(); }
+					})
 					.on('click', function() {
 
 						var $this = $(this);
@@ -100,9 +107,12 @@
 									// Otherwise, if this section's link is the one that's locked, unlock it.
 										else if ($this.hasClass('active-locked'))
 											$this.removeClass('active-locked');
+
 								}
 							});
+
 					});
+
 		}
 
 })(jQuery);
@@ -205,5 +215,6 @@ function showCertificate(imagePath, event) {
         }
     };
 }
+
 
 
