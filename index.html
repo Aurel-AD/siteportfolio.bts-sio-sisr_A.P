@@ -270,25 +270,48 @@
 									</ul>
 
 								<div class="content">
-								    <h3>Outils utilisés</h3>
-								
-								    <p class="badges">
-								        <img src="https://img.shields.io/badge/SCCM-2671E5?style=for-the-badge&logo=microsoft&logoColor=white">
-								        <img src="https://img.shields.io/badge/DameWare-1F74D1?style=for-the-badge">
-								        <img src="https://img.shields.io/badge/Freshworks-FF6C37?style=for-the-badge&logo=freshworks&logoColor=white">
-								        <img src="https://img.shields.io/badge/FortiClient-EE3124?style=for-the-badge&logo=fortinet&logoColor=white">
-								        <img src="https://img.shields.io/badge/Cisco_Meraki-6AC345?style=for-the-badge&logo=cisco&logoColor=white">
-								        <img src="https://img.shields.io/badge/Active_Directory-0067B8?style=for-the-badge&logo=microsoft&logoColor=white">
-								        <img src="https://img.shields.io/badge/DFS-0078D4?style=for-the-badge">
-								        <img src="https://img.shields.io/badge/MFA-2F80ED?style=for-the-badge&logo=microsoft-authenticator&logoColor=white">
-								        <img src="https://img.shields.io/badge/TeamViewer-0E8EE9?style=for-the-badge&logo=teamviewer&logoColor=white">
-								        <img src="https://img.shields.io/badge/Dell_EMC_Avamar-007DB8?style=for-the-badge&logo=dell&logoColor=white">
-								    </p>
+								  <h3>Outils utilisés</h3>
+								  <ul class="tool-pills" aria-label="Liste d'outils">
+								    <li>SCCM</li>
+								    <li>DameWare</li>
+								    <li>Freshworks</li>
+								    <li>FortiClient VPN &amp; EMS</li>
+								    <li>Cisco Meraki</li>
+								    <li>Active Directory</li>
+								    <li>ROK (SWF)</li>
+								    <li>DFS</li>
+								    <li>MFA (Microsoft Authenticator)</li>
+								    <li>TeamViewer</li>
+								    <li>DELL EMC Avamar</li>
+								  </ul>
 								</div>
 								
 								<style>
-								.badges img {
-								    margin: 5px;
+								:root{
+								  --pill-bg:#f3f4f6;         /* gris clair neutre */
+								  --pill-text:#1f2937;       /* gris foncé neutre */
+								  --pill-border:#e5e7eb;     /* bordure douce */
+								  --pill-radius:12px;
+								  --pill-pad:6px 12px;
+								}
+								
+								.tool-pills{
+								  display:flex;
+								  flex-wrap:wrap;
+								  gap:8px 10px;
+								  list-style:none;
+								  margin:0;
+								  padding:0;
+								}
+								.tool-pills li{
+								  background:var(--pill-bg);
+								  color:var(--pill-text);
+								  border:1px solid var(--pill-border);
+								  border-radius:var(--pill-radius);
+								  padding:var(--pill-pad);
+								  font-size:0.95rem;
+								  line-height:1.2;
+								  white-space:nowrap;
 								}
 								</style>
 							</section>
@@ -933,6 +956,7 @@
 			</script>
 	</body>
 </html>
+
 
 
 
