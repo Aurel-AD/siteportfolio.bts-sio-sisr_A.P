@@ -4024,6 +4024,17 @@ input, select, textarea {
         max-height: 70vh;
     }
 }
+#certificate-viewer {
+  opacity: 0;
+  transition: opacity 180ms ease;
+  display: none; /* piloté par JS */
+}
+
+#certificate-viewer.is-open {
+  display: block;
+  opacity: 1;
+}
+
 
 
 
