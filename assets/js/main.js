@@ -161,37 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
-// FONCTION POUR AFFICHER LES CERTIFICATS
-// ============================================
-         
-document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") {
-        closeCertificate();
-    }
-	function openCertificate(src) {
-  const viewer = document.getElementById("certificate-viewer");
-  const img = document.getElementById("certificate-image");
-  if (!viewer || !img) {
-    console.error("certificate-viewer ou certificate-image introuvable dans le DOM.");
-    return;
-  }
-  img.src = src;
-  viewer.style.display = "block";
-  document.body.style.overflow = "hidden"; // empêche de scroller derrière la modale
-}
-
-function closeCertificate() {
-  const viewer = document.getElementById("certificate-viewer");
-  const img = document.getElementById("certificate-image");
-  if (!viewer) return;
-
-  viewer.style.display = "none";
-  if (img) img.src = "";                 // optionnel : nettoie la source
-  document.body.style.overflow = "auto"; // rétablit le scroll
-}
-});
-
-// ============================================
 // LIGHTBOX CERTIFICAT - système unique
 // ============================================
 
@@ -235,6 +204,7 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
 
 
 
