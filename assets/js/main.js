@@ -163,83 +163,80 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 // FONCTION POUR AFFICHER LES CERTIFICATS
 // ============================================
-function showCertificate(imagePath, event) {
-    if (event) {
-        event.preventDefault();
-    }
-    
-    // Créer ou récupérer la modale
-    let modal = document.getElementById('certModal');
-    if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'certModal';
-        modal.className = 'modal';
-        modal.innerHTML = `
-            <span class="close">&times;</span>
-            <img class="modal-content" id="certImage" alt="Certificat">
-        `;
-        document.body.appendChild(modal);
-        
-        // Fermer au clic sur X
-        modal.querySelector('.close').onclick = function() {
-            modal.style.display = 'none';
-        };
-        
-        // Fermer au clic en dehors de l'image
-        modal.onclick = function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        };
-        
-        // Fermer avec la touche Échap
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modal.style.display === 'block') {
-                modal.style.display = 'none';
-            }
-        });
-    }
-    
-    // Afficher l'image
-    const img = document.getElementById('certImage');
-    img.src = imagePath;
-    modal.style.display = 'block';
-    
-    // Empêcher le scroll du body quand la modale est ouverte
-    document.body.style.overflow = 'hidden';
-    
-    // Rétablir le scroll quand on ferme
-    modal.querySelector('.close').onclick = function() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    };
-    modal.onclick = function(e) {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    };
-}
-function openCertificate(src) {
-    document.getElementById("certificate-image").src = src;
-    document.getElementById("certificate-viewer").style.display = "block";
-}
-
-function closeCertificate() {
-    document.getElementById("certificate-viewer").style.display = "none";
-}
-
-function closeCertificateOnBackground(e) {
-    if (e.target.id === "certificate-viewer") {
-        closeCertificate();
-    }
-}
-
+         
 document.addEventListener("keydown", function(e) {
     if (e.key === "Escape") {
         closeCertificate();
     }
+	function openCertificate(src) {
+  const viewer = document.getElementById("certificate-viewer");
+  const img = document.getElementById("certificate-image");
+  if (!viewer || !img) {
+    console.error("certificate-viewer ou certificate-image introuvable dans le DOM.");
+    return;
+  }
+  img.src = src;
+  viewer.style.display = "block";
+  document.body.style.overflow = "hidden"; // empêche de scroller derrière la modale
+}
+
+function closeCertificate() {
+  const viewer = document.getElementById("certificate-viewer");
+  const img = document.getElementById("certificate-image");
+  if (!viewer) return;
+
+  viewer.style.display = "none";
+  if (img) img.src = "";                 // optionnel : nettoie la source
+  document.body.style.overflow = "auto"; // rétablit le scroll
+}
 });
+
+// ============================================
+// LIGHTBOX CERTIFICAT - système unique
+// ============================================
+
+// Ouvre la lightbox
+function openCertificate(src) {
+  const viewer = document.getElementById("certificate-viewer");
+  const img = document.getElementById("certificate-image");
+  if (!viewer || !img) {
+    console.error("certificate-viewer ou certificate-image introuvable dans le DOM.");
+    return;
+  }
+  img.src = src;
+  viewer.style.display = "block";
+  document.body.style.overflow = "hidden"; // bloque le scroll en arrière-plan
+}
+
+// Ferme la lightbox
+function closeCertificate() {
+  const viewer = document.getElementById("certificate-viewer");
+  const img = document.getElementById("certificate-image");
+  if (!viewer) return;
+
+  viewer.style.display = "none";
+  if (img) img.src = "";                 // reset source (optionnel)
+  document.body.style.overflow = "auto"; // rétablit le scroll
+}
+
+// Ferme au clic sur le fond noir (pas sur l'image)
+function closeCertificateOnBackground(e) {
+  if (e.target && e.target.id === "certificate-viewer") {
+    closeCertificate();
+  }
+}
+
+// Ferme avec la touche ESC (seulement si visible)
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    const viewer = document.getElementById("certificate-viewer");
+    if (viewer && viewer.style.display !== "none") {
+      closeCertificate();
+    }
+  }
+});
+
+
 
 
 
