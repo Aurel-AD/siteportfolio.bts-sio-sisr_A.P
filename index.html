@@ -743,7 +743,7 @@
 							        <i class="fas fa-file-contract"></i>
 							        <h4>Module 1 : Le RGPD et ses notions clés</h4>
 							        <ul class="actions special">
-							            <li><a href="#" class="button small" onclick="showCertificate('tof/mooc/RGPD1.jpg', event); return false;">Voir</a></li>
+							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/RGPD1.jpg'); return false;">Voir</a></li>
 							        </ul>
 							    </div>
 							
@@ -751,7 +751,7 @@
 							        <i class="fas fa-lock"></i>
 							        <h4>Module 2 : Les principes de la protection des données</h4>
 							        <ul class="actions special">
-							            <li><a href="#" class="button small" onclick="showCertificate('tof/mooc/RGPD2.jpg', event); return false;">Voir</a></li>
+							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/RGPD2.jpg'); return false;">Voir</a></li>
 							        </ul>
 							    </div>
 							
@@ -759,7 +759,7 @@
 							        <i class="fas fa-users"></i>
 							        <h4>Module 3 : Les responsabilités des acteurs</h4>
 							        <ul class="actions special">
-							            <li><a href="#" class="button small" onclick="showCertificate('tof/mooc/RGPD3.jpg', event); return false;">Voir</a></li>
+							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/RGPD3.jpg'); return false;">Voir</a></li>
 							        </ul>
 							    </div>
 							
@@ -767,7 +767,7 @@
 							        <i class="fas fa-clipboard-check"></i>
 							        <h4>Module 4 : Le DPO et les outils de la conformité</h4>
 							        <ul class="actions special">
-							            <li><a href="#" class="button small" onclick="showCertificate('tof/mooc/RGPD4.jpg', event); return false;">Voir</a></li>
+							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/RGPD4.jpg'); return false;">Voir</a></li>
 							        </ul>
 							    </div>
 							
@@ -775,7 +775,7 @@
 							        <i class="fas fa-landmark"></i>
 							        <h4>Module 5 : Les collectivités territoriales</h4>
 							        <ul class="actions special">
-							            <li><a href="#" class="button small" onclick="showCertificate('tof/mooc/RGPD5.jpg', event); return false;">Voir</a></li>
+							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/RGPD5.jpg'); return false;">Voir</a></li>
 							        </ul>
 							    </div>
 							
@@ -783,7 +783,7 @@
 							        <i class="fas fa-user-lock"></i>
 							        <h4>Module 6 : Travail et données personnelles</h4>
 							        <ul class="actions special">
-							            <li><a href="#" class="button small" onclick="showCertificate('tof/mooc/RGPD6.jpg', event); return false;">Voir</a></li>
+							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/RGPD6.jpg'); return false;">Voir</a></li>
 							        </ul>
 							    </div>
 							</div>
@@ -796,7 +796,7 @@
 							        <h4>Cybersécurité ANSSI</h4>
 							        <p>Protection des systèmes critiques</p>
 							        <ul class="actions special">
-							            <li><a href="#" class="button small" onclick="showCertificate('tof/mooc/ANSSI.jpg', event); return false;">Voir</a></li>
+							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/ANSSI.jpg',); return false;">Voir</a></li>
 							        </ul>
 							    </div>
 							</div>
@@ -883,49 +883,6 @@
 			<script src="assets/js/main.js"></script>
 
 			<script>
-			    // ========== GESTION DES CERTIFICATS ==========
-			    let lastClickPosition = 0;
-
-			    function showCertificate(url, event) {
-			        if (event) {
-			            event.preventDefault();
-			            lastClickPosition = window.pageYOffset || document.documentElement.scrollTop;
-			        }
-			        const viewer = document.getElementById('certificate-viewer');
-			        const img = document.getElementById('certificate-image');
-			        
-			        img.src = url;
-			        viewer.style.display = 'block';
-			        document.body.style.overflow = 'hidden';
-			        
-			        setTimeout(() => {
-			            viewer.scrollTop = 0;
-			        }, 100);
-			    }
-
-			    function closeCertificate() {
-			        const viewer = document.getElementById('certificate-viewer');
-			        const img = document.getElementById('certificate-image');
-			        img.src = '';
-			        viewer.style.display = 'none';
-			        document.body.style.overflow = '';
-			        window.scrollTo({ top: lastClickPosition, behavior: 'smooth' });
-			    }
-
-			    function closeCertificateOnBackground(event) {
-			        if (event.target.id === 'certificate-viewer') {
-			            closeCertificate();
-			        }
-			    }
-
-			    document.addEventListener('keydown', function(event) {
-			        if (event.key === 'Escape' || event.key === 'Esc') {
-			            const viewer = document.getElementById('certificate-viewer');
-			            if (viewer.style.display === 'block') {
-			                closeCertificate();
-			            }
-			        }
-			    });
 
 			    // ========== ANIMATION DES COMPTEURS NOVARES ==========
 			    const counters = document.querySelectorAll('.counter');
@@ -977,6 +934,7 @@
 			</script>
 	</body>
 </html>
+
 
 
 
