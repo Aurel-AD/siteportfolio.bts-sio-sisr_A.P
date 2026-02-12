@@ -3791,7 +3791,7 @@ input, select, textarea {
     text-rendering: auto !important;
     -webkit-font-smoothing: antialiased !important;
 }
-<style>
+
 /* Styles unifiés pour les certifications */
 .cert-grid {
     display: grid;
@@ -3927,33 +3927,6 @@ input, select, textarea {
         max-width: 100%;
     }
 }
-</style>
-
-/* Bouton de fermeture */
-.modal .close {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #ffffff;
-    font-size: 40px;
-    font-weight: bold;
-    transition: all 0.3s;
-    cursor: pointer;
-    z-index: 100000;
-    background: rgba(0, 0, 0, 0.5);
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    border-radius: 50%;
-}
-
-.modal .close:hover,
-.modal .close:focus {
-    color: #34d399;
-    background: rgba(0, 0, 0, 0.8);
-    transform: rotate(90deg);
-}
 
 /* Responsive */
 @media screen and (max-width: 768px) {
@@ -4037,6 +4010,7 @@ input, select, textarea {
 #certificate-viewer button:hover {
     color: #34d399;
 }
+
 
 
 
