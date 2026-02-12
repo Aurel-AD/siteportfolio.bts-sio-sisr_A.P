@@ -168,24 +168,36 @@ document.addEventListener('DOMContentLoaded', function() {
 function openCertificate(src) {
   const viewer = document.getElementById("certificate-viewer");
   const img = document.getElementById("certificate-image");
+
   if (!viewer || !img) {
     console.error("certificate-viewer ou certificate-image introuvable dans le DOM.");
     return;
   }
+
   img.src = src;
   viewer.style.display = "block";
-  document.body.style.overflow = "hidden"; // bloque le scroll en arrière-plan
+
+  // ⭐ AJOUT ESSENTIEL ⭐
+  setTimeout(() => {
+    viewer.classList.add("is-open");
+  }, 10);
+
+  document.body.style.overflow = "hidden";
 }
 
 // Ferme la lightbox
 function closeCertificate() {
   const viewer = document.getElementById("certificate-viewer");
   const img = document.getElementById("certificate-image");
-  if (!viewer) return;
 
-  viewer.style.display = "none";
-  if (img) img.src = "";                 // reset source (optionnel)
-  document.body.style.overflow = "auto"; // rétablit le scroll
+  viewer.classList.remove("is-open");
+
+  setTimeout(() => {
+    viewer.style.display = "none";
+    if (img) img.src = "";
+  }, 180);
+
+  document.body.style.overflow = "auto";
 }
 
 // Ferme au clic sur le fond noir (pas sur l'image)
@@ -204,6 +216,7 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
 
 
 
