@@ -220,6 +220,26 @@ function showCertificate(imagePath, event) {
         }
     };
 }
+function openCertificate(src) {
+    document.getElementById("certificate-image").src = src;
+    document.getElementById("certificate-viewer").style.display = "block";
+}
+
+function closeCertificate() {
+    document.getElementById("certificate-viewer").style.display = "none";
+}
+
+function closeCertificateOnBackground(e) {
+    if (e.target.id === "certificate-viewer") {
+        closeCertificate();
+    }
+}
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        closeCertificate();
+    }
+});
 
 
 
