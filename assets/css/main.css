@@ -3928,52 +3928,6 @@ input, select, textarea {
     }
 }
 </style>
-/* ============================================
-   MODAL POUR LES CERTIFICATS
-   ============================================ */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 99999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.95);
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.modal-content {
-    margin: auto;
-    display: block;
-    max-width: 90%;
-    max-height: 90vh;
-    object-fit: contain;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: zoomIn 0.3s ease;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-}
-
-@keyframes zoomIn {
-    from {
-        transform: translate(-50%, -50%) scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-    }
-}
 
 /* Bouton de fermeture */
 .modal .close {
@@ -4034,6 +3988,56 @@ input, select, textarea {
   display: block;
   opacity: 1;
 }
+
+/* ============================================
+   LIGHTBOX OFFICIELLE : CERTIFICATE VIEWER
+   ============================================ */
+
+#certificate-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    opacity: 0;
+    transition: opacity 180ms ease;
+    z-index: 99999;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#certificate-viewer.is-open {
+    display: block;
+    opacity: 1;
+}
+
+#certificate-viewer img {
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(52, 211, 153, 0.4);
+}
+
+#certificate-viewer button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#certificate-viewer button:hover {
+    color: #34d399;
+}
+
 
 
 
