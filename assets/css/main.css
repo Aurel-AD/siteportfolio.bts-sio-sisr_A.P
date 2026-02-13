@@ -4013,6 +4013,10 @@ input, select, textarea {
 #certificate-viewer {
     z-index: 999999 !important;
 }
+/* Uniformise la carte ANSSI */
+.cert-card p {
+    color: #374151; /* gris foncé lisible */
+}
 
 
 
