@@ -236,16 +236,19 @@ body {
 
         <!-- GUIDE SECTION -->
         <div class="guide-section">
-            <h3>ℹ️ Comment visualiser la documentation</h3>
-            <p>
-                Ce portail affiche automatiquement le document technique du projet CICAR directement dans votre navigateur,
-                sans logiciel supplémentaire.
-            </p>
-            <p>
-                Le fichier <code>Projet_Cicar.docx</code> est chargé depuis le dossier <code>files/</code> à côté de cette page.
-                Vous pouvez également l'ouvrir ou le télécharger via les boutons ci-dessous.
-            </p>
-        </div>
+    <h3>📋 Contenu du document</h3>
+    <p>
+        Ce document couvre le déploiement complet de l'infrastructure réseau et système de la nouvelle agence CICAR aux Îles Canaries :
+    </p>
+    <p>
+        <strong>I. Présentation de l'agence</strong> — Contexte, architecture globale : pare-feu Stormshield, switch TP-Link, serveur ESXi, postes clients, DMZ Debian.<br>
+        <strong>II. Schéma logique du réseau</strong> — Architecture LAN / DMZ / WAN avec adressage complet (192.168.54.0/24).<br>
+        <strong>III. Nomenclature & Plan d'adressage</strong> — Tableau des équipements, plan IP, schéma de la baie serveur rack 19" 12U.<br>
+        <strong>IV. Configuration matérielle</strong> — Switch TP-Link SG-3424, pare-feu Stormshield SNS 310 (VPN IPsec), serveur ESXi HP ProLiant (vSwitch, VMNetwork, DMZ).<br>
+        <strong>V. Active Directory & Services Windows</strong> — Contrôleur de domaine Windows Server 2019 (AD DS, DNS, DHCP, AD CS, NPS), Wi-Fi 802.1X RADIUS, déploiement poste client Windows 10, GPO.<br>
+        <strong>VI. Serveurs Linux Debian – DMZ</strong> — SRV-EL-WEB-01 & 02 (Apache2, MariaDB, PHP 8, Adminer), HAProxy load balancer (round-robin), Zimbra mail server (Ubuntu 16.04, SMTP/IMAP/HTTPS).
+    </p>
+</div>
 
         <!-- IMPORTANT NOTE -->
         <div class="important-note">
