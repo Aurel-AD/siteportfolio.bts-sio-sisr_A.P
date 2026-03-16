@@ -3,288 +3,344 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>PROJET CICAR - Infrastructure Réseau & Système</title>
-
 <style>
-
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-font-family:'Segoe UI',Tahoma,Verdana,sans-serif;
-background:#f0f2f5;
-color:#333;
-padding:20px;
-line-height:1.6;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f2f5;
+    padding: 20px;
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.container{
-max-width:1000px;
-margin:auto;
-background:white;
-border-radius:8px;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
-overflow:hidden;
+/* HEADER */
+.header {
+    background: linear-gradient(135deg, #1e5c3c, #2a8a5d);
+    color: white;
+    padding: 30px;
 }
-
-.header{
-background:linear-gradient(135deg,#1e5c3c,#2a8a5d);
-color:white;
-padding:30px;
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
-
-.header h1{
-font-size:2rem;
-margin-bottom:10px;
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 300;
 }
-
-.subtitle{
-opacity:0.9;
-font-size:1rem;
+.competences-sidebar {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.2);
 }
-
-.ticket-info{
-background:#e8f5e9;
-padding:20px;
-border-left:4px solid #4caf50;
+.competence-group-label {
+    font-size: 0.75em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 10px;
 }
-
-.ticket-details{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-margin-top:15px;
+.competence-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
 }
-
-.ticket-item{
-background:white;
-padding:12px;
-border-radius:4px;
-font-size:0.9rem;
+.ctag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.78em;
+    font-weight: 500;
+    white-space: nowrap;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
 }
+.ctag-code { font-weight: 800; opacity: 0.75; font-size: 0.9em; }
+.ctag-label { opacity: 0.9; }
 
-.content{
-padding:30px;
+/* TICKET */
+.ticket-info { background: #e8f5e9; padding: 20px; border-left: 4px solid #4caf50; }
+.ticket-info h3 { color: #2e7d32; margin-bottom: 15px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+.ticket-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 15px; }
+.ticket-item { background: white; padding: 12px; border-radius: 4px; font-size: 0.9rem; }
+.ticket-item strong { color: #2e7d32; }
+
+/* CONTENT */
+.content { padding: 30px; }
+
+/* GUIDE SECTION (v2) */
+.guide-section {
+    background: #e3f2fd;
+    padding: 25px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    border-left: 4px solid #2196f3;
 }
+.guide-section h3 { color: #1565c0; margin-bottom: 15px; font-size: 1.3rem; display: flex; align-items: center; gap: 8px; }
+.guide-section p { color: #555; line-height: 1.7; margin-bottom: 12px; }
 
-.doc-section{
-border:1px solid #dee2e6;
-border-radius:8px;
-overflow:hidden;
+/* IMPORTANT NOTE (v2) */
+.important-note {
+    background: #fff3e0;
+    border: 1px solid #ffcdd2;
+    border-radius: 6px;
+    padding: 18px;
+    margin: 20px 0;
 }
+.important-note h4 { color: #e65100; margin-bottom: 10px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+.important-note p { color: #666; font-size: 0.95rem; }
 
-.doc-header{
-background:#495057;
-color:white;
-padding:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-gap:10px;
+/* DOC SECTION */
+.doc-section { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden; }
+.doc-header {
+    background: #495057;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
-
-.doc-title{
-font-size:1.2rem;
-font-weight:600;
+.doc-title { font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.doc-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+    padding: 10px 18px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    cursor: pointer;
 }
+.btn:hover { background: #0056b3; transform: translateY(-1px); }
+.btn-success { background: #28a745; }
+.btn-success:hover { background: #1e7e34; }
+.btn-warning { background: #fd7e14; }
+.btn-warning:hover { background: #c96209; }
 
-.doc-actions{
-display:flex;
-gap:10px;
+/* DOC VIEWER */
+.doc-viewer { background: white; position: relative; }
+.doc-viewer iframe { width: 100%; height: 80vh; min-height: 600px; border: none; display: block; }
+
+/* DROP ZONE */
+#dropZone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+    border: 2px dashed #c8d6c9;
+    border-radius: 8px;
+    margin: 24px;
+    padding: 40px;
+    text-align: center;
+    color: #888;
+    transition: all 0.2s;
+    cursor: pointer;
 }
+#dropZone.dragover { border-color: #2a8a5d; background: #f0faf4; color: #2a8a5d; }
+#dropZone.loading { border-color: #2196f3; background: #e3f2fd; color: #1565c0; }
+#dropZone .drop-icon { font-size: 3rem; margin-bottom: 14px; }
+#dropZone p { font-size: 1rem; margin-bottom: 6px; color: #666; }
+#dropZone .drop-sub { font-size: 0.85rem; color: #aaa; }
 
-.btn{
-padding:10px 16px;
-border-radius:4px;
-text-decoration:none;
-font-size:0.9rem;
-color:white;
-background:#007bff;
-transition:0.3s;
+/* FOOTER */
+.footer { background: #f8f9fa; padding: 20px; border-top: 1px solid #dee2e6; color: #6c757d; font-size: 0.9rem; }
+.footer p { margin-bottom: 8px; }
+
+/* DOC CONTENT inline */
+#docContent h1 { font-size: 16pt; color: #1e5c3c; border-bottom: 2px solid #2a8a5d; padding-bottom: 6px; margin-top: 28px; margin-bottom: 12px; }
+#docContent h2 { font-size: 13pt; color: #1565c0; margin-top: 20px; margin-bottom: 8px; }
+#docContent h3 { font-size: 11pt; color: #333; margin-top: 14px; margin-bottom: 6px; font-weight: 600; }
+#docContent p  { margin-bottom: 10px; }
+#docContent ul, #docContent ol { margin: 8px 0 12px 24px; }
+#docContent li { margin-bottom: 4px; }
+#docContent blockquote { margin-left: 24px; padding-left: 12px; border-left: 3px solid #ccc; color: #555; }
+#docContent pre, #docContent code { font-family: Consolas, "Courier New", monospace; font-size: 9.5pt; background: #f4f4f4; border-radius: 4px; padding: 2px 5px; }
+#docContent pre { display: block; padding: 12px 16px; margin: 10px 0; overflow-x: auto; white-space: pre; }
+#docContent table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 10pt; }
+#docContent th { background: #1e5c3c; color: white; padding: 8px 12px; text-align: left; }
+#docContent td { padding: 7px 12px; border: 1px solid #ddd; }
+#docContent tr:nth-child(even) { background: #f5faf6; }
+#docContent img { max-width: 100%; height: auto; display: block; margin: 10px auto; }
+#backToTop {
+    position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+    padding: 12px 18px; background: linear-gradient(135deg, #1e5c3c, #2a8a5d);
+    color: white; text-decoration: none; font-weight: 600; border-radius: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25); opacity: 0; visibility: hidden; transition: all 0.3s ease;
 }
+#backToTop.show { opacity: 1; visibility: visible; }
+#backToTop:hover { transform: translateY(-3px); }
 
-.btn:hover{
-background:#0056b3;
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    .header { padding: 20px; }
+    .header h1 { font-size: 1.6rem; }
+    .content { padding: 20px; }
+    .doc-header { flex-direction: column; align-items: stretch; text-align: center; }
+    .doc-actions { justify-content: center; }
 }
-
-.btn-success{
-background:#28a745;
-}
-
-.btn-success:hover{
-background:#1e7e34;
-}
-
-.doc-viewer{
-background:white;
-}
-
-.doc-viewer iframe{
-width:100%;
-min-height:700px;
-border:none;
-}
-
-.footer{
-background:#f8f9fa;
-padding:20px;
-font-size:0.9rem;
-color:#666;
-border-top:1px solid #ddd;
-}
-
 </style>
-
 </head>
-
 <body>
 
 <div class="container">
 
-<div class="header">
+    <!-- HEADER -->
+    <div class="header">
+        <h1>📖 Documentation Technique</h1>
+        <div class="subtitle">Projet CICAR — Infrastructure Réseau &amp; Système — Agence Îles Canaries</div>
+        <div class="competences-sidebar">
+            <div class="competence-group-label">🎯 Compétences E4</div>
+            <div class="competence-tags">
+                <span class="ctag"><span class="ctag-code">A1</span><span class="ctag-label">Ressources numériques</span></span>
+                <span class="ctag"><span class="ctag-code">A2</span><span class="ctag-label">Normes &amp; standards</span></span>
+                <span class="ctag"><span class="ctag-code">A3</span><span class="ctag-label">Habilitations AD / GPO</span></span>
+                <span class="ctag"><span class="ctag-code">A4</span><span class="ctag-label">Continuité de service</span></span>
+                <span class="ctag"><span class="ctag-code">A6</span><span class="ctag-label">RADIUS / NPS</span></span>
+                <span class="ctag"><span class="ctag-code">B2</span><span class="ctag-label">Services réseau &amp; système</span></span>
+                <span class="ctag"><span class="ctag-code">B3</span><span class="ctag-label">Applications</span></span>
+                <span class="ctag"><span class="ctag-code">D1</span><span class="ctag-label">Objectifs &amp; organisation</span></span>
+                <span class="ctag"><span class="ctag-code">D2</span><span class="ctag-label">Planification</span></span>
+                <span class="ctag"><span class="ctag-code">E1</span><span class="ctag-label">Tests &amp; validation</span></span>
+                <span class="ctag"><span class="ctag-code">E2</span><span class="ctag-label">Déploiement</span></span>
+                <span class="ctag"><span class="ctag-code">E3</span><span class="ctag-label">Accompagnement</span></span>
+                <span class="ctag"><span class="ctag-code">F1</span><span class="ctag-label">Documentation</span></span>
+            </div>
+        </div>
+    </div>
 
-<h1>📖 Documentation Technique</h1>
+    <!-- TICKET INFO -->
+    <div class="ticket-info">
+        <h3>🎫 Informations du projet</h3>
+        <div class="ticket-details">
+            <div class="ticket-item"><strong>Projet :</strong> Infrastructure CICAR</div>
+            <div class="ticket-item"><strong>Contexte :</strong> Agence de location automobile aéroportuaire</div>
+            <div class="ticket-item"><strong>Technologies :</strong> Stormshield • VMware ESXi • Windows Server • Debian</div>
+            <div class="ticket-item"><strong>Statut :</strong> ✓ Documentation fournie</div>
+        </div>
+        <p><strong>Objectif :</strong> Déployer une infrastructure fiable, sécurisée et homogène pour la nouvelle agence CICAR dans les Îles Canaries.</p>
+    </div>
 
-<div class="subtitle">
-Projet CICAR — Infrastructure Réseau & Système — Agence Îles Canaries
-</div>
+    <!-- CONTENT -->
+    <div class="content">
 
-</div>
+        <!-- GUIDE SECTION -->
+        <div class="guide-section">
+            <h3>ℹ️ Comment visualiser la documentation</h3>
+            <p>
+                Ce portail affiche automatiquement le document technique du projet CICAR directement dans votre navigateur,
+                sans logiciel supplémentaire.
+            </p>
+            <p>
+                Le fichier <code>Projet_Cicar.docx</code> est chargé depuis le dossier <code>files/</code> à côté de cette page.
+                Vous pouvez également l'ouvrir ou le télécharger via les boutons ci-dessous.
+            </p>
+        </div>
 
-<div class="ticket-info">
+        <!-- IMPORTANT NOTE -->
+        <div class="important-note">
+            <h4>⚠️ Remarque</h4>
+            <p>
+                Le document est converti et rendu localement dans votre navigateur. Aucune donnée n'est envoyée vers un serveur externe.
+                En cas d'affichage incomplet, privilégiez le bouton <strong>Télécharger</strong> pour ouvrir le fichier dans Word.
+            </p>
+        </div>
 
-<h3>🎫 Informations du projet</h3>
+        <!-- DOC SECTION -->
+        <div class="doc-section">
+            <div class="doc-header">
+                <div class="doc-title">📋 PROJET CICAR — Infrastructure Réseau &amp; Système</div>
+                <div class="doc-actions">
+                    <!-- Boutons v1 : ouvrir & télécharger -->
+                    <a class="btn" href="files/Projet_Cicar.docx" target="_blank">👁️ Ouvrir le Word</a>
+                    <a class="btn btn-warning" href="files/Projet_Cicar.docx" download>⬇ Télécharger</a>
 
-<div class="ticket-details">
+                </div>
+            </div>
 
-<div class="ticket-item"><strong>Projet :</strong> Infrastructure CICAR</div>
+            <div class="doc-viewer" id="docViewer">
+                <div id="docContent" style="display:none; padding: 30px 40px; font-family: Calibri, 'Segoe UI', Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #222;"></div>
+            </div>
+        </div>
 
-<div class="ticket-item"><strong>Contexte :</strong> Agence de location automobile</div>
+    </div><!-- /content -->
 
-<div class="ticket-item"><strong>Technologies :</strong> Stormshield • VMware ESXi • Windows Server • Debian</div>
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>Documentation technique — Projet CICAR — Création et mise à jour de la documentation réseau</p>
+        <p>© 2024-2026 Formation BTS SIO AFPI. Tous droits réservés.</p>
+    </div>
 
-<div class="ticket-item"><strong>Statut :</strong> ✓ Documentation fournie</div>
+</div><!-- /container -->
 
-</div>
-
-<p style="margin-top:15px">
-<strong>Objectif :</strong> Déployer une infrastructure fiable, sécurisée et homogène pour la nouvelle agence CICAR dans les Îles Canaries.
-</p>
-
-</div>
-
-<div class="content">
-
-<div class="doc-section">
-
-<div class="doc-header">
-
-<div class="doc-title">
-📋 PROJET CICAR — Infrastructure Réseau & Système
-</div>
-
-<div class="doc-actions">
-
-<a class="btn" href="files/Projet_Cicar.docx" target="_blank">
-👁️ Ouvrir le Word
-</a>
-
-<a class="btn btn-success" href="files/Projet_Cicar.docx" download>
-⬇ Télécharger
-</a>
-
-</div>
-
-</div>
-
-<div class="doc-viewer">
-
-<iframe id="docFrame"></iframe>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="footer">
-
-<p>Documentation technique — Projet CICAR</p>
-<p>© 2024-2026 Formation BTS SIO AFPI</p>
-
-</div>
-
-</div>
+<a href="#" id="backToTop">↑ Retour en haut</a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
-
 <script>
+const docContent = document.getElementById('docContent');
 
-const iframe = document.getElementById("docFrame");
+/* ── Styles injectés dans l'iframe ── */
+const iframeStyles = ``;
 
-fetch("files/Projet_Cicar.docx")
-.then(response => response.arrayBuffer())
-.then(arrayBuffer => {
-
-mammoth.convertToHtml({arrayBuffer:arrayBuffer})
-
-.then(result => {
-
-const html = `
-<html>
-<head>
-<style>
-
-body{
-font-family:Calibri,Arial;
-margin:40px;
-line-height:1.6;
-color:#222;
+/* ── Rendu du docx dans la page ── */
+function renderDocx(arrayBuffer) {
+    mammoth.convertToHtml({ arrayBuffer })
+        .then(function(result) {
+            docContent.innerHTML = result.value;
+            docContent.style.display = 'block';
+        })
+        .catch(function(err) {
+            docContent.innerHTML = `<p style="color:red">⚠️ Erreur de conversion : ${err.message}</p>`;
+            docContent.style.display = 'block';
+        });
 }
 
-h1{
-color:#1e5c3c;
-border-bottom:2px solid #2a8a5d;
-padding-bottom:6px;
-}
+/* ── Chargement automatique depuis files/Projet_Cicar.docx ── */
+fetch('files/Projet_Cicar.docx')
+    .then(function(response) {
+        if (!response.ok) throw new Error('Fichier introuvable');
+        return response.arrayBuffer();
+    })
+    .then(function(buffer) {
+        renderDocx(buffer);
+    })
+    .catch(function() {
+        console.error('Impossible de charger files/Projet_Cicar.docx');
+    });
 
-table{
-border-collapse:collapse;
-width:100%;
-margin:15px 0;
-}
-
-td,th{
-border:1px solid #ddd;
-padding:8px;
-}
-
-th{
-background:#1e5c3c;
-color:white;
-}
-
-</style>
-</head>
-
-<body>
-
-${result.value}
-
-</body>
-</html>
-`;
-
-const blob = new Blob([html],{type:"text/html"});
-
-iframe.src = URL.createObjectURL(blob);
-
+/* ── Back to top ── */
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    btn.classList.toggle('show', window.scrollY > 300);
 });
-
+document.getElementById('backToTop').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-
 </script>
-
 </body>
 </html>
