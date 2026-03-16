@@ -4043,6 +4043,29 @@ entry.target.classList.add('visible');
 
 elements.forEach(el => observer.observe(el));
 
+.skills{
+margin-top:40px;
+}
+
+.skill{
+margin-bottom:20px;
+}
+
+.skill-bar{
+height:8px;
+background:#1e293b;
+border-radius:5px;
+overflow:hidden;
+}
+
+.skill-level{
+height:100%;
+background:#34d399;
+}
+
+.ad{ width:60%; }
+.net{ width:55%; }
+.cyber{ width:50%; }
 
 
 
