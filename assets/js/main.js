@@ -123,9 +123,9 @@
 })(jQuery);
 
 // ============================================
-// ANIMATION DES CHIFFRES NOVARES
+// ANIMATION DES COMPTEURS NOVARES
 // ============================================
-function animateValue(element, start, end, duration) {
+function animateCounter(element, start, end, duration) {
     let startTimestamp = null;
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
@@ -139,88 +139,115 @@ function animateValue(element, start, end, duration) {
     window.requestAnimationFrame(step);
 }
 
-// Observer pour déclencher l'animation au scroll
-const statsObserver = new IntersectionObserver((entries) => {
+// Observer pour les compteurs
+const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
             const element = entry.target;
             const endValue = parseInt(element.getAttribute('data-value'));
             element.classList.add('animated');
-            animateValue(element, 0, endValue, 2000);
-            statsObserver.unobserve(element);
+            animateCounter(element, 0, endValue, 2000);
+            counterObserver.unobserve(element);
         }
     });
 }, { threshold: 0.5 });
 
-// Initialiser l'observer quand le DOM est prêt
-document.addEventListener('DOMContentLoaded', function() {
-    // Observer tous les éléments avec data-value
-    document.querySelectorAll('[data-value]').forEach(el => {
-        statsObserver.observe(el);
+// ============================================
+// ANIMATION FADE-IN POUR LES ÉLÉMENTS
+// ============================================
+const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
     });
-});
+}, { threshold: 0.2 });
 
 // ============================================
-// LIGHTBOX CERTIFICAT - système unique
+// LIGHTBOX POUR LES CERTIFICATIONS
 // ============================================
-
-// Ouvre la lightbox
 function openCertificate(src) {
-  const viewer = document.getElementById("certificate-viewer");
-  const img = document.getElementById("certificate-image");
-
-  if (!viewer || !img) {
-    console.error("certificate-viewer ou certificate-image introuvable dans le DOM.");
-    return;
-  }
-
-  img.src = src;
-  viewer.style.display = "block";
-
-  // ⭐ AJOUT ESSENTIEL ⭐
-  setTimeout(() => {
-    viewer.classList.add("is-open");
-  }, 10);
-
-  document.body.style.overflow = "hidden";
-}
-
-// Ferme la lightbox
-function closeCertificate() {
-  const viewer = document.getElementById("certificate-viewer");
-  const img = document.getElementById("certificate-image");
-
-  viewer.classList.remove("is-open");
-
-  setTimeout(() => {
-    viewer.style.display = "none";
-    if (img) img.src = "";
-  }, 180);
-
-  document.body.style.overflow = "auto";
-}
-
-// Ferme au clic sur le fond noir (pas sur l'image)
-function closeCertificateOnBackground(e) {
-  if (e.target && e.target.id === "certificate-viewer") {
-    closeCertificate();
-  }
-}
-
-// Ferme avec la touche ESC (seulement si visible)
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape") {
     const viewer = document.getElementById("certificate-viewer");
-    if (viewer && viewer.style.display !== "none") {
-      closeCertificate();
+    const img = document.getElementById("certificate-image");
+
+    if (!viewer || !img) {
+        console.error("Éléments de la lightbox non trouvés");
+        return;
     }
-  }
+
+    img.src = src;
+    viewer.style.display = "block";
+    
+    setTimeout(() => {
+        viewer.classList.add("is-open");
+    }, 10);
+
+    document.body.style.overflow = "hidden";
+}
+
+function closeCertificate() {
+    const viewer = document.getElementById("certificate-viewer");
+    const img = document.getElementById("certificate-image");
+
+    viewer.classList.remove("is-open");
+
+    setTimeout(() => {
+        viewer.style.display = "none";
+        if (img) img.src = "";
+    }, 180);
+
+    document.body.style.overflow = "auto";
+}
+
+function closeCertificateOnBackground(e) {
+    if (e.target && e.target.id === "certificate-viewer") {
+        closeCertificate();
+    }
+}
+
+// ============================================
+// GESTION DE LA MODALE RGPD
+// ============================================
+function openRgpdModal() {
+    document.getElementById('rgpd-modal').style.display = 'flex';
+}
+
+function closeRgpdModal() {
+    document.getElementById('rgpd-modal').style.display = 'none';
+}
+
+// ============================================
+// INITIALISATION AU CHARGEMENT DU DOM
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. Initialiser les compteurs
+    document.querySelectorAll('[data-value]').forEach(el => {
+        counterObserver.observe(el);
+    });
+    
+    // 2. Initialiser les éléments fade-in
+    document.querySelectorAll('.fade-in').forEach(el => {
+        fadeObserver.observe(el);
+    });
+    
+    // 3. Ajouter l'écouteur ESC pour la lightbox
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            const viewer = document.getElementById("certificate-viewer");
+            if (viewer && viewer.style.display !== "none") {
+                closeCertificate();
+            }
+        }
+    });
+    
+    // 4. Ajouter l'écouteur pour fermeture au clic sur overlay RGPD
+    const rgpdModal = document.getElementById('rgpd-modal');
+    if (rgpdModal) {
+        rgpdModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeRgpdModal();
+            }
+        });
+    }
 });
-
-
-
-
-
-
-
-
