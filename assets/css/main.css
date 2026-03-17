@@ -4094,6 +4094,247 @@ font-size:0.95rem;
 line-height:1.2;
 white-space:nowrap;
 }
+/* ============================================
+   STYLES POUR LES COMPÉTENCES ET OUTILS
+   ============================================ */
+
+.skills {
+    margin-top: 40px;
+}
+
+.skill {
+    margin-bottom: 20px;
+}
+
+.skill-bar {
+    height: 8px;
+    background: #1e293b;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.skill-level {
+    height: 100%;
+    background: #34d399;
+}
+
+.ad { width: 60%; }
+.net { width: 55%; }
+.cyber { width: 50%; }
+
+/* ============================================
+   STYLES POUR LES PILLS D'OUTILS
+   ============================================ */
+
+:root {
+    --pill-bg: #f3f4f6;
+    --pill-text: #1f2937;
+    --pill-border: #e5e7eb;
+    --pill-radius: 12px;
+    --pill-pad: 6px 12px;
+}
+
+.tool-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tool-pills li {
+    background: var(--pill-bg);
+    color: var(--pill-text);
+    border: 1px solid var(--pill-border);
+    border-radius: var(--pill-radius);
+    padding: var(--pill-pad);
+    font-size: 0.95rem;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+/* ============================================
+   STYLES POUR LES FADE-IN ANIMATIONS
+   ============================================ */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   STYLES POUR LA LIGHTBOX DES CERTIFICATS
+   ============================================ */
+
+#certificate-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    opacity: 0;
+    transition: opacity 180ms ease;
+    z-index: 999999;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#certificate-viewer.is-open {
+    display: block;
+    opacity: 1;
+}
+
+#certificate-viewer img {
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(52, 211, 153, 0.4);
+}
+
+#certificate-viewer button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#certificate-viewer button:hover {
+    color: #34d399;
+}
+
+/* ============================================
+   STYLES POUR LES CARTES DE CERTIFICATIONS
+   ============================================ */
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    margin-bottom: 3rem;
+}
+
+.cert-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    max-width: 300px;
+    width: 100%;
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cert-card:hover {
+    background: rgba(52, 211, 153, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(52, 211, 153, 0.2);
+    border-color: #34d399;
+}
+
+.cert-card .icon {
+    font-size: 2.5rem;
+    color: #34d399;
+    margin-bottom: 1rem;
+    background: rgba(52, 211, 153, 0.1);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.cert-card h4 {
+    margin: 0.5rem 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.cert-card p {
+    color: #e2e8f0;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* ============================================
+   STYLES POUR LA MODALE RGPD
+   ============================================ */
+
+#rgpd-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9998;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#rgpd-modal > div {
+    background: #1e293b;
+    border-radius: 14px;
+    border-left: 4px solid #34d399;
+    padding: 2.5rem;
+    max-width: 560px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* ============================================
+   STYLES RESPONSIVES
+   ============================================ */
+
+@media (max-width: 768px) {
+    .cert-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .cert-card {
+        max-width: 100%;
+    }
+    
+    #rgpd-modal > div {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tool-pills li {
+        font-size: 0.85rem;
+        padding: 4px 8px;
+    }
+}
 
 
 
