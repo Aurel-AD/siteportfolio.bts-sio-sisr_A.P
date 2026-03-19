@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="fr">
 <head>
     <title>Aurélien Pont - BTS SIO SISR</title>
     <meta name="description" content="Portfolio d'Aurélien Pont, étudiant en BTS SIO SISR spécialisé en cybersécurité et administration système. En alternance chez Novares.">
@@ -18,94 +18,6 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
-			/* Styles pour les panneaux déroulants */
-			.dropdown-panel {
-				display: none;
-				background: rgba(30, 41, 59, 0.95);
-				padding: 2rem;
-				margin: 1rem 0;
-				border-radius: 10px;
-				border-left: 4px solid #34d399;
-				animation: slideDown 0.3s ease-out;
-			}
-
-			.dropdown-panel.active {
-				display: block;
-			}
-
-			@keyframes slideDown {
-				from {
-					opacity: 0;
-					transform: translateY(-20px);
-				}
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			.dropdown-content {
-				display: flex;
-				justify-content: space-around;
-				flex-wrap: wrap;
-				gap: 2rem;
-			}
-
-			.dropdown-section {
-				flex: 1;
-				min-width: 200px;
-			}
-
-			.dropdown-section .section-title {
-				color: #34d399;
-				font-weight: bold;
-				font-size: 1.1rem;
-				margin-bottom: 1rem;
-				text-align: center;
-				padding-bottom: 0.5rem;
-				border-bottom: 2px solid #34d399;
-			}
-
-			.link-item {
-				margin-bottom: 0.5rem;
-				text-align: center;
-			}
-
-			.link-item a {
-				color: #e2e8f0;
-				text-decoration: none;
-				font-size: 0.95rem;
-				transition: all 0.3s ease;
-				display: block;
-				padding: 0.5rem;
-				border-radius: 5px;
-			}
-
-			.link-item a:hover {
-				color: #34d399;
-				background: rgba(52, 211, 153, 0.1);
-				transform: translateX(5px);
-			}
-
-			/* Style pour les boutons de menu avec dropdown */
-			.menu-toggle {
-				cursor: pointer;
-				transition: all 0.3s ease;
-			}
-
-			.menu-toggle:hover {
-				color: #34d399;
-			}
-
-			.menu-toggle.active {
-				color: #34d399;
-			}
-
-			@media (max-width: 768px) {
-				.dropdown-content {
-					flex-direction: column;
-				}
-			}
 			/* Style pour les compteurs animés */
 				.counter {
 					font-size: 3rem;
@@ -408,11 +320,11 @@
 										</div>
 									</div>
 								</div>
-								<section class="main">
+								<div style="margin-top: 2rem;">
 									<ul class="actions special">
 										<li><a href="files/CV_Aurelien_Pont.html" class="button primary icon solid fa-download" download>Télécharger mon CV</a></li>
 									</ul>
-								</section>
+								</div>
 							</section>
 
 													<!-- Section Statistiques Novares -->
@@ -430,22 +342,22 @@
 							        </li>
 							        <li class="style2">
 							            <span class="icon solid fa-globe"></span>
-							            <strong data-value="32">0</strong>
+							            <strong class="counter" data-target="32">0</strong>
 							            <span>Pays</span>
 							        </li>
 							        <li class="style3">
 							            <span class="icon solid fa-industry"></span>
-							            <strong data-value="45">0</strong>
+							            <strong class="counter" data-target="45">0</strong>
 							            <span>Sites de production</span>
 							        </li>
 							        <li class="style4">
 							            <span class="icon solid fa-chart-line"></span>
-							            <strong data-value="1700">0</strong>
+							            <strong class="counter" data-target="1700">0</strong>
 							            <span>Millions € CA</span>
 							        </li>
 							        <li class="style5">
 							            <span class="icon solid fa-lightbulb"></span>
-							            <strong data-value="300">0</strong>
+							            <strong class="counter" data-target="300">0</strong>
 							            <span>Ingénieurs R&D</span>
 							        </li>
 							    </ul>
@@ -807,7 +719,7 @@
 							<div class="cert-grid">
 							    
 							    <div class="cert-card">
-							        <i class="fas fa-file-contract"></i>
+							        <i class="fas fa-file-contract icon"></i>
 							        <h4>Module 1 : Le RGPD et ses notions clés</h4>
 							        <ul class="actions special">
 							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/RGPD1.jpg'); return false;">Voir</a></li>
@@ -815,7 +727,7 @@
 							    </div>
 							
 							    <div class="cert-card">
-							        <i class="fas fa-lock"></i>
+							        <i class="fas fa-lock icon"></i>
 							        <h4>Module 2 : Les principes de la protection des données</h4>
 							        <ul class="actions special">
 							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/RGPD2.jpg'); return false;">Voir</a></li>
@@ -823,7 +735,7 @@
 							    </div>
 							
 							    <div class="cert-card">
-							        <i class="fas fa-users"></i>
+							        <i class="fas fa-users icon"></i>
 							        <h4>Module 3 : Les responsabilités des acteurs</h4>
 							        <ul class="actions special">
 							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/RGPD3.jpg'); return false;">Voir</a></li>
@@ -831,7 +743,7 @@
 							    </div>
 							
 							    <div class="cert-card">
-							        <i class="fas fa-clipboard-check"></i>
+							        <i class="fas fa-clipboard-check icon"></i>
 							        <h4>Module 4 : Le DPO et les outils de la conformité</h4>
 							        <ul class="actions special">
 							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/RGPD4.jpg'); return false;">Voir</a></li>
@@ -839,7 +751,7 @@
 							    </div>
 							
 							    <div class="cert-card">
-							        <i class="fas fa-landmark"></i>
+							        <i class="fas fa-landmark icon"></i>
 							        <h4>Module 5 : Les collectivités territoriales</h4>
 							        <ul class="actions special">
 							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/RGPD5.jpg'); return false;">Voir</a></li>
@@ -847,7 +759,7 @@
 							    </div>
 							
 							    <div class="cert-card">
-							        <i class="fas fa-user-lock"></i>
+							        <i class="fas fa-user-lock icon"></i>
 							        <h4>Module 6 : Travail et données personnelles</h4>
 							        <ul class="actions special">
 							            <li><a href="#" class="button small" onclick="openCertificate('tof/mooc/RGPD6.jpg'); return false;">Voir</a></li>
@@ -860,7 +772,7 @@
 							<h3 style="margin-top: 50px; margin-bottom: 30px;"><i class="fas fa-lock"></i> Certification ANSSI</h3>
 							<div class="cert-grid">
 							    <div class="cert-card">
-							        <i class="fas fa-user-shield"></i>
+							        <i class="fas fa-user-shield icon"></i>
 							        <h4>Cybersécurité ANSSI</h4>
 							        <p>Protection des systèmes critiques</p>
 							        <ul class="actions special">
@@ -986,31 +898,29 @@
 			<script>
 
 			    // ========== ANIMATION DES COMPTEURS NOVARES ==========
-			    const counters = document.querySelectorAll('.counter');
-			    const speed = 150;
-
 			    const animateCounters = () => {
-			        counters.forEach(counter => {
-			            const updateCount = () => {
-			                const target = parseFloat(counter.getAttribute('data-target'));
-			                const count = parseFloat(counter.innerText);
-			                const decimal = parseInt(counter.getAttribute('data-decimal')) || 0;
-			                const increment = target / speed;
+			        document.querySelectorAll('.counter').forEach(counter => {
+			            const target = parseFloat(counter.getAttribute('data-target'));
+			            const duration = 2000; // ms
+			            const steps = 60;
+			            const interval = duration / steps;
+			            let current = 0;
 
-			                if (count < target) {
-			                    counter.innerText = (count + increment).toFixed(decimal);
-			                    setTimeout(updateCount, 20);
+			            const timer = setInterval(() => {
+			                current += target / steps;
+			                if (current >= target) {
+			                    counter.innerText = Math.round(target);
+			                    clearInterval(timer);
 			                } else {
-			                    counter.innerText = target.toFixed(decimal);
+			                    counter.innerText = Math.round(current);
 			                }
-			            };
-			            updateCount();
+			            }, interval);
 			        });
 			    };
 
 			    // Lance l'animation quand la section est visible
 			    let animated = false;
-			    window.addEventListener('scroll', () => {
+			    const checkNovares = () => {
 			        const novares = document.querySelector('#novares');
 			        if (novares && !animated) {
 			            const rect = novares.getBoundingClientRect();
@@ -1019,19 +929,10 @@
 			                animated = true;
 			            }
 			        }
-			    });
+			    };
 
-			    // Lance l'animation immédiatement si la section est déjà visible au chargement
-			    document.addEventListener('DOMContentLoaded', () => {
-			        const novares = document.querySelector('#novares');
-			        if (novares) {
-			            const rect = novares.getBoundingClientRect();
-			            if (rect.top < window.innerHeight && rect.bottom >= 0) {
-			                animateCounters();
-			                animated = true;
-			            }
-			        }
-			    });
+			    window.addEventListener('scroll', checkNovares);
+			    document.addEventListener('DOMContentLoaded', checkNovares);
 			</script>
 		<script>
 // ===============================
@@ -1082,5 +983,4 @@ document.addEventListener("keydown", function(e) {
 });
 			</script>
 		</body>
-	</body>
 </html>
