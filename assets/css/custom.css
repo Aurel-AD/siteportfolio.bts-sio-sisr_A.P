@@ -295,3 +295,26 @@ section.main.special {
 #main {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
 }
+
+/* =======================================================
+   FIX – PAGE BLANCHE CONTINUE JUSQU'EN BAS
+   ======================================================= */
+
+/* Supprime le gradient violet hérité de Stellar */
+body {
+  background-image: none !important;
+}
+
+/* Le wrapper englobe tout en blanc avec coins arrondis */
+#wrapper {
+  background-color: #ffffff;
+  border-radius: 0.25em;
+  overflow: hidden;
+}
+
+/* Supprime le margin-bottom du footer qui crée un gap sombre */
+#footer {
+  margin-bottom: 0 !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+}
