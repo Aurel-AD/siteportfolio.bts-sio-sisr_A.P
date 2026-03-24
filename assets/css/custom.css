@@ -9,7 +9,7 @@
    ======================================================= */
 :root {
   /* Couleurs de fond */
-  --bg-site: #e5e7eb;          /* fond général clair */
+  --bg-site: #1f2937;          /* gris bleuté sombre (tech, non noir) */
   --bg-header-1: #475569;      /* gris bleu clair */
   --bg-header-2: #334155;      /* bleu/gris IT */
   --bg-header-3: #1e293b;      /* profondeur */
@@ -267,4 +267,31 @@ button.primary {
 
 #certificate-viewer button:hover {
   color: var(--accent);
+}
+
+/* =======================================================
+   FIX DEFINITIF – PAGE BLANCHE CONTINUE
+   ======================================================= */
+
+/* Force toutes les sections du contenu à rester blanches */
+#main > section {
+  background-color: #ffffff;
+}
+
+/* Sections spéciales Stellar (évite transparence) */
+section.main.special {
+  background-color: #ffffff;
+}
+
+/* Novares reste intégré proprement */
+#novares {
+  background-color: #ffffff;
+}
+
+/* Sécurité : footer sur blanc */
+#footer {
+  background-color: #ffffff;
+}
+#main {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
 }
