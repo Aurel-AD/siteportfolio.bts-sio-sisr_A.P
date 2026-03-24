@@ -1,38 +1,78 @@
 /* =======================================================
-   CUSTOM.CSS 
+   CUSTOM.CSS – PORTFOLIO APPRENTI IT / CYBERSÉCURITÉ
+   Compatible Stellar (HTML5 UP)
    ======================================================= */
 
 /* =======================================================
    VARIABLES
    ======================================================= */
 :root {
-  /* Couleurs de fond */
-  --bg-site: #1f2937;          /* gris bleuté sombre (tech, non noir) */
-  --bg-header-1: #475569;      /* gris bleu clair */
-  --bg-header-2: #334155;      /* bleu/gris IT */
-  --bg-header-3: #1e293b;      /* profondeur */
+  --bg-site:      #1f2937;
+  --bg-header-1:  #475569;
+  --bg-header-2:  #334155;
+  --bg-header-3:  #1e293b;
 
-  /* Texte */
-  --text-main: #374151;        /* texte principal */
-  --text-secondary: #6b7280;   /* texte secondaire */
-  --text-title: #111827;       /* titres */
+  --text-main:      #374151;
+  --text-secondary: #6b7280;
+  --text-title:     #111827;
 
-  /* Accent */
-  --accent: #34d399;
+  --accent:       #34d399;
   --accent-hover: #2fbf8a;
-  --accent-soft: rgba(52, 211, 153, 0.15);
+  --accent-soft:  rgba(52, 211, 153, 0.15);
+
+  --pill-bg:      #f3f4f6;
+  --pill-text:    #1f2937;
+  --pill-border:  #e5e7eb;
+  --pill-radius:  12px;
+  --pill-pad:     6px 12px;
 }
 
 /* =======================================================
-   FOND GLOBAL (NEUTRE – PAS DE COUPURE)
+   FOND GLOBAL
    ======================================================= */
 html,
 body {
   background-color: var(--bg-site);
+  background-image: none !important; /* supprime le dégradé violet Stellar */
 }
 
 /* =======================================================
-   HEADER – DÉGRADÉ TECH CLAIR
+   NEUTRALISATION DES COULEURS BLANCHES DE STELLAR
+   Stellar définit color:#fff sur body, h1-h6, strong, b
+   On corrige ici à la racine du wrapper.
+   ======================================================= */
+#wrapper {
+  background-color: #ffffff;
+  border-radius: 0.25em;
+  overflow: hidden;
+  /* Réinitialise la couleur héritée du body Stellar */
+  color: var(--text-main);
+}
+
+/* Tous les éléments à l'intérieur du wrapper héritent
+   de cette couleur sombre par défaut */
+#wrapper * {
+  color: inherit;
+}
+
+/* Titres : Stellar les force en blanc, on corrige */
+#wrapper h1,
+#wrapper h2,
+#wrapper h3,
+#wrapper h4,
+#wrapper h5,
+#wrapper h6 {
+  color: var(--text-title);
+}
+
+/* Gras : Stellar les force en blanc, on corrige */
+#wrapper strong,
+#wrapper b {
+  color: var(--text-title);
+}
+
+/* =======================================================
+   HEADER – conserve le texte blanc (fond sombre)
    ======================================================= */
 #header {
   position: relative;
@@ -53,8 +93,13 @@ body {
   pointer-events: none;
 }
 
-/* Texte du header */
-#header h1 {
+#header,
+#header h1,
+#header h2,
+#header h3,
+#header p,
+#header a,
+#header nav a {
   color: #ffffff;
 }
 
@@ -63,45 +108,66 @@ body {
 }
 
 /* =======================================================
-   PAGE BLANCHE PRINCIPALE
+   MAIN – fond blanc, texte sombre
    ======================================================= */
 #main {
   background-color: #ffffff;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
 }
 
-/* Texte global dans le main */
 #main,
 #main p,
-#main li {
+#main li,
+#main span {
   color: var(--text-main);
 }
 
-/* Titres dans le main */
 #main h1,
 #main h2,
 #main h3,
-#main h4 {
+#main h4,
+#main h5,
+#main h6 {
   color: var(--text-title);
+}
+
+#main strong,
+#main b {
+  color: var(--text-title);
+}
+
+/* Force toutes les sections du main à rester blanches */
+#main > section,
+section.main,
+section.main.special {
+  background-color: #ffffff;
+  color: var(--text-main);
 }
 
 /* =======================================================
    LIENS & BOUTONS
    ======================================================= */
-a {
+#main a,
+#wrapper a {
   color: var(--accent);
+  border-bottom-color: rgba(52, 211, 153, 0.4);
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
 }
 
-a:hover {
+#main a:hover,
+#wrapper a:hover {
   color: var(--accent-hover);
+  border-bottom-color: transparent;
 }
 
 .button.primary,
-input.primary,
+input[type="submit"].primary,
 button.primary {
   background-color: var(--accent);
   color: #0f172a !important;
   font-weight: 400;
   box-shadow: none;
+  border-bottom: none;
 }
 
 .button.primary:hover {
@@ -109,49 +175,112 @@ button.primary {
 }
 
 /* =======================================================
-   CARTES (CERTIFS, BLOCS)
+   CARTES CERTIFICATIONS
    ======================================================= */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  margin-bottom: 3rem;
+}
+
 .cert-card {
-  background: rgba(243, 244, 246, 0.85);
+  background: #f9fafb;
   border: 1px solid rgba(52, 211, 153, 0.25);
-  border-radius: 14px;
+  border-radius: 15px;
+  padding: 2rem 1.5rem;
+  text-align: center;
   transition: all 0.3s ease;
+  max-width: 300px;
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .cert-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   border-color: var(--accent);
-  box-shadow: 0 10px 25px rgba(52, 211, 153, 0.25);
+  box-shadow: 0 8px 25px rgba(52, 211, 153, 0.2);
+  background: rgba(52, 211, 153, 0.05);
 }
 
+/* Icône de la carte */
 .cert-card .icon {
-  color: var(--accent);
+  font-size: 2.5rem;
+  color: var(--accent) !important;
   background: var(--accent-soft);
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/* Titre et texte des cartes — BLANC → SOMBRE */
+.cert-card h4 {
+  color: var(--text-title) !important;
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.cert-card p {
+  color: var(--text-secondary) !important;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
 /* =======================================================
-   SKILLS
+   SKILLS (barres de progression)
    ======================================================= */
+.skills {
+  margin-top: 40px;
+}
+
+.skill {
+  margin-bottom: 20px;
+}
+
 .skill-bar {
+  height: 8px;
   background-color: #cbd5e1;
   border-radius: 6px;
   overflow: hidden;
 }
 
 .skill-level {
+  height: 100%;
   background: linear-gradient(90deg, #34d399, #22c55e);
 }
+
+.ad    { width: 60%; }
+.net   { width: 55%; }
+.cyber { width: 50%; }
 
 /* =======================================================
    PILLS OUTILS
    ======================================================= */
+.tool-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .tool-pills li {
-  background: #f3f4f6;
-  color: #1f2937;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 6px 12px;
+  background: var(--pill-bg);
+  color: var(--pill-text) !important;
+  border: 1px solid var(--pill-border);
+  border-radius: var(--pill-radius);
+  padding: var(--pill-pad);
   font-size: 0.9rem;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 /* =======================================================
@@ -184,12 +313,12 @@ button.primary {
 
 .timeline-title {
   font-weight: 600;
-  color: #111827;
+  color: var(--text-title) !important;
 }
 
 .timeline-place {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
 }
 
 .timeline-date {
@@ -197,12 +326,12 @@ button.primary {
   margin-top: 4px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent) !important;
   letter-spacing: 0.4px;
 }
 
 /* =======================================================
-   EXPÉRIENCE ACTUELLE
+   CARTE EXPÉRIENCE
    ======================================================= */
 .experience-card {
   background: #f9fafb;
@@ -212,55 +341,92 @@ button.primary {
 }
 
 .experience-title {
-  color: #111827;
+  color: var(--text-title) !important;
   font-weight: 600;
 }
 
 .experience-meta {
   font-size: 0.85rem;
   margin-bottom: 14px;
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
 }
 
 .experience-company {
-  color: #111827;
+  color: var(--text-title) !important;
   font-weight: 500;
 }
 
 .experience-location {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
 }
 
 .experience-date {
-  color: var(--accent);
+  color: var(--accent) !important;
   font-weight: 600;
 }
 
 .experience-list {
   font-size: 0.9rem;
   line-height: 1.6;
+  color: var(--text-main) !important;
 }
 
 /* =======================================================
-   FOOTER
+   ANIMATIONS FADE-IN
    ======================================================= */
-#footer {
-  color: var(--text-secondary);
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-#footer .copyright {
-  color: #6b7280;
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* =======================================================
    LIGHTBOX CERTIFICATS
    ======================================================= */
 #certificate-viewer {
-  background: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: none;
+  opacity: 0;
+  transition: opacity 180ms ease;
+  z-index: 999999;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#certificate-viewer.is-open {
+  display: block;
+  opacity: 1;
 }
 
 #certificate-viewer img {
-  box-shadow: 0 0 30px var(--accent-soft);
+  display: block;
+  max-width: 90%;
+  max-height: 85vh;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(52, 211, 153, 0.4);
+}
+
+#certificate-viewer button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 #certificate-viewer button:hover {
@@ -268,101 +434,80 @@ button.primary {
 }
 
 /* =======================================================
-   FIX DEFINITIF – PAGE BLANCHE CONTINUE
+   MODALE RGPD
    ======================================================= */
-
-/* Force toutes les sections du contenu à rester blanches */
-#main > section {
-  background-color: #ffffff;
+#rgpd-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9998;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-/* Sections spéciales Stellar (évite transparence) */
-section.main.special {
-  background-color: #ffffff;
+#rgpd-modal > div {
+  background: #1e293b;
+  border-radius: 14px;
+  border-left: 4px solid var(--accent);
+  padding: 2.5rem;
+  max-width: 560px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  color: #e5e7eb;
 }
 
-/* Novares reste intégré proprement */
-#novares {
-  background-color: #ffffff;
-}
-
-/* Sécurité : footer sur blanc */
-#footer {
-  background-color: #ffffff;
-}
-#main {
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+#rgpd-modal h2,
+#rgpd-modal h3 {
+  color: #ffffff;
 }
 
 /* =======================================================
-   FIX – PAGE BLANCHE CONTINUE JUSQU'EN BAS
+   FOOTER
    ======================================================= */
-
-/* Supprime le gradient violet hérité de Stellar */
-body {
-  background-image: none !important;
-}
-
-/* Le wrapper englobe tout en blanc avec coins arrondis */
-#wrapper {
-  background-color: #ffffff;
-  border-radius: 0.25em;
-  overflow: hidden;
-}
-
-/* Supprime le margin-bottom du footer qui crée un gap sombre */
 #footer {
+  background-color: #ffffff;
+  color: var(--text-secondary);
   margin-bottom: 0 !important;
   width: 100% !important;
   margin-left: 0 !important;
 }
+
+#footer .copyright {
+  color: #6b7280;
+}
+
 /* =======================================================
-   FIX – TEXTE INVISIBLE (blanc sur blanc)
-   Stellar force color:#fff sur certains éléments
+   RESPONSIVE
    ======================================================= */
+@media (max-width: 768px) {
+  .cert-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
 
-/* Sections "special" de Stellar */
-section.special,
-section.main.special {
-  color: var(--text-main) !important;
+  .cert-card {
+    max-width: 100%;
+  }
+
+  #rgpd-modal > div {
+    padding: 1.5rem;
+  }
 }
 
-section.special h1,
-section.special h2,
-section.special h3,
-section.special h4,
-section.special p,
-section.special li,
-section.special span {
-  color: var(--text-title) !important;
-}
+@media (max-width: 480px) {
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
 
-/* Icônes fa / icons Stellar */
-section.special .icon {
-  color: var(--accent) !important;
-}
-
-/* Features / blocs intro Stellar */
-.features article,
-.features article h3,
-.features article p {
-  color: var(--text-main) !important;
-}
-
-/* Tout descendant direct de #wrapper qui aurait color:white */
-#wrapper * {
-  color: inherit;
-}
-
-/* Remise en ordre explicite sur #main */
-#main,
-#main * {
-  color: var(--text-main);
-}
-
-#main h1,
-#main h2,
-#main h3,
-#main h4 {
-  color: var(--text-title) !important;
+  .tool-pills li {
+    font-size: 0.85rem;
+    padding: 4px 8px;
+  }
 }
