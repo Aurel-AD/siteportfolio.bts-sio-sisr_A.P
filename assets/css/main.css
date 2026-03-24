@@ -2490,3 +2490,24 @@ body.is-preload #header.alt .logo {
 		padding: 4px 8px;
 	}
 }
+/* FORCE LE TABLIER BLANC - DERNIER RECOURS */
+#main {
+    background-color: #ffffff !important;
+    border-radius: 0.25em !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-top: 2em !important;
+    padding: 0 !important;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.05) !important;
+}
+
+#main > * {
+    background-color: transparent !important;
+}
+
+body {
+    background-color: #0b1120 !important;
+    background-image: url("images/overlay.png"), linear-gradient(135deg, #0a0f1a 0%, #0e1320 50%, #0a0f1a 100%) !important;
+    background-attachment: fixed !important;
+}
