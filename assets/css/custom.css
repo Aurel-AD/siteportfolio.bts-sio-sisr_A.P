@@ -23,14 +23,14 @@
    FOND GLOBAL (GARANTI)
    ======================= */
 html body {
-    background-color: var(--bg-main);
+    background-color: #0f172a;
     background-image:
         url("../images/overlay.png"),
         linear-gradient(
             135deg,
-            var(--bg-main) 0%,
-            var(--bg-soft) 45%,
-            var(--bg-main) 100%
+            #1e293b 0%,
+            #0f172a 50%,
+            #020617 100%
         );
 }
 
