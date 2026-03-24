@@ -1,52 +1,77 @@
-/* =====================================================
-   THEME APPRENTI IT / CYBERSECURITE
-   Custom CSS propre – sans JS – sans erreurs
-   ===================================================== */
+/* =======================================================
+   CUSTOM THEME – APPRENTI IT / CYBERSECURITE
+   Compatible Stellar (HTML5 UP)
+   ZÉRO JS – ZÉRO erreur CSS
+   ======================================================= */
 
-/* ---------- Variables globales ---------- */
+/* =======================
+   Variables globales
+   ======================= */
 :root {
-    --bg-dark: #020617;
-    --bg-dark-soft: #0b1220;
-    --text-light: #e5e7eb;
-    --accent: #34d399;
+    --bg-main: #020617;        /* noir bleuté */
+    --bg-soft: #0b1220;        /* bleu nuit cyber */
+
+    --text-main: #94a3b8;      /* texte principal (plus sombre, confortable) */
+    --text-secondary: #9ca3af; /* texte secondaire */
+    --text-strong: #e5e7eb;    /* titres */
+
+    --accent: #34d399;         /* vert cyber */
+    --accent-hover: #2fbf8a;
     --accent-soft: rgba(52, 211, 153, 0.15);
 }
 
-/* ---------- Fond principal ---------- */
-body {
-    background-color: var(--bg-dark);
+/* =======================
+   Fond global (FIX OK)
+   ======================= */
+html body {
+    background-color: var(--bg-main);
     background-image:
-        url("images/overlay.png"),
+        url("../images/overlay.png"),
         linear-gradient(
             135deg,
-            var(--bg-dark) 0%,
-            var(--bg-dark-soft) 45%,
-            var(--bg-dark) 100%
+            var(--bg-main) 0%,
+            var(--bg-soft) 45%,
+            var(--bg-main) 100%
         );
 }
 
-/* ---------- Texte ---------- */
+/* =======================
+   Texte global
+   ======================= */
 body,
 p,
 li {
-    color: var(--text-light);
+    color: var(--text-main);
 }
 
-/* ---------- Titres ---------- */
-h1, h2, h3, h4, h5, h6 {
-    color: #ffffff;
+#header p,
+.cert-card p,
+#footer {
+    color: var(--text-secondary);
 }
 
-/* ---------- Liens ---------- */
+/* =======================
+   Titres
+   ======================= */
+h1, h2, h3, h4, h5, h6,
+strong, b {
+    color: var(--text-strong);
+}
+
+/* =======================
+   Liens
+   ======================= */
 a {
     color: var(--accent);
 }
 
 a:hover {
-    color: #2fbf8a;
+    color: var(--accent-hover);
 }
 
-/* ---------- Boutons ---------- */
+/* =======================
+   Boutons
+   ======================= */
 .button.primary,
 input.primary,
 button.primary {
@@ -57,44 +82,47 @@ button.primary {
 }
 
 .button.primary:hover {
-    background-color: #2fbf8a;
+    background-color: var(--accent-hover);
 }
 
-/* ---------- Cartes (certifs / blocs) ---------- */
+/* =======================
+   Cartes (certifs / blocs)
+   ======================= */
 .cert-card {
     background: rgba(2, 6, 23, 0.75);
     border: 1px solid rgba(52, 211, 153, 0.25);
     border-radius: 14px;
     backdrop-filter: blur(6px);
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .cert-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
     border-color: var(--accent);
     box-shadow: 0 10px 30px rgba(52, 211, 153, 0.25);
 }
 
-/* ---------- Icônes ---------- */
 .cert-card .icon {
     color: var(--accent);
     background: var(--accent-soft);
 }
 
-/* ---------- Section compétences ---------- */
+/* =======================
+   Skills
+   ======================= */
 .skill-bar {
-    height: 8px;
-    background: #0f172a;
+    background-color: #0f172a;
     border-radius: 6px;
     overflow: hidden;
 }
 
 .skill-level {
-    height: 100%;
     background: linear-gradient(90deg, #34d399, #22c55e);
 }
 
-/* ---------- Pills outils ---------- */
+/* =======================
+   Pills outils
+   ======================= */
 .tool-pills li {
     background: #f3f4f6;
     color: #1f2937;
@@ -104,28 +132,39 @@ button.primary {
     font-size: 0.9rem;
 }
 
-/* ---------- Header ---------- */
+/* =======================
+   Header
+   ======================= */
 #header h1 {
     color: #ffffff;
 }
 
 #header p {
-    color: #cbd5e1;
+    color: var(--text-secondary);
 }
 
-/* ---------- Footer ---------- */
+/* =======================
+   Footer
+   ======================= */
 #footer {
-    color: #cbd5e1;
+    color: var(--text-secondary);
 }
 
-/* ---------- Animations (CSS only) ---------- */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease;
+#footer .copyright {
+    color: rgba(255, 255, 255, 0.55);
 }
 
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+/* =======================
+   Lightbox certificats
+   ======================= */
+#certificate-viewer {
+    background: rgba(0, 0, 0, 0.95);
+}
+
+#certificate-viewer img {
+    box-shadow: 0 0 30px var(--accent-soft);
+}
+
+#certificate-viewer button:hover {
+    color: var(--accent);
 }
