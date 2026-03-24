@@ -316,3 +316,53 @@ body {
   width: 100% !important;
   margin-left: 0 !important;
 }
+/* =======================================================
+   FIX – TEXTE INVISIBLE (blanc sur blanc)
+   Stellar force color:#fff sur certains éléments
+   ======================================================= */
+
+/* Sections "special" de Stellar */
+section.special,
+section.main.special {
+  color: var(--text-main) !important;
+}
+
+section.special h1,
+section.special h2,
+section.special h3,
+section.special h4,
+section.special p,
+section.special li,
+section.special span {
+  color: var(--text-title) !important;
+}
+
+/* Icônes fa / icons Stellar */
+section.special .icon {
+  color: var(--accent) !important;
+}
+
+/* Features / blocs intro Stellar */
+.features article,
+.features article h3,
+.features article p {
+  color: var(--text-main) !important;
+}
+
+/* Tout descendant direct de #wrapper qui aurait color:white */
+#wrapper * {
+  color: inherit;
+}
+
+/* Remise en ordre explicite sur #main */
+#main,
+#main * {
+  color: var(--text-main);
+}
+
+#main h1,
+#main h2,
+#main h3,
+#main h4 {
+  color: var(--text-title) !important;
+}
