@@ -3353,3 +3353,17 @@ input, select, textarea {
         padding: 4px 8px;
     }
 }
+/* FORCER L'AFFICHAGE DU TABLIER BLANC */
+#main {
+    background-color: #ffffff !important;
+    border-radius: 0.25em !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-top: 2em !important;
+    padding: 0 !important;
+}
+
+#main > .main {
+    background-color: #ffffff !important;
+}
