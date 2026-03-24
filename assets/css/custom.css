@@ -187,3 +187,39 @@ button.primary {
 #certificate-viewer button:hover {
     color: var(--accent);
 }
+.experience-card {
+    background: rgba(2, 6, 23, 0.75);
+    border-left: 4px solid #34d399;
+    padding: 22px;
+    border-radius: 12px;
+}
+
+.experience-title {
+    color: #e5e7eb;
+    font-weight: 600;
+}
+
+.experience-meta {
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+    color: #9ca3af;
+}
+
+.experience-company {
+    color: #d1d5db;
+    font-weight: 500;
+}
+
+.experience-location {
+    color: #9ca3af;
+}
+
+.experience-date {
+    color: #34d399;
+    font-weight: 600;
+}
+
+.experience-list {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
