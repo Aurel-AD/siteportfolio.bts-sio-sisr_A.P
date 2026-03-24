@@ -1,0 +1,131 @@
+/* =====================================================
+   THEME APPRENTI IT / CYBERSECURITE
+   Custom CSS propre – sans JS – sans erreurs
+   ===================================================== */
+
+/* ---------- Variables globales ---------- */
+:root {
+    --bg-dark: #020617;
+    --bg-dark-soft: #0b1220;
+    --text-light: #e5e7eb;
+    --accent: #34d399;
+    --accent-soft: rgba(52, 211, 153, 0.15);
+}
+
+/* ---------- Fond principal ---------- */
+body {
+    background-color: var(--bg-dark);
+    background-image:
+        url("images/overlay.png"),
+        linear-gradient(
+            135deg,
+            var(--bg-dark) 0%,
+            var(--bg-dark-soft) 45%,
+            var(--bg-dark) 100%
+        );
+}
+
+/* ---------- Texte ---------- */
+body,
+p,
+li {
+    color: var(--text-light);
+}
+
+/* ---------- Titres ---------- */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+}
+
+/* ---------- Liens ---------- */
+a {
+    color: var(--accent);
+}
+
+a:hover {
+    color: #2fbf8a;
+}
+
+/* ---------- Boutons ---------- */
+.button.primary,
+input.primary,
+button.primary {
+    background-color: var(--accent);
+    color: #020617 !important;
+    box-shadow: none;
+    font-weight: 400;
+}
+
+.button.primary:hover {
+    background-color: #2fbf8a;
+}
+
+/* ---------- Cartes (certifs / blocs) ---------- */
+.cert-card {
+    background: rgba(2, 6, 23, 0.75);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+    transition: 0.3s ease;
+}
+
+.cert-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(52, 211, 153, 0.25);
+}
+
+/* ---------- Icônes ---------- */
+.cert-card .icon {
+    color: var(--accent);
+    background: var(--accent-soft);
+}
+
+/* ---------- Section compétences ---------- */
+.skill-bar {
+    height: 8px;
+    background: #0f172a;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.skill-level {
+    height: 100%;
+    background: linear-gradient(90deg, #34d399, #22c55e);
+}
+
+/* ---------- Pills outils ---------- */
+.tool-pills li {
+    background: #f3f4f6;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+/* ---------- Header ---------- */
+#header h1 {
+    color: #ffffff;
+}
+
+#header p {
+    color: #cbd5e1;
+}
+
+/* ---------- Footer ---------- */
+#footer {
+    color: #cbd5e1;
+}
+
+/* ---------- Animations (CSS only) ---------- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
