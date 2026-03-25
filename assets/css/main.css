@@ -1790,3 +1790,102 @@ body.is-preload #header.alt .logo {
     .cert-grid { grid-template-columns: 1fr; }
     .tool-pills li { font-size: 0.85rem; padding: 4px 8px; }
 }
+/* Correction des couleurs des veilles */
+.veille-card {
+    background: rgba(52, 211, 153, 0.08) !important;
+    border-left: 4px solid #34d399 !important;
+}
+
+.veille-card:nth-child(2) {
+    background: rgba(56, 189, 248, 0.08) !important;
+    border-left-color: #38bdf8 !important;
+}
+
+.veille-card h3 {
+    color: #34d399 !important;
+    margin-bottom: 1rem;
+}
+
+.veille-card:nth-child(2) h3 {
+    color: #38bdf8 !important;
+}
+
+.veille-card p {
+    color: #cbd5e1 !important;
+    line-height: 1.6;
+}
+
+.veille-card i {
+    font-size: 3rem;
+    color: #34d399 !important;
+    margin-bottom: 1.5rem;
+}
+
+.veille-card:nth-child(2) i {
+    color: #38bdf8 !important;
+}
+
+/* Correction pour le tablier blanc */
+#main .veille-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+#main .veille-card h3 {
+    color: #1f2937 !important;
+}
+
+#main .veille-card p {
+    color: #6b7280 !important;
+}
+/* Correction du tableau de compétences */
+.tableau-iframe {
+    margin-top: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(52, 211, 153, 0.2);
+    border: 1px solid #e5e7eb;
+}
+
+.tableau-iframe iframe {
+    border: none;
+    width: 100%;
+    height: 750px;
+}
+
+/* Correction pour le tablier blanc */
+#main .tableau-iframe {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+    border-color: #d1d5db !important;
+}
+/* Correction section À Propos */
+.timeline-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.timeline-list li {
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid #34d399;
+}
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+/* Correction pour le tablier blanc */
+#main .timeline-list li {
+    background: rgba(255, 255, 255, 0.7) !important;
+    color: #4b5563 !important;
+}
+
+#main .two-columns h4 {
+    color: #1f2937 !important;
+}
+
+
