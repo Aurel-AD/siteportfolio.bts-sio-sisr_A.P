@@ -196,80 +196,80 @@
           text-align: center;
         }
       }
-            
-                  /* === STYLES POUR ORGANISER SANS SUPPRIMER === */
-            .section-box {
-              background: rgba(255, 255, 255, 0.03);
-              padding: 2rem;
-              border-radius: 10px;
-              border-left: 4px solid #34d399;
-              margin: 2rem 0;
-            }
-            
-            .section-title {
-              color: #34d399;
-              border-bottom: 2px solid rgba(52, 211, 153, 0.3);
-              padding-bottom: 0.5rem;
-              margin-bottom: 1.5rem;
-            }
-            
-            .two-columns {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              gap: 2rem;
-            }
-            
-            @media screen and (max-width: 736px) {
-              .two-columns {
-                grid-template-columns: 1fr;
-              }
-            }
-      
-              /* === STYLES POUR SECTORISER === */
-        
-        /* 1. Pour la section À PROPOS */
+
+      /* === STYLES POUR ORGANISER SANS SUPPRIMER === */
+      .section-box {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 2rem;
+        border-radius: 10px;
+        border-left: 4px solid #34d399;
+        margin: 2rem 0;
+      }
+
+      .section-title {
+        color: #34d399;
+        border-bottom: 2px solid rgba(52, 211, 153, 0.3);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .two-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      @media screen and (max-width: 736px) {
+        .two-columns {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* === STYLES POUR SECTORISER === */
+
+      /* 1. Pour la section À PROPOS */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .about-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 4px solid #34d399;
+      }
+
+      /* 2. Pour la section COMPÉTENCES */
+      .skills-box {
+        background: rgba(52, 211, 153, 0.05);
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin: 1rem 0;
+      }
+
+      .skill-category-title {
+        color: #34d399;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      /* 3. Pour la section PARCOURS */
+      .timeline-box {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+      }
+
+      /* Responsive - pour téléphones */
+      @media screen and (max-width: 736px) {
         .about-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2rem;
-          margin-top: 2rem;
+          grid-template-columns: 1fr;
         }
-        
-        .about-card {
-          background: rgba(255, 255, 255, 0.05);
-          padding: 1.5rem;
-          border-radius: 10px;
-          border-left: 4px solid #34d399;
-        }
-        
-        /* 2. Pour la section COMPÉTENCES */
-        .skills-box {
-          background: rgba(52, 211, 153, 0.05);
-          padding: 1.5rem;
-          border-radius: 10px;
-          margin: 1rem 0;
-        }
-        
-        .skill-category-title {
-          color: #34d399;
-          margin-bottom: 1rem;
-          font-size: 1.2rem;
-        }
-        
-        /* 3. Pour la section PARCOURS */
-        .timeline-box {
-          background: rgba(255, 255, 255, 0.03);
-          padding: 1.5rem;
-          border-radius: 10px;
-          margin-bottom: 2rem;
-        }
-        
-        /* Responsive - pour téléphones */
-        @media screen and (max-width: 736px) {
-          .about-grid {
-            grid-template-columns: 1fr;
-          }
-        }
+      }
     </style>
 
     <style>
@@ -393,9 +393,14 @@
                 <h2>Bienvenue sur mon portfolio</h2>
               </header>
               <p>
-                Je suis <strong>Aurélien Pont</strong>
-                , étudiant en BTS SIO option SISR en alternance chez <strong>Novares</strong>. Je me spécialise dans l’administration système, la gestion des infrastructures réseau et la
-                cybersécurité en environnement industriel. Au quotidien, j’interviens sur des problématiques concrètes : déploiement de postes, gestion des accès, sécurisation des connexions (VPN, MFA) et support utilisateurs.
+                Je suis
+                <strong>Aurélien Pont</strong>
+                , étudiant en BTS SIO option SISR en alternance chez
+                <strong>Novares</strong>
+                . Je me spécialise dans l’administration système, la gestion des infrastructures réseau et la
+                cybersécurité en environnement industriel. Au quotidien, j’interviens sur des problématiques concrètes :
+                déploiement de postes, gestion des accès, sécurisation des connexions (VPN, MFA) et support
+                utilisateurs.
               </p>
             </div>
             <span class="image">
@@ -409,64 +414,82 @@
           <header class="major">
             <h2>À propos</h2>
           </header>
-         <div class="content" style="text-align: left; max-width: 900px; margin: 0 auto">
-          <div class="two-columns">
-            <div class="section-box">
-              <h3 class="section-title"><i class="fas fa-road"></i> Parcours professionnel</h3>
-            <p>
-              J'ai eu une carrière diversifiée dans le BTP et la poissonnerie avant de me reconvertir dans le numérique.
-              J'ai décidé de me tourner vers l'informatique, un domaine qui me passionne depuis toujours.
-            </p>
-            <ul style="list-style: none; padding-left: 0">
-              <li style="margin: 15px 0">
-                <strong>2003-2015 :</strong>
-                Ouvrier professionnel du BTP
-              </li>
-              <li style="margin: 15px 0">
-                <strong>2016-2023 :</strong>
-                Spécialiste en produits de la mer et vente conseil en tant que poissonnier-traiteur
-              </li>
-              <li style="margin: 15px 0">
-                <strong>2023 :</strong>
-                Découverte et affirmation pour l'informatique et reconversion dans le Helpdesk, la Cybersécurité, l'Administration Système &amp; Réseau
-              </li>
-            </ul>
-            <h3 style="margin-top: 40px">
-              <i class="fas fa-graduation-cap"></i>
-              Formation
-            </h3>
-            <p>
-              J'ai confirmé mon choix lors d'une session chez <strong>Inclu'Pro</strong> , puis un stage avec la <strong>FRESC de Roubaix</strong>. 
-              Ensuite, j'ai obtenu mon diplôme de <strong>Technicien d'Assistance en Informatique</strong> en distanciel (8 mois avec 2 mois de stage) chez<strong>M2i Formation</strong>.
-            </p>
+          <div class="content" style="text-align: left; max-width: 900px; margin: 0 auto">
+            <div class="two-columns">
+              <div class="section-box">
+                <h3 class="section-title">
+                  <i class="fas fa-road"></i>
+                  Parcours professionnel
+                </h3>
+                <p>
+                  J'ai eu une carrière diversifiée dans le BTP et la poissonnerie avant de me reconvertir dans le
+                  numérique. J'ai décidé de me tourner vers l'informatique, un domaine qui me passionne depuis toujours.
+                </p>
+                <ul style="list-style: none; padding-left: 0">
+                  <li style="margin: 15px 0">
+                    <strong>2003-2015 :</strong>
+                    Ouvrier professionnel du BTP
+                  </li>
+                  <li style="margin: 15px 0">
+                    <strong>2016-2023 :</strong>
+                    Spécialiste en produits de la mer et vente conseil en tant que poissonnier-traiteur
+                  </li>
+                  <li style="margin: 15px 0">
+                    <strong>2023 :</strong>
+                    Découverte et affirmation pour l'informatique et reconversion dans le Helpdesk, la Cybersécurité,
+                    l'Administration Système &amp; Réseau
+                  </li>
+                </ul>
+                <h3 style="margin-top: 40px">
+                  <i class="fas fa-graduation-cap"></i>
+                  Formation
+                </h3>
+                <p>
+                  J'ai confirmé mon choix lors d'une session chez
+                  <strong>Inclu'Pro</strong>
+                  , puis un stage avec la
+                  <strong>FRESC de Roubaix</strong>
+                  . Ensuite, j'ai obtenu mon diplôme de
+                  <strong>Technicien d'Assistance en Informatique</strong>
+                  en distanciel (8 mois avec 2 mois de stage) chez
+                  <strong>M2i Formation</strong>
+                  .
+                </p>
 
-            <h3 style="margin-top: 40px">
-              <i class="fas fa-briefcase"></i>
-              Actuellement
-            </h3>
-            <p>
-              Apprenti en BTS Services Informatiques aux Organisations, option SISR. Je suis en alternance chez <strong>Novares</strong>, un équipementier automobile, où j'interviens sur l'administration des systèmes, la gestion du réseau et
-              le support technique. Cette formation me permet d'approfondir mes compétences techniques et d'acquérir une expérience solide et concrète en entreprise.
-            </p>
-              
-                </div>  <!-- Ferme la première colonne -->
-    
-          <div class="section-box">
-            <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Formation & Actuellement</h3>
-            <div style="text-align: center; margin-top: 30px">
-              <img
-                src="images/fresc.png"
-                alt="Mes changements professionnel"
-                style="max-width: 600px; width: 100%; border-radius: 10px"
-              />
-              <p style="font-style: italic; color: green; font-size: 0.8em">
-                De la matière à la donnée, chaque métier a posé une brique de mon parcours
-              </p>
+                <h3 style="margin-top: 40px">
+                  <i class="fas fa-briefcase"></i>
+                  Actuellement
+                </h3>
+                <p>
+                  Apprenti en BTS Services Informatiques aux Organisations, option SISR. Je suis en alternance chez
+                  <strong>Novares</strong>
+                  , un équipementier automobile, où j'interviens sur l'administration des systèmes, la gestion du réseau
+                  et le support technique. Cette formation me permet d'approfondir mes compétences techniques et
+                  d'acquérir une expérience solide et concrète en entreprise.
+                </p>
+              </div>
+              <!-- Ferme la première colonne -->
+
+              <div class="section-box">
+                <h3 class="section-title">
+                  <i class="fas fa-graduation-cap"></i>
+                  Formation &amp; Actuellement
+                </h3>
+                <div style="text-align: center; margin-top: 30px">
+                  <img
+                    src="images/fresc.png"
+                    alt="Mes changements professionnel"
+                    style="max-width: 600px; width: 100%; border-radius: 10px"
+                  />
+                  <p style="font-style: italic; color: green; font-size: 0.8em">
+                    De la matière à la donnée, chaque métier a posé une brique de mon parcours
+                  </p>
+                </div>
+              </div>
             </div>
+            <!-- Ferme la deuxième colonne -->
           </div>
-        </div>  <!-- Ferme la deuxième colonne -->
-      </div>    <!-- Ferme two-columns -->
-
+          <!-- Ferme two-columns -->
         </section>
 
         <!-- Compétences -->
@@ -521,39 +544,48 @@
               </div>
             </div>
           </div>
-  <div class="section-box">
-    <h3 class="section-title"><i class="fas fa-server"></i> Administration Système</h3>
+          <div class="section-box">
+            <h3 class="section-title">
+              <i class="fas fa-server"></i>
+              Administration Système
+            </h3>
 
-          <div class="content">
+            <div class="content">
               <div class="section-box">
-                <h3 class="section-title"><i class="fas fa-server"></i> Administration Système</h3>
-           <div class="section-box">
-                <h3 class="section-title"><i class="fas fa-tools"></i> Outils Utilisés</h3>
+                <h3 class="section-title">
+                  <i class="fas fa-server"></i>
+                  Administration Système
+                </h3>
+                <div class="section-box">
+                  <h3 class="section-title">
+                    <i class="fas fa-tools"></i>
+                    Outils Utilisés
+                  </h3>
 
-              <!-- Administration systèmes -->
-              <li>Active Directory</li>
-              <li>PowerShell</li>
-              <li>CMD</li>
-              <li>DFS</li>
-              <li>SCCM</li>
-              <li>ROK (SWF)</li>
-              <li>DELL EMC Avamar</li>
-              <li>Office 365</li>
+                  <!-- Administration systèmes -->
+                  <li>Active Directory</li>
+                  <li>PowerShell</li>
+                  <li>CMD</li>
+                  <li>DFS</li>
+                  <li>SCCM</li>
+                  <li>ROK (SWF)</li>
+                  <li>DELL EMC Avamar</li>
+                  <li>Office 365</li>
 
-              <!-- Réseau & sécurité -->
-              <li>Cisco Meraki</li>
-              <li>FortiClient VPN &amp; EMS</li>
-              <li>MFA (Microsoft Authenticator)</li>
+                  <!-- Réseau & sécurité -->
+                  <li>Cisco Meraki</li>
+                  <li>FortiClient VPN &amp; EMS</li>
+                  <li>MFA (Microsoft Authenticator)</li>
 
-              <!-- Support & téléassistance -->
-              <li>Freshworks</li>
-              <li>DameWare</li>
-              <li>TeamViewer</li>
-              <li>Remote Desktop Connection Manager</li>
-            </ul>
-          </div>
+                  <!-- Support & téléassistance -->
+                  <li>Freshworks</li>
+                  <li>DameWare</li>
+                  <li>TeamViewer</li>
+                  <li>Remote Desktop Connection Manager</li>
+                </div>
               </div>
-  
+            </div>
+          </div>
         </section>
 
         <!-- Parcours -->
@@ -565,95 +597,100 @@
         </section>
 
         <div class="content" style="text-align: left; max-width: 1000px; margin: 0 auto">
-            <div class="two-columns">
-    <div class="section-box">
-      <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Formations</h3>
+          <div class="two-columns">
+            <div class="section-box">
+              <h3 class="section-title">
+                <i class="fas fa-graduation-cap"></i>
+                Formations
+              </h3>
 
-          <div class="row gtr-uniform">
-            <div class="col-6 col-12-medium">
-              <h3>Formations</h3>
-              <ul class="timeline">
-                <ul class="timeline">
-                  <li class="timeline-item">
-                    <strong class="timeline-title">BTS SIO SISR</strong>
-                    <br />
-                    <span class="timeline-place">AFPI – Marcq-en-Barœul</span>
-                    <br />
-                    <span class="timeline-date">2024 – 2026</span>
-                  </li>
-
-                  <li class="timeline-item">
-                    <strong class="timeline-title">Technicien d’Assistance Informatique</strong>
-                    <br />
-                    <span class="timeline-place">M2i Formation (distanciel)</span>
-                    <br />
-                    <span class="timeline-date">2023 – 2024</span>
-                  </li>
-
-                  <li class="timeline-item">
-                    <strong class="timeline-title">CAP Poissonnier Traiteur</strong>
-                    <br />
-                    <span class="timeline-place">Campus Pro – Hellemmes</span>
-                    <br />
-                    <span class="timeline-date">2015 – 2017</span>
-                  </li>
-
-                  <li class="timeline-item">
-                    <strong class="timeline-title">CAP Plâtrier Plaquiste</strong>
-                    <br />
-                    <span class="timeline-place">BATIFORM – Hazebrouck</span>
-                    <br />
-                    <span class="timeline-date">2008 – 2009</span>
-                  </li>
-
-                  <li class="timeline-item">
-                    <strong class="timeline-title">CAP Électrotechnique</strong>
-                    <br />
-                    <span class="timeline-place">Dinah Derrick / CFA – Roubaix</span>
-                    <br />
-                    <span class="timeline-date">2003 – 2007</span>
-                  </li>
-                </ul>
-                    </div>
-    
-                  <div class="section-box">
-                    <h3 class="section-title"><i class="fas fa-briefcase"></i> Expérience Actuelle</h3>
-
+              <div class="row gtr-uniform">
                 <div class="col-6 col-12-medium">
-                  <h3>Expérience Actuelle</h3>
-                  <h4 class="experience-title">Assistant IT – Administrateur Technique</h4>
+                  <h3>Formations</h3>
+                  <ul class="timeline">
+                    <ul class="timeline">
+                      <li class="timeline-item">
+                        <strong class="timeline-title">BTS SIO SISR</strong>
+                        <br />
+                        <span class="timeline-place">AFPI – Marcq-en-Barœul</span>
+                        <br />
+                        <span class="timeline-date">2024 – 2026</span>
+                      </li>
 
-                  <p class="experience-meta">
-                    <span class="experience-company">Novares</span>
-                    ·
-                    <span class="experience-location">Lens,Libercourt, Villers-Bretonneux</span>
-                    ·
-                    <span class="experience-date">Oct. 2024 – Août 2026</span>
-                  </p>
+                      <li class="timeline-item">
+                        <strong class="timeline-title">Technicien d’Assistance Informatique</strong>
+                        <br />
+                        <span class="timeline-place">M2i Formation (distanciel)</span>
+                        <br />
+                        <span class="timeline-date">2023 – 2024</span>
+                      </li>
 
-                  <ul class="experience-list">
-                    <li>Installation, configuration et maintenance de postes fixes et portables</li>
-                    <li>Réparation de matériel informatique (tours et portables)</li>
-                    <li>Déploiement automatisé d’OS Windows et de logiciels via SCCM</li>
-                    <li>Installation de logiciels et de pilotes</li>
-                    <li>Installation et gestion d’imprimantes</li>
-                    <li>Mise en place de la double authentification (MFA)</li>
-                    <li>Configuration de VPN FortiClient avec EMS</li>
-                    <li>Administration des comptes, groupes et droits d’accès</li>
-                    <li>Gestion des mises à jour et correctifs de sécurité</li>
-                    <li>Gestion du Wi‑Fi invités via Cisco Meraki</li>
-                    <li>Sauvegarde et restauration avec DELL EMC Avamar</li>
-                    <li>Assistance utilisateurs (DameWare, TeamViewer, RDP)</li>
-                    <li>Gestion des tickets via Freshworks</li>
-                    <li>Inventaire matériel et logiciel</li>
-                    <li>Suivi des workflows SWF via ROK</li>
+                      <li class="timeline-item">
+                        <strong class="timeline-title">CAP Poissonnier Traiteur</strong>
+                        <br />
+                        <span class="timeline-place">Campus Pro – Hellemmes</span>
+                        <br />
+                        <span class="timeline-date">2015 – 2017</span>
+                      </li>
+
+                      <li class="timeline-item">
+                        <strong class="timeline-title">CAP Plâtrier Plaquiste</strong>
+                        <br />
+                        <span class="timeline-place">BATIFORM – Hazebrouck</span>
+                        <br />
+                        <span class="timeline-date">2008 – 2009</span>
+                      </li>
+
+                      <li class="timeline-item">
+                        <strong class="timeline-title">CAP Électrotechnique</strong>
+                        <br />
+                        <span class="timeline-place">Dinah Derrick / CFA – Roubaix</span>
+                        <br />
+                        <span class="timeline-date">2003 – 2007</span>
+                      </li>
+                    </ul>
                   </ul>
                 </div>
-              </ul>
-            </div>
-          </div>
-        </div>
 
+                <div class="section-box">
+                  <h3 class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    Expérience Actuelle
+                  </h3>
+
+                  <div class="col-6 col-12-medium">
+                    <h3>Expérience Actuelle</h3>
+                    <h4 class="experience-title">Assistant IT – Administrateur Technique</h4>
+
+                    <p class="experience-meta">
+                      <span class="experience-company">Novares</span>
+                      ·
+                      <span class="experience-location">Lens,Libercourt, Villers-Bretonneux</span>
+                      ·
+                      <span class="experience-date">Oct. 2024 – Août 2026</span>
+                    </p>
+
+                    <ul class="experience-list">
+                      <li>Installation, configuration et maintenance de postes fixes et portables</li>
+                      <li>Réparation de matériel informatique (tours et portables)</li>
+                      <li>Déploiement automatisé d’OS Windows et de logiciels via SCCM</li>
+                      <li>Installation de logiciels et de pilotes</li>
+                      <li>Installation et gestion d’imprimantes</li>
+                      <li>Mise en place de la double authentification (MFA)</li>
+                      <li>Configuration de VPN FortiClient avec EMS</li>
+                      <li>Administration des comptes, groupes et droits d’accès</li>
+                      <li>Gestion des mises à jour et correctifs de sécurité</li>
+                      <li>Gestion du Wi‑Fi invités via Cisco Meraki</li>
+                      <li>Sauvegarde et restauration avec DELL EMC Avamar</li>
+                      <li>Assistance utilisateurs (DameWare, TeamViewer, RDP)</li>
+                      <li>Gestion des tickets via Freshworks</li>
+                      <li>Inventaire matériel et logiciel</li>
+                      <li>Suivi des workflows SWF via ROK</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div style="margin-top: 2rem">
               <ul class="actions special">
@@ -708,8 +745,11 @@
                     Mon Rôle
                   </h3>
                   <p>
-                    Depuis 2024, je travaille au centre d'expertise de <strong>Lens</strong> , inauguré en 2021, l'un des piliers technologiques de Novares.
-                    Sous la supervision d'unadministrateur technique IT, j'assure un support informatique local ou à distance, tout en collaborant étroitement avec les équipes IT nationales basées à
+                    Depuis 2024, je travaille au centre d'expertise de
+                    <strong>Lens</strong>
+                    , inauguré en 2021, l'un des piliers technologiques de Novares. Sous la supervision
+                    d'unadministrateur technique IT, j'assure un support informatique local ou à distance, tout en
+                    collaborant étroitement avec les équipes IT nationales basées à
                     <strong>Vélizy</strong>
                     ,
                     <strong>Monaco</strong>
