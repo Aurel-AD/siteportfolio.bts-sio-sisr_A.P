@@ -1887,5 +1887,302 @@ body.is-preload #header.alt .logo {
 #main .two-columns h4 {
     color: #1f2937 !important;
 }
+/* ============================================
+   CORRECTIONS TABLEAU DE COMPÉTENCES E4
+   ============================================ */
 
+/* Suppression de l'ancienne structure */
+.tableau-spotlight {
+    display: block !important;
+    text-align: center;
+}
 
+.tableau-icon {
+    display: none;
+}
+
+/* Nouvelle structure pour le tableau */
+.tableau-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tableau-icon-top {
+    font-size: 4rem;
+    color: #34d399;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.tableau-description {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.tableau-description h3 {
+    color: #34d399;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.tableau-buttons {
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tableau-iframe {
+    margin: 2rem auto;
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(52, 211, 153, 0.3);
+}
+
+.tableau-iframe iframe {
+    border: none;
+    width: 100%;
+    height: 600px;
+    border-radius: 10px;
+}
+
+/* Correction pour le tablier blanc (#main) */
+#main .tableau-icon-top {
+    color: #34d399 !important;
+}
+
+#main .tableau-description h3 {
+    color: #1f2937 !important;
+}
+
+#main .tableau-description p {
+    color: #4b5563 !important;
+}
+
+#main .tableau-iframe {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+#main .tableau-iframe iframe {
+    border: 1px solid #e5e7eb !important;
+}
+
+/* Responsive */
+@media screen and (max-width: 736px) {
+    .tableau-container {
+        padding: 0 1rem;
+    }
+    
+    .tableau-icon-top {
+        font-size: 3rem;
+    }
+    
+    .tableau-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tableau-iframe iframe {
+        height: 500px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .tableau-iframe iframe {
+        height: 400px;
+    }
+    
+    .tableau-icon-top {
+        font-size: 2.5rem;
+    }
+}
+
+/* ============================================
+   CORRECTIONS STRUCTURE À PROPOS
+   ============================================ */
+
+.about-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.timeline-list li {
+    margin: 10px 0;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid #34d399;
+    transition: all 0.3s ease;
+}
+
+.timeline-list li:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.about-image {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.about-image img {
+    max-width: 600px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.image-caption {
+    font-style: italic;
+    color: #34d399;
+    margin-top: 1rem;
+    font-size: 0.9em;
+}
+
+/* Correction pour le tablier blanc (#main) */
+#main .timeline-list li {
+    background: rgba(255, 255, 255, 0.7) !important;
+    color: #4b5563 !important;
+    border-left: 4px solid #34d399 !important;
+}
+
+#main .timeline-list li:hover {
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+#main .timeline-list li strong {
+    color: #1f2937 !important;
+}
+
+#main .image-caption {
+    color: #34d399 !important;
+}
+
+/* ============================================
+   CORRECTIONS VEILLES TECHNOLOGIQUES
+   ============================================ */
+
+.veille-card {
+    background: rgba(52, 211, 153, 0.08);
+    border-radius: 15px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-left: 4px solid #34d399;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.veille-card:nth-child(2) {
+    background: rgba(56, 189, 248, 0.08);
+    border-left-color: #38bdf8;
+}
+
+.veille-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(52, 211, 153, 0.2);
+}
+
+.veille-card:nth-child(2):hover {
+    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
+}
+
+.veille-card i {
+    font-size: 3rem;
+    color: #34d399;
+    margin-bottom: 1rem;
+}
+
+.veille-card:nth-child(2) i {
+    color: #38bdf8;
+}
+
+.veille-card h4 {
+    color: #34d399;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.veille-card:nth-child(2) h4 {
+    color: #38bdf8;
+}
+
+.veille-card p {
+    color: #e2e8f0;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* Correction pour le tablier blanc (#main) */
+#main .veille-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-left: 4px solid #34d399 !important;
+}
+
+#main .veille-card:nth-child(2) {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-left-color: #38bdf8 !important;
+}
+
+#main .veille-card h4 {
+    color: #1f2937 !important;
+}
+
+#main .veille-card p {
+    color: #6b7280 !important;
+}
+
+#main .veille-card i {
+    color: #34d399 !important;
+}
+
+#main .veille-card:nth-child(2) i {
+    color: #38bdf8 !important;
+}
+
+/* ============================================
+   CORRECTIONS BOUTON RGPD
+   ============================================ */
+
+.rgpd-button {
+    background: transparent;
+    border: 2px solid #475569;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.rgpd-button:hover {
+    border-color: #34d399;
+    color: #34d399;
+    transform: translateY(-2px);
+}
+
+/* Correction pour le tablier blanc (#main) */
+#main .rgpd-button {
+    border: 2px solid #d1d5db !important;
+    color: #6b7280 !important;
+}
+
+#main .rgpd-button:hover {
+    border-color: #34d399 !important;
+    color: #34d399 !important;
+}
