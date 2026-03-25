@@ -1684,20 +1684,23 @@ body.is-preload #header.alt .logo {
 
 .tool-tag {
     display: inline-block;
-    background: rgba(255, 255, 255, 0.1);
-    color: #e2e8f0;
-    padding: 0.4rem 0.8rem;
+    background: rgba(255, 255, 255, 0.15); /* Plus foncé */
+    color: #ffffff; /* Blanc pur */
+    padding: 0.5rem 1rem;
     border-radius: 20px;
-    font-size: 0.85rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem; /* Un peu plus grand */
+    border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
     cursor: default;
+    font-weight: 500; /* Plus gras */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .tool-tag:hover {
-    background: rgba(52, 211, 153, 0.2);
+    background: rgba(52, 211, 153, 0.4); /* Plus visible au survol */
     border-color: #34d399;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(52, 211, 153, 0.3);
 }
 
 /* === PARCOURS === */
@@ -2012,3 +2015,265 @@ body {
         margin-bottom: 1rem;
     }
 }
+/* === PROJET CICAR & RÉALISATIONS === */
+.projet-intro li,
+.experiences-intro li {
+    margin: 15px 0;
+    display: block;
+    color: #e2e8f0; /* Texte plus clair */
+    font-size: 1rem; /* Taille normale */
+    line-height: 1.6;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid #34d399;
+}
+
+.projet-intro li i,
+.experiences-intro li i {
+    color: #34d399;
+    margin-right: 10px;
+}
+
+/* Cartes des réalisations */
+.cert-card p {
+    color: #cbd5e1; /* Gris clair au lieu de gris foncé */
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.cert-card h4 {
+    color: #ffffff; /* Titres en blanc */
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+/* === VEILLES === */
+.veille-card {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 4px solid #34d399;
+    background: rgba(52, 211, 153, 0.08); /* Vert plus subtil */
+    transition: all 0.3s ease;
+}
+
+.veille-card:hover {
+    background: rgba(52, 211, 153, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(52, 211, 153, 0.2);
+}
+
+.veille-card:nth-child(2) {
+    background: rgba(56, 189, 248, 0.08); /* Bleu plus subtil */
+    border-left-color: #38bdf8;
+}
+
+.veille-card:nth-child(2):hover {
+    background: rgba(56, 189, 248, 0.15);
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
+}
+
+.veille-card h3 {
+    color: #ffffff; /* Titre en blanc */
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.veille-card p {
+    color: #cbd5e1; /* Texte gris clair */
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.veille-card i {
+    font-size: 3rem;
+    color: #34d399;
+    margin-bottom: 1.5rem;
+}
+
+.veille-card:nth-child(2) i {
+    color: #38bdf8;
+}
+/* === SOURCES === */
+.sources-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    font-size: 0.95rem; /* Augmenté de 0.9 à 0.95 */
+}
+
+.sources-list li {
+    margin: 12px 0; /* Un peu plus d'espace */
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.sources-list li:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.sources-list a {
+    color: #34d399;
+    font-weight: 600; /* Plus gras */
+    text-decoration: none;
+    font-size: 1rem; /* Taille normale */
+    display: block;
+    margin-bottom: 5px;
+}
+
+.sources-list a:hover {
+    color: #6ee7b7;
+    text-decoration: underline;
+}
+
+.sources-list small {
+    display: block;
+    margin-top: 4px;
+    line-height: 1.4;
+    color: #94a3b8; /* Gris moyen */
+    font-size: 0.85rem; /* Légèrement augmenté */
+}
+/* === AMÉLIORATIONS GÉNÉRALES === */
+/* Tous les paragraphes principaux */
+p {
+    color: #d1d5db; /* Gris plus clair */
+    line-height: 1.6;
+}
+
+/* Titres des cartes */
+.cert-card h4,
+.tool-category h4 {
+    color: #ffffff !important; /* Force le blanc */
+    font-weight: 600;
+}
+
+/* Texte dans les cartes */
+.cert-card p,
+.tool-category p {
+    color: #cbd5e1; /* Gris clair */
+}
+
+/* Amélioration des contrastes */
+.section-title,
+.sub-title,
+.experience-title {
+    color: #34d399 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+/* ============================================
+   CORRECTIONS SPÉCIFIQUES POUR LA LISIBILITÉ
+   ============================================ */
+
+/* 1. CORRECTION OUTILS UTILISÉS - texte plus foncé et contrasté */
+.tool-tag {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.tool-tag:hover {
+    background: rgba(52, 211, 153, 0.4) !important;
+    color: #ffffff !important;
+    border-color: #34d399 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 2. CORRECTION PROJET CICAR & RÉALISATIONS TECHNIQUES - texte plus clair */
+.projet-intro li,
+.experiences-intro li {
+    color: #e2e8f0 !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-left: 3px solid #34d399 !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+}
+
+.cert-card p {
+    color: #d1d5db !important;
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+}
+
+.cert-card h4 {
+    color: #ffffff !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+}
+
+/* 3. CORRECTION VEILLES - couleurs plus subtiles */
+.veille-card {
+    background: rgba(52, 211, 153, 0.08) !important;
+    border-left: 4px solid #34d399 !important;
+}
+
+.veille-card:nth-child(2) {
+    background: rgba(56, 189, 248, 0.08) !important;
+    border-left-color: #38bdf8 !important;
+}
+
+.veille-card h3 {
+    color: #ffffff !important;
+    font-size: 1.3rem !important;
+}
+
+.veille-card p {
+    color: #cbd5e1 !important;
+    font-size: 1rem !important;
+}
+
+/* 4. CORRECTION MES SOURCES - texte plus grand */
+.sources-list {
+    font-size: 0.95rem !important;
+}
+
+.sources-list li {
+    padding: 12px !important;
+    margin: 12px 0 !important;
+}
+
+.sources-list a {
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+}
+
+.sources-list small {
+    font-size: 0.9rem !important;
+    color: #94a3b8 !important;
+    line-height: 1.4 !important;
+}
+
+/* 5. AMÉLIORATION GÉNÉRALE DU CONTRASTE */
+.tool-category h4 {
+    color: #ffffff !important;
+    font-size: 1.1rem !important;
+}
+
+.section-title {
+    color: #34d399 !important;
+    font-size: 1.4rem !important;
+}
+
+/* Amélioration de la visibilité générale dans le tablier blanc (#main) */
+#main p {
+    color: #4b5563 !important;
+}
+
+#main .cert-card p {
+    color: #6b7280 !important;
+}
+
+#main .tool-tag {
+    background: rgba(52, 211, 153, 0.1) !important;
+    color: #1f2937 !important;
+    border: 1px solid #d1d5db !important;
+}
+
+#main .tool-tag:hover {
+    background: rgba(52, 211, 153, 0.2) !important;
+    color: #111827 !important;
+}
+
