@@ -403,3 +403,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+// ========== FILTRES RÉALISATIONS TECHNIQUES ==========
+document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", function () {
+
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        
+        this.classList.add("active");
+
+        const filter = this.getAttribute("data-filter");
+
+        document.querySelectorAll("#experiences .cert-card").forEach(card => {
+            const categories = card.getAttribute("data-category") || "";
+
+            if (filter === "all" || categories.includes(filter)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+});
