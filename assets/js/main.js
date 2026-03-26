@@ -251,3 +251,74 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// ============================================
+// ANIMATIONS AU SCROLL - AJOUTÉ PAR AURÉLIEN
+// ============================================
+
+(function() {
+    'use strict';
+    
+    // Attendre que la page soit complètement chargée
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAnimations);
+    } else {
+        initAnimations();
+    }
+    
+    function initAnimations() {
+        // 1. Animation des sections au scroll
+        const sections = document.querySelectorAll('section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Ajouter la classe 'visible' à la section
+                    entry.target.classList.add('visible');
+                    
+                    // Animation spécifique pour les cartes dans cette section
+                    const cards = entry.target.querySelectorAll('.cert-card, .project-card');
+                    cards.forEach((card, index) => {
+                        card.style.transitionDelay = (index * 0.1) + 's';
+                        card.classList.add('animated');
+                    });
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        // Préparer les sections
+        sections.forEach(section => {
+            section.classList.add('scroll-animation');
+            observer.observe(section);
+        });
+        
+        // 2. Animation au survol des cartes
+        const cards = document.querySelectorAll('.cert-card, .project-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // 3. Animation des compétences au survol
+        const skillTags = document.querySelectorAll('.skill-tag');
+        skillTags.forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+        
+        console.log('Animations chargées avec succès !');
+    }
+})();
+
