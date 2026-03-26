@@ -351,3 +351,55 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Script de filtrage chargé');
+    
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const certCards = document.querySelectorAll('.cert-card');
+    
+    console.log('Boutons trouvés:', filterButtons.length);
+    console.log('Cartes trouvées:', certCards.length);
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            console.log('Bouton cliqué:', this.textContent);
+            
+            // Retirer la classe active de tous les boutons
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Ajouter la classe active au bouton cliqué
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            console.log('Filtre sélectionné:', filterValue);
+            
+            // Filtrer les cartes
+            certCards.forEach(card => {
+                const categories = card.getAttribute('data-category');
+                console.log('Carte:', card.querySelector('h4').textContent, 'Catégories:', categories);
+                
+                if (filterValue === 'all') {
+                    card.classList.remove('hidden');
+                    console.log('Afficher toutes les cartes');
+                } else {
+                    if (categories && categories.includes(filterValue)) {
+                        card.classList.remove('hidden');
+                        console.log('Afficher la carte');
+                    } else {
+                        card.classList.add('hidden');
+                        console.log('Cacher la carte');
+                    }
+                }
+            });
+        });
+    });
+    
+    // Vérifier que les cartes ont bien l'attribut data-category
+    certCards.forEach((card, index) => {
+        if (!card.hasAttribute('data-category')) {
+            console.warn('Carte sans data-category:', index, card.querySelector('h4').textContent);
+        }
+    });
+});
