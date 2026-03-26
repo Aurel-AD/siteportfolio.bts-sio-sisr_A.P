@@ -2897,4 +2897,31 @@ body.is-preload #header.alt .logo {
     background: #34d399;
     color: white;
 }
+.filters {
+    margin-bottom: 2rem;
+    text-align: center;
+}
 
+.filter-btn {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: #e0e0e0;
+}
+
+.filter-btn.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.cert-card {
+    transition: opacity 0.3s ease;
+}
