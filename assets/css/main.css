@@ -2369,3 +2369,46 @@ body.is-preload #header.alt .logo {
 .cert-card:hover .icon {
     transform: scale(1.1);
 }
+/* Correction pour l'affichage des listes */
+.card-list {
+    text-align: left;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+
+.card-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+.card-list li:last-child {
+    border-bottom: none;
+}
+
+.card-list strong {
+    color: #34d399;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+/* Pour les écrans mobiles */
+@media screen and (max-width: 736px) {
+    .card-list li {
+        padding: 0.5rem 0;
+        font-size: 0.9rem;
+    }
+    
+    .cert-card {
+        min-height: auto;
+        padding: 1.5rem 1rem;
+    }
+}
+
+/* Ajustement spécifique pour la carte Formations */
+.cert-card:nth-child(2) .card-list li {
+    padding: 0.7rem 0;
+}
