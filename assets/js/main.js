@@ -403,3 +403,80 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+        // ========== ANIMATION DES COMPTEURS NOVARES ==========
+        const animateCounters = () => {
+            document.querySelectorAll(".counter").forEach((counter) => {
+                const target = parseFloat(counter.getAttribute("data-target"));
+                const duration = 2000;
+                const steps = 60;
+                const interval = duration / steps;
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += target / steps;
+                    if (current >= target) {
+                        counter.innerText = Math.round(target);
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = Math.round(current);
+                    }
+                }, interval);
+            });
+        };
+
+        let animated = false;
+        const checkNovares = () => {
+            const novares = document.querySelector("#novares");
+            if (novares && !animated) {
+                const rect = novares.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    animateCounters();
+                    animated = true;
+                }
+            }
+        };
+
+        window.addEventListener("scroll", checkNovares);
+        document.addEventListener("DOMContentLoaded", checkNovares);
+
+        // ========== SYSTEME D'OUVERTURE ATTESTATION ==========
+        function openCertificate(src) {
+            const viewer = document.getElementById("certificate-viewer");
+            const img = document.getElementById("certificate-image");
+
+            if (!viewer || !img) {
+                console.error("Lightbox non trouvée dans le DOM !");
+                return;
+            }
+
+            img.src = src;
+            viewer.style.display = "block";
+
+            setTimeout(() => {
+                viewer.classList.add("is-open");
+            }, 10);
+        }
+
+        function closeCertificate() {
+            const viewer = document.getElementById("certificate-viewer");
+            viewer.classList.remove("is-open");
+
+            setTimeout(() => {
+                viewer.style.display = "none";
+                document.getElementById("certificate-image").src = "";
+            }, 180);
+        }
+
+        function closeCertificateOnBackground(e) {
+            if (e.target.id === "certificate-viewer") {
+                closeCertificate();
+            }
+        }
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                closeCertificate();
+            }
+        });
+  
