@@ -1359,19 +1359,85 @@ body.is-preload #header.alt .logo {
     display: block;
 }
 
-/* Styles pour les attestations et certifications */
+/* Styles pour les certifications */
 .cert-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
     justify-items: center;
+    margin-bottom: 3rem;
 }
-.cert-card i {
+
+.cert-card {
+    background: rgba(30, 41, 59, 0.8); /* Fond plus joli */
+    border-radius: 15px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    max-width: 300px;
+    width: 100%;
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet brillant au survol */
+.cert-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.1), transparent);
+    transition: left 0.7s ease;
+}
+
+.cert-card:hover::before {
+    left: 100%;
+}
+
+.cert-card:hover {
+    background: rgba(52, 211, 153, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(52, 211, 153, 0.2);
+    border-color: #34d399;
+}
+
+.cert-card .icon {
     font-size: 2.5rem;
     color: #34d399;
-    margin-bottom: 0.75rem;
-    display: block;
+    margin-bottom: 1rem;
+    background: rgba(52, 211, 153, 0.1);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
+
+.cert-card:hover .icon {
+    transform: scale(1.1);
+}
+
+.cert-card h4 {
+    margin: 0.5rem 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.cert-card p {
+    color: #e2e8f0;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
 
 /* === STYLES POUR ORGANISER === */
 .section-box {
