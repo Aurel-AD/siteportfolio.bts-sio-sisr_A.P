@@ -345,213 +345,289 @@
             </section>
 
             <!-- SECTION RÉALISATIONS TECHNIQUES -->
-            <section id="experiences" class="main special">
-                <header class="major">
-                    <h2>Réalisations Techniques</h2>
-                    <p>Documentation détaillée de mes missions chez Novares</p>
-                </header>
+            <<section id="experiences" class="main special">
+    <header class="major">
+        <h2>Réalisations Techniques</h2>
+        <p>Documentation détaillée de mes missions chez Novares</p>
+    </header>
+
+    <ul class="experiences-intro">
+        <li><i class="fas fa-check"></i> Description détaillée de chaque situation professionnelle</li>
+        <li><i class="fas fa-check"></i> Liens cliquables vers les documentations détaillées</li>
+        <li><i class="fas fa-check"></i> Outils et technologies utilisés</li>
+    </ul>
+
+    <!-- Filtres pour les réalisations techniques -->
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">Toutes</button>
+        <button class="filter-btn" data-filter="support">Support</button>
+        <button class="filter-btn" data-filter="reseau">Réseau</button>
+        <button class="filter-btn" data-filter="securite">Sécurité</button>
+        <button class="filter-btn" data-filter="deploiement">Déploiement</button>
+    </div>
+
+    <div class="cert-grid">
+        <!-- Installation & Maintenance -->
+        <div class="cert-card" data-category="support">
+            <i class="fas fa-desktop"></i>
+            <h4>Installation &amp; Maintenance</h4>
+            <p>Résumer de mon parcours et de mes missions.</p>
+            <ul class="actions special">
+                <li><a href="mission/maintenance.html" class="button small">Voir le document</a></li>
+            </ul>
+        </div>
+
+        <!-- Réparation matériel -->
+        <div class="cert-card" data-category="support">
+            <i class="fas fa-tools"></i>
+            <h4>Réparation matériel</h4>
+            <p>Diagnostic et remplacement de composants sur tours et pc portables.</p>
+            <ul class="actions special">
+                <li><a href="mission/reparation.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Déploiement SCCM -->
+        <div class="cert-card" data-category="deploiement">
+            <i class="fas fa-rocket"></i>
+            <h4>Déploiement SCCM</h4>
+            <p>Mise en place de déploiements automatisés de systèmes Windows et d'applications via SCCM.</p>
+            <ul class="actions special">
+                <li><a href="mission/sccm.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Installation logiciels -->
+        <div class="cert-card" data-category="deploiement">
+            <i class="fas fa-download"></i>
+            <h4>Installation logiciels</h4>
+            <p>Installation via UNC, Software Center et Internet. Gestion des pilotes.</p>
+            <ul class="actions special">
+                <li><a href="mission/unc.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Gestion imprimantes -->
+        <div class="cert-card" data-category="support">
+            <i class="fas fa-print"></i>
+            <h4>Gestion imprimantes</h4>
+            <p>Configuration imprimantes locales, partagées et serveurs d'impression.</p>
+            <ul class="actions special">
+                <li><a href="mission/printer.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Double authentification -->
+        <div class="cert-card" data-category="securite">
+            <i class="fas fa-mobile-alt"></i>
+            <h4>Double authentification</h4>
+            <p>Déploiement de la double authentification (MFA) sur les postes et appareils mobiles.</p>
+            <ul class="actions special">
+                <li><a href="mission/mfa.html" class="button small">Voir le guide</a></li>
+            </ul>
+        </div>
+
+        <!-- VPN FortiClient -->
+        <div class="cert-card" data-category="securite reseau">
+            <i class="fas fa-shield-alt"></i>
+            <h4>VPN FortiClient</h4>
+            <p>Configuration et gestion du VPN FortiClient via EMS pour accès sécurisé à distance.</p>
+            <ul class="actions special">
+                <li><a href="mission/vpn.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Gestion des comptes AD -->
+        <div class="cert-card" data-category="securite">
+            <i class="fas fa-users-cog"></i>
+            <h4>Gestion des comptes AD</h4>
+            <p>Gestion des comptes utilisateurs et droits d'accès sous Active Directory.</p>
+            <ul class="actions special">
+                <li><a href="mission/gpo.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Mise à jour -->
+        <div class="cert-card" data-category="deploiement">
+            <i class="fas fa-cloud-download-alt"></i>
+            <h4>Mise à jour</h4>
+            <p>Procédure de mise à jour post-SCCM, DELL Update et Windows Update.</p>
+            <ul class="actions special">
+                <li><a href="mission/update.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Wi-Fi Invité -->
+        <div class="cert-card" data-category="reseau">
+            <i class="fas fa-wifi"></i>
+            <h4>Wi-Fi Invité</h4>
+            <p>Gestion Wi-Fi invité via Cisco Meraki : SSID, portail captif, monitoring.</p>
+            <ul class="actions special">
+                <li><a href="mission/meraki.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Sauvegarde & Restauration -->
+        <div class="cert-card" data-category="support">
+            <i class="fas fa-database"></i>
+            <h4>Sauvegarde &amp; Restauration</h4>
+            <p>Supervision des sauvegardes et restauration des données.</p>
+            <ul class="actions special">
+                <li><a href="mission/backups.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Assistance distante -->
+        <div class="cert-card" data-category="support">
+            <i class="fas fa-headset"></i>
+            <h4>Assistance distante</h4>
+            <p>Support technique à distance via différents outils (DameWare, TeamViewer, RDP).</p>
+            <ul class="actions special">
+                <li><a href="mission/assistance.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Gestion incidents -->
+        <div class="cert-card" data-category="support">
+            <i class="fas fa-ticket-alt"></i>
+            <h4>Gestion incidents</h4>
+            <p>Traitement des tickets via Freshdesk. Respect SLA.</p>
+            <ul class="actions special">
+                <li><a href="mission/sla.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Suivi des Workflows -->
+        <div class="cert-card" data-category="support">
+            <i class="fas fa-exchange-alt"></i>
+            <h4>Suivi des Workflows</h4>
+            <p>Entrées, sorties et mouvements de matériel via SWF.</p>
+            <ul class="actions special">
+                <li><a href="mission/workflow.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Conformité TISAX -->
+        <div class="cert-card" data-category="securite">
+            <i class="fas fa-eye-slash"></i>
+            <h4>Conformité TISAX</h4>
+            <p>Inventaire informatique et préparation audits TISAX.</p>
+            <ul class="actions special">
+                <li><a href="mission/tisax.html" class="button small">Voir la procédure</a></li>
+            </ul>
+        </div>
+
+        <!-- Guides utilisateurs -->
+        <div class="cert-card" data-category="support">
+            <i class="fas fa-file-alt"></i>
+            <h4>Guides utilisateurs</h4>
+            <p>Rédaction et mise à jour de documentation technique claire.</p>
+            <ul class="actions special">
+                <li><a href="mission/document.html" class="button small">Voir le guide</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<style>
+.filters {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.filter-btn {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: #e0e0e0;
+}
+
+.filter-btn.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.cert-card {
+    transition: all 0.3s ease;
+}
+
+/* Style pour cacher les éléments */
+.cert-card.hidden {
+    display: none !important;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.cert-card:not(.hidden) {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Script de filtrage chargé');
+    
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const certCards = document.querySelectorAll('.cert-card');
+    
+    console.log('Boutons trouvés:', filterButtons.length);
+    console.log('Cartes trouvées:', certCards.length);
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            console.log('Bouton cliqué:', this.textContent);
             
-                <ul class="experiences-intro">
-                    <li><i class="fas fa-check"></i> Description détaillée de chaque situation professionnelle</li>
-                    <li><i class="fas fa-check"></i> Liens cliquables vers les documentations détaillées</li>
-                    <li><i class="fas fa-check"></i> Outils et technologies utilisés</li>
-                </ul>
+            // Retirer la classe active de tous les boutons
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
             
-                <!-- Filtres pour les réalisations techniques -->
-                <div class="filters">
-                    <button class="filter-btn active" data-filter="all">Toutes</button>
-                    <button class="filter-btn" data-filter="support">Support</button>
-                    <button class="filter-btn" data-filter="reseau">Réseau</button>
-                    <button class="filter-btn" data-filter="securite">Sécurité</button>
-                    <button class="filter-btn" data-filter="deploiement">Déploiement</button>
-                </div>
+            // Ajouter la classe active au bouton cliqué
+            this.classList.add('active');
             
-                <div class="cert-grid">
-                    <!-- Installation & Maintenance -->
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-desktop"></i>
-                        <h4>Installation &amp; Maintenance</h4>
-                        <p>Résumer de mon parcours et de mes missions.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/maintenance.html" class="button small">Voir le document</a></li>
-                        </ul>
-                    </div>
+            const filterValue = this.getAttribute('data-filter');
+            console.log('Filtre sélectionné:', filterValue);
             
-                    <!-- Réparation matériel -->
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-tools"></i>
-                        <h4>Réparation matériel</h4>
-                        <p>Diagnostic et remplacement de composants sur tours et pc portables.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/reparation.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Déploiement SCCM -->
-                    <div class="cert-card" data-category="deploiement">
-                        <i class="fas fa-rocket"></i>
-                        <h4>Déploiement SCCM</h4>
-                        <p>Mise en place de déploiements automatisés de systèmes Windows et d'applications via SCCM.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/sccm.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Installation logiciels -->
-                    <div class="cert-card" data-category="deploiement">
-                        <i class="fas fa-download"></i>
-                        <h4>Installation logiciels</h4>
-                        <p>Installation via UNC, Software Center et Internet. Gestion des pilotes.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/unc.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Gestion imprimantes -->
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-print"></i>
-                        <h4>Gestion imprimantes</h4>
-                        <p>Configuration imprimantes locales, partagées et serveurs d'impression.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/printer.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Double authentification -->
-                    <div class="cert-card" data-category="securite">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h4>Double authentification</h4>
-                        <p>Déploiement de la double authentification (MFA) sur les postes et appareils mobiles.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/mfa.html" class="button small">Voir le guide</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- VPN FortiClient -->
-                    <div class="cert-card" data-category="securite reseau">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>VPN FortiClient</h4>
-                        <p>Configuration et gestion du VPN FortiClient via EMS pour accès sécurisé à distance.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/vpn.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Gestion des comptes AD -->
-                    <div class="cert-card" data-category="securite">
-                        <i class="fas fa-users-cog"></i>
-                        <h4>Gestion des comptes AD</h4>
-                        <p>Gestion des comptes utilisateurs et droits d'accès sous Active Directory.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/gpo.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Mise à jour -->
-                    <div class="cert-card" data-category="deploiement">
-                        <i class="fas fa-cloud-download-alt"></i>
-                        <h4>Mise à jour</h4>
-                        <p>Procédure de mise à jour post-SCCM, DELL Update et Windows Update.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/update.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Wi-Fi Invité -->
-                    <div class="cert-card" data-category="reseau">
-                        <i class="fas fa-wifi"></i>
-                        <h4>Wi-Fi Invité</h4>
-                        <p>Gestion Wi-Fi invité via Cisco Meraki : SSID, portail captif, monitoring.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/meraki.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Sauvegarde & Restauration -->
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-database"></i>
-                        <h4>Sauvegarde &amp; Restauration</h4>
-                        <p>Supervision des sauvegardes et restauration des données.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/backups.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Assistance distante -->
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-headset"></i>
-                        <h4>Assistance distante</h4>
-                        <p>Support technique à distance via différents outils (DameWare, TeamViewer, RDP).</p>
-                        <ul class="actions special">
-                            <li><a href="mission/assistance.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Gestion incidents -->
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-ticket-alt"></i>
-                        <h4>Gestion incidents</h4>
-                        <p>Traitement des tickets via Freshdesk. Respect SLA.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/sla.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Suivi des Workflows -->
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-exchange-alt"></i>
-                        <h4>Suivi des Workflows</h4>
-                        <p>Entrées, sorties et mouvements de matériel via SWF.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/workflow.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Conformité TISAX -->
-                    <div class="cert-card" data-category="securite">
-                        <i class="fas fa-eye-slash"></i>
-                        <h4>Conformité TISAX</h4>
-                        <p>Inventaire informatique et préparation audits TISAX.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/tisax.html" class="button small">Voir la procédure</a></li>
-                        </ul>
-                    </div>
-            
-                    <!-- Guides utilisateurs -->
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-file-alt"></i>
-                        <h4>Guides utilisateurs</h4>
-                        <p>Rédaction et mise à jour de documentation technique claire.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/document.html" class="button small">Voir le guide</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            <!-- SECTION PROJET CICAR -->
-            <section id="projet-cicar" class="main special">
-                <header class="major">
-                    <h2>Projet CICAR</h2>
-                    <p>Documentation détaillée sur le projet de fin d'études : Déploiement d'un réseau pour agence automobile | BTS SIO SISR</p>
-                </header>
-            
-                <ul class="projet-intro">
-                    <li><i class="fas fa-check"></i> L'objectif est de déployer une infrastructure fiable, sécurisée et homogène avec les autres agences du groupe.</li>
-                    <li><i class="fas fa-check"></i> Lien cliquable vers le document détaillée</li>
-                    <li><i class="fas fa-check"></i> Outils et technologies utilisés</li>
-                </ul>
-            
-                <div class="cert-grid projet-grid">
-                    <div class="cert-card">
-                        <i class="fas fa-server"></i>
-                        <h4>Projet CICAR</h4>
-                        <p>Déploiement d'une infrastructure réseau &amp; système complète pour l'agence de location automobile aux Îles Canaries.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/projet_cicar.html" class="button small">Voir le document</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+            // Filtrer les cartes
+            certCards.forEach(card => {
+                const categories = card.getAttribute('data-category');
+                console.log('Carte:', card.querySelector('h4').textContent, 'Catégories:', categories);
+                
+                if (filterValue === 'all') {
+                    card.classList.remove('hidden');
+                    console.log('Afficher toutes les cartes');
+                } else {
+                    if (categories && categories.includes(filterValue)) {
+                        card.classList.remove('hidden');
+                        console.log('Afficher la carte');
+                    } else {
+                        card.classList.add('hidden');
+                        console.log('Cacher la carte');
+                    }
+                }
+            });
+        });
+    });
+    
+    // Vérifier que les cartes ont bien l'attribut data-category
+    certCards.forEach((card, index) => {
+        if (!card.hasAttribute('data-category')) {
+            console.warn('Carte sans data-category:', index, card.querySelector('h4').textContent);
+        }
+    });
+});
+</script>
+
             
             <!-- SECTION TABLEAU E4 -->
             <section id="Tableau-E4" class="main special">
