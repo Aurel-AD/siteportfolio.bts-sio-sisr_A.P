@@ -2273,3 +2273,75 @@ body.is-preload #header.alt .logo {
     color: #1f2937 !important;
     border-bottom-color: rgba(52, 211, 153, 0.5) !important;
 }
+/* === AMÉLIORATIONS POUR LA SECTION À PROPOS === */
+
+.about-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    padding: 2rem;
+    background: rgba(52, 211, 153, 0.05);
+    border-radius: 15px;
+    border-left: 4px solid #34d399;
+}
+
+.about-intro h3 {
+    color: #34d399;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.about-intro p {
+    color: #e2e8f0;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.about-intro strong {
+    color: #34d399;
+}
+
+.about-intro .highlight {
+    font-style: italic;
+    color: #34d399;
+    padding: 1rem;
+    background: rgba(52, 211, 153, 0.1);
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+/* Améliorer les listes dans les cartes */
+.cert-card ul {
+    text-align: left;
+    color: #e2e8f0;
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.cert-card li {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.cert-card strong {
+    color: #34d399;
+}
+/* Animation pour les éléments de liste */
+.cert-card li {
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: slideIn 0.5s ease forwards;
+}
+
+.cert-card li:nth-child(1) { animation-delay: 0.1s; }
+.cert-card li:nth-child(2) { animation-delay: 0.2s; }
+.cert-card li:nth-child(3) { animation-delay: 0.3s; }
+.cert-card li:nth-child(4) { animation-delay: 0.4s; }
+.cert-card li:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
