@@ -2680,4 +2680,122 @@ body.is-preload #header.alt .logo {
         padding: 0.4rem 0.8rem;
     }
 }
+/* Styles pour la nouvelle section compétences */
+.skills-overview {
+    margin-bottom: 3rem;
+}
+
+.skills-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.skill-category {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #34d399;
+}
+
+.skill-category h3 {
+    color: #34d399;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.skill-name {
+    font-size: 0.9rem;
+    color: #e2e8f0;
+    min-width: 150px;
+}
+
+.skill-level {
+    flex-grow: 1;
+    background: #374151;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-left: 1rem;
+}
+
+.skill-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #34d399, #10b981);
+    border-radius: 4px;
+    width: 0%;
+    transition: width 1s ease-in-out;
+}
+
+/* Animation des barres de compétences */
+.skill-bar[data-level="95"] { width: 95%; }
+.skill-bar[data-level="90"] { width: 90%; }
+.skill-bar[data-level="85"] { width: 85%; }
+.skill-bar[data-level="80"] { width: 80%; }
+.skill-bar[data-level="75"] { width: 75%; }
+.skill-bar[data-level="70"] { width: 70%; }
+.skill-bar[data-level="65"] { width: 65%; }
+
+/* Section outils */
+.tools-section {
+    margin-top: 2rem;
+}
+
+.tools-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #34d399;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.tool-category {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #374151;
+}
+
+.tool-category h4 {
+    color: #34d399;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.tool-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tool-tag {
+    background: #374151;
+    color: #e2e8f0;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid #4b5563;
+}
+
+/* Animation au scroll */
+.skill-bar {
+    animation: fillBar 1.5s ease-in-out forwards;
+}
+
+@keyframes fillBar {
+    from { width: 0%; }
+    to { width: attr(data-level); }
+}
 
