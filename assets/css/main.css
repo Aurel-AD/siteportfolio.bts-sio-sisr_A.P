@@ -2798,4 +2798,103 @@ body.is-preload #header.alt .logo {
     from { width: 0%; }
     to { width: attr(data-level); }
 }
+/* CORRECTION CONTRASTES - Texte plus lisible dans #main */
+#main, #main * {
+    color: #2d3748 !important;
+}
+
+#main p, #main li, #main span, #main .timeline-place, #main .timeline-description {
+    color: #4a5568 !important;
+    line-height: 1.6;
+}
+
+#main h1, #main h2, #main h3, #main h4, #main h5, #main h6 {
+    color: #1a202c !important;
+}
+
+#main .cert-card, #main .section-box, #main .tool-category {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+}
+
+#main .cert-card h4, #main .section-title {
+    color: #1a202c !important;
+}
+
+#main .cert-card p, #main .tool-category p {
+    color: #4a5568 !important;
+}
+/* Correction bandeaux noirs Parcours */
+#main .timeline-list li {
+    background: #f7fafc !important;
+    border-left: 4px solid #34d399 !important;
+    color: #2d3748 !important;
+}
+
+#main .two-columns .section-box {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+#main .timeline-item {
+    background: transparent !important;
+}
+
+#main .experience-list li {
+    color: #4a5568 !important;
+    background: transparent !important;
+}
+.skills-improved {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.skill-item {
+    margin-bottom: 1.5rem;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.skill-percent {
+    color: #34d399;
+    font-weight: bold;
+}
+
+.skill-bar {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.8s ease-in-out;
+}
+.filters {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.filter-btn {
+    background: #f1f5f9;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-btn.active {
+    background: #34d399;
+    color: white;
+}
 
