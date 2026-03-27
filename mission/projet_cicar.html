@@ -537,103 +537,104 @@
                 
                 <div class="mermaid">
 		flowchart TB
-			%% ===== INTERNET =====
-			INTERNET((☁ Internet<br/>Accès WAN))
-			FW[Stormshield SNS 310<br/>LAN: 192.168.54.254<br/>DMZ: 192.168.64.254<br/>DENY ALL]
 
-			INTERNET --> FW
+%% ================= INTERNET =================
+INTERNET((☁ Internet\Accès WAN))
 
-			%% ===== ZONE LAN =====
-			subgraph LAN["ZONE LAN - 192.168.54.0/24"]
-				SW[Switch TP-Link<br/>192.168.54.20]
-				ESXI1[ESXi Principal<br/>192.168.54.1]
-				AD[AD / DNS / DHCP<br/>192.168.54.10]
-				ZIMBRA[Zimbra Mail<br/>192.168.54.40]
-				WEB1[WEB-01 Apache<br/>192.168.54.15]
-				WEB2[WEB-02 Apache<br/>192.168.54.16]
-				WIFI[AP WiFi<br/>192.168.54.30]
-				CLIENTS[Postes Clients<br/>DHCP .100-.200]
+%% ================= PARE-FEU =================
+FW[Stormshield SNS 310\Firmware Stormshield\Pare-feu / VPN IPsec\LAN : 192.168.54.254\DMZ : 192.168.64.254\Politique : DENY ALL]
 
-				SW --> ESXI1
-				SW --> WIFI
-				SW --> CLIENTS
-				ESXI1 --> AD
-				ESXI1 --> ZIMBRA
-				ESXI1 --> WEB1
-				ESXI1 --> WEB2
-			end
+INTERNET -->|Internet| FW
 
-			%% ===== ZONE DMZ =====
-			subgraph DMZ["ZONE DMZ - 192.168.64.0/24"]
-				HAP[HAProxy Reverse Proxy<br/>192.168.64.1<br/>Ports 80/443]
-			end
+%% ================= ZONE LAN =================
+subgraph LAN [ZONE LAN - 192.168.54.0/24\Serveurs internes / Utilisateurs]
 
-			FW --> SW
-			FW --> HAP
-			HAP --> WEB1
-			HAP --> WEB2
+SW[Switch TP-Link SG-3424\Commutation LAN\IP : 192.168.54.20]
 
-			%% ===== SIÈGE =====
-			subgraph SIEGE["SIÈGE TENERIFE - 192.168.57.0/24"]
-				FW2[Pare-feu Siège]
-				CENTREON[Centreon<br/>192.168.57.50]
-				NAS[NAS RAID 5<br/>Sauvegardes Veeam]
-				ADMIN[Poste Admin<br/>MobaXterm]
-			end
+ESXI1[ESXi Principal\VMware ESXi 7.0\Hyperviseur\IP : 192.168.54.1]
 
-			FW -. VPN IPsec .-> FW2
-			FW2 --> CENTREON
-			FW2 --> NAS
-			FW2 --> ADMIN
+AD[SRV-EL-AD\Windows Server 2019\AD / DNS / DHCP\IP : 192.168.54.10]
 
-			%% ===== AGENCE LA PALMA =====
-			subgraph PALMA["AGENCE LA PALMA - 192.168.56.0/24"]
-				FW_PALMA[Pare-feu Agence]
-				PC_PALMA[Postes / Serveurs<br/>192.168.56.10]
-				FW_PALMA --> PC_PALMA
-			end
+ZIMBRA[SRV-EL-MAIL\Debian\Zimbra Collaboration\IP : 192.168.54.40]
 
-			%% ===== AGENCE LA GOMERA =====
-			subgraph GOMERA["AGENCE LA GOMERA - 192.168.55.0/24"]
-				FW_GOMERA[Pare-feu Agence]
-				PC_GOMERA[Postes / Serveurs<br/>192.168.55.10]
-				FW_GOMERA --> PC_GOMERA
-			end
+WEB1[SRV-EL-WEB-01\Debian\Apache / PHP / Maria DB\IP : 192.168.54.15]
 
-			%% ===== AGENCE GRAN CANARIA =====
-			subgraph CANARIA["AGENCE GRAN CANARIA - 192.168.53.0/24"]
-				FW_CANARIA[Pare-feu Agence]
-				PC_CANARIA[Postes / Serveurs<br/>192.168.53.10]
-				FW_CANARIA --> PC_CANARIA
-			end
+WEB2[SRV-EL-WEB-02\Debian\Apache / PHP / Maria DB\IP : 192.168.54.16]
 
-			%% VPN AGENCES
-			FW_PALMA -. VPN IPsec .-> FW2
-			FW_GOMERA -. VPN IPsec .-> FW2
-			FW_CANARIA -. VPN IPsec .-> FW2
+WIFI[Point d'accès Wi-Fi\Accès Wi-Fi agence\IP : 192.168.54.30]
 
-			%% ===== STYLES (FIABLES) =====
-			style INTERNET fill:#e2e3e5,stroke:#333,stroke-width:2px
-			style FW fill:#f8d7da,stroke:#721c24,stroke-width:2px
-			style FW2 fill:#f8d7da
+CLIENTS[Postes Clients\DHCP\Plage : 192.168.54.100-200]
 
-			style SW fill:#d4edda
-			style ESXI1 fill:#d4edda
-			style AD fill:#d4edda
-			style ZIMBRA fill:#d4edda
-			style WEB1 fill:#d4edda
-			style WEB2 fill:#d4edda
-			style WIFI fill:#d4edda
-			style CLIENTS fill:#d4edda
+SW --> ESXI1
+SW --> WIFI
+SW --> CLIENTS
 
-			style HAP fill:#fff3cd,stroke:#856404,stroke-width:2px
+ESXI1 --> AD
+ESXI1 --> ZIMBRA
+ESXI1 --> WEB1
+ESXI1 --> WEB2
 
-			style FW_PALMA fill:#d1ecf1
-			style FW_GOMERA fill:#d1ecf1
-			style FW_CANARIA fill:#d1ecf1
-			style PC_PALMA fill:#d1ecf1
-			style PC_GOMERA fill:#d1ecf1
-			style PC_CANARIA fill:#d1ecf1
+end
+
+%% ================= ZONE DMZ =================
+subgraph DMZ [ZONE DMZ - 192.168.64.0/24\Services exposés]
+
+HAP[SRV-EL-PROXY\Debian\HAProxy Reverse Proxy\IP : 192.168.64.1\Ports : 80 / 443]
+
+end
+
+FW --> SW
+FW --> HAP
+
+HAP -->|HTTP / HTTPS| WEB1
+HAP -->|HTTP / HTTPS| WEB2
+
+%% ================= ESXi SECONDAIRE =================
+ESXI2[ESXi Secondaire\VMware ESXi 7.0\Hyperviseur de secours\IP : 192.168.69.94]
+
+ESXI1 --- ESXI2
+
+%% ================= SIÈGE =================
+subgraph SIEGE [SIÈGE TENERIFE - 192.168.57.0/24\Supervision / Sauvegardes]
+
+FW2[Pare-feu Siège]
+
+CENTREON[SRV-SUPERVISION\Linux\Centreon / SNMP\IP : 192.168.57.50]
+
+NAS[NAS RAID-5\Repository Veeam\Sauvegardes]
+
+ADMIN[Poste Administrateur\MobaXterm\Administration centrale]
+
+end
+
+FW ===|VPN IPsec| FW2
+
+FW2 -->|SNMP| CENTREON
+FW2 -->|Sauvegardes Veeam| NAS
+FW2 -->|SSH / Administration| ADMIN
+
+%% ================= AGENCES DISTANTES =================
+subgraph PALMA [AGENCE LA PALMA - 192.168.56.0/24]
+FW_PALMA[Pare-feu Agence]
+PC_PALMA[Postes / Serveurs\192.168.56.10]
+FW_PALMA --> PC_PALMA
+end
+
+subgraph GOMERA [AGENCE LA GOMERA - 192.168.55.0/24]
+FW_GOMERA[Pare-feu Agence]
+PC_GOMERA[Postes / Serveurs\192.168.55.10]
+FW_GOMERA --> PC_GOMERA
+end
+
+subgraph CANARIA [AGENCE GRAN CANARIA - 192.168.53.0/24]
+FW_CANARIA[Pare-feu Agence]
+PC_CANARIA[Postes / Serveurs\192.168.53.10]
+FW_CANARIA --> PC_CANARIA
+end
+
+FW_PALMA ===|VPN IPsec| FW2
+FW_GOMERA ===|VPN IPsec| FW2
+FW_CANARIA ===|VPN IPsec| FW2
                 </div>
                 
                 <div class="legend">
