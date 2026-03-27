@@ -1,427 +1,720 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PROJET CICAR - Infrastructure Réseau & Système</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f0f2f5;
-    padding: 20px;
-}
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    overflow: hidden;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission CiCar V2.10 - Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <script>
+        // Initialisation de Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            securityLevel: 'loose'
+        });
+    </script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --text-color: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .portfolio-container {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+        
+        .section {
+            margin: 30px 0;
+            padding: 25px;
+            background: var(--light-color);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        h3 {
+            color: var(--dark-color);
+            margin: 20px 0 10px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "✓";
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .ppe-section {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .ppe-title {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            margin: -20px -20px 20px -20px;
+            font-size: 1.3rem;
+        }
+        
+        .schema-container {
+            background: #f1f8ff;
+            border: 2px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            min-height: auto;
+            text-align: hidden;
+        }
+        
+        .schema-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .schema-controls button {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .schema-controls button:hover {
+            background: var(--dark-color);
+        }
+        
+        .mermaid {
+            transform-origin: top left;
+            transition: transform 0.3s ease;
+        }
 
-/* HEADER */
-.header {
-    background: linear-gradient(135deg, #1e5c3c, #2a8a5d);
-    color: white;
-    padding: 30px;
-}
-.header h1 {
-    font-size: 2rem;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-.header .subtitle {
-    font-size: 1rem;
-    opacity: 0.9;
-    font-weight: 300;
-}
-.competences-sidebar {
-    margin-top: 18px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255,255,255,0.2);
-}
-.competence-group-label {
-    font-size: 0.75em;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 10px;
-}
-.competence-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-.ctag {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.78em;
-    font-weight: 500;
-    white-space: nowrap;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: white;
-}
-.ctag-code { font-weight: 800; opacity: 0.75; font-size: 0.9em; }
-.ctag-label { opacity: 0.9; }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f8ff;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 10px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        
+        .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+        
+        .lan { background-color: #d4edda; border: 1px solid #c3e6cb; }
+        .dmz { background-color: #fff3cd; border: 1px solid #ffeaa7; }
+        .site { background-color: #d1ecf1; border: 1px solid #bee5eb; }
+        .vpn { background-color: #f8d7da; border: 1px solid #f5c6cb; }
+        .internet { background-color: #e2e3e5; border: 1px solid #d6d8db; }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: var(--dark-color);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .portfolio-container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .schema-container {
+                padding: 10px;
+                min-height: 600px;
+            }
+        }
+			.cover-page {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				background: white;
+				text-align: center;
+				page-break-after: always;
+			}
 
-/* TICKET */
-.ticket-info { background: #e8f5e9; padding: 20px; border-left: 4px solid #4caf50; }
-.ticket-info h3 { color: #2e7d32; margin-bottom: 15px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
-.ticket-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 15px; }
-.ticket-item { background: white; padding: 12px; border-radius: 4px; font-size: 0.9rem; }
-.ticket-item strong { color: #2e7d32; }
+			.cover-page img {
+				max-width: 300px;
+				margin-bottom: 30px;
+			}
 
-/* CONTENT */
-.content { padding: 30px; }
+			.cover-page h1 {
+				font-size: 2.8rem;
+				color: var(--primary-color);
+			}
 
-/* GUIDE SECTION (v2) */
-.guide-section {
-    background: #e3f2fd;
-    padding: 25px;
-    border-radius: 6px;
-    margin-bottom: 25px;
-    border-left: 4px solid #2196f3;
-}
-.guide-section h3 { color: #1565c0; margin-bottom: 15px; font-size: 1.3rem; display: flex; align-items: center; gap: 8px; }
-.guide-section p { color: #555; line-height: 1.7; margin-bottom: 12px; }
+			.cover-page h2 {
+				margin-top: 15px;
+				font-size: 1.8rem;
+				color: var(--secondary-color);
+			}
 
-/* IMPORTANT NOTE (v2) */
-.important-note {
-    background: #fff3e0;
-    border: 1px solid #ffcdd2;
-    border-radius: 6px;
-    padding: 18px;
-    margin: 20px 0;
-}
-.important-note h4 { color: #e65100; margin-bottom: 10px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
-.important-note p { color: #666; font-size: 0.95rem; }
+			.cover-page p {
+				margin-top: 12px;
+				font-size: 1.1rem;
+			}
+			
+			/* ===== HEADER TECHNIQUE ===== */
+			.header {
+				background: #ffffff;
+				border: 1px solid #e0e0e0;
+				border-left: 6px solid var(--secondary-color);
+				border-radius: 6px;
+				padding: 25px 30px;
+				margin-bottom: 30px;
+			}
 
-/* DOC SECTION */
-.doc-section { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden; }
-.doc-header {
-    background: #495057;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-.doc-title { font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-.doc-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn {
-    padding: 10px 18px;
-    background: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    border: none;
-    cursor: pointer;
-}
-.btn:hover { background: #0056b3; transform: translateY(-1px); }
-.btn-success { background: #28a745; }
-.btn-success:hover { background: #1e7e34; }
-.btn-warning { background: #fd7e14; }
-.btn-warning:hover { background: #c96209; }
+			.header h1 {
+				font-size: 1.9rem;
+				color: var(--primary-color);
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				margin-bottom: 8px;
+			}
 
-/* DOC VIEWER */
-.doc-viewer { background: white; min-height: 600px; position: relative; }
-.doc-viewer iframe { width: 100%; height: 700px; border: none; display: none; }
+			.header .subtitle {
+				font-size: 1rem;
+				color: var(--dark-color);
+				margin-bottom: 20px;
+			}
 
-/* LOADING SPINNER */
-.loading {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-.loading.show { display: block; }
-.spinner {
-    width: 30px;
-    height: 30px;
-    border: 3px solid #f3f3f3;
-    border-top: 3px solid #2a8a5d;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 10px;
-}
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+			/* ===== COMPÉTENCES ===== */
+			.competences-sidebar {
+				margin-top: 10px;
+			}
 
-/* FALLBACK */
-.doc-fallback {
-    display: none;
-    padding: 50px 30px;
-    text-align: center;
-    background: #f8f9fa;
-}
-.doc-fallback.show { display: block; }
-.doc-fallback h4 { color: #dc3545; margin-bottom: 15px; font-size: 1.2rem; }
-.doc-fallback p  { color: #666; margin-bottom: 25px; font-size: 1rem; }
+			.competence-group-label {
+				font-weight: 600;
+				margin-bottom: 10px;
+				color: var(--primary-color);
+			}
 
-/* FOOTER */
-.footer { background: #f8f9fa; padding: 20px; border-top: 1px solid #dee2e6; color: #6c757d; font-size: 0.9rem; }
-.footer p { margin-bottom: 8px; }
+			.competence-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+			}
 
-@media (max-width: 768px) {
-    body { padding: 10px; }
-    .header { padding: 20px; }
-    .header h1 { font-size: 1.6rem; }
-    .content { padding: 20px; }
-    .doc-header { flex-direction: column; align-items: stretch; text-align: center; }
-    .doc-actions { justify-content: center; }
-}
-</style>
+			.ctag {
+				display: inline-flex;
+				align-items: center;
+				border: 1px solid #d0d0d0;
+				border-radius: 4px;
+				background: #f8f9fa;
+				font-size: 0.85rem;
+				overflow: hidden;
+			}
+
+			.ctag-code {
+				background: var(--secondary-color);
+				color: white;
+				padding: 4px 6px;
+				font-weight: 600;
+			}
+
+			.ctag-label {
+				padding: 4px 8px;
+				color: #333;
+			}
+
+			/* ===== TICKET INFO ===== */
+			.ticket-info {
+				background: #f9fafb;
+				border: 1px solid #e0e0e0;
+				border-radius: 6px;
+				padding: 20px 25px;
+				margin-bottom: 40px;
+			}
+
+			.ticket-info h3 {
+				margin-bottom: 12px;
+				color: var(--primary-color);
+			}
+
+			.ticket-details {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+				gap: 10px;
+				margin-bottom: 10px;
+			}
+
+			.ticket-item {
+				font-size: 0.95rem;
+			}
+    </style>
 </head>
-<body>
+	<body>
 
-<div class="container">
+		<!-- PAGE DE GARDE -->
+		<div class="cover-page">
+			<img src="../images/cicar-logo.png" alt="Logo CICAR">
 
-    <!-- HEADER -->
-    <div class="header">
-        <h1>📖 Documentation Technique</h1>
-        <div class="subtitle">Projet CICAR — Infrastructure Réseau &amp; Système — Agence Îles Canaries</div>
-        <div class="competences-sidebar">
-            <div class="competence-group-label">🎯 Compétences E4</div>
-            <div class="competence-tags">
-                <span class="ctag"><span class="ctag-code">A1</span><span class="ctag-label">Ressources numériques</span></span>
-                <span class="ctag"><span class="ctag-code">A2</span><span class="ctag-label">Normes &amp; standards</span></span>
-                <span class="ctag"><span class="ctag-code">A3</span><span class="ctag-label">Habilitations AD / GPO</span></span>
-                <span class="ctag"><span class="ctag-code">A4</span><span class="ctag-label">Continuité de service</span></span>
-                <span class="ctag"><span class="ctag-code">A6</span><span class="ctag-label">RADIUS / NPS</span></span>
-                <span class="ctag"><span class="ctag-code">B2</span><span class="ctag-label">Services réseau &amp; système</span></span>
-                <span class="ctag"><span class="ctag-code">B3</span><span class="ctag-label">Applications</span></span>
-                <span class="ctag"><span class="ctag-code">D1</span><span class="ctag-label">Objectifs &amp; organisation</span></span>
-                <span class="ctag"><span class="ctag-code">D2</span><span class="ctag-label">Planification</span></span>
-                <span class="ctag"><span class="ctag-code">E1</span><span class="ctag-label">Tests &amp; validation</span></span>
-                <span class="ctag"><span class="ctag-code">E2</span><span class="ctag-label">Déploiement</span></span>
-                <span class="ctag"><span class="ctag-code">E3</span><span class="ctag-label">Accompagnement</span></span>
-                <span class="ctag"><span class="ctag-code">F1</span><span class="ctag-label">Documentation</span></span>
-            </div>
+			<h1>Projet CICAR</h1>
+			<h2>Infrastructure Réseaux &amp; Systèmes</h2>
+
+			<p><strong id="nomCandidatCover"></strong></p>
+
+			<p>
+				BTS SIO – Option SISR<br>
+				Épreuve E6
+			</p>
+
+			<p>
+				AFPI – Marcq-en-Barœul | Année scolaire 2024 – 2026
+			</p>
+
+			<p class="subtitle">
+				Mission d'infrastructure réseau et systèmes pour agences de location de véhicules
+			</p>
+		</div>
+
+    <!-- CONTENU PRINCIPAL -->
+    <div class="portfolio-container">
+	
+	<!-- HEADER -->
+	<div class="header">
+		<h1>📖 Documentation Technique</h1>
+		<div class="subtitle">
+			Projet CICAR — Infrastructure Réseau &amp; Système — Agence Îles Canaries
+		</div>
+
+		<div class="competences-sidebar">
+			<div class="competence-group-label">🎯 Compétences E4</div>
+			<div class="competence-tags">
+				<span class="ctag"><span class="ctag-code">A1</span><span class="ctag-label">Ressources numériques</span></span>
+				<span class="ctag"><span class="ctag-code">A2</span><span class="ctag-label">Normes &amp; standards</span></span>
+				<span class="ctag"><span class="ctag-code">A3</span><span class="ctag-label">Habilitations AD / GPO</span></span>
+				<span class="ctag"><span class="ctag-code">A4</span><span class="ctag-label">Continuité de service</span></span>
+				<span class="ctag"><span class="ctag-code">A6</span><span class="ctag-label">RADIUS / NPS</span></span>
+				<span class="ctag"><span class="ctag-code">B2</span><span class="ctag-label">Services réseau &amp; système</span></span>
+				<span class="ctag"><span class="ctag-code">B3</span><span class="ctag-label">Applications</span></span>
+				<span class="ctag"><span class="ctag-code">D1</span><span class="ctag-label">Objectifs &amp; organisation</span></span>
+				<span class="ctag"><span class="ctag-code">D2</span><span class="ctag-label">Planification</span></span>
+				<span class="ctag"><span class="ctag-code">E1</span><span class="ctag-label">Tests &amp; validation</span></span>
+				<span class="ctag"><span class="ctag-code">E2</span><span class="ctag-label">Déploiement</span></span>
+				<span class="ctag"><span class="ctag-code">E3</span><span class="ctag-label">Accompagnement</span></span>
+				<span class="ctag"><span class="ctag-code">F1</span><span class="ctag-label">Documentation</span></span>
+			</div>
+		</div>
+	</div>
+
+	<!-- TICKET INFO -->
+	<div class="ticket-info">
+		<h3>🎫 Informations du projet</h3>
+		<div class="ticket-details">
+			<div class="ticket-item"><strong>Projet :</strong> Infrastructure CICAR</div>
+			<div class="ticket-item"><strong>Contexte :</strong> Agence de location automobile aéroportuaire</div>
+			<div class="ticket-item"><strong>Technologies :</strong> Stormshield • VMware ESXi • Windows Server | Windows 10 • Linux</div>
+			<div class="ticket-item"><strong>Statut :</strong> ✓ Documentation fournie</div>
+		</div>
+		<p>
+			<strong>Objectif :</strong>
+			Déployer une infrastructure fiable, sécurisée et homogène pour la nouvelle agence CICAR dans les Îles Canaries.
+		</p>
+	</div>
+       
+        <section class="section">
+            <h2>Description du contexte</h2>
+            <p>La CICAR est une jeune société de location de véhicule de tourisme en plein essor implantée depuis 2012 dans les iles canaries. Elle possède une flotte de 65 véhicules répartis dans 3 agences sur les iles de Tenerife (qui est aussi le siège de l'entreprise), Lanzarote et Fuerteventura.</p>
+            <p>Elle souhaite aujourd'hui se développer sur les quatre autres îles des canaries qui sont : La Palma, el Hierro , la Gomera et Gran Canaria.</p>
+            <p>Les sites choisis sont, comme pour les autres agences, les aéroports de ces quatre iles, respectivement : Los Llanos de Aridane, Valverde , San sebastian de la Gomera et las Palmas de Gran Canaria.</p>
+            <p>Elle possède déjà les locaux qui sont loués par les autorités aéroportuaires et qui comprennent une alimentation électrique ondulée avec une connexion internet haut débit ainsi que les bureaux équipés de prises murales RJ45 de catégorie 6 raccordées à une baie de brassage incorporée dans la baie informatique.</p>
+            <p>Le gérant de la société Cicar a réalisé un appel d'offre auprès des SSII insulaires. Le patron de la société SIO-Net à laquelle vous appartenez a décidé de répondre à ce projet. Il a détaché une équipe par agence pour mener à bien cette mission.</p>
+        </section>
+        
+        <section class="section">
+            <h2>Présentation du contexte technique</h2>
+            <p>Dans un soucis d'harmonisation, les équipements d'interconnexion et les serveurs sont identiques aux autres agences (siège exclu) ; c'est-à-dire : solution incorporée dans une baie 24U, routeur pare-feu SNS310 Stormshield, Switch manageable gigabit Tp-Link TL-SG3424, serveur HP Prolian DL 360 Gen 10 en RAID 5, point d'accès wifi TP-Link TL-WA901-N.</p>
+            <p>Le serveur HP virtualise sous Esxi 7.0 les différents serveurs nécessaires à l'infrastructure. Les plans d'implantation et schémas réseaux sont fournis en annexe ainsi qu'un plan d'adressage (IP fixe) imposé par le FAI des aéroports. Les adresses du Lan respectent la suite logique des premières agences, à savoir 192.68.51.0 pour Lanzarote et 192.168.52.0 pour Fuerteventura. Le siège de Ténériffe étant lui en 192.168.57.0.</p>
+            <p>Suite à l'appel d'offre et après acceptation de votre devis, le directeur de la Cicar vous a choisi afin d'informatiser les nouvelles agences et après réception finale du projet fonctionnel vous a accordé toute sa confiance dans les modifications ultérieures qu'il souhaite apporter.</p>
+        </section>
+        
+        <section class="section">
+            <h2>Mise en place des équipements</h2>
+            <p>Il vous est demandé de paramétrer le boitier Stormshield SNS 310 afin d'offrir un accès web sécurisé aux employés de l'agence ainsi que la liaison VPN avec le siège. Le VPN gérera les flux vers les autres agences hormis ceux à destination d'internet.</p>
+            <p>Vous installerez par la suite l'hyperviseur ESX Vmware sur le serveur HP Prolian ainsi que votre contrôleur de domaine avec AD, DNS, DHCP sous Windows Serveur 2019 puis vous intégrerez les postes clients au domaine.</p>
+            <p>Des GPO « standards » des autres agences permettront une configuration automatique des postes clients (environnement, mappage de lecteurs réseaux, restrictions etc..) ainsi qu'une politique de gestions des mots de passe du domaine (par PSO).</p>
+            <p>Vous déploierez également le wifi pour votre agence.</p>
+        </section>
+        
+        <div class="ppe-section">
+            <div class="ppe-title">PPE 1 : Sécurisation de l'accès WiFi</div>
+            <h3>Définition de la mission</h3>
+            <p>Après une première saison touristique passée, Le gérant souhaite modifier la partie wifi des agences. Cet accès sert en effet aux employés sur les parkings afin de réaliser les opérations nécessaires à la prise de bord et à la restitution des véhicules (kilométrage, jauge carburant, coups ou rayures éventuelles…) à l'aide de tablettes tactiles.</p>
+            <p>Cependant, en raison du nombre importants de travailleurs saisonniers et afin de conserver une sécurité du réseau, il est souhaitable de ne plus installer de clés WPA sur ces équipements, trop facilement copiables.</p>
+            <p>Vous aurez donc à mettre en place un accès wifi par serveur radius qui identifiera par couple login/mdp les utilisateurs enregistrés dans l'annuaire d'entreprise souhaitant accéder au réseau. Afin de faciliter les adjonctions d'utilisateur dans l'annuaire, il vous est également demandé de fournir un script en PowerShell permettant de gérer les nouveaux embauchés à l'aide d'un fichier Excel. Si votre intervention s'avère efficace, la société SIO-Net aura à charge de réaliser la modification dans les trois premières agences qui existent depuis deux ans.</p>
+            
+            <h3>Éléments à fournir :</h3>
+            <ul class="checklist">
+                <li>Installation d'une autorité de certification</li>
+                <li>Installation d'un serveur radius NPS sous 2019</li>
+                <li>Création des politiques d'accès au réseau sur le serveur radius</li>
+                <li>Modification du point d'accès wifi pour ce nouvel accès au réseau</li>
+                <li>Paramétrage des équipements wifi</li>
+                <li>Script de création des utilisateurs par fichier Excel en Powershell</li>
+                <li>Mise à jour des tableaux de connexion et des schémas</li>
+            </ul>
         </div>
-    </div>
-
-    <!-- TICKET INFO -->
-    <div class="ticket-info">
-        <h3>🎫 Informations du projet</h3>
-        <div class="ticket-details">
-            <div class="ticket-item"><strong>Projet :</strong> Infrastructure CICAR</div>
-            <div class="ticket-item"><strong>Contexte :</strong> Agence de location automobile aéroportuaire</div>
-            <div class="ticket-item"><strong>Technologies :</strong> Stormshield • VMware ESXi • Windows Server • Debian</div>
-            <div class="ticket-item"><strong>Statut :</strong> ✓ Documentation fournie</div>
+        
+        <div class="ppe-section">
+            <div class="ppe-title">PPE 2 : Externalisation des serveurs de réservation</div>
+            <h3>Définition du besoin</h3>
+            <p>Le directeur de la Cicar souhaite externaliser les serveurs utilisés pour la prise de réservation des véhicules, service actuellement hébergé sur les serveurs du siège (Suite à un incident de perte de connexion inter-îles ayant pénalisé l'activité plusieurs jours).</p>
+            <p>Chaque agence disposera maintenant de 2 serveurs en miroir situés dans le LAN. Ils seront installés sur une distribution Debian en ligne de commande limitant les surfaces d'attaque avec les packages Apache, Php, Maria-db et Adminer virtualisé sur l'hyperviseur ESXi. Le site sera identique aux agences existantes et sera installé par l'équipe Dev.</p>
+            <p>Il sera accessible pour les internautes par le biais d'un HA-Proxy situé dans une DMZ permettant du load balancing vers les 2 serveurs du LAN.</p>
+            <p>Une sauvegarde automatique des VM de l'agence à l'aide de l'outil Veeam Backup se fera toutes les nuits vers un NAS en Raid 5 situé au siège. Les fichiers de configuration des commutateurs, des points d'accès-wifi, des Appliances SNS seront également déposés sur ce NAS.</p>
+            
+            <h3>Éléments à fournir :</h3>
+            <ul class="checklist">
+                <li>Mise en place d'une architecture trois-tiers en agence</li>
+                <li>Mise en place du Load Balancing</li>
+                <li>Sauvegarde distante quotidienne des VM de l'agence</li>
+                <li>Sauvegarde des paramètres des équipements d'interconnexion</li>
+                <li>Mise à jour des tableaux de connexion et des schémas</li>
+            </ul>
         </div>
-        <p><strong>Objectif :</strong> Déployer une infrastructure fiable, sécurisée et homogène pour la nouvelle agence CICAR dans les Îles Canaries.</p>
-    </div>
-
-    <!-- CONTENT -->
-    <div class="content">
-
-        <!-- GUIDE SECTION -->
-        <div class="guide-section">
-    <h3>📋 Contenu du document</h3>
-    <p>
-        Ce document couvre le déploiement complet de l'infrastructure réseau et système de la nouvelle agence CICAR aux Îles Canaries :
-    </p>
-    <p>
-        <strong>I. Présentation de l'agence</strong> — Contexte, architecture globale : pare-feu Stormshield, switch TP-Link, serveur ESXi, postes clients, DMZ Debian.<br>
-        <strong>II. Schéma logique du réseau</strong> — Architecture LAN / DMZ / WAN avec adressage complet (192.168.54.0/24).<br>
-        <strong>III. Nomenclature & Plan d'adressage</strong> — Tableau des équipements, plan IP, schéma de la baie serveur rack 19" 12U.<br>
-        <strong>IV. Configuration matérielle</strong> — Switch TP-Link SG-3424, pare-feu Stormshield SNS 310 (VPN IPsec), serveur ESXi HP ProLiant (vSwitch, VMNetwork, DMZ).<br>
-        <strong>V. Active Directory & Services Windows</strong> — Contrôleur de domaine Windows Server 2019 (AD DS, DNS, DHCP, AD CS, NPS), Wi-Fi 802.1X RADIUS, déploiement poste client Windows 10, GPO.<br>
-        <strong>VI. Serveurs Linux Debian – DMZ</strong> — SRV-EL-WEB-01 & 02 (Apache2, MariaDB, PHP 8, Adminer), HAProxy load balancer (round-robin), Zimbra mail server (Ubuntu 16.04, SMTP/IMAP/HTTPS).
-    </p>
-</div>
-
-        <!-- IMPORTANT NOTE -->
-        <div class="important-note">
-            <h4>⚠️ Remarque</h4>
-            <p>
-                Le document est converti et rendu localement dans votre navigateur. Aucune donnée n'est envoyée vers un serveur externe.
-                En cas d'affichage incomplet, privilégiez le bouton <strong>Télécharger</strong> pour ouvrir le fichier dans Word.
-            </p>
+        
+        <div class="ppe-section">
+            <div class="ppe-title">PPE 3 : Messagerie et supervision</div>
+            <h3>Définition des besoins</h3>
+            <p>La direction souhaite que chaque agence dispose maintenant de son propre serveur de messagerie (avec antispam et antivirus) et qu'il soit installé dans la DMZ.</p>
+            <p>La gestion des boites mail sera couplée à votre Active directory. Les boites aux lettres seront créées de façon automatique avec un script bash.</p>
+            <p>Afin d'avoir une vue globale des dysfonctionnements dans chaque agence (matériels et/ou logiciels), il a été décidé d'installer un logiciel de supervision (Centreon) au siège.</p>
+            <p>Ce dernier sera complété par un serveur syslog relevant en temps réel les menaces ou anomalies détectées par les boitiers SNS de chaque agence ainsi que celles des agents installés sur les contrôleurs de domaine.</p>
+            
+            <h3>Éléments à fournir :</h3>
+            <ul class="checklist">
+                <li>Mise en place du serveur de messagerie Zimbra</li>
+                <li>Création des boites mails couplé à l'AD</li>
+                <li>Mise en place des sondes Centreon avec l'admin du siège</li>
+                <li>Tests des remontées des agences vers le syslog du siège</li>
+                <li>Mise à jour des tableaux de connexion et des schémas</li>
+            </ul>
         </div>
-
-        <!-- DOC SECTION -->
-        <div class="doc-section">
-            <div class="doc-header">
-                <div class="doc-title">📋 PROJET CICAR — Infrastructure Réseau &amp; Système</div>
-                <div class="doc-actions">
-                    <button onclick="refreshDoc()" class="btn btn-warning">🔄 Actualiser</button>
-                    <a class="btn" href="../files/Projet_Cicar.docx" target="_blank">👁️ Ouvrir le Word</a>
-                    <a class="btn btn-success" href="../files/Projet_Cicar.docx" download>⬇ Télécharger</a>
+        
+        <div class="ppe-section">
+            <div class="ppe-title">PPE 4 : Accès distant et gestion des incidents</div>
+            <h3>Définition du besoin</h3>
+            <p>Les iles étant assez disséminées dans tout l'archipel, l'administrateur du siège souhaite un accès distant sécurisé sur tous les équipements paramétrables et serveurs de chaque agence.</p>
+            <p>Ces accès seront centralisés sous MobaXterm.</p>
+            <p>Vous appuierez l'administrateur du siège pour l'aider à recenser ces connexions ainsi que pour ouvrir les accès dans les pare-feu de chaque île.</p>
+            <p>Une double authentification devra être mise en place pour sécuriser les accès aux pages d'administration du SNS. La méthode choisie sera le One time password avec l'extension google authenticator.</p>
+            <p>Afin de répondre au mieux aux soucis des utilisateurs, il a mis en place un logiciel recensant le parc installé appelé GLPI_Agent couplé avec un logiciel de helpdesk type GLPI qui enverra les besoins ou tickets d'incidents des chefs d'agence à l'administrateur central.</p>
+            
+            <h3>Éléments à fournir :</h3>
+            <ul class="checklist">
+                <li>Mise en place de tous les accès distants nécessaires à l'administrateur</li>
+                <li>Mise en place et test de l'authentification 2FA sur le SNS</li>
+                <li>Gestion des flux dans les pare-feux</li>
+                <li>Installation du logiciel d'inventaire et de helpdesk</li>
+                <li>Test des remontées d'équipements et des tickets d'incidents</li>
+                <li>Rédaction d'une procédure pour les utilisateurs de la plate-forme helpdesk</li>
+                <li>Mise à jour des tableaux de connexion et des schémas</li>
+            </ul>
+        </div>
+        
+        <section class="section">
+            <h2>Schéma d'implantation réseau</h2>
+            
+            <div class="schema-container">
+                <div class="schema-controls">
+                    <button onclick="zoomIn()">🔍 Zoom +</button>
+                    <button onclick="zoomOut()">🔍 Zoom -</button>
+                    <button onclick="resetZoom()">🔄 Réinitialiser</button>
+                    <button onclick="downloadDiagram()">💾 Télécharger</button>
                 </div>
-            </div>
+                
+                <div class="mermaid">
+		flowchart TB
+			%% ===== INTERNET =====
+			INTERNET((☁ Internet<br/>Accès WAN))
+			FW[Stormshield SNS 310<br/>LAN: 192.168.54.254<br/>DMZ: 192.168.64.254<br/>DENY ALL]
 
-            <div class="doc-viewer" id="docViewer">
-                <div class="loading show" id="loadingDiv">
-                    <div class="spinner"></div>
-                    <p>Chargement du document...</p>
+			INTERNET --> FW
+
+			%% ===== ZONE LAN =====
+			subgraph LAN["ZONE LAN - 192.168.54.0/24"]
+				SW[Switch TP-Link<br/>192.168.54.20]
+				ESXI1[ESXi Principal<br/>192.168.54.1]
+				AD[AD / DNS / DHCP<br/>192.168.54.10]
+				ZIMBRA[Zimbra Mail<br/>192.168.54.40]
+				WEB1[WEB-01 Apache<br/>192.168.54.15]
+				WEB2[WEB-02 Apache<br/>192.168.54.16]
+				WIFI[AP WiFi<br/>192.168.54.30]
+				CLIENTS[Postes Clients<br/>DHCP .100-.200]
+
+				SW --> ESXI1
+				SW --> WIFI
+				SW --> CLIENTS
+				ESXI1 --> AD
+				ESXI1 --> ZIMBRA
+				ESXI1 --> WEB1
+				ESXI1 --> WEB2
+			end
+
+			%% ===== ZONE DMZ =====
+			subgraph DMZ["ZONE DMZ - 192.168.64.0/24"]
+				HAP[HAProxy Reverse Proxy<br/>192.168.64.1<br/>Ports 80/443]
+			end
+
+			FW --> SW
+			FW --> HAP
+			HAP --> WEB1
+			HAP --> WEB2
+
+			%% ===== SIÈGE =====
+			subgraph SIEGE["SIÈGE TENERIFE - 192.168.57.0/24"]
+				FW2[Pare-feu Siège]
+				CENTREON[Centreon<br/>192.168.57.50]
+				NAS[NAS RAID 5<br/>Sauvegardes Veeam]
+				ADMIN[Poste Admin<br/>MobaXterm]
+			end
+
+			FW -. VPN IPsec .-> FW2
+			FW2 --> CENTREON
+			FW2 --> NAS
+			FW2 --> ADMIN
+
+			%% ===== AGENCE LA PALMA =====
+			subgraph PALMA["AGENCE LA PALMA - 192.168.56.0/24"]
+				FW_PALMA[Pare-feu Agence]
+				PC_PALMA[Postes / Serveurs<br/>192.168.56.10]
+				FW_PALMA --> PC_PALMA
+			end
+
+			%% ===== AGENCE LA GOMERA =====
+			subgraph GOMERA["AGENCE LA GOMERA - 192.168.55.0/24"]
+				FW_GOMERA[Pare-feu Agence]
+				PC_GOMERA[Postes / Serveurs<br/>192.168.55.10]
+				FW_GOMERA --> PC_GOMERA
+			end
+
+			%% ===== AGENCE GRAN CANARIA =====
+			subgraph CANARIA["AGENCE GRAN CANARIA - 192.168.53.0/24"]
+				FW_CANARIA[Pare-feu Agence]
+				PC_CANARIA[Postes / Serveurs<br/>192.168.53.10]
+				FW_CANARIA --> PC_CANARIA
+			end
+
+			%% VPN AGENCES
+			FW_PALMA -. VPN IPsec .-> FW2
+			FW_GOMERA -. VPN IPsec .-> FW2
+			FW_CANARIA -. VPN IPsec .-> FW2
+
+			%% ===== STYLES (FIABLES) =====
+			style INTERNET fill:#e2e3e5,stroke:#333,stroke-width:2px
+			style FW fill:#f8d7da,stroke:#721c24,stroke-width:2px
+			style FW2 fill:#f8d7da
+
+			style SW fill:#d4edda
+			style ESXI1 fill:#d4edda
+			style AD fill:#d4edda
+			style ZIMBRA fill:#d4edda
+			style WEB1 fill:#d4edda
+			style WEB2 fill:#d4edda
+			style WIFI fill:#d4edda
+			style CLIENTS fill:#d4edda
+
+			style HAP fill:#fff3cd,stroke:#856404,stroke-width:2px
+
+			style FW_PALMA fill:#d1ecf1
+			style FW_GOMERA fill:#d1ecf1
+			style FW_CANARIA fill:#d1ecf1
+			style PC_PALMA fill:#d1ecf1
+			style PC_GOMERA fill:#d1ecf1
+			style PC_CANARIA fill:#d1ecf1
                 </div>
-                <iframe id="docFrame" title="Projet CICAR — Documentation technique"></iframe>
-                <div class="doc-fallback" id="fallbackDiv">
-                    <h4>📄 Affichage alternatif</h4>
-                    <p>Le document ne peut pas être affiché directement. Utilisez les options ci-dessous :</p>
-                    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-                        <a href="../files/Projet_Cicar.docx" target="_blank" class="btn">👁️ Ouvrir dans un nouvel onglet</a>
-                        <a href="../files/Projet_Cicar.docx" download class="btn btn-success">⬇ Télécharger le Word</a>
+                
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="color-box internet"></div>
+                        <span>Internet / WAN</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-box lan"></div>
+                        <span>Zone LAN</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-box dmz"></div>
+                        <span>Zone DMZ</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-box site"></div>
+                        <span>Agences distantes</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-box vpn"></div>
+                        <span>Connexion VPN IPsec</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+        
+        
+		<footer>
+			<p><strong id="nomCandidat"></strong></p>
+			<p>
+				BTS SIO – Option SISR | Épreuve E6 - AFPI – Marcq-en-Barœul
+			</p>
+			<p>
+				Projet professionnel – Infrastructure réseaux et systèmes - Document original : CiCar V2.10.docx
+			</p>
+		</footer>
 
-    </div><!-- /content -->
-
-    <!-- FOOTER -->
-    <div class="footer">
-        <p>Documentation technique — Projet CICAR — Création et mise à jour de la documentation réseau</p>
-        <p>© 2024-2026 Formation BTS SIO AFPI. Tous droits réservés.</p>
     </div>
 
-</div><!-- /container -->
+    <script>
+    const candidatNom = "PONT Aurélien";
 
-<a href="#" id="backToTop">↑ Retour en haut</a>
+    let currentScale = 0.7;
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
-<script>
-const docFrame   = document.getElementById('docFrame');
-const loadingDiv = document.getElementById('loadingDiv');
-const fallbackDiv= document.getElementById('fallbackDiv');
-
-const iframeStyles = `
-  body { font-family: Calibri, "Segoe UI", Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #222; margin: 30px 40px; }
-  h1 { font-size: 16pt; color: #1e5c3c; border-bottom: 2px solid #2a8a5d; padding-bottom: 6px; margin-top: 28px; margin-bottom: 12px; }
-  h2 { font-size: 13pt; color: #1565c0; margin-top: 20px; margin-bottom: 8px; }
-  h3 { font-size: 11pt; color: #333; margin-top: 14px; margin-bottom: 6px; font-weight: 600; }
-  p  { margin-bottom: 10px; }
-  ul, ol { margin: 8px 0 12px 24px; }
-  li { margin-bottom: 4px; }
-  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 10pt; }
-  th { background: #1e5c3c; color: white; padding: 8px 12px; text-align: left; }
-  td { padding: 7px 12px; border: 1px solid #ddd; }
-  tr:nth-child(even) { background: #f5faf6; }
-  img { max-width: 100%; height: auto; display: block; margin: 10px auto; }
-`;
-
-function handleLoad() {
-    loadingDiv.classList.remove('show');
-    docFrame.style.display = 'block';
-    try {
-        const h = docFrame.contentDocument.body.scrollHeight;
-        if (h > 0) docFrame.style.height = (h + 40) + 'px';
-    } catch(e) {}
-}
-
-function handleError() {
-    loadingDiv.classList.remove('show');
-    fallbackDiv.classList.add('show');
-}
-
-function refreshDoc() {
-    fallbackDiv.classList.remove('show');
-    docFrame.style.display = 'none';
-    loadingDiv.classList.add('show');
-    loadDoc();
-}
-
-function loadDoc() {
-    fetch('files/Projet_Cicar.docx')
-        .then(function(r) {
-            if (!r.ok) throw new Error('Fichier introuvable');
-            return r.arrayBuffer();
-        })
-        .then(function(buffer) {
-            return mammoth.convertToHtml({ arrayBuffer: buffer });
-        })
-        .then(function(result) {
-            const html = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
-<style>${iframeStyles}</style></head><body>${result.value}</body></html>`;
-            const blob = new Blob([html], { type: 'text/html' });
-            docFrame.onload  = handleLoad;
-            docFrame.onerror = handleError;
-            docFrame.src = URL.createObjectURL(blob);
-        })
-        .catch(handleError);
-}
-
-/* Lancement au démarrage */
-loadDoc();
-
-/* Back to top — même pattern que document.html */
-document.addEventListener('DOMContentLoaded', function() {
-    const style = document.createElement('style');
-    style.textContent = `
-        #backToTop {
-            position: fixed !important;
-            bottom: 30px !important;
-            right: 30px !important;
-            z-index: 9999 !important;
-            width: auto !important;
-            height: auto !important;
-            padding: 12px 18px !important;
-            background: var(--btn-gradient) !important;
-            color: white !important;
-            text-align: center !important;
-            text-decoration: none !important;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 1rem !important;
-            font-weight: 600 !important;
-            border-radius: 24px !important;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease !important;
-            border: none;
-            cursor: pointer;
-        }
-        #backToTop.show { opacity: 1 !important; visibility: visible !important; }
-        #backToTop:hover { transform: translateY(-3px) !important; box-shadow: 0 6px 16px rgba(0,0,0,0.3) !important; }
-        @media (max-width: 768px) {
-            #backToTop { bottom: 20px !important; right: 20px !important; padding: 10px 16px !important; font-size: 0.95rem !important; }
-        }
-    `;
-    document.head.appendChild(style);
-
-    /* Détection du gradient du header */
-    const header = document.querySelector('.header');
-    let gradient = 'linear-gradient(135deg, #1e5c3c, #2a8a5d)';
-    if (header) {
-        const bg = window.getComputedStyle(header).backgroundImage;
-        if (bg && bg.includes('gradient')) gradient = bg;
+    function getMermaidSvg() {
+        return document.querySelector(".mermaid svg");
     }
-    document.documentElement.style.setProperty('--btn-gradient', gradient);
 
-    const btn = document.getElementById('backToTop');
-    if (!btn) return;
+    function updateZoom() {
+        const svg = getMermaidSvg();
+        if (!svg) return;
 
-    btn.textContent = 'Retour';
+        svg.style.transform = `scale(${currentScale})`;
+        svg.style.transformOrigin = "top left";
+    }
 
-    btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        history.go(-1);
+    function zoomIn() {
+        currentScale += 0.1;
+        updateZoom();
+    }
+
+    function zoomOut() {
+        if (currentScale > 0.3) {
+            currentScale -= 0.1;
+            updateZoom();
+        }
+    }
+
+    function resetZoom() {
+        currentScale = 0.7;
+        updateZoom();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("nomCandidat").textContent = candidatNom;
+        document.getElementById("nomCandidatCover").textContent = candidatNom;
+
+        // ✅ applique le zoom après rendu Mermaid
+        setTimeout(updateZoom, 600);
     });
-
-    window.addEventListener('scroll', function() {
-        btn.classList.toggle('show', window.scrollY > 300);
-    });
-});
 </script>
 </body>
 </html>
