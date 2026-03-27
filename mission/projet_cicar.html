@@ -140,7 +140,7 @@
             margin: 20px 0;
             overflow-x: auto;
             min-height: auto;
-            text-align: hidden;
+            text-align: center;
         }
         
         .schema-controls {
@@ -232,198 +232,204 @@
                 min-height: 600px;
             }
         }
-			.cover-page {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				height: 100vh;
-				background: white;
-				text-align: center;
-				page-break-after: always;
-			}
+        
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: white;
+            text-align: center;
+            page-break-after: always;
+        }
 
-			.cover-page img {
-				max-width: 300px;
-				margin-bottom: 30px;
-			}
+        .cover-page img {
+            max-width: 300px;
+            margin-bottom: 30px;
+        }
 
-			.cover-page h1 {
-				font-size: 2.8rem;
-				color: var(--primary-color);
-			}
+        .cover-page h1 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+        }
 
-			.cover-page h2 {
-				margin-top: 15px;
-				font-size: 1.8rem;
-				color: var(--secondary-color);
-			}
+        .cover-page h2 {
+            margin-top: 15px;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
 
-			.cover-page p {
-				margin-top: 12px;
-				font-size: 1.1rem;
-			}
-			
-			/* ===== HEADER TECHNIQUE ===== */
-			.header {
-				background: #ffffff;
-				border: 1px solid #e0e0e0;
-				border-left: 6px solid var(--secondary-color);
-				border-radius: 6px;
-				padding: 25px 30px;
-				margin-bottom: 30px;
-			}
+        .cover-page p {
+            margin-top: 12px;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== HEADER TECHNIQUE ===== */
+        .header {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-left: 6px solid var(--secondary-color);
+            border-radius: 6px;
+            padding: 25px 30px;
+            margin-bottom: 30px;
+        }
 
-			.header h1 {
-				font-size: 1.9rem;
-				color: var(--primary-color);
-				display: flex;
-				align-items: center;
-				gap: 8px;
-				margin-bottom: 8px;
-			}
+        .header h1 {
+            font-size: 1.9rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
 
-			.header .subtitle {
-				font-size: 1rem;
-				color: var(--dark-color);
-				margin-bottom: 20px;
-			}
+        .header .subtitle {
+            font-size: 1rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
 
-			/* ===== COMPÉTENCES ===== */
-			.competences-sidebar {
-				margin-top: 10px;
-			}
+        /* ===== COMPÉTENCES ===== */
+        .competences-sidebar {
+            margin-top: 10px;
+        }
 
-			.competence-group-label {
-				font-weight: 600;
-				margin-bottom: 10px;
-				color: var(--primary-color);
-			}
+        .competence-group-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
 
-			.competence-tags {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 8px;
-			}
+        .competence-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
 
-			.ctag {
-				display: inline-flex;
-				align-items: center;
-				border: 1px solid #d0d0d0;
-				border-radius: 4px;
-				background: #f8f9fa;
-				font-size: 0.85rem;
-				overflow: hidden;
-			}
+        .ctag {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            background: #f8f9fa;
+            font-size: 0.85rem;
+            overflow: hidden;
+        }
 
-			.ctag-code {
-				background: var(--secondary-color);
-				color: white;
-				padding: 4px 6px;
-				font-weight: 600;
-			}
+        .ctag-code {
+            background: var(--secondary-color);
+            color: white;
+            padding: 4px 6px;
+            font-weight: 600;
+        }
 
-			.ctag-label {
-				padding: 4px 8px;
-				color: #333;
-			}
+        .ctag-label {
+            padding: 4px 8px;
+            color: #333;
+        }
 
-			/* ===== TICKET INFO ===== */
-			.ticket-info {
-				background: #f9fafb;
-				border: 1px solid #e0e0e0;
-				border-radius: 6px;
-				padding: 20px 25px;
-				margin-bottom: 40px;
-			}
+        /* ===== TICKET INFO ===== */
+        .ticket-info {
+            background: #f9fafb;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin-bottom: 40px;
+        }
 
-			.ticket-info h3 {
-				margin-bottom: 12px;
-				color: var(--primary-color);
-			}
+        .ticket-info h3 {
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
 
-			.ticket-details {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-				gap: 10px;
-				margin-bottom: 10px;
-			}
+        .ticket-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 10px;
+            margin-bottom: 10px;
+        }
 
-			.ticket-item {
-				font-size: 0.95rem;
-			}
+        .ticket-item {
+            font-size: 0.95rem;
+        }
     </style>
 </head>
-	<body>
+<body>
 
-		<!-- PAGE DE GARDE -->
-		<div class="cover-page">
-			<img src="../images/cicar-logo.png" alt="Logo CICAR">
+    <!-- PAGE DE GARDE -->
+    <div class="cover-page">
+        <!-- Image corrigée - utilisation du chemin GitHub -->
+        <img src="images/cicar-logo.png" alt="Logo CICAR" onerror="this.style.display='none'; document.getElementById('logo-placeholder').style.display='block';">
 
-			<h1>Projet CICAR</h1>
-			<h2>Infrastructure Réseaux &amp; Systèmes</h2>
+        <div id="logo-placeholder" style="display: none; width: 300px; height: 200px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; border: 1px solid #ddd;">
+            <span style="color: #666;">Logo CICAR (images/cicar-logo.png)</span>
+        </div>
 
-			<p><strong id="nomCandidatCover"></strong></p>
+        <h1>Projet CICAR</h1>
+        <h2>Infrastructure Réseaux &amp; Systèmes</h2>
 
-			<p>
-				BTS SIO – Option SISR<br>
-				Épreuve E6
-			</p>
+        <p><strong id="nomCandidatCover"></strong></p>
 
-			<p>
-				AFPI – Marcq-en-Barœul | Année scolaire 2024 – 2026
-			</p>
+        <p>
+            BTS SIO – Option SISR<br>
+            Épreuve E6
+        </p>
 
-			<p class="subtitle">
-				Mission d'infrastructure réseau et systèmes pour agences de location de véhicules
-			</p>
-		</div>
+        <p>
+            AFPI – Marcq-en-Barœul | Année scolaire 2024 – 2026
+        </p>
+
+        <p class="subtitle">
+            Mission d'infrastructure réseau et systèmes pour agences de location de véhicules
+        </p>
+    </div>
 
     <!-- CONTENU PRINCIPAL -->
     <div class="portfolio-container">
-	
-	<!-- HEADER -->
-	<div class="header">
-		<h1>📖 Documentation Technique</h1>
-		<div class="subtitle">
-			Projet CICAR — Infrastructure Réseau &amp; Système — Agence Îles Canaries
-		</div>
+    
+    <!-- HEADER -->
+    <div class="header">
+        <h1>📖 Documentation Technique</h1>
+        <div class="subtitle">
+            Projet CICAR — Infrastructure Réseau &amp; Système — Agence Îles Canaries
+        </div>
 
-		<div class="competences-sidebar">
-			<div class="competence-group-label">🎯 Compétences E4</div>
-			<div class="competence-tags">
-				<span class="ctag"><span class="ctag-code">A1</span><span class="ctag-label">Ressources numériques</span></span>
-				<span class="ctag"><span class="ctag-code">A2</span><span class="ctag-label">Normes &amp; standards</span></span>
-				<span class="ctag"><span class="ctag-code">A3</span><span class="ctag-label">Habilitations AD / GPO</span></span>
-				<span class="ctag"><span class="ctag-code">A4</span><span class="ctag-label">Continuité de service</span></span>
-				<span class="ctag"><span class="ctag-code">A6</span><span class="ctag-label">RADIUS / NPS</span></span>
-				<span class="ctag"><span class="ctag-code">B2</span><span class="ctag-label">Services réseau &amp; système</span></span>
-				<span class="ctag"><span class="ctag-code">B3</span><span class="ctag-label">Applications</span></span>
-				<span class="ctag"><span class="ctag-code">D1</span><span class="ctag-label">Objectifs &amp; organisation</span></span>
-				<span class="ctag"><span class="ctag-code">D2</span><span class="ctag-label">Planification</span></span>
-				<span class="ctag"><span class="ctag-code">E1</span><span class="ctag-label">Tests &amp; validation</span></span>
-				<span class="ctag"><span class="ctag-code">E2</span><span class="ctag-label">Déploiement</span></span>
-				<span class="ctag"><span class="ctag-code">E3</span><span class="ctag-label">Accompagnement</span></span>
-				<span class="ctag"><span class="ctag-code">F1</span><span class="ctag-label">Documentation</span></span>
-			</div>
-		</div>
-	</div>
+        <div class="competences-sidebar">
+            <div class="competence-group-label">🎯 Compétences E4</div>
+            <div class="competence-tags">
+                <span class="ctag"><span class="ctag-code">A1</span><span class="ctag-label">Ressources numériques</span></span>
+                <span class="ctag"><span class="ctag-code">A2</span><span class="ctag-label">Normes &amp; standards</span></span>
+                <span class="ctag"><span class="ctag-code">A3</span><span class="ctag-label">Habilitations AD / GPO</span></span>
+                <span class="ctag"><span class="ctag-code">A4</span><span class="ctag-label">Continuité de service</span></span>
+                <span class="ctag"><span class="ctag-code">A6</span><span class="ctag-label">RADIUS / NPS</span></span>
+                <span class="ctag"><span class="ctag-code">B2</span><span class="ctag-label">Services réseau &amp; système</span></span>
+                <span class="ctag"><span class="ctag-code">B3</span><span class="ctag-label">Applications</span></span>
+                <span class="ctag"><span class="ctag-code">D1</span><span class="ctag-label">Objectifs &amp; organisation</span></span>
+                <span class="ctag"><span class="ctag-code">D2</span><span class="ctag-label">Planification</span></span>
+                <span class="ctag"><span class="ctag-code">E1</span><span class="ctag-label">Tests &amp; validation</span></span>
+                <span class="ctag"><span class="ctag-code">E2</span><span class="ctag-label">Déploiement</span></span>
+                <span class="ctag"><span class="ctag-code">E3</span><span class="ctag-label">Accompagnement</span></span>
+                <span class="ctag"><span class="ctag-code">F1</span><span class="ctag-label">Documentation</span></span>
+            </div>
+        </div>
+    </div>
 
-	<!-- TICKET INFO -->
-	<div class="ticket-info">
-		<h3>🎫 Informations du projet</h3>
-		<div class="ticket-details">
-			<div class="ticket-item"><strong>Projet :</strong> Infrastructure CICAR</div>
-			<div class="ticket-item"><strong>Contexte :</strong> Agence de location automobile aéroportuaire</div>
-			<div class="ticket-item"><strong>Technologies :</strong> Stormshield • VMware ESXi • Windows Server | Windows 10 • Linux</div>
-			<div class="ticket-item"><strong>Statut :</strong> ✓ Documentation fournie</div>
-		</div>
-		<p>
-			<strong>Objectif :</strong>
-			Déployer une infrastructure fiable, sécurisée et homogène pour la nouvelle agence CICAR dans les Îles Canaries.
-		</p>
-	</div>
-       
+    <!-- TICKET INFO -->
+    <div class="ticket-info">
+        <h3>🎫 Informations du projet</h3>
+        <div class="ticket-details">
+            <div class="ticket-item"><strong>Projet :</strong> Infrastructure CICAR</div>
+            <div class="ticket-item"><strong>Contexte :</strong> Agence de location automobile aéroportuaire</div>
+            <div class="ticket-item"><strong>Technologies :</strong> Stormshield • VMware ESXi • Windows Server | Windows 10 • Linux</div>
+            <div class="ticket-item"><strong>Statut :</strong> ✓ Documentation fournie</div>
+        </div>
+        <p>
+            <strong>Objectif :</strong>
+            Déployer une infrastructure fiable, sécurisée et homogène pour la nouvelle agence CICAR dans les Îles Canaries.
+        </p>
+    </div>
+           
         <section class="section">
             <h2>Description du contexte</h2>
             <p>La CICAR est une jeune société de location de véhicule de tourisme en plein essor implantée depuis 2012 dans les iles canaries. Elle possède une flotte de 65 véhicules répartis dans 3 agences sur les iles de Tenerife (qui est aussi le siège de l'entreprise), Lanzarote et Fuerteventura.</p>
@@ -536,7 +542,7 @@
                 </div>
                 
                 <div class="mermaid">
-		flowchart TB
+flowchart TB
 
 %% ================= INTERNET =================
 INTERNET((☁ Internet\Accès WAN))
@@ -663,15 +669,15 @@ FW_CANARIA ===|VPN IPsec| FW2
         </section>
         
         
-		<footer>
-			<p><strong id="nomCandidat"></strong></p>
-			<p>
-				BTS SIO – Option SISR | Épreuve E6 - AFPI – Marcq-en-Barœul
-			</p>
-			<p>
-				Projet professionnel – Infrastructure réseaux et systèmes - Document original : CiCar V2.10.docx
-			</p>
-		</footer>
+        <footer>
+            <p><strong id="nomCandidat"></strong></p>
+            <p>
+                BTS SIO – Option SISR | Épreuve E6 - AFPI – Marcq-en-Barœul
+            </p>
+            <p>
+                Projet professionnel – Infrastructure réseaux et systèmes - Document original : CiCar V2.10.docx
+            </p>
+        </footer>
 
     </div>
 
@@ -707,6 +713,11 @@ FW_CANARIA ===|VPN IPsec| FW2
     function resetZoom() {
         currentScale = 0.7;
         updateZoom();
+    }
+
+    function downloadDiagram() {
+        alert("Fonction de téléchargement à implémenter");
+        // Cette fonction pourrait être étendue pour télécharger le schéma
     }
 
     document.addEventListener("DOMContentLoaded", () => {
