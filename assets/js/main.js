@@ -316,9 +316,6 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 // ============================================
 // FILTRES RÉALISATIONS TECHNIQUES — implémentation unique
-// Portée : uniquement #experiences (ne touche pas #projet-cicar)
-// Le filtre "top" cible les cartes ayant la classe CSS "top"
-// Les autres filtres ciblent l'attribut data-category
 // ============================================
 (function () {
   function applyFilter(filterValue) {
@@ -339,18 +336,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initFilters() {
     var filterButtons = document.querySelectorAll("#experiences .filter-btn");
-
     filterButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        filterButtons.forEach(function (b) {
-          b.classList.remove("active");
-        });
+        filterButtons.forEach(function (b) { b.classList.remove("active"); });
         btn.classList.add("active");
         applyFilter(btn.getAttribute("data-filter"));
       });
     });
-
-    // Au chargement : afficher uniquement les projets principaux (classe "top")
     applyFilter("top");
   }
 
@@ -358,5 +350,56 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("DOMContentLoaded", initFilters);
   } else {
     initFilters();
+  }
+})();
+
+// ============================================
+// BARRES DE COMPÉTENCES — animation + 3 couleurs pro
+// Bleu  = en progression (< 60%)
+// Violet = intermédiaire  (60-75%)
+// Vert   = avancé         (> 75%)
+// ============================================
+(function () {
+  function getColorForPercent(pct) {
+    if (pct <= 60) return "linear-gradient(90deg, #38bdf8, #0ea5e9)";   // bleu
+    if (pct <= 75) return "linear-gradient(90deg, #8b5cf6, #7c3aed)";   // violet
+    return                "linear-gradient(90deg, #34d399, #10b981)";   // vert
+  }
+
+  function initSkillBars() {
+    const bars = document.querySelectorAll(".skill-progress");
+
+    bars.forEach(function (bar) {
+      const pct = parseInt(bar.style.width) || 0;
+      bar.style.width = "0%";
+      bar.style.transition = "none";
+      bar.style.background = getColorForPercent(pct);
+      // Stocker le % cible
+      bar.setAttribute("data-target", pct);
+    });
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          const barsInSection = entry.target.querySelectorAll(".skill-progress");
+          barsInSection.forEach(function (bar, i) {
+            setTimeout(function () {
+              bar.style.transition = "width 1.2s cubic-bezier(0.34, 1.1, 0.64, 1)";
+              bar.style.width = bar.getAttribute("data-target") + "%";
+            }, i * 150);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const section = document.getElementById("competences");
+    if (section) observer.observe(section);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSkillBars);
+  } else {
+    initSkillBars();
   }
 })();
