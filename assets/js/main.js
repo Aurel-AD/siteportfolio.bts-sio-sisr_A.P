@@ -354,47 +354,66 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 
 // ============================================
-// BARRES DE COMPÉTENCES — animation + 3 couleurs pro
-// Bleu  = en progression (< 60%)
-// Violet = intermédiaire  (60-75%)
-// Vert   = avancé         (> 75%)
+// BARRES DE COMPÉTENCES — 3 couleurs pro + animation fiable
 // ============================================
 (function () {
-  function getColorForPercent(pct) {
-    if (pct <= 60) return "linear-gradient(90deg, #38bdf8, #0ea5e9)";   // bleu
-    if (pct <= 75) return "linear-gradient(90deg, #8b5cf6, #7c3aed)";   // violet
-    return                "linear-gradient(90deg, #34d399, #10b981)";   // vert
+
+  function getColor(pct) {
+    if (pct <= 60) return "linear-gradient(90deg, #38bdf8, #0ea5e9)";  // bleu
+    if (pct <= 75) return "linear-gradient(90deg, #8b5cf6, #7c3aed)";  // violet
+    return                "linear-gradient(90deg, #34d399, #10b981)";  // vert
+  }
+
+  function animateBars(section) {
+    var bars = section.querySelectorAll(".skill-progress");
+    bars.forEach(function (bar, i) {
+      var pct = parseInt(bar.getAttribute("data-target")) || 0;
+      setTimeout(function () {
+        // double rAF pour forcer le navigateur à rendre le width:0 d'abord
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            bar.style.setProperty("transition", "width 1.2s cubic-bezier(0.34, 1.1, 0.64, 1)", "important");
+            bar.style.setProperty("width", pct + "%", "important");
+          });
+        });
+      }, i * 180);
+    });
   }
 
   function initSkillBars() {
-    const bars = document.querySelectorAll(".skill-progress");
+    var bars = document.querySelectorAll(".skill-progress");
 
     bars.forEach(function (bar) {
-      const pct = parseInt(bar.style.width) || 0;
-      bar.style.width = "0%";
-      bar.style.transition = "none";
-      bar.style.background = getColorForPercent(pct);
-      // Stocker le % cible
+      var pct = parseInt(bar.style.width) || 0;
       bar.setAttribute("data-target", pct);
+      // Bloquer la largeur à 0 et appliquer la couleur
+      bar.style.setProperty("width", "0%", "important");
+      bar.style.setProperty("transition", "none", "important");
+      bar.style.setProperty("background", getColor(pct), "important");
     });
 
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          const barsInSection = entry.target.querySelectorAll(".skill-progress");
-          barsInSection.forEach(function (bar, i) {
-            setTimeout(function () {
-              bar.style.transition = "width 1.2s cubic-bezier(0.34, 1.1, 0.64, 1)";
-              bar.style.width = bar.getAttribute("data-target") + "%";
-            }, i * 150);
-          });
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
+    var section = document.getElementById("competences");
+    if (!section) return;
 
-    const section = document.getElementById("competences");
-    if (section) observer.observe(section);
+    // Si la section est déjà visible (ex: l'utilisateur est déjà dessus)
+    var rect = section.getBoundingClientRect();
+    var alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (alreadyVisible) {
+      // Lancer directement après un court délai
+      setTimeout(function () { animateBars(section); }, 200);
+    } else {
+      // Sinon observer le scroll
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateBars(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(section);
+    }
   }
 
   if (document.readyState === "loading") {
@@ -402,4 +421,5 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     initSkillBars();
   }
+
 })();
