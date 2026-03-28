@@ -431,3 +431,33 @@ document.querySelectorAll(".filter-btn").forEach((btn) => {
 window.addEventListener("DOMContentLoaded", () => {
     filterSelection("top"); // Montre seulement les cartes top au départ
 });
+const filterBtns = document.querySelectorAll(".filter-btn");
+const cards = document.querySelectorAll(".cert-card");
+
+function filterSelection(category) {
+    cards.forEach(card => {
+        if (category === "all") {
+            card.style.display = "block";
+        } else if (card.classList.contains(category) || card.classList.contains(category.replace(" ", "")) || card.classList.contains("top") && category === "top") {
+            card.style.display = "block";
+        } else if (category === "top" && card.classList.contains("top")) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    // Gestion active
+    filterBtns.forEach(btn => btn.classList.remove("active"));
+    document.querySelector(`.filter-btn[data-filter="${category}"]`).classList.add("active");
+}
+
+// Initialisation : montre les projets principaux
+filterSelection("top");
+
+filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const category = btn.getAttribute("data-filter");
+        filterSelection(category);
+    });
+});
