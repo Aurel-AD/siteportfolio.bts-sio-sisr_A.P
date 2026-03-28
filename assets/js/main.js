@@ -314,150 +314,49 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Animations chargées avec succès !");
   }
 })();
-document.addEventListener("DOMContentLoaded", function () {
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const certCards = document.querySelectorAll(".cert-card");
-
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      // Retirer la classe active de tous les boutons
-      filterButtons.forEach((btn) => btn.classList.remove("active"));
-
-      // Ajouter la classe active au bouton cliqué
-      this.classList.add("active");
-
-      const filterValue = this.getAttribute("data-filter");
-
-      // Filtrer les cartes
-      certCards.forEach((card) => {
-        if (filterValue === "all") {
-          card.style.display = "block";
-        } else {
-          const categories = card.getAttribute("data-category").split(" ");
-          if (categories.includes(filterValue)) {
-            card.style.display = "block";
-          } else {
-            card.style.display = "none";
-          }
-        }
-      });
-    });
-  });
-});
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("Script de filtrage chargé");
-
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const certCards = document.querySelectorAll(".cert-card");
-
-  console.log("Boutons trouvés:", filterButtons.length);
-  console.log("Cartes trouvées:", certCards.length);
-
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      console.log("Bouton cliqué:", this.textContent);
-
-      // Retirer la classe active de tous les boutons
-      filterButtons.forEach((btn) => {
-        btn.classList.remove("active");
-      });
-
-      // Ajouter la classe active au bouton cliqué
-      this.classList.add("active");
-
-      const filterValue = this.getAttribute("data-filter");
-      console.log("Filtre sélectionné:", filterValue);
-
-      // Filtrer les cartes
-      certCards.forEach((card) => {
-        const categories = card.getAttribute("data-category");
-        console.log(
-          "Carte:",
-          card.querySelector("h4").textContent,
-          "Catégories:",
-          categories,
-        );
-
-        if (filterValue === "all") {
-          card.classList.remove("hidden");
-          console.log("Afficher toutes les cartes");
-        } else {
-          if (categories && categories.includes(filterValue)) {
-            card.classList.remove("hidden");
-            console.log("Afficher la carte");
-          } else {
-            card.classList.add("hidden");
-            console.log("Cacher la carte");
-          }
-        }
-      });
-    });
-  });
-
-  // Vérifier que les cartes ont bien l'attribut data-category
-  certCards.forEach((card, index) => {
-    if (!card.hasAttribute("data-category")) {
-      console.warn(
-        "Carte sans data-category:",
-        index,
-        card.querySelector("h4").textContent,
-      );
-    }
-  });
-});
-// ========== FILTRES RÉALISATIONS TECHNIQUES ==========
-document.querySelectorAll(".filter-btn").forEach((btn) => {
-  btn.addEventListener("click", function () {
-    document
-      .querySelectorAll(".filter-btn")
-      .forEach((b) => b.classList.remove("active"));
-
-    this.classList.add("active");
-
-    const filter = this.getAttribute("data-filter");
-
-    document.querySelectorAll("#experiences .cert-card").forEach((card) => {
-      const categories = card.getAttribute("data-category") || "";
-
-      if (filter === "all" || categories.includes(filter)) {
-        card.style.display = "block";
+// ============================================
+// FILTRES RÉALISATIONS TECHNIQUES — implémentation unique
+// Portée : uniquement #experiences (ne touche pas #projet-cicar)
+// Le filtre "top" cible les cartes ayant la classe CSS "top"
+// Les autres filtres ciblent l'attribut data-category
+// ============================================
+(function () {
+  function applyFilter(filterValue) {
+    const cards = document.querySelectorAll("#experiences .cert-card");
+    cards.forEach(function (card) {
+      var show;
+      if (filterValue === "all") {
+        show = true;
+      } else if (filterValue === "top") {
+        show = card.classList.contains("top");
       } else {
-        card.style.display = "none";
+        var categories = (card.getAttribute("data-category") || "").split(" ");
+        show = categories.indexOf(filterValue) !== -1;
       }
+      card.style.display = show ? "" : "none";
     });
-  });
-});
-// ========== BOUTON PROJETS PRINCIPAUX ==========
-window.addEventListener("DOMContentLoaded", () => {
-    filterSelection("top"); // Montre seulement les cartes top au départ
-});
-const filterBtns = document.querySelectorAll(".filter-btn");
-const cards = document.querySelectorAll(".cert-card");
+  }
 
-function filterSelection(category) {
-    cards.forEach(card => {
-        if (category === "all") {
-            card.style.display = "block";
-        } else if (card.classList.contains(category) || card.classList.contains(category.replace(" ", "")) || card.classList.contains("top") && category === "top") {
-            card.style.display = "block";
-        } else if (category === "top" && card.classList.contains("top")) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
+  function initFilters() {
+    var filterButtons = document.querySelectorAll("#experiences .filter-btn");
+
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        filterButtons.forEach(function (b) {
+          b.classList.remove("active");
+        });
+        btn.classList.add("active");
+        applyFilter(btn.getAttribute("data-filter"));
+      });
     });
 
-    // Gestion active
-    filterBtns.forEach(btn => btn.classList.remove("active"));
-    document.querySelector(`.filter-btn[data-filter="${category}"]`).classList.add("active");
-}
+    // Au chargement : afficher uniquement les projets principaux (classe "top")
+    applyFilter("top");
+  }
 
-// Initialisation : montre les projets principaux
-filterSelection("top");
-
-filterBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-        const category = btn.getAttribute("data-filter");
-        filterSelection(category);
-    });
-});
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFilters);
+  } else {
+    initFilters();
+  }
+})();
