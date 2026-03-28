@@ -427,3 +427,7 @@ document.querySelectorAll(".filter-btn").forEach((btn) => {
     });
   });
 });
+// ========== BOUTON PROJETS PRINCIPAUX ==========
+window.addEventListener("DOMContentLoaded", () => {
+    filterSelection("top"); // Montre seulement les cartes top au départ
+});
