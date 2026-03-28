@@ -352,14 +352,17 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 
 // ============================================
-// BARRES DE COMPÉTENCES — couleurs selon % + animation
+// BARRES DE COMPÉTENCES — couleurs selon ta légende HTML
+// Vert  (#34d399) = Débutant   0–40%
+// Bleu  (#3b82f6) = Intermédiaire 41–70%
+// Violet(#8b5cf6) = Avancé     71–100%
 // ============================================
 (function () {
 
   function getColor(pct) {
-    if (pct <= 60) return "linear-gradient(90deg, #38bdf8, #0ea5e9)";  // bleu
-    if (pct <= 75) return "linear-gradient(90deg, #8b5cf6, #7c3aed)";  // violet
-    return                "linear-gradient(90deg, #34d399, #10b981)";  // vert
+    if (pct <= 40) return "linear-gradient(90deg, #34d399, #10b981)";  // vert
+    if (pct <= 70) return "linear-gradient(90deg, #3b82f6, #2563eb)";  // bleu
+    return                "linear-gradient(90deg, #8b5cf6, #7c3aed)";  // violet
   }
 
   function animateBars(section) {
@@ -378,11 +381,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initSkillBars() {
     document.querySelectorAll(".skill-progress").forEach(function (bar) {
-      // Lire le % depuis le span — FIABLE même si le CSS écrase le style inline
+      // Source de vérité : le texte du span (ex: "75%")
       var span = bar.querySelector(".skill-percent");
       var pct = span ? parseInt(span.textContent) : 0;
 
       bar.setAttribute("data-target", pct);
+      // Corriger aussi le style width incohérent dans le HTML
       bar.style.setProperty("width", "0%", "important");
       bar.style.setProperty("transition", "none", "important");
       bar.style.setProperty("background", getColor(pct), "important");
