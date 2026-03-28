@@ -333,7 +333,6 @@ document.addEventListener("DOMContentLoaded", function () {
       card.style.display = show ? "" : "none";
     });
   }
-
   function initFilters() {
     var filterButtons = document.querySelectorAll("#experiences .filter-btn");
     filterButtons.forEach(function (btn) {
@@ -345,7 +344,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     applyFilter("top");
   }
-
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initFilters);
   } else {
@@ -354,7 +352,7 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 
 // ============================================
-// BARRES DE COMPÉTENCES — 3 couleurs pro + animation fiable
+// BARRES DE COMPÉTENCES — couleurs selon % + animation
 // ============================================
 (function () {
 
@@ -365,28 +363,26 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function animateBars(section) {
-    var bars = section.querySelectorAll(".skill-progress");
-    bars.forEach(function (bar, i) {
+    section.querySelectorAll(".skill-progress").forEach(function (bar, i) {
       var pct = parseInt(bar.getAttribute("data-target")) || 0;
       setTimeout(function () {
-        // double rAF pour forcer le navigateur à rendre le width:0 d'abord
         requestAnimationFrame(function () {
           requestAnimationFrame(function () {
             bar.style.setProperty("transition", "width 1.2s cubic-bezier(0.34, 1.1, 0.64, 1)", "important");
             bar.style.setProperty("width", pct + "%", "important");
           });
         });
-      }, i * 180);
+      }, i * 200);
     });
   }
 
   function initSkillBars() {
-    var bars = document.querySelectorAll(".skill-progress");
+    document.querySelectorAll(".skill-progress").forEach(function (bar) {
+      // Lire le % depuis le span — FIABLE même si le CSS écrase le style inline
+      var span = bar.querySelector(".skill-percent");
+      var pct = span ? parseInt(span.textContent) : 0;
 
-    bars.forEach(function (bar) {
-      var pct = parseInt(bar.style.width) || 0;
       bar.setAttribute("data-target", pct);
-      // Bloquer la largeur à 0 et appliquer la couleur
       bar.style.setProperty("width", "0%", "important");
       bar.style.setProperty("transition", "none", "important");
       bar.style.setProperty("background", getColor(pct), "important");
@@ -395,15 +391,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var section = document.getElementById("competences");
     if (!section) return;
 
-    // Si la section est déjà visible (ex: l'utilisateur est déjà dessus)
     var rect = section.getBoundingClientRect();
-    var alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
-
-    if (alreadyVisible) {
-      // Lancer directement après un court délai
-      setTimeout(function () { animateBars(section); }, 200);
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setTimeout(function () { animateBars(section); }, 300);
     } else {
-      // Sinon observer le scroll
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
