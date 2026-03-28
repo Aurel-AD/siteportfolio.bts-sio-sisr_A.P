@@ -233,3 +233,9 @@
         font-size: 1.1rem;
     }
 }
+/* “HERO” (le haut du site) */
+.hero-title i,
+.hero-skills i {
+    margin-right: 6px;
+    color: #34d399;
+}
