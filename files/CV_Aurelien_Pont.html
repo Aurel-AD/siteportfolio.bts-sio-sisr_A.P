@@ -1,413 +1,606 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CV — Aurélien Pont | Assistant administrateur technique informatique</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CV — Aurélien Pont</title>
 
-  <!-- Icônes -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-p/+1JQ7u..."
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
   <style>
-    /* =========================
-       Variables & Reset
-    ========================== */
-    :root{
-      --primary:#1565C0;   /* Titres */
-      --secondary:#2E7D32; /* Accents secondaires */
-      --accent:#00BFA5;    /* Highlights */
-      --light:#E3F2FD;     /* Fond doux */
-      --text:#263238;      /* Texte */
-      --shadow:0 5px 15px rgba(0,0,0,.1);
-      --radius:6px;
-      --pad:20px;
+    /* ───────────────────────────
+       Variables
+    ─────────────────────────── */
+    :root {
+      --navy:   #1B2A41;
+      --navy-l: #243552;
+      --teal:   #00897B;
+      --teal-l: #4DB6AC;
+      --white:  #FFFFFF;
+      --off:    #F4F6F9;
+      --text:   #2C2C2C;
+      --muted:  #5A6880;
+      --border: #DDE3EC;
+      --sidebar-w: 32%;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font:16px/1.6 "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      color:var(--text);
-      background:#f5f5f5;
-      -webkit-print-color-adjust:exact !important;
-              print-color-adjust:exact !important;
-      padding:var(--pad);
-    }
-    a{color:inherit;text-decoration:none}
-    ul{list-style:none}
-    .chip::before,
-    .skill-category li::before{content:"•";position:absolute;left:0;color:var(--secondary);font-weight:700}
 
-    /* =========================
-       Layout
-    ========================== */
-    .cv{
-      max-width:210mm;      /* A4 */
-      min-height:297mm;
-      margin:0 auto;
-      background:#fff;
-      box-shadow:var(--shadow);
-      padding:var(--pad);
-      display:flex;
-      flex-direction:column;
-      gap:24px;
+    /* ───────────────────────────
+       Reset & Base
+    ─────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body {
+      font-family: 'Lato', sans-serif;
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--text);
+      background: #E8ECF1;
     }
-    header.cv-header{
-      text-align:center;
-      padding:12px 0 20px;
-      border-bottom:3px solid var(--secondary);
-      position:relative;
-    }
-    header.cv-header::after{
-      content:"";
-      position:absolute;
-      bottom:-3px;left:50%;
-      transform:translateX(-50%);
-      width:100px;height:3px;background:var(--accent);
-    }
-    .name{
-      font-size:32px;font-weight:800;letter-spacing:.5px;color:var(--primary);margin-bottom:6px;
-    }
-    .title{
-      font-size:18px;color:var(--secondary);font-weight:600;margin-bottom:14px;
-    }
-    .contacts{
-      display:flex;justify-content:center;flex-wrap:wrap;gap:14px;font-size:15px
-    }
-    .contact{display:flex;align-items:center;gap:8px}
-    .contact .icon{color:var(--secondary);width:18px;text-align:center}
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
 
-    main{display:flex;flex-direction:column;gap:28px}
+    /* ───────────────────────────
+       Page wrapper
+    ─────────────────────────── */
+    .page {
+      display: flex;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 20px auto;
+      box-shadow: 0 8px 32px rgba(0,0,0,.18);
+    }
 
-    .section{display:block}
-    .section h2{
-      display:flex;align-items:center;gap:10px;
-      color:var(--primary);font-size:20px;font-weight:800;
-      padding-bottom:8px;margin-bottom:14px;border-bottom:2px solid var(--light);position:relative;
+    /* ───────────────────────────
+       SIDEBAR
+    ─────────────────────────── */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--navy);
+      color: var(--white);
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      flex-shrink: 0;
     }
-    .section h2::after{
-      content:"";position:absolute;left:0;bottom:-2px;width:50px;height:2px;background:var(--secondary)
+
+    /* Nom + titre (dans sidebar) */
+    .sb-identity { border-bottom: 1px solid rgba(255,255,255,.15); padding-bottom: 18px; }
+    .sb-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      line-height: 1.25;
+      color: var(--white);
+      margin-bottom: 6px;
     }
-    .section h2 i{color:var(--secondary)}
+    .sb-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--teal-l);
+      line-height: 1.4;
+    }
+
+    /* Sections sidebar */
+    .sb-section { display: flex; flex-direction: column; gap: 10px; }
+    .sb-heading {
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal-l);
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .sb-heading i { font-size: 10px; }
+
+    /* Contact */
+    .contact-list { display: flex; flex-direction: column; gap: 8px; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 12.5px;
+      line-height: 1.4;
+    }
+    .contact-item i {
+      color: var(--teal-l);
+      width: 14px;
+      text-align: center;
+      margin-top: 2px;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    /* Compétences sidebar */
+    .skill-group { margin-bottom: 10px; }
+    .skill-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--teal-l);
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .skill-group-title i { font-size: 10px; }
+    .skill-group ul {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      list-style-type: disc;
+      padding-left: 15px;
+    }
+    .skill-group ul li {
+      font-size: 12px;
+      color: rgba(255,255,255,.85);
+      line-height: 1.4;
+    }
+    .skill-group ul li::marker {
+      color: var(--teal-l);
+    }
+
+    /* Formations sidebar */
+    .edu-list { display: flex; flex-direction: column; gap: 12px; }
+    .edu-item {}
+    .edu-diploma {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 2px;
+    }
+    .edu-school {
+      font-size: 11px;
+      color: rgba(255,255,255,.65);
+      font-style: italic;
+    }
+    .edu-date {
+      font-size: 11px;
+      color: var(--teal-l);
+      font-weight: 700;
+    }
+
+    /* Intérêts sidebar */
+    .interests { display: flex; flex-wrap: wrap; gap: 6px; }
+    .interest-tag {
+      font-size: 11px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.9);
+      border-radius: 3px;
+      padding: 3px 8px;
+      line-height: 1.4;
+    }
+
+    /* ───────────────────────────
+       MAIN CONTENT
+    ─────────────────────────── */
+    .main {
+      flex: 1;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header bande */
+    .main-header {
+      background: var(--off);
+      padding: 26px 26px 20px;
+      border-bottom: 3px solid var(--teal);
+    }
+    .main-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+    .main-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    /* Sections main */
+    .main-body { padding: 20px 26px; display: flex; flex-direction: column; gap: 20px; }
+
+    .section-title {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--navy);
+      padding-bottom: 7px;
+      border-bottom: 2px solid var(--navy);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title i { color: var(--teal); font-size: 12px; }
 
     /* Profil */
-    .profile{
-      background:var(--light);padding:14px;border-left:4px solid var(--secondary);
-      border-radius:var(--radius)
+    .profile-box {
+      background: var(--off);
+      border-left: 4px solid var(--teal);
+      padding: 12px 14px;
+      border-radius: 2px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
     }
+    .profile-box strong { color: var(--text); }
 
     /* Expériences */
-    .experience{display:block;margin-bottom:18px}
-    .exp-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;gap:10px;flex-wrap:wrap}
-    .exp-title{font-weight:800;color:var(--primary);font-size:17px}
-    .exp-company{font-weight:700;color:var(--secondary)}
-    .exp-date{color:var(--accent);font-weight:600;font-size:15px}
-    .exp-details{margin-left:8px}
-    .subcategory{
-      margin:12px 0 8px;font-weight:800;color:var(--primary);font-size:15px;
-      padding-left:6px;border-left:3px solid var(--accent)
+    .exp-list { display: flex; flex-direction: column; gap: 16px; }
+    .exp-item {}
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
     }
-    .exp-details ul li{position:relative;padding-left:18px;margin:6px 0}
-
-    /* Compétences */
-    .skills{
-      display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))
+    .exp-title-block {}
+    .exp-role {
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.3;
     }
-    .skill-category{
-      background:var(--light);padding:14px;border-radius:var(--radius);
-      border-top:3px solid var(--secondary);transition:transform .25s ease, box-shadow .25s ease
+    .exp-company {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--teal);
     }
-    .skill-category:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
-    .skill-category h3{
-      color:var(--primary);margin-bottom:10px;padding-bottom:6px;border-bottom:1px dashed var(--secondary);
-      display:flex;align-items:center;gap:8px
+    .exp-date {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
-    .skill-category h3 i{color:var(--secondary)}
-    .skill-category ul li{position:relative;padding-left:18px;margin:6px 0}
-
-    /* Formations */
-    .edu-item{margin-bottom:12px;padding-left:14px;border-left:2px solid var(--light);transition:border-color .2s ease}
-    .edu-item:hover{border-left-color:var(--accent)}
-    .edu-title{font-weight:700;color:var(--primary)}
-    .edu-row{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:2px}
-    .edu-institution{font-style:italic}
-    .edu-date{color:var(--accent);font-weight:600}
-
-    /* Intérêts */
-    .tags{display:flex;flex-wrap:wrap;gap:10px}
-    .chip{
-      position:relative;background:linear-gradient(135deg,var(--primary),var(--secondary));
-      color:#fff;padding:6px 12px;border-radius:18px;font-size:13.5px
+    .exp-date::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
     }
 
-    /* Impression */
-    @page{size:A4;margin:12mm}
-    @media print{
-      body{background:#fff;padding:0}
-      .cv{box-shadow:none;max-width:100%;padding:14px}
-      .no-print{display:none !important}
-      a[href]::after{content:""}
+    /* Sous-catégories */
+    .subcat {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: var(--navy-l);
+      margin: 8px 0 4px;
+      padding-left: 8px;
+      border-left: 2px solid var(--teal);
+    }
+    .exp-ul {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      list-style-type: disc;
+      padding-left: 16px;
+    }
+    .exp-ul li {
+      font-size: 12.5px;
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .exp-ul li::marker {
+      color: var(--teal);
     }
 
-    /* Petites améliorations d’accessibilité */
-    .sr-only{
-      position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0
+    /* Séparateur expériences */
+    .exp-item + .exp-item { padding-top: 16px; border-top: 1px dashed var(--border); }
+
+    /* ───────────────────────────
+       PRINT / PDF
+    ─────────────────────────── */
+    @page { size: A4; margin: 0; }
+
+    @media print {
+      body { background: none; }
+      .page { margin: 0; box-shadow: none; width: 100%; min-height: 100vh; }
+      .no-print { display: none !important; }
     }
+
+    /* ───────────────────────────
+       Bouton impression
+    ─────────────────────────── */
+    .print-bar {
+      width: 210mm;
+      margin: 0 auto 12px;
+      text-align: right;
+    }
+    .print-btn {
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: background .2s;
+    }
+    .print-btn:hover { background: var(--teal); }
   </style>
 </head>
-
 <body>
-  <div class="cv" role="document" aria-labelledby="cv-title">
-    <!-- ====== En-tête ====== -->
-    <header class="cv-header">
-      <h1 id="cv-title" class="name">Aurélien Pont</h1>
-      <p class="title">Assistant administrateur technique informatique</p>
-      <address class="contacts" aria-label="Coordonnées">
-        <span class="contact" aria-label="Email">
-          <span class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></span>
-          <a href="mailto:aurelienpont@gmail.com">aurelienpont@gmail.com</a>
-        </span>
-        <span class="contact" aria-label="Téléphone">
-          <span class="icon"><i class="fas fa-phone" aria-hidden="true"></i></span>
-          <a href="tel:+33760756439">07&nbsp;60&nbsp;75&nbsp;64&nbsp;39</a>
-        </span>
-        <span class="contact" aria-label="Localisation">
-          <span class="icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></span>
-          Hauts-de-France
-        </span>
-        <span class="contact" aria-label="Permis">
-          <span class="icon"><i class="fas fa-car" aria-hidden="true"></i></span>
-          Permis B
-        </span>
-      </address>
-    </header>
 
-    <main>
-      <!-- ====== Profil ====== -->
-      <section class="section" aria-labelledby="profil">
-        <h2 id="profil"><i class="fas fa-user" aria-hidden="true"></i>Profil</h2>
-        <p class="profile">
-          Technicien informatique avec 2 ans d'expérience en support technique niveau 1‑2 (sur site et à distance).
-          Compétences en administration système et réseau, et déploiement automatisé via SCCM. Expertise dans le
-          diagnostic, la résolution d’incidents, la sécurisation des postes et la documentation. <strong>Objectif&nbsp;:</strong>
-          garantir un environnement numérique fluide, fiable et accessible.
-        </p>
-      </section>
-
-      <!-- ====== Expériences ====== -->
-      <section class="section" aria-labelledby="xp">
-        <h2 id="xp"><i class="fas fa-briefcase" aria-hidden="true"></i>Expériences professionnelles</h2>
-
-        <article class="experience" aria-labelledby="xp-novares">
-          <div class="exp-header">
-            <h3 id="xp-novares" class="exp-title">
-              Assistant administrateur technique informatique — <span class="exp-company">Novares Lens</span>
-            </h3>
-            <p class="exp-date">
-              <time datetime="2024-10">Depuis octobre 2024</time>
-            </p>
-          </div>
-
-          <div class="exp-details">
-            <h4 class="subcategory">Support Utilisateur &amp; Gestion des Incidents</h4>
-            <ul>
-              <li>Diagnostic et résolution des incidents niveau 1‑2 (matériel/logiciel)</li>
-              <li>Assistance utilisateurs à distance (DameWare, TeamViewer, RDP)</li>
-              <li>Gestion des tickets et demandes via Freshservice</li>
-              <li>Gestion et mise à jour de l'inventaire matériel/logiciel via Freshservice (Asset Management)</li>
-              <li>Formation des utilisateurs aux outils internes et aux bonnes pratiques de sécurité</li>
-            </ul>
-
-            <h4 class="subcategory">Déploiement &amp; Maintenance des Postes</h4>
-            <ul>
-              <li>Installation, configuration et maintenance des postes de travail</li>
-              <li>Déploiement automatisé des OS et logiciels via Microsoft SCCM</li>
-              <li>Installation et mise à jour des pilotes et logiciels (UNC/DFS, Software Center et les services DELL et LENOVO UPDATE)</li>
-              <li>Déploiement et maintenance des pilotes d'imprimante (locaux/partagés)</li>
-            </ul>
-
-            <h4 class="subcategory">Administration Système &amp; Sécurité</h4>
-            <ul>
-              <li>Gestion des comptes et droits d'accès (Active Directory)</li>
-              <li>Configuration et maintenance du VPN (FortiClient VPN &amp; EMS)</li>
-              <li>Supervision des mises à jour et correctifs de sécurité</li>
-              <li>Sauvegarde et restauration des données sur serveurs distants</li>
-              <li>Mise en place et gestion de l’authentification multifacteur (MFA)</li>
-              <li>Administration du réseau Wi‑Fi invités (Cisco Meraki)</li>
-            </ul>
-
-            <h4 class="subcategory">Documentation &amp; Conformité</h4>
-            <ul>
-              <li>Rédaction de procédures et documentation conforme TISAX</li>
-              <li>Guides utilisateurs &amp; FAQ techniques</li>
-              <li>Suivi des workflows via SwF (entrées, sorties, mouvements)</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="experience" aria-labelledby="xp-fresc-2024">
-          <div class="exp-header">
-            <h3 id="xp-fresc-2024" class="exp-title">
-              Technicien informatique — <span class="exp-company">FRESC Roubaix</span>
-            </h3>
-            <p class="exp-date">
-              <time datetime="2024-02">Fév. 2024</time> – <time datetime="2024-04">Avr. 2024</time>
-            </p>
-          </div>
-          <div class="exp-details">
-            <ul>
-              <li>Maintenance préventive et optimisation du parc</li>
-              <li>Déploiement et configuration complète des postes</li>
-              <li>Installation, remplacement et mise à niveau du matériel</li>
-              <li>Déploiement automatisé des OS et logiciels</li>
-              <li>Résolution d’incidents N1–N2 (diagnostic, dépannage, remise en service)</li>
-              <li>Configuration/administration de switches (Cisco, D‑Link)</li>
-              <li>Paramétrage de routeurs Wi‑Fi et d’infrastructure réseau</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="experience" aria-labelledby="xp-fresc-2023">
-          <div class="exp-header">
-            <h3 id="xp-fresc-2023" class="exp-title">
-              Technicien informatique — <span class="exp-company">FRESC Roubaix</span>
-            </h3>
-            <p class="exp-date"><time datetime="2023-01">Janvier 2023</time></p>
-          </div>
-          <div class="exp-details">
-            <ul>
-              <li>Installation/désinstallation de logiciels et préparation de postes</li>
-            </ul>
-          </div>
-        </article>
-      </section>
-
-      <!-- ====== Compétences ====== -->
-      <section class="section" aria-labelledby="skills">
-        <h2 id="skills"><i class="fas fa-tools" aria-hidden="true"></i>Compétences</h2>
-
-        <div class="skills">
-          <div class="skill-category">
-            <h3><i class="fas fa-headset" aria-hidden="true"></i>Support &amp; Assistance</h3>
-            <ul>
-              <li>Support technique N1/N2 (sur site &amp; à distance)</li>
-              <li>Freshservice (ticketing, inventaire, IT Asset Management)</li>
-              <li>Suivi des workflows (entrées, sorties, mouvements)</li>
-              <li>Rédaction de procédures utilisateurs</li>
-              <li>Formation et accompagnement des collaborateurs</li>
-              <li>Documentation technique (processus, conformité TISAX)</li>
-            </ul>
-          </div>
-
-          <div class="skill-category">
-            <h3><i class="fas fa-laptop" aria-hidden="true"></i>Systèmes &amp; Déploiement</h3>
-            <ul>
-              <li>Installation et configuration de postes (fixes &amp; portables)</li>
-              <li>Déploiement d’OS et d’applications via SCCM</li>
-              <li>Mises à jour, correctifs de sécurité, restauration système</li>
-              <li>Installation et mise à jour des pilotes et logiciels via UNC/DFS</li>
-            </ul>
-          </div>
-
-          <div class="skill-category">
-            <h3><i class="fas fa-shield-alt" aria-hidden="true"></i>Sécurité &amp; Réseau</h3>
-            <ul>
-              <li>VPN FortiClient, gestion EMS</li>
-              <li>Authentification multifacteur (Microsoft Authenticator)</li>
-              <li>Wi‑Fi invités (Cisco Meraki)</li>
-              <li>Gestion des accès, comptes et groupes AD</li>
-            </ul>
-          </div>
-
-          <div class="skill-category">
-            <h3><i class="fas fa-server" aria-hidden="true"></i>Administration &amp; Gestion</h3>
-            <ul>
-              <li>Sauvegarde &amp; restauration de données sur serveurs distants</li>
-              <li>Gestion de l’espace disque collaboratif</li>
-              <li>Administration des comptes (utilisateurs, ordinateurs)</li>
-            </ul>
-          </div>
-
-          <div class="skill-category">
-            <h3><i class="fas fa-wrench" aria-hidden="true"></i>Outils &amp; Environnements</h3>
-            <ul>
-              <li>SCCM, Citrix, DameWare, TeamViewer</li>
-              <li>Cisco Meraki, FortiClient (EMS &amp; Fortinet)</li>
-              <li>Windows (Dell, Lenovo), Active Directory</li>
-              <li>Freshservice (ticketing, inventaire, Asset Management), ROK (workflows)</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====== Formations ====== -->
-      <section class="section" aria-labelledby="edu">
-        <h2 id="edu"><i class="fas fa-graduation-cap" aria-hidden="true"></i>Diplômes &amp; Formations</h2>
-
-        <div class="edu-item">
-          <p class="edu-title">BTS SIO — Solutions d’Infrastructure, Systèmes et Réseaux (SISR)</p>
-          <p class="edu-row">
-            <span class="edu-institution">AFPI Marcq‑en‑Barœul</span>
-            <span class="edu-date"><time datetime="2024-10">Depuis octobre 2024</time></span>
-          </p>
-        </div>
-
-        <div class="edu-item">
-          <p class="edu-title">Titre professionnel Technicien d’Assistance Informatique (BAC)</p>
-          <p class="edu-row">
-            <span class="edu-institution">M2I Formation (distanciel)</span>
-            <span class="edu-date"><time datetime="2024">2024</time></span>
-          </p>
-        </div>
-
-        <div class="edu-item">
-          <p class="edu-title">MOOC ANSSI — Sécurité des systèmes d’information</p>
-          <p class="edu-row">
-            <span class="edu-institution">En ligne</span>
-            <span class="edu-date"><time datetime="2025">2025</time></span>
-          </p>
-        </div>
-
-        <div class="edu-item">
-          <p class="edu-title">MOOC RGPD — Protection des données</p>
-          <p class="edu-row">
-            <span class="edu-institution">En ligne</span>
-            <span class="edu-date"><time datetime="2025">2025</time></span>
-          </p>
-        </div>
-      </section>
-
-      <!-- ====== Centres d’intérêt ====== -->
-      <section class="section" aria-labelledby="interets">
-        <h2 id="interets"><i class="fas fa-heart" aria-hidden="true"></i>Centres d’intérêt</h2>
-        <div class="tags" role="list">
-          <span class="chip" role="listitem">Plongée sous‑marine N3‑RIFAP</span>
-          <span class="chip" role="listitem">Cuisine &amp; pâtisserie</span>
-          <span class="chip" role="listitem">Encadrement bénévole (Wattrelos FC)</span>
-          <span class="chip" role="listitem">Entretien d’un potager ouvrier</span>
-        </div>
-      </section>
-    </main>
-
-    <!-- Bouton impression -->
-    <p class="no-print" style="text-align:center">
-      <button type="button" class="print-btn" onclick="window.print()" aria-label="Imprimer le CV">
-        <i class="fas fa-print" aria-hidden="true"></i> Imprimer
-      </button>
-    </p>
+  <!-- Bouton hors page, invisible à l'impression -->
+  <div class="print-bar no-print">
+    <button class="print-btn" onclick="window.print()">
+      <i class="fas fa-print"></i> Enregistrer / Imprimer
+    </button>
   </div>
 
-  <script>
-    // Effet fondu au chargement
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body.style.opacity = 0;
-      document.body.style.transition = 'opacity .4s ease-in';
-      requestAnimationFrame(() => { document.body.style.opacity = 1; });
-    });
-  </script>
-</body>
-</html>
+  <div class="page">
 
+    <!-- ══════════════════════════════
+         SIDEBAR
+    ══════════════════════════════ -->
+    <aside class="sidebar">
+
+      <!-- Identité -->
+      <div class="sb-identity">
+        <p class="sb-name">Aurélien<br>Pont</p>
+        <p class="sb-title">Assistant administrateur<br>technique informatique</p>
+      </div>
+
+      <!-- Contact -->
+      <div class="sb-section">
+        <p class="sb-heading"><i class="fas fa-address-card"></i>Contact</p>
+        <div class="contact-list">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>aurelienpont&#64;gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>07 60 75 64 39</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Hauts-de-France</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-car"></i>
+            <span>Permis B — véhiculé</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compétences -->
+      <div class="sb-section">
+        <p class="sb-heading"><i class="fas fa-tools"></i>Compétences</p>
+
+        <div class="skill-group">
+          <p class="skill-group-title"><i class="fas fa-headset"></i>Support &amp; Assistance</p>
+          <ul>
+            <li>Support N1/N2 (sur site &amp; à distance)</li>
+            <li>Freshservice — ticketing &amp; Asset Mgmt</li>
+            <li>DameWare, TeamViewer, RDP</li>
+            <li>Rédaction de procédures utilisateurs</li>
+            <li>Formation et accompagnement</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-title"><i class="fas fa-laptop"></i>Systèmes &amp; Déploiement</p>
+          <ul>
+            <li>Déploiement OS &amp; apps via SCCM</li>
+            <li>Windows 10/11, postes fixes &amp; portables</li>
+            <li>Mises à jour, correctifs, restauration</li>
+            <li>Pilotes via UNC/DFS — Dell &amp; Lenovo</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-title"><i class="fas fa-shield-alt"></i>Sécurité &amp; Réseau</p>
+          <ul>
+            <li>VPN FortiClient &amp; EMS</li>
+            <li>MFA (Microsoft Authenticator)</li>
+            <li>Wi-Fi invités (Cisco Meraki)</li>
+            <li>Active Directory — comptes &amp; groupes</li>
+            <li>Sauvegarde / restauration distante</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-title"><i class="fas fa-wrench"></i>Outils &amp; Environnements</p>
+          <ul>
+            <li>SCCM, Citrix, Active Directory</li>
+            <li>Cisco Meraki, FortiClient (Fortinet)</li>
+            <li>Freshservice, ROK (workflows)</li>
+            <li>Switches Cisco, D-Link</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-title"><i class="fas fa-file-alt"></i>Documentation</p>
+          <ul>
+            <li>Conformité TISAX</li>
+            <li>Guides utilisateurs &amp; FAQ techniques</li>
+            <li>Suivi workflows (entrées/sorties/mvts)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Formations -->
+      <div class="sb-section">
+        <p class="sb-heading"><i class="fas fa-graduation-cap"></i>Formations</p>
+        <div class="edu-list">
+
+          <div class="edu-item">
+            <p class="edu-diploma">BTS SIO — SISR</p>
+            <p class="edu-school">AFPI Marcq-en-Barœul</p>
+            <p class="edu-date">Depuis oct. 2024</p>
+          </div>
+
+          <div class="edu-item">
+            <p class="edu-diploma">Titre professionnel Technicien d'Assistance Informatique (BAC)</p>
+            <p class="edu-school">M2I Formation (distanciel)</p>
+            <p class="edu-date">2024</p>
+          </div>
+
+          <div class="edu-item">
+            <p class="edu-diploma">MOOC ANSSI — Sécurité des SI</p>
+            <p class="edu-school">En ligne</p>
+            <p class="edu-date">2025</p>
+          </div>
+
+          <div class="edu-item">
+            <p class="edu-diploma">MOOC RGPD — Protection des données</p>
+            <p class="edu-school">En ligne</p>
+            <p class="edu-date">2025</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Intérêts -->
+      <div class="sb-section">
+        <p class="sb-heading"><i class="fas fa-heart"></i>Intérêts</p>
+        <div class="interests">
+          <span class="interest-tag">🤿 Plongée N3-RIFAP</span>
+          <span class="interest-tag">🍳 Cuisine &amp; pâtisserie</span>
+          <span class="interest-tag">⚽ Encadrement bénévole (Wattrelos FC)</span>
+          <span class="interest-tag">🌱 Potager ouvrier</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ══════════════════════════════
+         MAIN
+    ══════════════════════════════ -->
+    <main class="main">
+
+      <header class="main-header">
+        <h1 class="main-name">Aurélien Pont</h1>
+        <p class="main-title">Assistant administrateur technique informatique</p>
+      </header>
+
+      <div class="main-body">
+
+        <!-- Profil -->
+        <section>
+          <h2 class="section-title"><i class="fas fa-user"></i>Profil</h2>
+          <p class="profile-box">
+            Technicien informatique avec <strong>2 ans d'expérience</strong> en support technique
+            N1/N2, sur site et à distance. Compétences en administration système et réseau,
+            déploiement automatisé via <strong>SCCM</strong>, sécurisation des postes et documentation
+            conforme TISAX. <strong>Objectif :</strong> garantir un environnement numérique fluide,
+            fiable et sécurisé.
+          </p>
+        </section>
+
+        <!-- Expériences -->
+        <section>
+          <h2 class="section-title"><i class="fas fa-briefcase"></i>Expériences professionnelles</h2>
+
+          <div class="exp-list">
+
+            <!-- Novares -->
+            <div class="exp-item">
+              <div class="exp-header">
+                <div class="exp-title-block">
+                  <p class="exp-role">Assistant administrateur technique informatique</p>
+                  <p class="exp-company">Novares — Lens</p>
+                </div>
+                <span class="exp-date">Depuis octobre 2024</span>
+              </div>
+
+              <p class="subcat">Support utilisateur &amp; gestion des incidents</p>
+              <ul class="exp-ul">
+                <li>Diagnostic et résolution des incidents niveau N1/N2 (matériel / logiciel)</li>
+                <li>Assistance utilisateurs à distance (DameWare, TeamViewer, RDP)</li>
+                <li>Gestion des tickets et demandes via Freshservice</li>
+                <li>Gestion et mise à jour de l'inventaire matériel/logiciel (Asset Management)</li>
+                <li>Formation des utilisateurs aux outils internes et aux bonnes pratiques de sécurité</li>
+              </ul>
+
+              <p class="subcat">Déploiement &amp; maintenance des postes</p>
+              <ul class="exp-ul">
+                <li>Installation, configuration et maintenance des postes de travail</li>
+                <li>Déploiement automatisé des OS et logiciels via Microsoft SCCM</li>
+                <li>Mise à jour des pilotes et logiciels (UNC/DFS, Software Center, Dell &amp; Lenovo Update)</li>
+                <li>Déploiement et maintenance des pilotes d'imprimante (locaux / partagés)</li>
+              </ul>
+
+              <p class="subcat">Administration système &amp; sécurité</p>
+              <ul class="exp-ul">
+                <li>Gestion des comptes et droits d'accès (Active Directory)</li>
+                <li>Configuration et maintenance du VPN (FortiClient VPN &amp; EMS)</li>
+                <li>Supervision des mises à jour et correctifs de sécurité</li>
+                <li>Sauvegarde et restauration des données sur serveurs distants</li>
+                <li>Mise en place et gestion de l'authentification multifacteur (MFA)</li>
+                <li>Administration du réseau Wi-Fi invités (Cisco Meraki)</li>
+              </ul>
+
+              <p class="subcat">Documentation &amp; conformité</p>
+              <ul class="exp-ul">
+                <li>Rédaction de procédures et documentation conforme TISAX</li>
+                <li>Guides utilisateurs &amp; FAQ techniques</li>
+                <li>Suivi des workflows via SwF (entrées, sorties, mouvements)</li>
+              </ul>
+            </div>
+
+            <!-- FRESC 2024 -->
+            <div class="exp-item">
+              <div class="exp-header">
+                <div class="exp-title-block">
+                  <p class="exp-role">Technicien informatique</p>
+                  <p class="exp-company">FRESC — Roubaix</p>
+                </div>
+                <span class="exp-date">Fév. – Avr. 2024</span>
+              </div>
+              <ul class="exp-ul">
+                <li>Maintenance préventive et optimisation du parc informatique</li>
+                <li>Déploiement et configuration complets des postes de travail</li>
+                <li>Installation, remplacement et mise à niveau du matériel</li>
+                <li>Déploiement automatisé des OS et logiciels</li>
+                <li>Résolution d'incidents N1/N2 (diagnostic, dépannage, remise en service)</li>
+                <li>Configuration et administration de switches (Cisco, D-Link)</li>
+                <li>Paramétrage de routeurs Wi-Fi et d'infrastructure réseau</li>
+              </ul>
+            </div>
+
+            <!-- FRESC 2023 -->
+            <div class="exp-item">
+              <div class="exp-header">
+                <div class="exp-title-block">
+                  <p class="exp-role">Technicien informatique</p>
+                  <p class="exp-company">FRESC — Roubaix</p>
+                </div>
+                <span class="exp-date">Janvier 2023</span>
+              </div>
+              <ul class="exp-ul">
+                <li>Installation/désinstallation de logiciels et préparation de postes</li>
+              </ul>
+            </div
