@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPE 2 – Externalisation & Load Balancing – CICAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --surface2: #1c2230;
+            --border: #30363d;
+            --accent: #58a6ff;
+            --accent2: #3fb950;
+            --accent3: #f78166;
+            --accent4: #d2a679;
+            --text: #e6edf3;
+            --text-muted: #8b949e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ── COUVERTURE ── */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--surface);
+            border-bottom: 3px solid var(--accent);
+            padding: 60px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cover::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 70% 30%, rgba(88,166,255,.1) 0%, transparent 60%),
+                        radial-gradient(ellipse at 20% 80%, rgba(63,185,80,.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .cover-top { position: relative; }
+        .cover-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .85rem;
+            color: var(--accent);
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            opacity: .8;
+        }
+        .cover h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+        .cover h1 span { color: var(--accent); }
+        .cover-sub {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+        }
+        .cover-divider {
+            width: 60px; height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin-bottom: 40px;
+        }
+        .cover-logo-zone {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+        .cover-logo-box {
+            width: 100px; height: 100px;
+            background: var(--surface2);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+        }
+        .cover-logo-text strong {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .cover-logo-text span {
+            font-size: .9rem;
+            color: var(--text-muted);
+        }
+        .cover-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            position: relative;
+        }
+        .cover-info-card {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+        }
+        .cic-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            margin-bottom: 4px;
+        }
+        .cic-value {
+            font-size: .95rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* ── SOMMAIRE ── */
+        .sommaire {
+            background: var(--surface);
+            padding: 60px 80px;
+            border-bottom: 1px solid var(--border);
+        }
+        .sommaire h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--border);
+        }
+        .som-list { list-style: none; }
+        .som-list > li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .som-list > li:last-child { border-bottom: none; }
+        .som-letter {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .8rem;
+            color: var(--accent);
+            background: rgba(88,166,255,.1);
+            border: 1px solid rgba(88,166,255,.25);
+            border-radius: 4px;
+            padding: 2px 8px;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        .som-title { font-size: 1rem; font-weight: 600; color: var(--text); }
+        .som-sub { list-style: none; padding-left: 0; margin-top: 6px; }
+        .som-sub li {
+            padding: 3px 0;
+            font-size: .88rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 8px;
+        }
+        .som-sub li::before { content: '›'; color: var(--accent); flex-shrink: 0; }
+
+        /* ── SECTIONS ── */
+        .page-section {
+            padding: 64px 80px;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-letter {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .8rem;
+            color: var(--accent);
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            opacity: .8;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .sub-num {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 36px 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sub-num::before {
+            content: attr(data-n);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .75rem;
+            color: var(--accent);
+            background: rgba(88,166,255,.1);
+            border: 1px solid rgba(88,166,255,.25);
+            border-radius: 4px;
+            padding: 2px 8px;
+        }
+
+        p { font-size: .96rem; color: var(--text); margin-bottom: 14px; }
+        ul, ol { padding-left: 24px; margin-bottom: 16px; }
+        li { margin-bottom: 8px; font-size: .96rem; color: var(--text); }
+        ul li::marker { color: var(--accent); }
+        ol li::marker { color: var(--accent); font-family: 'IBM Plex Mono', monospace; }
+        code { font-family: 'IBM Plex Mono', monospace; font-size: .84rem; color: var(--accent4); }
+
+        /* ── TABLEAU ── */
+        .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 8px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+        thead tr { background: var(--surface2); }
+        th {
+            color: var(--accent);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .76rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 2px solid var(--border);
+        }
+        td {
+            padding: 11px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+            vertical-align: top;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,.02); }
+
+        /* ── CODE ── */
+        pre {
+            background: #0a0d13;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px 22px;
+            overflow-x: auto;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .82rem;
+            color: #79c0ff;
+            margin: 16px 0;
+            line-height: 1.65;
+        }
+        pre .cmt { color: var(--text-muted); }
+        pre .kw  { color: var(--accent3); }
+        pre .str { color: var(--accent2); }
+
+        /* ── ÉTAPE BLOC ── */
+        .etape {
+            margin: 28px 0 10px;
+            padding: 20px 24px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+        }
+        .etape-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .etape p { margin-bottom: 0; }
+
+        /* ── PHOTO ZONE ── */
+        .photo-zone {
+            border: 2px dashed var(--border);
+            border-radius: 10px;
+            padding: 36px 20px;
+            text-align: center;
+            margin: 18px 0;
+            background: rgba(255,255,255,.01);
+            transition: border-color .2s;
+        }
+        .photo-zone:hover { border-color: var(--accent); }
+        .photo-icon { font-size: 2.4rem; margin-bottom: 10px; opacity: .35; }
+        .photo-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .photo-desc { font-size: .84rem; color: var(--text-muted); line-height: 1.55; }
+        .photo-file {
+            display: inline-block;
+            margin-top: 12px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .74rem;
+            color: var(--accent4);
+            background: rgba(210,166,121,.08);
+            border: 1px solid rgba(210,166,121,.2);
+            border-radius: 4px;
+            padding: 3px 10px;
+        }
+
+        .photo-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent4);
+            margin: 28px 0 10px;
+        }
+
+        /* ── RETOUR ── */
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--accent); color: #0d1117;
+            font-weight: 700; font-size: .88rem;
+            padding: 10px 22px; border-radius: 6px;
+            text-decoration: none; margin-top: 36px;
+            transition: opacity .2s;
+        }
+        .back-btn:hover { opacity: .85; }
+
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 28px 80px;
+            text-align: center;
+            font-size: .82rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        footer strong { color: var(--text); }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════ COUVERTURE ══════════════ -->
+<div class="cover">
+    <div class="cover-top">
+        <div class="cover-label">PPE 2</div>
+        <h1>Projet <span>CICAR</span></h1>
+        <p class="cover-sub">Externalisation des serveurs de réservation — Load Balancing & Sauvegarde<br>Agence de location automobile · Îles Canaries</p>
+        <div class="cover-divider"></div>
+        <div class="cover-logo-zone">
+            <div class="cover-logo-box">🚗</div>
+            <div class="cover-logo-text">
+                <strong>CICAR</strong>
+                <span>el-cicars.es · Agence El Hierro</span>
+            </div>
+        </div>
+    </div>
+    <div class="cover-bottom">
+        <div class="cover-info-card">
+            <div class="cic-label">Établissement</div>
+            <div class="cic-value">AFPI Marcq-en-Barœul</div>
+        </div>
+        <div class="cover-info-card">
+            <div class="cic-label">Formation</div>
+            <div class="cic-value">BTS SIO — Option SISR</div>
+        </div>
+        <div class="cover-info-card">
+            <div class="cic-label">Session</div>
+            <div class="cic-value">2024 – 2025</div>
+        </div>
+        <div class="cover-info-card">
+            <div class="cic-label">Étudiant</div>
+            <div class="cic-value">Aurélien PONT</div>
+        </div>
+        <div class="cover-info-card">
+            <div class="cic-label">Professeur référent</div>
+            <div class="cic-value">Jean-Marc Falempin</div>
+        </div>
+        <div class="cover-info-card">
+            <div class="cic-label">Épreuve</div>
+            <div class="cic-value">E6 — Parcours de professionnalisation</div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════ SOMMAIRE ══════════════ -->
+<div class="sommaire">
+    <h2>Sommaire</h2>
+    <ul class="som-list">
+        <li>
+            <span class="som-letter">A</span>
+            <div>
+                <div class="som-title">La demande</div>
+                <ul class="som-sub">
+                    <li>1) Présentation de l'entreprise</li>
+                    <li>2) Objectifs</li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <span class="som-letter">B</span>
+            <div>
+                <div class="som-title">Le plan</div>
+                <ul class="som-sub">
+                    <li>1) Plan d'adressage IP</li>
+                    <li>2) Schéma d'infrastructure réseau</li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <span class="som-letter">C</span>
+            <div>
+                <div class="som-title">Le projet</div>
+                <ul class="som-sub">
+                    <li>Descriptif détaillé des actions réalisées pour la mise en place du projet</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!-- ══════════════ A. LA DEMANDE ══════════════ -->
+<div class="page-section">
+    <div class="section-letter">A</div>
+    <div class="section-title">La demande</div>
+
+    <div class="sub-num" data-n="1)">Présentation</div>
+
+    <p>
+        <strong>CICAR</strong> est une agence de location automobile implantée aux Îles Canaries,
+        opérant depuis plusieurs aéroports de l'archipel (Las Palmas de Gran Canaria, Tenerife Sud,
+        El Hierro, La Palma, La Gomera…). L'agence dispose d'un <strong>siège social à Tenerife</strong>
+        connecté à ses agences locales via un réseau WAN inter-sites.
+    </p>
+    <p>
+        La CICAR est une jeune société de location de véhicule de tourisme en plein essor, implantée depuis 2012
+        dans les Îles Canaries. Elle possède une flotte de 65 véhicules répartis dans plusieurs agences sur les îles
+        de Tenerife (qui est aussi le siège de l'entreprise), Lanzarote, Fuerteventura, La Palma, El Hierro,
+        La Gomera et Gran Canaria.
+    </p>
+    <p>
+        Cette PPE porte sur l'agence d'<strong>El Hierro (Valverde)</strong>, réseau <code>192.168.54.0/24</code>,
+        reliée au siège et aux autres agences distantes par des tunnels <strong>VPN IPsec inter-agences</strong>.
+    </p>
+    <p>
+        Suite à un incident de <strong>perte de connexion inter-îles</strong> ayant pénalisé l'activité de réservation
+        plusieurs jours, le directeur de la CICAR souhaite externaliser les serveurs de réservation des véhicules,
+        service actuellement hébergé sur les serveurs du siège. Chaque agence disposera désormais de ses propres
+        serveurs locaux avec un mécanisme de <strong>load balancing</strong> (HAProxy en DMZ) et une
+        <strong>sauvegarde automatique</strong> des VMs via Veeam Backup vers le NAS du siège.
+    </p>
+
+    <div class="sub-num" data-n="2)">Objectifs</div>
+    <p>Éléments à fournir :</p>
+    <ul>
+        <li>Mise en place d'une <strong>architecture trois-tiers</strong> en agence (HAProxy DMZ → WEB-01/WEB-02 LAN → MariaDB)</li>
+        <li>Déploiement de <strong>deux serveurs Debian</strong> (WEB-01 et WEB-02) avec Apache, PHP, MariaDB et Adminer</li>
+        <li>Configuration du <strong>Load Balancing HAProxy</strong> en DMZ (<code>192.168.64.1</code>) en round-robin</li>
+        <li>Mise en place de la <strong>réplication MariaDB</strong> entre WEB-01 et WEB-02 (miroir)</li>
+        <li>Configuration du <strong>pare-feu Stormshield SNS 310</strong> (zones LAN / DMZ / WAN)</li>
+        <li>Déploiement et configuration de <strong>Veeam Backup &amp; Replication</strong></li>
+        <li>Sauvegarde distante quotidienne des VMs vers le <strong>NAS RAID-5 du siège</strong></li>
+        <li>Sauvegarde des paramètres des <strong>équipements d'interconnexion</strong> (SNS310, Switch, AP WiFi)</li>
+        <li>Tests de <strong>basculement</strong> et de continuité de service</li>
+        <li>Mise à jour du <strong>schéma de l'infrastructure réseau</strong> et du plan d'adressage</li>
+    </ul>
+</div>
+
+<!-- ══════════════ B. LE PLAN ══════════════ -->
+<div class="page-section">
+    <div class="section-letter">B</div>
+    <div class="section-title">Le plan</div>
+
+    <div class="sub-num" data-n="1)">Plan d'adressage</div>
+
+    <h3>CICAR — Agence El Hierro (LAN : 192.168.54.0/24)</h3>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>Machine</th><th>Nom / Rôle</th><th>Login</th><th>Mot de passe (lab)</th><th>Adresse IP</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Stormshield SNS 310</td><td>Pare-feu / VPN IPsec — LAN + DMZ</td><td>admin</td><td>Afpi5962!</td><td><code>192.168.54.254</code></td></tr>
+                <tr><td>TP-Link SG-3424</td><td>Switch manageable LAN</td><td>admin</td><td>Afpi5962</td><td><code>192.168.54.20</code></td></tr>
+                <tr><td>AP WiFi WA901N</td><td>Borne WiFi 802.1X</td><td>admin</td><td>Afpi5962!</td><td><code>192.168.54.30</code></td></tr>
+                <tr><td>HP ProLiant ESXi</td><td>Hyperviseur LAN principal</td><td>root</td><td>Afpi5962!</td><td><code>192.168.54.1</code></td></tr>
+                <tr><td>HP ProLiant ESXi</td><td>Hyperviseur Load Balancing</td><td>root</td><td>Afpi5962!</td><td><code>192.168.69.94</code></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>CICAR — Machines Virtuelles (LAN : 192.168.54.0/24 / DMZ : 192.168.64.0/24)</h3>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>VM</th><th>Rôle</th><th>Login</th><th>Mot de passe (lab)</th><th>Adresse IP</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>AD/DNS/DHCP</td><td>Windows Server 2019 — Domaine <code>el-cicars.es</code></td><td>Administrateur</td><td>@fpi5962!</td><td><code>192.168.54.10</code></td></tr>
+                <tr><td>SRV-EL-WEB-01</td><td>Debian — Apache 2.4 + PHP + MariaDB + Adminer</td><td>root</td><td>Afpi5962!</td><td><code>192.168.54.15</code></td></tr>
+                <tr><td>SRV-EL-WEB-02</td><td>Debian — Miroir WEB-01 (haute disponibilité)</td><td>root</td><td>Afpi5962!</td><td><code>192.168.54.16</code></td></tr>
+                <tr><td>SRV-EL-PROXY</td><td>Debian — HAProxy DMZ (Load Balancer HTTP/HTTPS)</td><td>root</td><td>Afpi5962!</td><td><code>192.168.64.1</code></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>CICAR — Siège Tenerife (192.168.57.0/24)</h3>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>Équipement</th><th>Rôle</th><th>Adresse IP</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>NAS RAID-5</td><td>Destination des sauvegardes Veeam (cibles nuit)</td><td>Siège Tenerife</td></tr>
+                <tr><td>Veeam B&amp;R</td><td>Orchestrateur des sauvegardes VMs ESXi</td><td>Siège Tenerife</td></tr>
+                <tr><td>Poste Admin</td><td>MobaXterm — Accès SSH distant via VPN</td><td>Siège Tenerife</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="sub-num" data-n="2)">Schéma d'infrastructure</div>
+
+    <div class="photo-zone" style="padding: 56px 20px;">
+        <div class="photo-icon">🗺️</div>
+        <div class="photo-label">SCHÉMA D'INFRASTRUCTURE RÉSEAU — À INSÉRER ICI</div>
+        <div class="photo-desc">
+            Colle ici le schéma réseau complet (export SVG ou capture du fichier <strong>projet_cicar.html</strong>)<br><br>
+            Le schéma représente : Internet → Stormshield SNS 310 → Zone LAN (192.168.54.0/24) + Zone DMZ (192.168.64.0/24)<br>
+            + Tunnel VPN IPsec vers Siège Tenerife (192.168.57.0/24), La Palma, La Gomera, Gran Canaria
+        </div>
+        <span class="photo-file">projet_cicar.html → bouton "Télécharger SVG" ou capture d'écran du diagramme réseau</span>
+    </div>
+</div>
+
+<!-- ══════════════ C. LE PROJET ══════════════ -->
+<div class="page-section">
+    <div class="section-letter">C</div>
+    <div class="section-title">Le projet</div>
+
+    <p>
+        Descriptif détaillé des actions réalisées pour la mise en place du projet
+        d'externalisation des serveurs de réservation, de load balancing et de sauvegarde automatique
+        de l'infrastructure de l'agence CICAR El Hierro.
+    </p>
+
+    <!-- 1 : Architecture trois-tiers -->
+    <div class="etape">
+        <div class="etape-title">Mise en place de l'architecture trois-tiers</div>
+        <p>
+            L'architecture trois-tiers est déployée en agence : les requêtes internet arrivent sur le
+            <strong>Stormshield SNS 310</strong> (WAN), sont routées vers <strong>HAProxy</strong> dans la DMZ
+            (<code>192.168.64.1</code>), qui répartit la charge en round-robin vers les deux serveurs Apache
+            <strong>WEB-01</strong> (<code>192.168.54.15</code>) et <strong>WEB-02</strong> (<code>192.168.54.16</code>)
+            situés dans le LAN. Les deux instances partagent la même base de données MariaDB répliquée.
+        </p>
+    </div>
+
+    <div class="photo-zone">
+        <div class="photo-icon">🏗️</div>
+        <div class="photo-label">PHOTO 1 — Stormshield SNS 310 : règles pare-feu LAN / DMZ / WAN</div>
+        <div class="photo-desc">
+            Capture de la console Stormshield montrant les règles de filtrage autorisant les flux<br>
+            Internet → DMZ (port 80/443) et DMZ → LAN (port 80) vers WEB-01 et WEB-02<br>
+            Accès : <strong>https://192.168.54.254</strong> — admin / Afpi5962!
+        </div>
+        <span class="photo-file">Stormshield → Sécurité → Filtrage → règles HTTP/HTTPS</span>
+    </div>
+
+    <!-- 2 : HAProxy Load Balancing -->
+    <div class="etape">
+        <div class="etape-title">Configuration du Load Balancing HAProxy</div>
+        <p>
+            HAProxy est installé sur une VM Debian en DMZ (<code>192.168.64.1</code>).
+            Il écoute sur les ports 80 et 443 et répartit les requêtes HTTP/HTTPS
+            en <strong>round-robin</strong> vers WEB-01 et WEB-02.
+            Des health checks sont activés pour détecter automatiquement une panne d'un backend
+            et rediriger tout le trafic vers le serveur disponible.
+        </p>
+    </div>
+
+    <pre><span class="cmt"># /etc/haproxy/haproxy.cfg — Configuration Load Balancer</span>
+global
+    log /dev/log local0
+    maxconn 2000
+
+defaults
+    mode http
+    log global
+    option httplog
+    timeout connect 5s
+    timeout client  30s
+    timeout server  30s
+
+frontend http_front
+    bind *:80
+    bind *:443 ssl crt /etc/ssl/certs/cicar.pem
+    redirect scheme https if !{ ssl_fc }
+    default_backend web_servers
+
+backend web_servers
+    balance roundrobin
+    option httpchk HEAD / HTTP/1.1\r\nHost:\ localhost
+    server web01 <span class="str">192.168.54.15:80</span> check inter 2s rise 2 fall 3
+    server web02 <span class="str">192.168.54.16:80</span> check inter 2s rise 2 fall 3
+
+listen stats
+    bind *:8404
+    stats enable
+    stats uri /stats
+    stats refresh 30s</pre>
+
+    <div class="photo-grid-2">
+        <div class="photo-zone">
+            <div class="photo-icon">⚖️</div>
+            <div class="photo-label">PHOTO 2 — HAProxy stats : WEB-01 &amp; WEB-02 actifs</div>
+            <div class="photo-desc">
+                Page de statistiques HAProxy (port 8404) montrant les deux backends Apache en état <strong>UP</strong><br>
+                Répartition de charge active entre WEB-01 (.15) et WEB-02 (.16)
+            </div>
+            <span class="photo-file">http://192.168.64.1:8404/stats → capture d'écran</span>
+        </div>
+        <div class="photo-zone">
+            <div class="photo-icon">🌐</div>
+            <div class="photo-label">PHOTO 3 — Site de réservation accessible via HAProxy</div>
+            <div class="photo-desc">
+                Navigateur montrant le site de réservation CICAR accessible depuis internet<br>
+                via l'adresse publique redirigée vers HAProxy en DMZ
+            </div>
+            <span class="photo-file">Navigateur → https://[ip-publique] → page de réservation CICAR</span>
+        </div>
+    </div>
+
+    <!-- 3 : Serveurs Web Debian -->
+    <div class="etape">
+        <div class="etape-title">Déploiement des serveurs Web Debian (WEB-01 et WEB-02)</div>
+        <p>
+            Les deux serveurs de réservation sont installés sous <strong>Debian en ligne de commande</strong>
+            (sans interface graphique) afin de limiter les surfaces d'attaque.
+            Chaque serveur embarque la stack complète : <strong>Apache 2.4</strong>, <strong>PHP 8.x</strong>,
+            <strong>MariaDB</strong> et <strong>Adminer</strong> (interface web d'administration de la base de données).
+            Les deux instances sont en miroir avec réplication de la base MariaDB.
+        </p>
+    </div>
+
+    <pre><span class="cmt"># Installation de la stack LAMP sur Debian (WEB-01 : 192.168.54.15)</span>
+<span class="kw">apt update</span> && <span class="kw">apt upgrade</span> -y
+
+<span class="cmt"># Installation Apache + PHP + MariaDB</span>
+<span class="kw">apt install</span> -y apache2 php php-mysql php-curl php-gd mariadb-server
+
+<span class="cmt"># Installation Adminer (gestion base de données en ligne)</span>
+<span class="kw">mkdir</span> /var/www/html/adminer
+<span class="kw">wget</span> https://github.com/vrana/adminer/releases/latest -O /var/www/html/adminer/index.php
+
+<span class="cmt"># Sécurisation MariaDB</span>
+<span class="kw">mysql_secure_installation</span>
+
+<span class="cmt"># Activer les services au démarrage</span>
+<span class="kw">systemctl enable</span> apache2 mariadb
+<span class="kw">systemctl start</span>  apache2 mariadb</pre>
+
+    <div class="photo-grid-2">
+        <div class="photo-zone">
+            <div class="photo-icon">🖥️</div>
+            <div class="photo-label">PHOTO 4 — WEB-01 : services Apache et MariaDB actifs</div>
+            <div class="photo-desc">
+                Terminal SSH sur WEB-01 montrant les services Apache2 et MariaDB démarrés<br>
+                <code>systemctl status apache2</code> et <code>systemctl status mariadb</code>
+            </div>
+            <span class="photo-file">SSH root@192.168.54.15 → systemctl status</span>
+        </div>
+        <div class="photo-zone">
+            <div class="photo-icon">🗄️</div>
+            <div class="photo-label">PHOTO 5 — Interface Adminer sur WEB-01</div>
+            <div class="photo-desc">
+                Interface web Adminer accessible sur WEB-01<br>
+                pour l'administration de la base de données MariaDB
+            </div>
+            <span class="photo-file">http://192.168.54.15/adminer → capture d'écran</span>
+        </div>
+    </div>
+
+    <!-- 4 : Réplication MariaDB -->
+    <div class="etape">
+        <div class="etape-title">Réplication MariaDB — Miroir WEB-01 → WEB-02</div>
+        <p>
+            La réplication maître-esclave MariaDB est configurée entre WEB-01 (maître, <code>.15</code>)
+            et WEB-02 (esclave, <code>.16</code>). Toute modification de la base de données sur WEB-01
+            est automatiquement répliquée sur WEB-02, garantissant la cohérence des données
+            et la continuité de service en cas de panne d'un des serveurs.
+        </p>
+    </div>
+
+    <pre><span class="cmt"># Sur WEB-01 (maître) — /etc/mysql/mariadb.conf.d/50-server.cnf</span>
+[mysqld]
+server-id       = 1
+log_bin         = /var/log/mysql/mysql-bin.log
+binlog_do_db    = cicar_reservation
+
+<span class="cmt"># Créer l'utilisateur de réplication</span>
+<span class="kw">mysql</span> -u root -p
+<span class="str">CREATE USER 'replicator'@'192.168.54.16' IDENTIFIED BY 'Afpi5962!';</span>
+<span class="str">GRANT REPLICATION SLAVE ON *.* TO 'replicator'@'192.168.54.16';</span>
+<span class="str">FLUSH PRIVILEGES;</span>
+
+<span class="cmt"># Sur WEB-02 (esclave) — /etc/mysql/mariadb.conf.d/50-server.cnf</span>
+[mysqld]
+server-id = 2
+
+<span class="cmt"># Configurer la réplication</span>
+<span class="str">CHANGE MASTER TO
+  MASTER_HOST='192.168.54.15',
+  MASTER_USER='replicator',
+  MASTER_PASSWORD='Afpi5962!',
+  MASTER_LOG_FILE='mysql-bin.000001',
+  MASTER_LOG_POS=0;
+START SLAVE;</span>
+
+<span class="cmt"># Vérifier la réplication</span>
+<span class="str">SHOW SLAVE STATUS\G</span></pre>
+
+    <div class="photo-zone">
+        <div class="photo-icon">🔄</div>
+        <div class="photo-label">PHOTO 6 — Réplication MariaDB : statut SLAVE actif</div>
+        <div class="photo-desc">
+            Terminal SSH sur WEB-02 montrant le résultat de <code>SHOW SLAVE STATUS\G</code><br>
+            avec les champs <strong>Slave_IO_Running: Yes</strong> et <strong>Slave_SQL_Running: Yes</strong>
+        </div>
+        <span class="photo-file">SSH root@192.168.54.16 → mysql → SHOW SLAVE STATUS\G</span>
+    </div>
+
+    <!-- 5 : Tests basculement -->
+    <div class="etape">
+        <div class="etape-title">Tests de basculement — Continuité de service</div>
+        <p>
+            Tests effectués en coupant volontairement WEB-01 : HAProxy détecte la panne via son health check
+            et redirige automatiquement l'intégralité du trafic vers WEB-02 (<code>192.168.54.16</code>).
+            Le site de réservation reste accessible sans interruption visible pour l'utilisateur final.
+            Les résultats sont vérifiés via la page de statistiques HAProxy et un test navigateur.
+        </p>
+    </div>
+
+    <div class="photo-grid-2">
+        <div class="photo-zone">
+            <div class="photo-icon">🌐</div>
+            <div class="photo-label">PHOTO 7 — Test basculement : WEB-02 seul actif (192.168.54.16)</div>
+            <div class="photo-desc">
+                HAProxy stats montrant WEB-01 en état <strong>DOWN</strong> et WEB-02 en état <strong>UP</strong><br>
+                Le site reste accessible grâce au basculement automatique
+            </div>
+            <span class="photo-file">http://192.168.64.1:8404/stats après arrêt de WEB-01</span>
+        </div>
+        <div class="photo-zone">
+            <div class="photo-icon">✅</div>
+            <div class="photo-label">PHOTO 8 — Site de réservation toujours accessible</div>
+            <div class="photo-desc">
+                Navigateur confirmant l'accès au site de réservation CICAR<br>
+                même avec WEB-01 hors service (WEB-02 prend le relais)
+            </div>
+            <span class="photo-file">Navigateur → https://[ip-publique] → site accessible via WEB-02</span>
+        </div>
+    </div>
+
+    <!-- 6 : Veeam Backup -->
+    <div class="etape">
+        <div class="etape-title">Sauvegardes automatiques Veeam vers NAS RAID-5 du siège</div>
+        <p>
+            Les sauvegardes des VMs ESXi de l'agence sont orchestrées par
+            <strong>Veeam Backup &amp; Replication</strong> installé au siège de Tenerife.
+            Les snapshots ESXi (WEB-01, WEB-02, SRV-EL-PROXY, AD) sont transférés chaque nuit
+            via le tunnel VPN IPsec vers le <strong>NAS RAID-5 du siège</strong>.
+            Un job de sauvegarde quotidien est configuré avec une rétention de 7 jours.
+        </p>
+    </div>
+
+    <div class="photo-zone">
+        <div class="photo-icon">💾</div>
+        <div class="photo-label">PHOTO 9 — Veeam Backup &amp; Replication : jobs de sauvegarde</div>
+        <div class="photo-desc">
+            Interface Veeam montrant les jobs de sauvegarde des VMs ESXi de l'agence El Hierro<br>
+            vers le NAS RAID-5 du siège Tenerife — Statut des dernières exécutions
+        </div>
+        <span class="photo-file">Veeam B&amp;R → Jobs → Backup Jobs → liste des tâches agence El Hierro</span>
+    </div>
+
+    <div class="photo-grid-2">
+        <div class="photo-zone">
+            <div class="photo-icon">📁</div>
+            <div class="photo-label">PHOTO 10 — NAS RAID-5 : répertoire des sauvegardes</div>
+            <div class="photo-desc">
+                Explorateur de fichiers du NAS RAID-5 montrant les fichiers de sauvegarde<br>
+                Veeam (.vbk, .vib) des VMs de l'agence El Hierro
+            </div>
+            <span class="photo-file">NAS Tenerife → dossier sauvegardes → agence El Hierro</span>
+        </div>
+        <div class="photo-zone">
+            <div class="photo-icon">🔄</div>
+            <div class="photo-label">PHOTO 11 — Veeam : restauration test d'une VM</div>
+            <div class="photo-desc">
+                Test de restauration d'une VM depuis le NAS RAID-5<br>
+                pour vérifier l'intégrité des sauvegardes
+            </div>
+            <span class="photo-file">Veeam B&amp;R → Restore → Instant VM Recovery → test</span>
+        </div>
+    </div>
+
+    <!-- 7 : Sauvegarde équipements d'interconnexion -->
+    <div class="etape">
+        <div class="etape-title">Sauvegarde des paramètres des équipements d'interconnexion</div>
+        <p>
+            Les configurations des équipements d'interconnexion sont exportées et sauvegardées
+            afin de permettre une restauration rapide en cas de défaillance matérielle.
+            Le Stormshield SNS 310, le Switch TP-Link SG-3424 et le point d'accès WiFi WA901-N
+            font l'objet d'une sauvegarde de configuration régulière.
+        </p>
+    </div>
+
+    <pre><span class="cmt"># Sauvegarde configuration Stormshield SNS 310</span>
+<span class="cmt"># Via interface web : Maintenance → Sauvegardes → Télécharger la configuration</span>
+<span class="cmt"># Accès : https://192.168.54.254 → admin / Afpi5962!</span>
+
+<span class="cmt"># Sauvegarde configuration Switch TP-Link SG-3424</span>
+<span class="cmt"># Via interface web : System → System Tools → Backup</span>
+<span class="cmt"># Accès : http://192.168.54.20 → admin / Afpi5962</span>
+
+<span class="cmt"># Sauvegarde via CLI SSH (Switch TP-Link)</span>
+<span class="kw">ssh</span> admin@192.168.54.20
+<span class="str">copy startup-config tftp 192.168.54.10 backup_switch_elhierro.cfg</span></pre>
+
+    <div class="photo-zone">
+        <div class="photo-icon">🛡️</div>
+        <div class="photo-label">PHOTO 12 — Stormshield : export de la configuration</div>
+        <div class="photo-desc">
+            Console Stormshield SNS 310 — section Maintenance → Sauvegarde<br>
+            Export du fichier de configuration complet de l'agence El Hierro
+        </div>
+        <span class="photo-file">Stormshield → Maintenance → Sauvegardes → Télécharger la configuration</span>
+    </div>
+
+    <!-- Vérifications techniques -->
+    <h3>Vérification des services Linux</h3>
+    <pre><span class="cmt"># État des services sur WEB-01 (192.168.54.15)</span>
+systemctl status apache2
+systemctl status mariadb
+
+<span class="cmt"># Logs Apache</span>
+tail -f /var/log/apache2/access.log
+
+<span class="cmt"># Vérification réplication MariaDB (sur WEB-02)</span>
+mysql -u root -p -e <span class="str">"SHOW SLAVE STATUS\G"</span>
+
+<span class="cmt"># Test HAProxy health check</span>
+curl -I http://192.168.64.1/
+curl http://192.168.64.1:8404/stats</pre>
+
+    <h3>Vérification Active Directory</h3>
+    <pre><span class="cmt"># Test résolution DNS</span>
+nslookup el-cicars.es 192.168.54.10
+
+<span class="cmt"># Test authentification AD</span>
+Test-ComputerSecureChannel -Repair
+
+<span class="cmt"># Liste des utilisateurs AD</span>
+Get-ADUser -Filter * | Select-Object Name, SamAccountName, Enabled</pre>
+
+    <a href="../index.html#projet-cicar" class="back-btn">← Retour au portfolio</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <strong>PONT Aurélien</strong><br>
+    BTS SIO – Option SISR | Épreuve E6 — AFPI – Marcq-en-Barœul<br>
+    Projet CICAR — Externalisation des serveurs de réservation — Agence El Hierro, Îles Canaries — el-cicars.es
+</footer>
+
+</body>
+</html>
