@@ -26,99 +26,192 @@
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(88, 166, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(63, 185, 80, 0.05) 0%, transparent 50%);
+            background-attachment: fixed;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 20px;
         }
 
+        /* ── COUVERTURE ── */
         header {
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 30px;
-            margin-bottom: 40px;
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 60px 40px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
         }
 
         .project-tag {
             display: inline-block;
             background: rgba(88, 166, 255, 0.1);
             color: var(--accent);
-            padding: 4px 12px;
-            border-radius: 20px;
+            padding: 6px 16px;
+            border-radius: 100px;
             font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 15px;
-            border: 1px solid rgba(88, 166, 255, 0.3);
+            margin-bottom: 20px;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        h1 { font-size: 2.5rem; margin-bottom: 10px; color: var(--text); }
-        h2 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 20px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        h3 { font-size: 1.2rem; margin-top: 25px; margin-bottom: 15px; color: var(--accent2); }
+        h1 { font-size: 3rem; font-weight: 700; margin-bottom: 15px; letter-spacing: -1px; }
+        .subtitle { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
 
-        p { margin-bottom: 15px; color: var(--text-muted); }
+        /* ── SECTIONS ── */
+        h2 { 
+            font-size: 1.8rem; 
+            margin-top: 80px; 
+            margin-bottom: 30px; 
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
+        h2::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: var(--border);
+        }
+
+        h3 { 
+            font-size: 1.3rem; 
+            color: var(--accent); 
+            margin-top: 40px; 
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        p { margin-bottom: 20px; color: var(--text-muted); font-size: 1.05rem; }
+
+        /* ── GRILLE ── */
         .grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
 
         .card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.2s ease;
         }
 
-        .card h4 { color: var(--accent4); margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
 
+        .card h4 { 
+            color: var(--accent4); 
+            margin-bottom: 15px; 
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card ul { list-style: none; }
+        .card ul li { 
+            margin-bottom: 10px; 
+            padding-left: 20px; 
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .card ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* ── CODE ── */
         pre {
-            background: #000;
-            padding: 20px;
-            border-radius: 8px;
+            background: #0d1117;
+            padding: 25px;
+            border-radius: 12px;
             overflow-x: auto;
             border: 1px solid var(--border);
-            margin: 20px 0;
+            margin: 25px 0;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .str { color: var(--accent2); }
         .cmt { color: var(--text-muted); font-style: italic; }
         .cmd { color: var(--accent); font-weight: bold; }
 
+        /* ── PHOTOS ── */
         .photo-block {
             background: var(--surface2);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 30px 0;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
             text-align: center;
+            border-left: 4px solid var(--accent3);
         }
 
-        .photo-icon { font-size: 40px; margin-bottom: 10px; opacity: 0.8; }
-        .photo-label { font-weight: 600; color: var(--text); margin-bottom: 5px; }
-        .photo-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; }
-        .photo-file { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; background: #000; padding: 2px 8px; border-radius: 4px; color: var(--accent3); }
+        .photo-icon { font-size: 48px; margin-bottom: 20px; }
+        .photo-label { font-weight: 700; color: var(--text); font-size: 1.1rem; margin-bottom: 8px; text-transform: uppercase; }
+        .photo-desc { font-size: 1rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; }
+        .photo-file { 
+            font-family: 'IBM Plex Mono', monospace; 
+            font-size: 0.85rem; 
+            background: #000; 
+            padding: 6px 14px; 
+            border-radius: 6px; 
+            color: var(--accent3);
+            border: 1px solid rgba(247, 129, 102, 0.2);
+        }
 
         .back-btn {
-            display: inline-block;
-            margin-top: 40px;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 60px;
             color: var(--accent);
             text-decoration: none;
             font-weight: 600;
+            gap: 10px;
+            padding: 12px 24px;
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            transition: all 0.2s;
         }
 
+        .back-btn:hover { background: var(--accent); color: white; }
+
         footer {
-            margin-top: 60px;
-            padding-top: 20px;
+            margin-top: 100px;
+            padding: 40px 0;
             border-top: 1px solid var(--border);
-            font-size: 0.8rem;
-            color: var(--text-muted);
             text-align: center;
+            color: var(--text-muted);
         }
+
+        strong { color: var(--text); }
     </style>
 </head>
 <body>
@@ -127,94 +220,108 @@
     <header>
         <span class="project-tag">SISR — Épreuve E6</span>
         <h1>PPE 2 – Infrastructure Web & Haute Disponibilité</h1>
-        <p>Déploiement d'une architecture 3-tiers résiliente pour le site de réservation CICAR El Hierro.</p>
+        <div class="subtitle">Mise en œuvre d'une architecture 3-tiers résiliente pour le système de réservation CICAR.</div>
     </header>
 
-    <h2>1. Présentation du besoin</h2>
+    <h2>1. Analyse du besoin</h2>
     <p>
-        L'agence CICAR nécessite une plateforme de réservation en ligne disponible 24h/24. 
-        L'objectif de ce PPE est de supprimer tout "Point Unique de Défaillance" (SPOF) au niveau de la couche web 
-        en mettant en œuvre un répartiteur de charge (Load Balancer) et une grappe de serveurs redondants.
+        Dans le cadre du projet <strong>EL-CICAR</strong>, la disponibilité du service de location est critique. 
+        Toute interruption du serveur web entraîne une perte directe de chiffre d'affaires. 
+        Le PPE 2 consiste à déployer une infrastructure capable de supporter la perte d'un nœud applicatif sans impact utilisateur.
     </p>
 
     <div class="grid">
         <div class="card">
-            <h4>Périmètre</h4>
+            <h4><span style="color:var(--accent)">●</span> Architecture</h4>
             <ul>
-                <li>Virtualisation VMware ESXi</li>
-                <li>Zone DMZ (Sécurité externe)</li>
-                <li>Zone LAN (Données internes)</li>
+                <li>Virtualisation sous VMware ESXi</li>
+                <li>Segmentation LAN / DMZ</li>
+                <li>Répartition de charge (Layer 7)</li>
             </ul>
         </div>
         <div class="card">
-            <h4>Technologies</h4>
+            <h4><span style="color:var(--accent2)">●</span> Services</h4>
             <ul>
-                <li>HAProxy (Reverse Proxy)</li>
-                <li>Apache2 & PHP 8.2</li>
-                <li>MariaDB (Master-Slave)</li>
+                <li>HAProxy 2.6 (Load Balancer)</li>
+                <li>Serveurs Apache2 (Nodes)</li>
+                <li>Base MariaDB Master-Slave</li>
             </ul>
         </div>
     </div>
 
-    <h2>2. Architecture Technique</h2>
-    <p>L'infrastructure repose sur la segmentation réseau définie sur le pare-feu Stormshield SNS 310 :</p>
+    <h2>2. Configuration du Répartiteur (HAProxy)</h2>
+    <p>
+        Le serveur <strong>SRV-EL-PROXY</strong> agit comme point d'entrée unique en DMZ. 
+        Il analyse la santé des serveurs en arrière-plan et distribue les requêtes HTTP/HTTPS.
+    </p>
 
     <div class="photo-block">
         <div class="photo-icon">🌐</div>
-        <div class="photo-label">PHOTO 1 — Schéma de l'Architecture 3-Tiers</div>
-        <div class="photo-desc">Distribution des flux : WAN → Stormshield → HAProxy (DMZ) → Web Nodes (LAN)</div>
-        <span class="photo-file">archi_3tiers_cicar.png</span>
+        <div class="photo-label">PHOTO 1 — Configuration HAProxy</div>
+        <div class="photo-desc">
+            Définition du Frontend (port 80) et du Backend composé de la ferme de serveurs web.<br>
+            Algorithme utilisé : Round-Robin avec persistance de session.
+        </div>
+        <span class="photo-file">haproxy_config.png</span>
     </div>
 
-    <h3>Configuration du Reverse Proxy (SRV-EL-PROXY)</h3>
-    <p>Le serveur HAProxy reçoit les requêtes HTTPS et les distribue selon l'algorithme Round-Robin.</p>
     <pre>
-<span class="cmt"># /etc/haproxy/haproxy.cfg</span>
-backend web-backend
+<span class="cmt"># Extrait de /etc/haproxy/haproxy.cfg</span>
+backend web-cluster
     balance roundrobin
-    option httpchk GET /health.php
-    server WEB-01 192.168.54.15:80 check
-    server WEB-02 192.168.54.16:80 check</pre>
+    option httpchk GET /check.php
+    server WEB-01 192.168.54.15:80 check inter 2000 fall 3 rise 2
+    server WEB-02 192.168.54.16:80 check inter 2000 fall 3 rise 2</pre>
 
-    <h2>3. Mise en œuvre des Serveurs Web</h2>
-    <p>Les serveurs <strong>SRV-EL-WEB-01</strong> et <strong>SRV-EL-WEB-02</strong> hébergent le site de réservation.</p>
-    
+    <h2>3. Redondance des données (MariaDB)</h2>
+    <p>
+        Pour que la haute disponibilité soit totale, les données de réservation doivent être présentes sur les deux serveurs. 
+        Une réplication asynchrone est mise en place entre <strong>WEB-01 (Master)</strong> et <strong>WEB-02 (Slave)</strong>.
+    </p>
+
     <div class="photo-block">
-        <div class="photo-icon">🖥️</div>
-        <div class="photo-label">PHOTO 2 — Console Apache sur Debian</div>
-        <div class="photo-desc">Vérification de la synchronisation des fichiers du site via Rsync/Cron</div>
-        <span class="photo-file">apache_status.png</span>
+        <div class="photo-icon">💾</div>
+        <div class="photo-label">PHOTO 2 — État de la Réplication</div>
+        <div class="photo-desc">
+            Vérification du 'Slave_IO_Running' et 'Slave_SQL_Running' sur le second nœud.<br>
+            Garantit que chaque réservation sur WEB-01 est copiée sur WEB-02.
+        </div>
+        <span class="photo-file">mysql_replication_status.png</span>
     </div>
 
-    <h3>Réplication de la Base de Données</h3>
-    <p>Pour garantir l'intégrité des réservations, MariaDB est configuré en réplication pour assurer la persistance des données sur les deux nœuds.</p>
-    <pre>
-<span class="cmt"># Vérification de la synchronisation sur le Slave (WEB-02)</span>
-<span class="cmd">mysql -u root -p -e</span> <span class="str">"SHOW SLAVE STATUS\G"</span></pre>
-
-    <h2>4. Tests de Validation & Continuité</h2>
-    <p>La validation du PPE repose sur la capacité de l'infrastructure à absorber une panne majeure.</p>
+    <h2>4. Tests de continuité de service</h2>
+    <p>
+        La validation consiste à simuler une panne critique sur le serveur principal durant une session de navigation.
+    </p>
 
     <div class="photo-block">
         <div class="photo-icon">🧪</div>
-        <div class="photo-label">PHOTO 3 — Test de Basculement (Failover)</div>
-        <div class="photo-desc">Coupure de service sur WEB-01 : HAProxy redirige 100% du trafic sur WEB-02 instantanément</div>
-        <span class="photo-file">failover_test.png</span>
+        <div class="photo-label">PHOTO 3 — Dashboard de Statistiques</div>
+        <div class="photo-desc">
+            Interface de monitoring HAProxy montrant le basculement automatique (Failover) <br>
+            lors de l'arrêt manuel du service Apache sur WEB-01.
+        </div>
+        <span class="photo-file">haproxy_stats_failover.png</span>
     </div>
 
-    <h3>Vérification des accès</h3>
-    <pre><span class="cmt"># Test de réponse HTTP depuis l'extérieur</span>
-curl -I http://www.el-cicars.es
+    <h3>Vérification des flux techniques</h3>
+    <pre><span class="cmt"># Test de connectivité depuis le client extérieur</span>
+<span class="cmd">curl</span> -I http://www.el-cicars.es
 
-<span class="cmt"># Visualisation des statistiques HAProxy</span>
-watch -n 1 <span class="str">"echo 'show stat' | socat stdio /var/run/haproxy.sock"</span></pre>
+<span class="cmt"># Consultation des logs en temps réel sur le Proxy</span>
+<span class="cmd">tail</span> -f /var/log/haproxy.log | grep <span class="str">"web-cluster"</span>
 
-    <a href="../index.html#projet-cicar" class="back-btn">← Retour au portfolio</a>
+<span class="cmt"># Vérification de la santé des nœuds</span>
+systemctl status apache2</pre>
+
+    <a href="../index.html#projet-cicar" class="back-btn">
+        <span>←</span> Retour au portfolio
+    </a>
 </div>
 
 <footer>
     <strong>PONT Aurélien</strong><br>
-    BTS SIO – Option SISR – Projet CICAR El Hierro
+    BTS SIO SISR — Projet CICAR El Hierro — 2024/2025
 </footer>
 
 </body>
