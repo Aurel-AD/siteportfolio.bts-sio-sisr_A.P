@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>PPE 4 - Supervision & Sécurité</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+
+<body class="is-preload">
+
+<div id="wrapper">
+
+    <!-- HEADER -->
+    <header id="header">
+        <h1>PPE 4 – Supervision & Cybersécurité</h1>
+        <p>Projet BTS SIO SISR</p>
+    </header>
+
+    <!-- MAIN -->
+    <div id="main">
+        <section class="main">
+
+            <!-- PLAN -->
+            <header class="major">
+                <h2>Plan du projet</h2>
+            </header>
+
+            <ul>
+                <li>1. Contexte</li>
+                <li>2. Objectifs</li>
+                <li>3. Solutions</li>
+                <li>4. Mise en œuvre</li>
+                <li>5. Résultats</li>
+                <li>6. Compétences</li>
+            </ul>
+
+            <!-- CONTEXTE -->
+            <header class="major">
+                <h2>1. Contexte</h2>
+            </header>
+
+            <p>
+                L’entreprise ne disposait pas d’outils de supervision ni de gestion des incidents,
+                rendant difficile la détection des pannes et augmentant les délais d’intervention.
+            </p>
+
+            <!-- OBJECTIFS -->
+            <header class="major">
+                <h2>2. Objectifs</h2>
+            </header>
+
+            <ul>
+                <li>Mettre en place une supervision centralisée</li>
+                <li>Améliorer la réactivité du support</li>
+                <li>Renforcer la sécurité du SI</li>
+            </ul>
+
+            <!-- SOLUTIONS -->
+            <header class="major">
+                <h2>3. Solutions</h2>
+            </header>
+
+            <ul>
+                <li>Centreon pour la supervision</li>
+                <li>GLPI pour la gestion des tickets</li>
+                <li>VPN sécurisé</li>
+                <li>Supervision SNMP</li>
+                <li>MFA</li>
+            </ul>
+
+            <!-- ETAPES -->
+            <header class="major">
+                <h2>4. Mise en œuvre</h2>
+            </header>
+
+            <ol>
+                <li>Installation de Centreon</li>
+                <li>Configuration des équipements SNMP</li>
+                <li>Création des alertes et dashboards</li>
+                <li>Déploiement de GLPI</li>
+                <li>Mise en place du VPN sécurisé</li>
+                <li>Activation MFA</li>
+            </ol>
+
+            <!-- RESULTATS -->
+            <header class="major">
+                <h2>5. Résultats</h2>
+            </header>
+
+            <ul>
+                <li>Supervision en temps réel</li>
+                <li>Réduction du temps d’intervention</li>
+                <li>Amélioration de la sécurité</li>
+            </ul>
+
+            <!-- COMPETENCES -->
+            <header class="major">
+                <h2>6. Compétences développées</h2>
+            </header>
+
+            <ul>
+                <li>Supervision système</li>
+                <li>Cybersécurité</li>
+                <li>Administration système</li>
+                <li>Gestion des incidents</li>
+            </ul>
+
+            <!-- BOUTON RETOUR -->
+            <ul class="actions special">
+                <li>
+                    <a href="../index.html#projet-cicar" class="button primary icon solid fa-arrow-left">
+                        Retour au portfolio
+                    </a>
+                </li>
+            </ul>
+
+        </section>
+    </div>
+
+</div>
+
+</body>
+</html>
