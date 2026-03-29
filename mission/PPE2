@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>PPE 2 - Architecture Réseau</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+
+<body class="is-preload">
+
+<div id="wrapper">
+
+    <!-- HEADER -->
+    <header id="header">
+        <h1>PPE 2 – Architecture Haute Disponibilité</h1>
+        <p>Projet BTS SIO SISR</p>
+    </header>
+
+    <!-- MAIN -->
+    <div id="main">
+        <section class="main">
+
+            <!-- PLAN -->
+            <header class="major">
+                <h2>Plan du projet</h2>
+            </header>
+
+            <ul>
+                <li>1. Contexte</li>
+                <li>2. Objectifs</li>
+                <li>3. Architecture proposée</li>
+                <li>4. Mise en œuvre</li>
+                <li>5. Résultats</li>
+                <li>6. Compétences</li>
+            </ul>
+
+            <!-- CONTEXTE -->
+            <header class="major">
+                <h2>1. Contexte</h2>
+            </header>
+
+            <p>
+                L’entreprise CICAR possède plusieurs agences réparties sur différentes îles.
+                Le service de réservation dépend d’une infrastructure réseau insuffisamment fiable,
+                provoquant des interruptions de service.
+            </p>
+
+            <!-- OBJECTIFS -->
+            <header class="major">
+                <h2>2. Objectifs</h2>
+            </header>
+
+            <ul>
+                <li>Assurer la continuité de service</li>
+                <li>Améliorer la disponibilité des applications</li>
+                <li>Sécuriser les échanges inter-sites</li>
+            </ul>
+
+            <!-- ARCHITECTURE -->
+            <header class="major">
+                <h2>3. Architecture proposée</h2>
+            </header>
+
+            <ul>
+                <li>Architecture 3-tiers (LAN / DMZ / WAN)</li>
+                <li>Load balancing avec HAProxy</li>
+                <li>Serveurs Web Apache</li>
+                <li>Pare-feu Stormshield</li>
+                <li>VPN IPsec site à site</li>
+            </ul>
+
+            <!-- ETAPES -->
+            <header class="major">
+                <h2>4. Mise en œuvre</h2>
+            </header>
+
+            <ol>
+                <li>Création du réseau et des VLAN</li>
+                <li>Configuration des pare-feux</li>
+                <li>Mise en place du VPN IPsec</li>
+                <li>Installation des serveurs Apache</li>
+                <li>Configuration HAProxy (load balancing)</li>
+                <li>Tests de basculement et disponibilité</li>
+            </ol>
+
+            <!-- RESULTATS -->
+            <header class="major">
+                <h2>5. Résultats</h2>
+            </header>
+
+            <ul>
+                <li>Service hautement disponible</li>
+                <li>Répartition de charge efficace</li>
+                <li>Sécurité renforcée des communications</li>
+            </ul>
+
+            <!-- COMPETENCES -->
+            <header class="major">
+                <h2>6. Compétences développées</h2>
+            </header>
+
+            <ul>
+                <li>Administration réseau</li>
+                <li>Haute disponibilité</li>
+                <li>Sécurité réseau</li>
+                <li>VPN</li>
+            </ul>
+
+            <!-- BOUTON RETOUR -->
+            <ul class="actions special">
+                <li>
+                    <a href="../index.html#projet-cicar" class="button primary icon solid fa-arrow-left">
+                        Retour au portfolio
+                    </a>
+                </li>
+            </ul>
+
+        </section>
+    </div>
+
+</div>
+
+</body>
+</html>
