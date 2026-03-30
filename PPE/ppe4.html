@@ -58,14 +58,19 @@
             margin-bottom: 48px;
         }
         .cover-logo-box {
-            width: 100px; height: 100px;
+            width: 100px;
+            height: 100px;
             background: var(--surface2);
             border: 2px solid var(--border);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.8rem;
+        }
+        .cover-logo-box img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
         }
         .cover-logo-text strong { display: block; font-size: 1.5rem; }
         .cover-logo-text span { font-size: .9rem; color: var(--text-muted); }
@@ -297,7 +302,9 @@
         <p class="cover-sub">Accès distant sécurisé — 2FA — GLPI — Helpdesk<br>Agence de location automobile · Îles Canaries</p>
         <div class="cover-divider"></div>
         <div class="cover-logo-zone">
-            <div class="cover-logo-box">🚗</div>
+            <div class="cover-logo-box">
+                <img src="logo-cicar.svg" alt="Logo CICAR">
+            </div>
             <div class="cover-logo-text">
                 <strong>CICAR</strong>
                 <span>el-cicars.es · Agence El Hierro</span>
@@ -350,7 +357,9 @@
     <div class="sub-num" data-n="1">Plan d'adressage</div>
     <div class="table-wrap">
         <table>
-            <thead><tr><th>Équipement / VM</th><th>Rôle</th><th>Adresse IP</th><th>Accès distant</th></tr></thead>
+            <thead>
+                <tr><th>Équipement / VM</th><th>Rôle</th><th>Adresse IP</th><th>Accès distant</th></tr>
+            </thead>
             <tbody>
                 <tr><td>Stormshield SNS 310</td><td>Pare-feu / VPN (2FA activé)</td><td><code>192.168.54.254</code></td><td>HTTPS (MFA)</td></tr>
                 <tr><td>SRV-EL-WEB-01</td><td>Serveur Apache</td><td><code>192.168.54.15</code></td><td>SSH (MobaXterm)</td></tr>
@@ -429,27 +438,25 @@
 
     <!-- 3. Gestion des flux dans les pare-feux -->
     <div class="etape">
-        <div class="etape-title">🌊 3. Gestion des flux dans les pare-feux</div>
-        <p>Pour permettre les accès distants depuis le siège vers l'agence El Hierro, les règles de filtrage suivantes ont été configurées sur le Stormshield SNS 310 :</p>
+        <div class="etape-title">🌊 3. Gestion des flux (règles de filtrage)</div>
+        <p>Pour permettre les accès distants depuis le siège vers l'agence El Hierro via le tunnel VPN IPsec, les règles de <strong>filtrage</strong> suivantes ont été configurées sur le Stormshield SNS 310 :</p>
     </div>
     <div class="table-wrap">
         <table>
-            <thead><tr><th>Source</th><th>Destination</th><th>Service</th><th>Action</th><th>Description</th></tr></thead>
+            <thead>
+                <tr><th>Source</th><th>Destination</th><th>Service</th><th>Action</th><th>Description</th></tr>
+            </thead>
             <tbody>
-                <tr><td>Siège Tenerife (192.168.57.0/24)</td><td>AD (192.168.54.10)</td><td>RDP (3389)</td><td>Autoriser</td><td>Administration du domaine</td></tr>
-                <tr><td>Siège Tenerife (192.168.57.0/24)</td><td>WEB-01/02 (.15/.16)</td><td>SSH (22)</td><td>Autoriser</td><td>Administration serveurs web</td></tr>
-                <tr><td>Siège Tenerife (192.168.57.0/24)</td><td>PROXY (192.168.64.1)</td><td>SSH (22)</td><td>Autoriser</td><td>Administration HAProxy</td></tr>
-                <tr><td>Siège Tenerife (192.168.57.0/24)</td><td>MAIL (192.168.54.40)</td><td>SSH (22)</td><td>Autoriser</td><td>Administration Zimbra</td></tr>
-                <tr><td>Siège Tenerife (192.168.57.0/24)</td><td>Stormshield (192.168.54.254)</td><td>HTTPS (443)</td><td>Autoriser</td><td>Administration pare-feu (2FA)</td></tr>
+                <tr><td>Siège (192.168.57.0/24)</td><td>AD (192.168.54.10)</td><td>RDP (3389)</td><td>Autoriser</td><td>Administration du domaine</td></tr>
+                <tr><td>Siège (192.168.57.0/24)</td><td>WEB-01/02 (.15/.16)</td><td>SSH (22)</td><td>Autoriser</td><td>Administration serveurs web</td></tr>
+                <tr><td>Siège (192.168.57.0/24)</td><td>PROXY (192.168.64.1)</td><td>SSH (22)</td><td>Autoriser</td><td>Administration HAProxy</td></tr>
+                <tr><td>Siège (192.168.57.0/24)</td><td>MAIL (192.168.54.40)</td><td>SSH (22)</td><td>Autoriser</td><td>Administration Zimbra</td></tr>
+                <tr><td>Siège (192.168.57.0/24)</td><td>Stormshield (192.168.54.254)</td><td>HTTPS (443)</td><td>Autoriser</td><td>Administration pare-feu (2FA)</td></tr>
             </tbody>
         </table>
     </div>
-
-    <div class="photo-zone">
-        <div class="photo-icon">🛡️</div>
-        <div class="photo-label">PHOTO 4 — Règles de filtrage Stormshield</div>
-        <div class="photo-desc">Console Stormshield : règles autorisant les flux depuis le siège vers les équipements de l'agence.</div>
-        <span class="photo-file">stormshield_firewall_rules.png</span>
+    <div class="highlight">
+        <strong>📌 Précision :</strong> Il s'agit uniquement de règles de <strong>filtrage</strong> (firewall rules). Le NAT n'est pas utilisé ici car les accès se font via le tunnel VPN IPsec entre le siège et l'agence.
     </div>
 
     <!-- 4. GLPI + GLPI_Agent -->
