@@ -427,15 +427,25 @@ backend web_cluster
         </ul>
         <div class="highlight">📌 Les deux serveurs hébergent des sites indépendants. En cas de panne de l'un, l'autre assure la continuité sans synchronisation nécessaire.</div>
     </div>
-    <div class="photo-zone">
-        <div class="photo-icon">📊</div>
-        <div class="photo-label">PHOTO — HAProxy Stats : WEB-01 DOWN, WEB-02 UP</div>
+<div class="grid-2">
+    <div class="photo-zone" style="border-color: rgba(63,185,80,.5);">
+        <div class="photo-icon">🟢</div>
+        <div class="photo-label" style="color:#3fb950;">WEB-01 — Site A (.54.15)</div>
         <div class="photo-desc">
-            Page de statistiques HAProxy (<code>http://192.168.64.1/stats</code>) pendant le test de basculement.<br>
-            WEB-01 affiché en rouge (DOWN), WEB-02 en vert (UP) — trafic redirigé automatiquement.
+            <img src="web1.png" alt="Site WEB-01" style="max-width:100%; border-radius:8px; margin:10px 0; border:2px solid rgba(63,185,80,.4);">
+            <br>Site accessible directement sur WEB-01. En cas de panne, HAProxy retire ce backend et bascule sur WEB-02.
         </div>
-        <span class="photo-file">haproxy_failover_stats.png</span>
     </div>
+    <div class="photo-zone" style="border-color: rgba(88,166,255,.5);">
+        <div class="photo-icon">🔵</div>
+        <div class="photo-label" style="color:#58a6ff;">WEB-02 — Site B (.54.16)</div>
+        <div class="photo-desc">
+            <img src="web2.png" alt="Site WEB-02" style="max-width:100%; border-radius:8px; margin:10px 0; border:2px solid rgba(88,166,255,.4);">
+            <br>Site indépendant sur WEB-02. Prend le relais automatiquement si WEB-01 est indisponible.
+        </div>
+    </div>
+</div>
+<div class="highlight">📌 Le health check HAProxy (<code>option httpchk GET /</code>) détecte la panne en ~2 secondes et redirige le trafic sans intervention manuelle.</div>
     
     <!-- Étape 3 : Sauvegardes Veeam -->
     <div class="etape">
