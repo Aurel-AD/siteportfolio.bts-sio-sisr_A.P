@@ -253,3 +253,18 @@
 .niveau-notions { background: rgba(148,163,184,0.2); color: #94a3b8; border: 1px solid #94a3b8; }
 .niveau-op      { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid #34d399; }
 .niveau-maitrise{ background: rgba(139,92,246,0.15); color: #8b5cf6; border: 1px solid #8b5cf6; }
+/* Couleurs des badges de niveau */
+.skill-badge.niveau-op {
+    background-color: #34d399; /* Vert pour Opérationnel */
+    color: #fff;
+}
+
+.skill-badge.niveau-notions {
+    background-color: #94a3b8; /* Gris pour Notions */
+    color: #fff;
+}
+
+/* Forcer la visibilité des titres dans les cartes */
+.skill-card h3 {
+    color: #ffffff !important;
+}
