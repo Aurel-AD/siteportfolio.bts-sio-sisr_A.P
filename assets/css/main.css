@@ -239,3 +239,17 @@
     margin-right: 6px;
     color: #34d399;
 }
+
+.skill-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin: 8px 0 12px;
+}
+
+.niveau-notions { background: rgba(148,163,184,0.2); color: #94a3b8; border: 1px solid #94a3b8; }
+.niveau-op      { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid #34d399; }
+.niveau-maitrise{ background: rgba(139,92,246,0.15); color: #8b5cf6; border: 1px solid #8b5cf6; }
