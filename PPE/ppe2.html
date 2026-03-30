@@ -227,6 +227,12 @@
             font-weight: 600;
         }
         .photo-desc { font-size: .84rem; color: var(--text-muted); margin-top: 8px; }
+        .photo-img {
+            max-width: 100%;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
         .photo-file {
             display: inline-block;
             margin-top: 10px;
@@ -363,6 +369,7 @@
         <div class="photo-icon">🛡️</div>
         <div class="photo-label">PHOTO 1 — Règles de filtrage Stormshield</div>
         <div class="photo-desc">Console Stormshield : règles autorisant HTTP/HTTPS depuis WAN vers DMZ (HAProxy) et DMZ vers LAN (WEB-01, WEB-02).</div>
+        <img class="photo-img" src="Capture d'écran 2026-03-30 122922.png" alt="Règles de filtrage Stormshield">
         <span class="photo-file">Capture d'écran 2026-03-30 122922.png</span>
     </div>
 
@@ -387,6 +394,7 @@ backend web_cluster
         <div class="photo-icon">📄</div>
         <div class="photo-label">PHOTO 2 — Configuration HAProxy</div>
         <div class="photo-desc">Fichier <code>/etc/haproxy/haproxy.cfg</code> avec frontend HTTP, backend en round-robin et les serveurs WEB-01 et WEB-02.</div>
+        <img class="photo-img" src="Capture d'écran 2026-03-30 124849.png" alt="Configuration HAProxy">
         <span class="photo-file">Capture d'écran 2026-03-30 124849.png</span>
     </div>
 
@@ -404,6 +412,7 @@ backend web_cluster
             Console Veeam montrant le job de sauvegarde <strong>"essai"</strong> pour l'agence El Hierro.<br>
             Statut : <strong>Success</strong> — Destination : NAS SRV-Truenas-TF (siège Tenerife)
         </div>
+        <img class="photo-img" src="veeambackup.png" alt="Veeam Backup jobs">
         <span class="photo-file">veeambackup.png</span>
     </div>
 
@@ -422,6 +431,7 @@ backend web_cluster
             Téléchargement du fichier de configuration <code>SN310A41KL095A7_2026-03-30.na</code><br>
             La sauvegarde est ensuite stockée sur le NAS du siège.
         </div>
+        <img class="photo-img" src="Capture d'écran 2026-03-30 132300.png" alt="Export configuration Stormshield">
         <span class="photo-file">Capture d'écran 2026-03-30 132300.png</span>
     </div>
 
