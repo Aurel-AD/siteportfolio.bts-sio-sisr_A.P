@@ -37,7 +37,8 @@
         }
         .cover::before {
             content: '';
-            position: absolute; inset: 0;
+            position: absolute;
+            inset: 0;
             background: radial-gradient(ellipse at 70% 30%, rgba(88,166,255,.1) 0%, transparent 60%);
             pointer-events: none;
         }
@@ -53,7 +54,8 @@
         .cover h1 span { color: var(--accent); }
         .cover-sub { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 48px; }
         .cover-divider {
-            width: 60px; height: 3px;
+            width: 60px;
+            height: 3px;
             background: var(--accent);
             margin-bottom: 40px;
         }
@@ -64,14 +66,19 @@
             margin-bottom: 48px;
         }
         .cover-logo-box {
-            width: 100px; height: 100px;
+            width: 100px;
+            height: 100px;
             background: var(--surface2);
             border: 2px solid var(--border);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.8rem;
+        }
+        .cover-logo-box img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
         }
         .cover-logo-text strong { display: block; font-size: 1.5rem; }
         .cover-logo-text span { font-size: .9rem; color: var(--text-muted); }
@@ -265,10 +272,12 @@
     <div class="cover-top">
         <div class="cover-label">PPE 2 – Parcours de professionnalisation</div>
         <h1>Projet <span>CICAR</span></h1>
-        <p class="cover-sub">Externalisation des serveurs de réservation — Load Balancing & Sauvegarde<br>Agence de location automobile · Îles Canaries</p>
+        <p class="cover-sub">Externalisation des serveurs de reservation — Load Balancing & Sauvegarde<br>Agence de location automobile · Iles Canaries</p>
         <div class="cover-divider"></div>
         <div class="cover-logo-zone">
-            <div class="cover-logo-box">🚗</div>
+            <div class="cover-logo-box">
+                <img src="logo-cicar.svg" alt="Logo CICAR">
+            </div>
             <div class="cover-logo-text">
                 <strong>CICAR</strong>
                 <span>el-cicars.es · Agence El Hierro</span>
@@ -276,50 +285,50 @@
         </div>
     </div>
     <div class="cover-bottom">
-        <div class="cover-info-card"><div class="cic-label">Établissement</div><div class="cic-value">AFPI Marcq-en-Barœul</div></div>
+        <div class="cover-info-card"><div class="cic-label">Etablissement</div><div class="cic-value">AFPI Marcq-en-Baroeul</div></div>
         <div class="cover-info-card"><div class="cic-label">Formation</div><div class="cic-value">BTS SIO — Option SISR</div></div>
         <div class="cover-info-card"><div class="cic-label">Session</div><div class="cic-value">2024 – 2025</div></div>
-        <div class="cover-info-card"><div class="cic-label">Étudiant</div><div class="cic-value">Aurélien PONT</div></div>
-        <div class="cover-info-card"><div class="cic-label">Professeur référent</div><div class="cic-value">Jean-Marc Falempin</div></div>
-        <div class="cover-info-card"><div class="cic-label">Épreuve</div><div class="cic-value">E6 — Parcours de professionnalisation</div></div>
+        <div class="cover-info-card"><div class="cic-label">Etudiant</div><div class="cic-value">Aurelien PONT</div></div>
+        <div class="cover-info-card"><div class="cic-label">Professeur referent</div><div class="cic-value">Jean-Marc Falempin</div></div>
+        <div class="cover-info-card"><div class="cic-label">Epreuve</div><div class="cic-value">E6 — Parcours de professionalisation</div></div>
     </div>
 </div>
 
 <div class="sommaire">
     <h2>Sommaire</h2>
     <ul class="som-list">
-        <li><span class="som-letter">A</span><div><div class="som-title">La demande</div><ul class="som-sub"><li>Présentation de l'entreprise</li><li>Objectifs du projet</li></ul></div></li>
-        <li><span class="som-letter">B</span><div><div class="som-title">Le plan</div><ul class="som-sub"><li>Plan d'adressage IP</li><li>Schéma d'infrastructure réseau</li></ul></div></li>
-        <li><span class="som-letter">C</span><div><div class="som-title">Le projet</div><ul class="som-sub"><li>Mise en place de l'architecture 3-tiers</li><li>Configuration HAProxy & réplication MariaDB</li><li>Sauvegardes Veeam & équipements</li></ul></div></li>
+        <li><span class="som-letter">A</span><div><div class="som-title">La demande</div><ul class="som-sub"><li>Presentation de l'entreprise</li><li>Objectifs du projet</li></ul></div></li>
+        <li><span class="som-letter">B</span><div><div class="som-title">Le plan</div><ul class="som-sub"><li>Plan d'adressage IP</li><li>Schema d'infrastructure reseau</li></ul></div></li>
+        <li><span class="som-letter">C</span><div><div class="som-title">Le projet</div><ul class="som-sub"><li>Mise en place de l'architecture 3-tiers</li><li>Configuration HAProxy & replication MariaDB</li><li>Sauvegardes Veeam & equipements</li></ul></div></li>
     </ul>
 </div>
 
-<!-- A. DEMANDE -->
 <div class="page-section">
     <div class="section-letter">A</div>
     <div class="section-title">La demande</div>
-    <div class="sub-num" data-n="1">Présentation</div>
-    <p><strong>CICAR</strong> est une agence de location automobile aux Îles Canaries, avec un siège à Tenerife et plusieurs agences locales interconnectées par VPN IPsec. L'agence d'<strong>El Hierro (Valverde)</strong> utilise le réseau <code>192.168.54.0/24</code>.</p>
-    <p>Suite à une panne inter-îles ayant paralysé les réservations, la direction souhaite <strong>externaliser les serveurs de réservation</strong> localement, avec un mécanisme de <strong>load balancing</strong> et une <strong>sauvegarde automatique</strong> vers le NAS du siège.</p>
+    <div class="sub-num" data-n="1">Presentation</div>
+    <p><strong>CICAR</strong> est une agence de location automobile aux Iles Canaries, avec un siege a Tenerife et plusieurs agences locales interconnectees par VPN IPsec. L'agence d'<strong>El Hierro (Valverde)</strong> utilise le reseau <code>192.168.54.0/24</code>.</p>
+    <p>Suite a une panne inter-iles ayant paralyse les reservations, la direction souhaite <strong>externaliser les serveurs de reservation</strong> localement, avec un mecanisme de <strong>load balancing</strong> et une <strong>sauvegarde automatique</strong> vers le NAS du siege.</p>
     <div class="sub-num" data-n="2">Objectifs du projet</div>
     <ul>
-        <li>Architecture trois-tiers : HAProxy en DMZ → 2 serveurs web (LAN) → MariaDB répliquée</li>
-        <li>Load balancing round-robin avec détection de panne</li>
-        <li>Réplication MariaDB maître-esclave entre WEB-01 et WEB-02</li>
-        <li>Sauvegardes quotidiennes des VMs vers NAS RAID-5 (siège) via Veeam</li>
-        <li>Sauvegarde des configurations des équipements réseau (Stormshield, switch, AP)</li>
-        <li>Tests de basculement et mise à jour de la documentation</li>
+        <li>Architecture trois-tiers : HAProxy en DMZ → 2 serveurs web (LAN) → MariaDB repliquee</li>
+        <li>Load balancing round-robin avec detection de panne</li>
+        <li>Replication MariaDB maitre-esclave entre WEB-01 et WEB-02</li>
+        <li>Sauvegardes quotidiennes des VMs vers NAS RAID-5 (siege) via Veeam</li>
+        <li>Sauvegarde des configurations des equipements reseau (Stormshield, switch, AP)</li>
+        <li>Tests de basculement et mise a jour de la documentation</li>
     </ul>
 </div>
 
-<!-- B. PLAN -->
 <div class="page-section">
     <div class="section-letter">B</div>
     <div class="section-title">Le plan</div>
     <div class="sub-num" data-n="1">Plan d'adressage IP</div>
     <div class="table-wrap">
         <table>
-            <thead><tr><th>Zone / Machine</th><th>Rôle</th><th>Adresse IP</th></tr></thead>
+            <thead>
+                <tr><th>Zone / Machine</th><th>Role</th><th>Adresse IP</th></tr>
+            </thead>
             <tbody>
                 <tr><td>Stormshield SNS 310</td><td>Pare-feu / VPN (LAN)</td><td><code>192.168.54.254</code></td></tr>
                 <tr><td>ESXi Principal</td><td>Hyperviseur LAN</td><td><code>192.168.54.1</code></td></tr>
@@ -327,42 +336,38 @@
                 <tr><td>SRV-EL-WEB-01</td><td>Apache + PHP + MariaDB</td><td><code>192.168.54.15</code></td></tr>
                 <tr><td>SRV-EL-WEB-02</td><td>Miroir WEB-01</td><td><code>192.168.54.16</code></td></tr>
                 <tr><td>SRV-EL-PROXY</td><td>HAProxy (DMZ)</td><td><code>192.168.64.1</code></td></tr>
-                <tr><td>Siège NAS RAID-5</td><td>Destination sauvegardes Veeam</td><td><code>192.168.57.0/24</code> (VPN)</td></tr>
+                <tr><td>Siege NAS RAID-5</td><td>Destination sauvegardes Veeam</td><td><code>192.168.57.0/24</code> (VPN)</td></tr>
             </tbody>
         </table>
     </div>
-    <div class="sub-num" data-n="2">Schéma d'infrastructure</div>
+    <div class="sub-num" data-n="2">Schema d'infrastructure</div>
     <div class="photo-zone">
         <div class="photo-icon">📡</div>
-        <div class="photo-label">Schéma réseau complet</div>
-        <div class="photo-desc">Internet → Stormshield (WAN) → Zones LAN/DMZ → HAProxy → WEB-01/WEB-02. Tunnel VPN IPsec vers siège Tenerife pour supervision (Centreon) et sauvegardes.</div>
+        <div class="photo-label">Schema reseau complet</div>
+        <div class="photo-desc">Internet → Stormshield (WAN) → Zones LAN/DMZ → HAProxy → WEB-01/WEB-02. Tunnel VPN IPsec vers siege Tenerife pour supervision (Centreon) et sauvegardes.</div>
         <span class="photo-file">Fichier : schema_reseau_cicar.pdf</span>
     </div>
 </div>
 
-<!-- C. PROJET -->
 <div class="page-section">
     <div class="section-letter">C</div>
     <div class="section-title">Le projet</div>
 
-    <!-- Étape 1 : architecture -->
     <div class="etape">
-        <div class="etape-title">🏗️ 1. Architecture trois-tiers</div>
-        <p>Les requêtes HTTP/HTTPS arrivent sur le pare-feu Stormshield, sont NATées vers HAProxy en DMZ (<code>192.168.64.1</code>). HAProxy distribue la charge en round-robin vers les serveurs WEB-01 et WEB-02 situés dans le LAN (<code>192.168.54.15/.16</code>). Chaque serveur web partage la même base MariaDB grâce à une réplication maître-esclave.</p>
+        <div class="etape-title">1. Architecture trois-tiers</div>
+        <p>Les requetes HTTP/HTTPS arrivent sur le pare-feu Stormshield, sont NATees vers HAProxy en DMZ (<code>192.168.64.1</code>). HAProxy distribue la charge en round-robin vers les serveurs WEB-01 et WEB-02 situes dans le LAN (<code>192.168.54.15/.16</code>). Chaque serveur web partage la meme base MariaDB grace a une replication maitre-esclave.</p>
     </div>
 
-    <!-- PHOTO 1 : Règles pare-feu Stormshield -->
     <div class="photo-zone">
         <div class="photo-icon">🛡️</div>
-        <div class="photo-label">PHOTO 1 — Règles de filtrage Stormshield</div>
-        <div class="photo-desc">Console Stormshield : règles autorisant HTTP/HTTPS depuis WAN vers DMZ (HAProxy) et DMZ vers LAN (WEB-01, WEB-02).</div>
-        <span class="photo-file">Stormshield → Sécurité → Filtrage → règles HTTP/HTTPS</span>
+        <div class="photo-label">PHOTO 1 — Regles de filtrage Stormshield</div>
+        <div class="photo-desc">Console Stormshield : regles autorisant HTTP/HTTPS depuis WAN vers DMZ (HAProxy) et DMZ vers LAN (WEB-01, WEB-02).</div>
+        <span class="photo-file">Stormshield → Securite → Filtrage → regles HTTP/HTTPS</span>
     </div>
 
-    <!-- Étape 2 : HAProxy -->
     <div class="etape">
-        <div class="etape-title">⚖️ 2. Load Balancing HAProxy</div>
-        <p>HAProxy est configuré en mode HTTP, avec round-robin et health checks actifs. En cas de panne d'un backend, le trafic bascule automatiquement.</p>
+        <div class="etape-title">2. Load Balancing HAProxy</div>
+        <p>HAProxy est configure en mode HTTP, avec round-robin et health checks actifs. En cas de panne d'un backend, le trafic bascule automatiquement.</p>
     </div>
     <pre><span class="cmt"># /etc/haproxy/haproxy.cfg (extrait)</span>
 frontend http_front
@@ -382,20 +387,18 @@ listen stats
     stats enable
     stats uri /stats</pre>
 
-    <!-- PHOTO 2 : Stats HAProxy avec backends UP -->
     <div class="photo-zone">
         <div class="photo-icon">📊</div>
         <div class="photo-label">PHOTO 2 — Interface de statistiques HAProxy</div>
-        <div class="photo-desc">Page <code>http://192.168.64.1:8404/stats</code> montrant les deux backends WEB-01 et WEB-02 en état UP et la répartition des requêtes.</div>
+        <div class="photo-desc">Page <code>http://192.168.64.1:8404/stats</code> montrant les deux backends WEB-01 et WEB-02 en etat UP et la repartition des requetes.</div>
         <span class="photo-file">haproxy_stats.png</span>
     </div>
 
-    <!-- Étape 3 : Réplication MariaDB -->
     <div class="etape">
-        <div class="etape-title">🔄 3. Réplication MariaDB (WEB-01 → WEB-02)</div>
-        <p>La base de données <code>cicars_reservation</code> est répliquée en temps réel depuis le maître (WEB-01) vers l'esclave (WEB-02). La configuration utilise le binlog et un utilisateur dédié.</p>
+        <div class="etape-title">3. Replication MariaDB (WEB-01 → WEB-02)</div>
+        <p>La base de donnees <code>cicars_reservation</code> est repliquee en temps reel depuis le maitre (WEB-01) vers l'esclave (WEB-02). La configuration utilise le binlog et un utilisateur dedie.</p>
     </div>
-    <pre><span class="cmt"># Sur WEB-02 : démarrage de la réplication</span>
+    <pre><span class="cmt"># Sur WEB-02 : demarrage de la replication</span>
 CHANGE MASTER TO
   MASTER_HOST='192.168.54.15',
   MASTER_USER='replicator',
@@ -404,35 +407,30 @@ CHANGE MASTER TO
   MASTER_LOG_POS=0;
 START SLAVE;</pre>
 
-    <!-- PHOTO 3 : Status réplication -->
     <div class="photo-zone">
         <div class="photo-icon">🗄️</div>
-        <div class="photo-label">PHOTO 3 — Vérification réplication MariaDB</div>
+        <div class="photo-label">PHOTO 3 — Verification replication MariaDB</div>
         <div class="photo-desc">Commande <code>SHOW SLAVE STATUS\G</code> sur WEB-02 : Slave_IO_Running = Yes, Slave_SQL_Running = Yes.</div>
         <span class="photo-file">mariadb_replication_status.png</span>
     </div>
 
-    <!-- Étape 4 : Test basculement -->
     <div class="etape">
-        <div class="etape-title">🔁 4. Test de basculement (failover)</div>
-        <p>Après arrêt volontaire de WEB-01, HAProxy détecte la panne (health check échoué) et redirige l'intégralité du trafic vers WEB-02. Aucune interruption de service constatée.</p>
+        <div class="etape-title">4. Test de basculement (failover)</div>
+        <p>Apres arret volontaire de WEB-01, HAProxy detecte la panne (health check echoue) et redirige l'integralite du trafic vers WEB-02. Aucune interruption de service constatee.</p>
     </div>
 
-    <!-- PHOTO 4 : Basculement -->
     <div class="photo-zone">
         <div class="photo-icon">⚠️</div>
-        <div class="photo-label">PHOTO 4 — HAProxy stats après coupure de WEB-01</div>
-        <div class="photo-desc">WEB-01 affiché en rouge (DOWN), WEB-02 toujours UP. Le site reste accessible via WEB-02 uniquement.</div>
+        <div class="photo-label">PHOTO 4 — HAProxy stats apres coupure de WEB-01</div>
+        <div class="photo-desc">WEB-01 affiche en rouge (DOWN), WEB-02 toujours UP. Le site reste accessible via WEB-02 uniquement.</div>
         <span class="photo-file">haproxy_failover.png</span>
     </div>
 
-    <!-- Étape 5 : Sauvegardes Veeam -->
     <div class="etape">
-        <div class="etape-title">💾 5. Sauvegardes automatiques Veeam vers NAS siège</div>
-        <p>Veeam Backup & Replication installé au siège Tenerife sauvegarde chaque nuit les VMs de l'agence El Hierro (WEB-01, WEB-02, PROXY, AD) via le tunnel VPN IPsec. Destination : NAS RAID-5 avec rétention 7 jours.</p>
+        <div class="etape-title">5. Sauvegardes automatiques Veeam vers NAS siege</div>
+        <p>Veeam Backup & Replication installe au siege Tenerife sauvegarde chaque nuit les VMs de l'agence El Hierro (WEB-01, WEB-02, PROXY, AD) via le tunnel VPN IPsec. Destination : NAS RAID-5 avec retention 7 jours.</p>
     </div>
 
-    <!-- PHOTO 5 : Veeam jobs -->
     <div class="photo-zone">
         <div class="photo-icon">📀</div>
         <div class="photo-label">PHOTO 5 — Veeam Backup & Replication : jobs actifs</div>
@@ -440,17 +438,15 @@ START SLAVE;</pre>
         <span class="photo-file">veeam_jobs_elhierro.png</span>
     </div>
 
-    <!-- Étape 6 : Sauvegarde équipements -->
     <div class="etape">
-        <div class="etape-title">🔧 6. Sauvegarde des configurations des équipements d'interconnexion</div>
-        <p>Les fichiers de configuration du pare-feu Stormshield, du switch TP-Link SG-3424 et du point d'accès WiFi sont exportés et stockés sur le serveur d'administration.</p>
+        <div class="etape-title">6. Sauvegarde des configurations des equipements d'interconnexion</div>
+        <p>Les fichiers de configuration du pare-feu Stormshield, du switch TP-Link SG-3424 et du point d'acces WiFi sont exportes et stockes sur le serveur d'administration.</p>
     </div>
 
-    <!-- PHOTO 6 : Export Stormshield -->
     <div class="photo-zone">
         <div class="photo-icon">📁</div>
         <div class="photo-label">PHOTO 6 — Export configuration Stormshield</div>
-        <div class="photo-desc">Interface web Stormshield : Maintenance → Sauvegardes → Télécharger la configuration (fichier .conf).</div>
+        <div class="photo-desc">Interface web Stormshield : Maintenance → Sauvegardes → Telecharger la configuration (fichier .conf).</div>
         <span class="photo-file">stormshield_backup_conf.png</span>
     </div>
 
@@ -458,25 +454,26 @@ START SLAVE;</pre>
 ssh admin@192.168.54.20
 copy startup-config tftp 192.168.54.10 backup_switch_elhierro.cfg</pre>
 
-    <h3>Vérifications finales</h3>
-    <pre><span class="cmt"># État des services sur WEB-01</span>
+    <h3>Verifications finales</h3>
+    <pre><span class="cmt"># Etat des services sur WEB-01</span>
 systemctl status apache2 mariadb
 <span class="cmt"># Logs HAProxy</span>
 tail -f /var/log/haproxy.log
-<span class="cmt"># Test de continuité DNS</span>
+<span class="cmt"># Test de continuite DNS</span>
 nslookup el-cicars.es 192.168.54.10</pre>
 
     <div class="photo-zone" style="border-style: solid; border-color: var(--accent2);">
         <div class="photo-icon">✅</div>
-        <div class="photo-label">Livrables PPE 2 validés</div>
-        <div class="photo-desc">✔ Architecture trois-tiers opérationnelle<br>✔ Load balancing HAProxy avec round-robin<br>✔ Réplication MariaDB active<br>✔ Sauvegardes Veeam quotidiennes vers NAS siège<br>✔ Sauvegarde des configurations Stormshield, switch, AP<br>✔ Schéma réseau et plan d'adressage mis à jour</div>
+        <div class="photo-label">Livrables PPE 2 valides</div>
+        <div class="photo-desc">✔ Architecture trois-tiers operationnelle<br>✔ Load balancing HAProxy avec round-robin<br>✔ Replication MariaDB active<br>✔ Sauvegardes Veeam quotidiennes vers NAS siege<br>✔ Sauvegarde des configurations Stormshield, switch, AP<br>✔ Schema reseau et plan d'adressage mis a jour</div>
     </div>
 
     <a href="../index.html#projet-cicar" class="back-btn">← Retour au portfolio</a>
 </div>
 
 <footer>
-    <strong>PONT Aurélien</strong> — BTS SIO SISR — AFPI Marcq-en-Barœul — Projet CICAR (El Hierro) — 2026
+    <strong>PONT Aurelien</strong> — BTS SIO SISR — AFPI Marcq-en-Baroeul — Projet CICAR (El Hierro) — 2026
 </footer>
+
 </body>
 </html>
