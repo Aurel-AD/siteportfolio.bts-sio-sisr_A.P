@@ -358,12 +358,16 @@
         <p>Les requetes HTTP/HTTPS arrivent sur le pare-feu Stormshield, sont NATees vers HAProxy en DMZ (<code>192.168.64.1</code>). HAProxy distribue la charge en round-robin vers les serveurs WEB-01 et WEB-02 situes dans le LAN (<code>192.168.54.15/.16</code>). Chaque serveur web partage la meme base MariaDB grace a une replication maitre-esclave.</p>
     </div>
 
-    <div class="photo-zone">
-        <div class="photo-icon">🛡️</div>
-        <div class="photo-label">PHOTO 1 — Regles de filtrage Stormshield</div>
-        <div class="photo-desc">Console Stormshield : regles autorisant HTTP/HTTPS depuis WAN vers DMZ (HAProxy) et DMZ vers LAN (WEB-01, WEB-02).</div>
-        <span class="photo-file">Stormshield → Securite → Filtrage → regles HTTP/HTTPS</span>
+    <!-- PHOTO 1 : Règles pare-feu Stormshield -->
+<div class="photo-zone">
+    <div class="photo-icon">🛡️</div>
+    <div class="photo-label">PHOTO 1 — Règles de filtrage Stormshield</div>
+    <div class="photo-desc">
+        Console Stormshield : règles de filtrage autorisant les flux HTTP/HTTPS depuis WAN vers DMZ (HAProxy)<br>
+        et DMZ vers LAN (WEB-01, WEB-02) pour l'architecture trois-tiers.
     </div>
+    <span class="photo-file">Capture d'écran 2026-03-30 122922.png</span>
+</div>
 
     <div class="etape">
         <div class="etape-title">2. Load Balancing HAProxy</div>
