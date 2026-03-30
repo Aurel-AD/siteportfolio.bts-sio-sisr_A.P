@@ -407,26 +407,20 @@
         </div>
     </div>
 
-    <!-- 3. Gestion des flux -->
+    <!-- 3. Gestion des flux (règles de filtrage) -->
     <div class="etape">
-        <div class="etape-title">🌊 3. Gestion des flux (règles de filtrage)</div>
-        <p>Règles de filtrage autorisant les accès depuis le siège vers l'agence via VPN IPsec.</p>
+        <div class="etape-title">🌊 3. Gestion des flux — VPN IPsec</div>
+        <p>Un tunnel VPN IPsec est établi entre le Stormshield SNS 310 de l'agence El Hierro et le pare-feu du siège de Tenerife, permettant les accès distants sécurisés et les sauvegardes Veeam.</p>
     </div>
-    <div class="table-wrap">
-        <table>
-            <thead><tr><th>Source</th><th>Destination</th><th>Service</th><th>Action</th></tr></thead>
-            <tbody>
-                <tr><td>Siège (192.168.57.0/24)</td><td>AD (192.168.54.10)</td><td>RDP (3389)</td><td>Autoriser</td></tr>
-                <tr><td>Siège (192.168.57.0/24)</td><td>WEB-01/02 (.15/.16)</td><td>SSH (22)</td><td>Autoriser</td></tr>
-                <tr><td>Siège (192.168.57.0/24)</td><td>Stormshield (.254)</td><td>HTTPS (443)</td><td>Autoriser</td></tr>
-            </tbody>
-        </table>
-    </div>
+    
     <div class="photo-zone">
-        <div class="photo-icon">🛡️</div>
-        <div class="photo-label">PHOTO 4 — Règles de filtrage Stormshield</div>
-        <div class="photo-desc">Console Stormshield avec les règles autorisant les flux depuis le siège.</div>
-        <span class="photo-file">stormshield_firewall_rules.png</span>
+        <div class="photo-icon">🔗</div>
+        <div class="photo-label">PHOTO 4 — Tunnels VPN IPsec actifs (Stormshield)</div>
+        <div class="photo-desc">
+            Console Stormshield SNS 310 : tunnels VPN IPsec établis entre l'agence El Hierro (192.168.54.0/24) et le siège Tenerife (Site_FW_TF).<br>
+            Profil de chiffrement : StrongEncryption.
+        </div>
+        <span class="photo-file">Capture d'écran 2026-03-30 085743.png</span>
     </div>
 
     <!-- 4. GLPI -->
