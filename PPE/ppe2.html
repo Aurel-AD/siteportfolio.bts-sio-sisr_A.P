@@ -391,12 +391,18 @@ listen stats
     stats enable
     stats uri /stats</pre>
 
-    <div class="photo-zone">
-        <div class="photo-icon">📊</div>
-        <div class="photo-label">PHOTO 2 — Interface de statistiques HAProxy</div>
-        <div class="photo-desc">Page <code>http://192.168.64.1:8404/stats</code> montrant les deux backends WEB-01 et WEB-02 en etat UP et la repartition des requetes.</div>
-        <span class="photo-file">haproxy_stats.png</span>
+   <!-- PHOTO 2 : Configuration HAProxy -->
+<div class="photo-zone">
+    <div class="photo-icon">⚙️</div>
+    <div class="photo-label">PHOTO 2 — Configuration HAProxy (load balancing)</div>
+    <div class="photo-desc">
+        Fichier <code>/etc/haproxy/haproxy.cfg</code> avec :<br>
+        - Frontend HTTP écoutant sur le port 80<br>
+        - Backend <strong>web_cluster</strong> en mode round-robin<br>
+        - Serveurs WEB-01 (192.168.54.15:80) et WEB-02 (192.168.54.16:80) avec health checks activés
     </div>
+    <span class="photo-file">haproxy_config.png</span>
+</div>
 
     <div class="etape">
         <div class="etape-title">3. Replication MariaDB (WEB-01 → WEB-02)</div>
