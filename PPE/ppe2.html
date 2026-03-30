@@ -364,6 +364,15 @@
         <p>Les requêtes HTTP/HTTPS arrivent sur le pare-feu Stormshield, sont NATées vers HAProxy en DMZ (<code>192.168.64.1</code>). HAProxy distribue la charge en round-robin vers les deux serveurs web situés dans le LAN (<code>192.168.54.15</code> et <code>192.168.54.16</code>).</p>
     </div>
 
+    <!-- PHOTO 1 : Règles pare-feu Stormshield -->
+    <div class="photo-zone">
+        <div class="photo-icon">🛡️</div>
+        <div class="photo-label">PHOTO 1 — Règles de filtrage Stormshield</div>
+        <div class="photo-desc">Console Stormshield : règles autorisant HTTP/HTTPS depuis WAN vers DMZ (HAProxy) et DMZ vers LAN (WEB-01, WEB-02).</div>
+        <img class="photo-img" src="Capture d'écran 2026-03-30 122922.png" alt="Règles de filtrage Stormshield">
+        <span class="photo-file">Capture d'écran 2026-03-30 122922.png</span>
+    </div>
+
         <!-- Conf Apache WEB-01 & WEB-02 -->
     <div class="etape">
         <div class="etape-title">⚙️ 1.1 Configuration Apache — Serveurs web</div>
@@ -381,15 +390,6 @@
     a2ensite el-cicars.conf
     systemctl reload apache2</pre>
     
-    <!-- PHOTO 1 : Règles pare-feu Stormshield -->
-    <div class="photo-zone">
-        <div class="photo-icon">🛡️</div>
-        <div class="photo-label">PHOTO 1 — Règles de filtrage Stormshield</div>
-        <div class="photo-desc">Console Stormshield : règles autorisant HTTP/HTTPS depuis WAN vers DMZ (HAProxy) et DMZ vers LAN (WEB-01, WEB-02).</div>
-        <img class="photo-img" src="Capture d'écran 2026-03-30 122922.png" alt="Règles de filtrage Stormshield">
-        <span class="photo-file">Capture d'écran 2026-03-30 122922.png</span>
-    </div>
-
     <!-- Étape 2 : HAProxy -->
     <div class="etape">
         <div class="etape-title">⚖️ 2. Load Balancing HAProxy</div>
