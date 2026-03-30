@@ -352,7 +352,7 @@
                 <tr><td>AD/DNS/DHCP</td><td>Windows Server 2019</td><td><code>192.168.54.10</code></td><td>RDP (MobaXterm)</td></tr>
                 <tr><td>GLPI (siège)</td><td>Helpdesk & Inventaire</td><td><code>192.168.57.60</code></td><td>HTTPS</td></tr>
             </tbody>
-        </table>
+         </table>
     </div>
     <div class="sub-num" data-n="2">Schéma d'infrastructure</div>
     <div class="photo-zone">
@@ -369,82 +369,107 @@
     <div class="section-title">Le projet</div>
 
     <!-- 1. MobaXterm -->
-   <div class="photo-zone">
-    <div class="photo-icon">🔌</div>
-    <div class="photo-label">PHOTO 1 — MobaXterm : sessions d'administration</div>
-    <div class="photo-desc">
-        <img src="mobaxterm_sessions.png" alt="MobaXterm sessions" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
-        <br>
-        Sessions SSH, RDP et HTTPS enregistrées pour l'agence El Hierro.
+    <div class="etape">
+        <div class="etape-title">🖥️ 1. Accès distant centralisé — MobaXterm</div>
+        <p>MobaXterm centralise les connexions SSH (serveurs Linux), RDP (AD) et HTTPS (Stormshield) via le tunnel VPN IPsec.</p>
+        <div class="highlight">📌 Appui à l'administrateur du siège : recensement des connexions et ouverture des flux.</div>
     </div>
-    <span class="photo-file">mobaxterm_sessions.png</span>
-</div>
+    <div class="photo-zone">
+        <div class="photo-icon">🔌</div>
+        <div class="photo-label">PHOTO 1 — MobaXterm : sessions d'administration</div>
+        <div class="photo-desc">
+            <img src="mobaxterm_sessions.png" alt="MobaXterm sessions" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
+            <br>
+            Sessions SSH, RDP et HTTPS enregistrées pour l'agence El Hierro.
+        </div>
+        <span class="photo-file">mobaxterm_sessions.png</span>
+    </div>
 
     <!-- 2. Double authentification 2FA sur Stormshield -->
-        <div class="etape">
-            <div class="etape-title">🔐 2. Double authentification 2FA (Google Authenticator)</div>
-            <p>Pour renforcer la sécurité des accès administratifs, l'authentification à deux facteurs a été activée sur le pare-feu Stormshield SNS 310. La méthode retenue est le <strong>One Time Password (OTP)</strong> avec l'extension <strong>Google Authenticator</strong>.</p>
-        </div>
-        
-        <div class="grid-2">
-           <div class="photo-zone">
-        <div class="photo-icon">⚙️</div>
-        <div class="photo-label">PHOTO 2 — Activation de la double authentification</div>
-        <div class="photo-desc">
-            <img src="Capture d'écran 2026-03-30 113708.png" alt="Activation 2FA Stormshield" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
-            <br>
-            Interface Stormshield : activation de la double authentification pour l'utilisateur Administrateur.<br>
-            Méthode : Google Authenticator (OTP)
-        </div>
-        <span class="photo-file">Capture d'écran 2026-03-30 113708.png</span>
+    <div class="etape">
+        <div class="etape-title">🔐 2. Double authentification 2FA (Google Authenticator)</div>
+        <p>Pour renforcer la sécurité des accès administratifs, l'authentification à deux facteurs a été activée sur le pare-feu Stormshield SNS 310. La méthode retenue est le <strong>One Time Password (OTP)</strong> avec l'extension <strong>Google Authenticator</strong>.</p>
     </div>
-            <div class="photo-zone">
-        <div class="photo-icon">🔢</div>
-        <div class="photo-label">PHOTO 3 — Connexion avec code OTP</div>
-        <div class="photo-desc">
-            <img src="Capture d'écran 2026-03-30 113919.png" alt="Connexion OTP Stormshield" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
-            <br>
-            Page de connexion demandant le code OTP généré par Google Authenticator après saisie du mot de passe.
+    
+    <div class="grid-2">
+        <div class="photo-zone">
+            <div class="photo-icon">⚙️</div>
+            <div class="photo-label">PHOTO 2 — Activation de la double authentification</div>
+            <div class="photo-desc">
+                <img src="Capture d'écran 2026-03-30 113708.png" alt="Activation 2FA Stormshield" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
+                <br>
+                Interface Stormshield : activation de la double authentification pour l'utilisateur Administrateur.<br>
+                Méthode : Google Authenticator (OTP)
+            </div>
+            <span class="photo-file">Capture d'écran 2026-03-30 113708.png</span>
         </div>
-        <span class="photo-file">Capture d'écran 2026-03-30 113919.png</span>
+        <div class="photo-zone">
+            <div class="photo-icon">🔢</div>
+            <div class="photo-label">PHOTO 3 — Connexion avec code OTP</div>
+            <div class="photo-desc">
+                <img src="Capture d'écran 2026-03-30 113919.png" alt="Connexion OTP Stormshield" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
+                <br>
+                Page de connexion demandant le code OTP généré par Google Authenticator après saisie du mot de passe.
+            </div>
+            <span class="photo-file">Capture d'écran 2026-03-30 113919.png</span>
+        </div>
     </div>
 
     <!-- 3. Gestion des flux (règles de filtrage) -->
-    <div class="photo-zone">
-    <div class="photo-icon">🔗</div>
-    <div class="photo-label">PHOTO 4 — Tunnels VPN IPsec actifs (Stormshield)</div>
-    <div class="photo-desc">
-        <img src="Capture d'écran 2026-03-30 085743.png" alt="Tunnels VPN Stormshield" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
-        <br>
-        Console Stormshield SNS 310 : tunnels VPN IPsec établis entre l'agence El Hierro (192.168.54.0/24) et le siège Tenerife (Site_FW_TF).<br>
-        Profil de chiffrement : StrongEncryption.
+    <div class="etape">
+        <div class="etape-title">🌊 3. Gestion des flux — VPN IPsec</div>
+        <p>Un tunnel VPN IPsec est établi entre le Stormshield SNS 310 de l'agence El Hierro et le pare-feu du siège de Tenerife, permettant les accès distants sécurisés et les sauvegardes Veeam.</p>
     </div>
-    <span class="photo-file">Capture d'écran 2026-03-30 085743.png</span>
-</div>
+    
+    <div class="photo-zone">
+        <div class="photo-icon">🔗</div>
+        <div class="photo-label">PHOTO 4 — Tunnels VPN IPsec actifs (Stormshield)</div>
+        <div class="photo-desc">
+            <img src="Capture d'écran 2026-03-30 085743.png" alt="Tunnels VPN Stormshield" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
+            <br>
+            Console Stormshield SNS 310 : tunnels VPN IPsec établis entre l'agence El Hierro (192.168.54.0/24) et le siège Tenerife (Site_FW_TF).<br>
+            Profil de chiffrement : StrongEncryption.
+        </div>
+        <span class="photo-file">Capture d'écran 2026-03-30 085743.png</span>
+    </div>
 
     <!-- 4. GLPI -->
-   <div class="photo-zone">
-    <div class="photo-icon">🖥️</div>
-    <div class="photo-label">PHOTO 5 — GLPI : Inventaire matériel</div>
-    <div class="photo-desc">
-        <img src="glpi_inventory.png" alt="GLPI inventaire matériel" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
-        <br>
-        Liste des ordinateurs remontés par GLPI_Agent.
+    <div class="etape">
+        <div class="etape-title">📦 4. GLPI — Inventaire et Helpdesk</div>
+        <p>GLPI installé au siège, avec GLPI_Agent sur tous les postes/serveurs pour l'inventaire automatique et la gestion des tickets.</p>
     </div>
-    <span class="photo-file">glpi_inventory.png</span>
-</div>
+    <div class="grid-2">
+        <div class="photo-zone">
+            <div class="photo-icon">🖥️</div>
+            <div class="photo-label">PHOTO 5 — GLPI : Inventaire matériel</div>
+            <div class="photo-desc">
+                <img src="glpi_inventory.png" alt="GLPI inventaire matériel" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
+                <br>
+                Liste des ordinateurs remontés par GLPI_Agent.
+            </div>
+            <span class="photo-file">glpi_inventory.png</span>
+        </div>
+        <div class="photo-zone">
+            <div class="photo-icon">🎟️</div>
+            <div class="photo-label">PHOTO 6 — GLPI : Liste des tickets</div>
+            <div class="photo-desc">
+                <img src="glpi_tickets.png" alt="GLPI liste des tickets" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
+                <br>
+                Tableau de bord des tickets d'incidents ouverts.
+            </div>
+            <span class="photo-file">glpi_tickets.png</span>
+        </div>
+    </div>
 
     <!-- 5. Tests -->
-   <div class="photo-zone">
-    <div class="photo-icon">🎟️</div>
-    <div class="photo-label">PHOTO 6 — GLPI : Liste des tickets</div>
-    <div class="photo-desc">
-        <img src="glpi_tickets.png" alt="GLPI liste des tickets" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
-        <br>
-        Tableau de bord des tickets d'incidents ouverts.
+    <div class="etape">
+        <div class="etape-title">🧪 5. Tests des remontées et tickets</div>
+        <ul>
+            <li>Test inventaire : nouveau poste → remontée automatique dans GLPI</li>
+            <li>Test ticket : création ticket → notification administrateur</li>
+            <li>Test workflow : traitement, changement de statut, clôture</li>
+        </ul>
     </div>
-    <span class="photo-file">glpi_tickets.png</span>
-</div>
 
     <!-- 6. Procédure -->
     <div class="etape">
@@ -460,15 +485,15 @@
         <div class="procedure-step"><div class="step-num">6</div><div>Cliquer "Soumettre la demande"</div></div>
     </div>
     <div class="photo-zone">
-    <div class="photo-icon">📋</div>
-    <div class="photo-label">PHOTO 7 — Formulaire de création de ticket GLPI</div>
-    <div class="photo-desc">
-        <img src="glpi_ticket_form.png" alt="Formulaire GLPI" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
-        <br>
-        Formulaire Self-Service : catégorie, urgence, titre, description.
+        <div class="photo-icon">📋</div>
+        <div class="photo-label">PHOTO 7 — Formulaire de création de ticket GLPI</div>
+        <div class="photo-desc">
+            <img src="glpi_ticket_form.png" alt="Formulaire GLPI" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
+            <br>
+            Formulaire Self-Service : catégorie, urgence, titre, description.
+        </div>
+        <span class="photo-file">glpi_ticket_form.png</span>
     </div>
-    <span class="photo-file">glpi_ticket_form.png</span>
-</div>
 
     <div class="photo-zone" style="border-color: var(--accent2);">
         <div class="photo-icon">✅</div>
