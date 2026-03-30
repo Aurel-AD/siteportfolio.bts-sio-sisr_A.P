@@ -323,7 +323,7 @@
     <div class="section-title">Le plan</div>
     <div class="sub-num" data-n="1">Plan d'adressage IP</div>
     <div class="table-wrap">
-        表格
+        <table>
             <thead>
                 <tr><th>Zone / Machine</th><th>Rôle</th><th>Adresse IP</th></tr>
             </thead>
@@ -336,7 +336,7 @@
                 <tr><td>SRV-EL-PROXY</td><td>HAProxy (DMZ)</td><td><code>192.168.64.1</code></td></tr>
                 <tr><td>Siège NAS RAID-5</td><td>Destination sauvegardes Veeam</td><td><code>192.168.57.0/24</code> (VPN)</td></tr>
             </tbody>
-        表格
+        </table>
     </div>
     <div class="sub-num" data-n="2">Schéma d'infrastructure</div>
     <div class="photo-zone">
@@ -414,16 +414,16 @@ backend web_cluster
     </div>
 
     <!-- PHOTO 4 : Export configuration Stormshield -->
-<div class="photo-zone">
-    <div class="photo-icon">📁</div>
-    <div class="photo-label">PHOTO 4 — Export configuration Stormshield</div>
-    <div class="photo-desc">
-        Interface web Stormshield : <strong>Système → Maintenance → Sauvegarde de configuration</strong><br>
-        Téléchargement du fichier de configuration <code>SN310A41KL095A7_2026-03-30.na</code><br>
-        La sauvegarde est ensuite stockée sur le NAS du siège.
+    <div class="photo-zone">
+        <div class="photo-icon">📁</div>
+        <div class="photo-label">PHOTO 4 — Export configuration Stormshield</div>
+        <div class="photo-desc">
+            Interface web Stormshield : <strong>Système → Maintenance → Sauvegarde de configuration</strong><br>
+            Téléchargement du fichier de configuration <code>SN310A41KL095A7_2026-03-30.na</code><br>
+            La sauvegarde est ensuite stockée sur le NAS du siège.
+        </div>
+        <span class="photo-file">Capture d'écran 2026-03-30 132300.png</span>
     </div>
-    <span class="photo-file">Capture d'écran 2026-03-30 132300.png</span>
-</div>
 
     <pre><span class="cmt"># Exemple CLI sauvegarde switch TP-Link</span>
 ssh admin@192.168.54.20
