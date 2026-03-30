@@ -413,13 +413,17 @@ backend web_cluster
         <p>Les fichiers de configuration du pare-feu Stormshield, du switch TP-Link SG-3424 et du point d'accès WiFi sont exportés et stockés sur le NAS du siège.</p>
     </div>
 
-    <!-- PHOTO 4 : Export Stormshield -->
-    <div class="photo-zone">
-        <div class="photo-icon">📁</div>
-        <div class="photo-label">PHOTO 4 — Export configuration Stormshield</div>
-        <div class="photo-desc">Interface web Stormshield : Maintenance → Sauvegardes → Télécharger la configuration.</div>
-        <span class="photo-file">stormshield_backup.png</span>
+    <!-- PHOTO 4 : Export configuration Stormshield -->
+<div class="photo-zone">
+    <div class="photo-icon">📁</div>
+    <div class="photo-label">PHOTO 4 — Export configuration Stormshield</div>
+    <div class="photo-desc">
+        Interface web Stormshield : <strong>Système → Maintenance → Sauvegarde de configuration</strong><br>
+        Téléchargement du fichier de configuration <code>SN310A41KL095A7_2026-03-30.na</code><br>
+        La sauvegarde est ensuite stockée sur le NAS du siège.
     </div>
+    <span class="photo-file">Capture d'écran 2026-03-30 132300.png</span>
+</div>
 
     <pre><span class="cmt"># Exemple CLI sauvegarde switch TP-Link</span>
 ssh admin@192.168.54.20
