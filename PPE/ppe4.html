@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PPE 4 – Accès distant sécurisé & Helpdesk – CICAR</title>
+    <title>PPE 4 – Accès distant & Helpdesk – CICAR</title>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,8 +13,6 @@
             --border: #30363d;
             --accent: #58a6ff;
             --accent2: #3fb950;
-            --accent3: #f78166;
-            --accent4: #d2a679;
             --text: #e6edf3;
             --text-muted: #8b949e;
         }
@@ -33,7 +31,6 @@
             background: var(--surface);
             border-bottom: 3px solid var(--accent);
             padding: 60px 80px;
-            position: relative;
         }
         .cover-label {
             font-family: 'IBM Plex Mono', monospace;
@@ -58,8 +55,7 @@
             margin-bottom: 48px;
         }
         .cover-logo-box {
-            width: 100px;
-            height: 100px;
+            width: 100px; height: 100px;
             background: var(--surface2);
             border: 2px solid var(--border);
             border-radius: 12px;
@@ -167,9 +163,9 @@
         }
         p { font-size: .96rem; margin-bottom: 14px; }
         ul, ol { padding-left: 24px; margin-bottom: 16px; }
-        li { margin-bottom: 8px; font-size: .96rem; }
+        li { margin-bottom: 8px; }
         ul li::marker { color: var(--accent); }
-        code { font-family: 'IBM Plex Mono', monospace; font-size: .84rem; color: var(--accent4); }
+        code { font-family: 'IBM Plex Mono', monospace; font-size: .84rem; color: #d2a679; }
         .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 8px; border: 1px solid var(--border); }
         table { width: 100%; border-collapse: collapse; font-size: .88rem; }
         thead tr { background: var(--surface2); }
@@ -182,11 +178,7 @@
             border-bottom: 2px solid var(--border);
             text-align: left;
         }
-        td {
-            padding: 11px 16px;
-            border-bottom: 1px solid var(--border);
-            vertical-align: top;
-        }
+        td { padding: 11px 16px; border-bottom: 1px solid var(--border); }
         pre {
             background: #0a0d13;
             border: 1px solid var(--border);
@@ -212,7 +204,6 @@
             padding: 28px 20px;
             text-align: center;
             margin: 18px 0;
-            background: rgba(255,255,255,.01);
         }
         .photo-icon { font-size: 2rem; margin-bottom: 8px; opacity: .5; }
         .photo-label {
@@ -227,7 +218,6 @@
             margin-top: 10px;
             font-family: 'IBM Plex Mono', monospace;
             font-size: .74rem;
-            color: var(--accent4);
             background: rgba(210,166,121,.08);
             border-radius: 4px;
             padding: 3px 10px;
@@ -324,9 +314,9 @@
 <div class="sommaire">
     <h2>Sommaire</h2>
     <ul class="som-list">
-        <li><span class="som-letter">A</span><div><div class="som-title">La demande</div><ul class="som-sub"><li>Présentation de l'entreprise</li><li>Objectifs PPE4</li></ul></div></li>
-        <li><span class="som-letter">B</span><div><div class="som-title">Le plan</div><ul class="som-sub"><li>Plan d'adressage IP</li><li>Schéma d'infrastructure</li></ul></div></li>
-        <li><span class="som-letter">C</span><div><div class="som-title">Le projet</div><ul class="som-sub"><li>Accès distant sécurisé (MobaXterm)</li><li>Double authentification 2FA (Google Authenticator)</li><li>Gestion des flux dans les pare-feux</li><li>Déploiement GLPI + GLPI_Agent</li><li>Tests de remontées et tickets</li><li>Procédure utilisateur helpdesk</li></ul></div></li>
+        <li><span class="som-letter">A</span><div><div class="som-title">La demande</div><ul class="som-sub"><li>Présentation</li><li>Objectifs PPE4</li></ul></div></li>
+        <li><span class="som-letter">B</span><div><div class="som-title">Le plan</div><ul class="som-sub"><li>Plan d'adressage</li><li>Schéma d'infrastructure</li></ul></div></li>
+        <li><span class="som-letter">C</span><div><div class="som-title">Le projet</div><ul class="som-sub"><li>Accès distant MobaXterm</li><li>Authentification 2FA (Google Authenticator)</li><li>Gestion des flux (règles de filtrage)</li><li>GLPI + GLPI_Agent</li><li>Tests remontées et tickets</li><li>Procédure utilisateur</li></ul></div></li>
     </ul>
 </div>
 
@@ -335,18 +325,15 @@
     <div class="section-letter">A</div>
     <div class="section-title">La demande</div>
     <div class="sub-num" data-n="1">Présentation</div>
-    <p><strong>CICAR</strong> est une société de location automobile implantée aux Îles Canaries depuis 2012. L'entreprise possède une flotte de 65 véhicules répartis dans plusieurs agences. Dans le cadre de son expansion, l'agence d'<strong>El Hierro (Valverde)</strong> a été équipée d'une infrastructure réseau complète.</p>
-    <p>Les îles étant assez disséminées dans l'archipel, l'administrateur du siège de Tenerife souhaite un <strong>accès distant sécurisé</strong> sur tous les équipements paramétrables et serveurs de chaque agence.</p>
-    
-    <div class="sub-num" data-n="2">Objectifs de la PPE4</div>
+    <p><strong>CICAR</strong> est une société de location automobile aux Îles Canaries. L'administrateur du siège de Tenerife souhaite un <strong>accès distant sécurisé</strong> sur tous les équipements de chaque agence, centralisé sous MobaXterm, avec double authentification sur le SNS, et un helpdesk GLPI pour la gestion des incidents.</p>
+    <div class="sub-num" data-n="2">Objectifs PPE4</div>
     <ul>
-        <li>Mise en place de tous les <strong>accès distants</strong> nécessaires à l'administrateur (centralisation sous MobaXterm)</li>
-        <li>Mise en place et test de l'<strong>authentification 2FA</strong> sur le SNS (Google Authenticator)</li>
-        <li><strong>Gestion des flux</strong> dans les pare-feux pour permettre les accès distants</li>
-        <li>Installation du logiciel d'<strong>inventaire (GLPI_Agent)</strong> et de <strong>helpdesk (GLPI)</strong></li>
-        <li>Test des <strong>remontées d'équipements</strong> et des <strong>tickets d'incidents</strong></li>
-        <li>Rédaction d'une <strong>procédure utilisateur</strong> pour la plate-forme helpdesk</li>
-        <li>Mise à jour des tableaux de connexion et des schémas</li>
+        <li>Accès distant centralisé MobaXterm (SSH, RDP, HTTPS)</li>
+        <li>Authentification 2FA sur Stormshield (Google Authenticator)</li>
+        <li>Gestion des flux (règles de filtrage pare-feu)</li>
+        <li>GLPI + GLPI_Agent (inventaire + helpdesk)</li>
+        <li>Tests remontées équipements et tickets</li>
+        <li>Procédure utilisateur helpdesk</li>
     </ul>
 </div>
 
@@ -357,15 +344,11 @@
     <div class="sub-num" data-n="1">Plan d'adressage</div>
     <div class="table-wrap">
         <table>
-            <thead>
-                <tr><th>Équipement / VM</th><th>Rôle</th><th>Adresse IP</th><th>Accès distant</th></tr>
-            </thead>
+            <thead><tr><th>Équipement / VM</th><th>Rôle</th><th>Adresse IP</th><th>Accès distant</th></tr></thead>
             <tbody>
-                <tr><td>Stormshield SNS 310</td><td>Pare-feu / VPN (2FA activé)</td><td><code>192.168.54.254</code></td><td>HTTPS (MFA)</td></tr>
+                <tr><td>Stormshield SNS 310</td><td>Pare-feu (2FA activé)</td><td><code>192.168.54.254</code></td><td>HTTPS (MFA)</td></tr>
                 <tr><td>SRV-EL-WEB-01</td><td>Serveur Apache</td><td><code>192.168.54.15</code></td><td>SSH (MobaXterm)</td></tr>
                 <tr><td>SRV-EL-WEB-02</td><td>Serveur Apache</td><td><code>192.168.54.16</code></td><td>SSH (MobaXterm)</td></tr>
-                <tr><td>SRV-EL-MAIL</td><td>Zimbra</td><td><code>192.168.54.40</code></td><td>SSH (MobaXterm)</td></tr>
-                <tr><td>SRV-EL-PROXY</td><td>HAProxy</td><td><code>192.168.64.1</code></td><td>SSH (MobaXterm)</td></tr>
                 <tr><td>AD/DNS/DHCP</td><td>Windows Server 2019</td><td><code>192.168.54.10</code></td><td>RDP (MobaXterm)</td></tr>
                 <tr><td>GLPI (siège)</td><td>Helpdesk & Inventaire</td><td><code>192.168.57.60</code></td><td>HTTPS</td></tr>
             </tbody>
@@ -375,8 +358,8 @@
     <div class="photo-zone">
         <div class="photo-icon">🌐</div>
         <div class="photo-label">Schéma réseau — Accès distants & Helpdesk</div>
-        <div class="photo-desc">Agence El Hierro → Tunnel VPN IPsec → Siège Tenerife. Accès MobaXterm centralisé. GLPI accessible depuis toutes les agences.</div>
-        <span class="photo-file">schema_acces_distants_cicar.pdf</span>
+        <div class="photo-desc">Agence El Hierro → Tunnel VPN IPsec → Siège Tenerife. Accès MobaXterm centralisé.</div>
+        <span class="photo-file">schema_acces_distants.pdf</span>
     </div>
 </div>
 
@@ -385,219 +368,129 @@
     <div class="section-letter">C</div>
     <div class="section-title">Le projet</div>
 
-    <!-- 1. Accès distant centralisé MobaXterm -->
+    <!-- 1. MobaXterm -->
     <div class="etape">
         <div class="etape-title">🖥️ 1. Accès distant centralisé — MobaXterm</div>
-        <p>L'administrateur du siège utilise <strong>MobaXterm</strong> pour centraliser l'ensemble des connexions distantes vers les équipements de chaque agence. Via le tunnel VPN IPsec établi entre le Stormshield de l'agence El Hierro et le pare-feu du siège, MobaXterm permet :</p>
-        <ul>
-            <li>Connexions SSH vers toutes les VMs Linux (WEB-01, WEB-02, MAIL, PROXY)</li>
-            <li>Connexions RDP vers le serveur Windows Server 2019 (AD)</li>
-            <li>Accès HTTPS à l'interface d'administration du Stormshield</li>
-        </ul>
-        <div class="highlight">
-            <strong>📌 Appui à l'administrateur du siège :</strong> Recensement des connexions et ouverture des flux dans les pare-feux de chaque île.
-        </div>
+        <p>MobaXterm centralise les connexions SSH (serveurs Linux), RDP (AD) et HTTPS (Stormshield) via le tunnel VPN IPsec.</p>
+        <div class="highlight">📌 Appui à l'administrateur du siège : recensement des connexions et ouverture des flux.</div>
     </div>
-
     <div class="photo-zone">
         <div class="photo-icon">🔌</div>
         <div class="photo-label">PHOTO 1 — MobaXterm : sessions d'administration</div>
-        <div class="photo-desc">Interface MobaXterm avec les sessions enregistrées pour l'agence El Hierro (SSH, RDP).</div>
+        <div class="photo-desc">Sessions SSH, RDP et HTTPS enregistrées pour l'agence El Hierro.</div>
         <span class="photo-file">mobaxterm_sessions.png</span>
     </div>
 
-    <!-- 2. Double authentification 2FA sur Stormshield -->
+    <!-- 2. 2FA -->
     <div class="etape">
         <div class="etape-title">🔐 2. Double authentification 2FA (Google Authenticator)</div>
-        <p>Pour renforcer la sécurité des accès administratifs, l'authentification à deux facteurs a été activée sur le pare-feu Stormshield SNS 310. La méthode retenue est le <strong>One Time Password (OTP)</strong> avec l'extension <strong>Google Authenticator</strong>.</p>
+        <p>Activation de la 2FA sur Stormshield SNS 310 avec Google Authenticator (OTP).</p>
     </div>
-    <pre><span class="cmt"># Configuration de la 2FA sur Stormshield SNS 310</span>
-<span class="cmt"># Étape 1 : Activer l'authentification multi-facteurs</span>
-<span class="str">Administration → Utilisateurs → admin → Activer "Double authentification"</span>
-
-<span class="cmt"># Étape 2 : Scanner le QR code avec Google Authenticator</span>
-<span class="str">Configuration → Sécurité → MFA → Générer un secret OTP</span>
-
-<span class="cmt"># Étape 3 : Tester la connexion</span>
-<span class="str">https://192.168.54.254 → saisir login/mdp → saisir code OTP</span></pre>
-
     <div class="grid-2">
         <div class="photo-zone">
             <div class="photo-icon">📱</div>
             <div class="photo-label">PHOTO 2 — Configuration 2FA Stormshield</div>
-            <div class="photo-desc">Interface Stormshield : activation de la double authentification pour l'utilisateur admin.</div>
+            <div class="photo-desc">Activation de la double authentification pour l'utilisateur admin.</div>
             <span class="photo-file">stormshield_2fa_config.png</span>
         </div>
         <div class="photo-zone">
             <div class="photo-icon">🔢</div>
             <div class="photo-label">PHOTO 3 — Connexion avec code OTP</div>
-            <div class="photo-desc">Page de connexion demandant le code OTP généré par Google Authenticator.</div>
+            <div class="photo-desc">Page de connexion demandant le code Google Authenticator.</div>
             <span class="photo-file">stormshield_otp_login.png</span>
         </div>
     </div>
 
-    <!-- 3. Gestion des flux dans les pare-feux -->
+    <!-- 3. Gestion des flux -->
     <div class="etape">
         <div class="etape-title">🌊 3. Gestion des flux (règles de filtrage)</div>
-        <p>Pour permettre les accès distants depuis le siège vers l'agence El Hierro via le tunnel VPN IPsec, les règles de <strong>filtrage</strong> suivantes ont été configurées sur le Stormshield SNS 310 :</p>
+        <p>Règles de filtrage autorisant les accès depuis le siège vers l'agence via VPN IPsec.</p>
     </div>
     <div class="table-wrap">
         <table>
-            <thead>
-                <tr><th>Source</th><th>Destination</th><th>Service</th><th>Action</th><th>Description</th></tr>
-            </thead>
+            <thead><tr><th>Source</th><th>Destination</th><th>Service</th><th>Action</th></tr></thead>
             <tbody>
-                <tr><td>Siège (192.168.57.0/24)</td><td>AD (192.168.54.10)</td><td>RDP (3389)</td><td>Autoriser</td><td>Administration du domaine</td></tr>
-                <tr><td>Siège (192.168.57.0/24)</td><td>WEB-01/02 (.15/.16)</td><td>SSH (22)</td><td>Autoriser</td><td>Administration serveurs web</td></tr>
-                <tr><td>Siège (192.168.57.0/24)</td><td>PROXY (192.168.64.1)</td><td>SSH (22)</td><td>Autoriser</td><td>Administration HAProxy</td></tr>
-                <tr><td>Siège (192.168.57.0/24)</td><td>MAIL (192.168.54.40)</td><td>SSH (22)</td><td>Autoriser</td><td>Administration Zimbra</td></tr>
-                <tr><td>Siège (192.168.57.0/24)</td><td>Stormshield (192.168.54.254)</td><td>HTTPS (443)</td><td>Autoriser</td><td>Administration pare-feu (2FA)</td></tr>
+                <tr><td>Siège (192.168.57.0/24)</td><td>AD (192.168.54.10)</td><td>RDP (3389)</td><td>Autoriser</td></tr>
+                <tr><td>Siège (192.168.57.0/24)</td><td>WEB-01/02 (.15/.16)</td><td>SSH (22)</td><td>Autoriser</td></tr>
+                <tr><td>Siège (192.168.57.0/24)</td><td>Stormshield (.254)</td><td>HTTPS (443)</td><td>Autoriser</td></tr>
             </tbody>
         </table>
     </div>
-    <div class="highlight">
-        <strong>📌 Précision :</strong> Il s'agit uniquement de règles de <strong>filtrage</strong> (firewall rules). Le NAT n'est pas utilisé ici car les accès se font via le tunnel VPN IPsec entre le siège et l'agence.
+    <div class="photo-zone">
+        <div class="photo-icon">🛡️</div>
+        <div class="photo-label">PHOTO 4 — Règles de filtrage Stormshield</div>
+        <div class="photo-desc">Console Stormshield avec les règles autorisant les flux depuis le siège.</div>
+        <span class="photo-file">stormshield_firewall_rules.png</span>
     </div>
 
-    <!-- 4. GLPI + GLPI_Agent -->
+    <!-- 4. GLPI -->
     <div class="etape">
         <div class="etape-title">📦 4. GLPI — Inventaire et Helpdesk</div>
-        <p><strong>GLPI</strong> est installé sur un serveur Debian au siège de Tenerife. Il est accessible depuis toutes les agences via l'URL <code>https://glpi.el-cicars.es</code>. Les fonctionnalités déployées :</p>
-        <ul>
-            <li><strong>GLPI_Agent</strong> installé sur tous les postes et serveurs pour l'inventaire automatique (matériel, logiciels, mises à jour)</li>
-            <li><strong>Helpdesk</strong> : gestion centralisée des tickets d'incidents remontés par les chefs d'agence</li>
-            <li><strong>Authentification LDAP</strong> : intégration à l'Active Directory <code>el-cicars.es</code></li>
-        </ul>
+        <p>GLPI installé au siège, avec GLPI_Agent sur tous les postes/serveurs pour l'inventaire automatique et la gestion des tickets.</p>
     </div>
-
     <div class="grid-2">
         <div class="photo-zone">
             <div class="photo-icon">🖥️</div>
             <div class="photo-label">PHOTO 5 — GLPI : Inventaire matériel</div>
-            <div class="photo-desc">Liste des ordinateurs remontés automatiquement par GLPI_Agent (modèle, n° de série, OS, RAM).</div>
+            <div class="photo-desc">Liste des ordinateurs remontés par GLPI_Agent.</div>
             <span class="photo-file">glpi_inventory.png</span>
         </div>
         <div class="photo-zone">
-            <div class="photo-icon">💿</div>
-            <div class="photo-label">PHOTO 6 — GLPI : Inventaire logiciel</div>
-            <div class="photo-desc">Liste des logiciels installés remontés sur les postes supervisés.</div>
-            <span class="photo-file">glpi_software.png</span>
+            <div class="photo-icon">🎟️</div>
+            <div class="photo-label">PHOTO 6 — GLPI : Liste des tickets</div>
+            <div class="photo-desc">Tableau de bord des tickets d'incidents ouverts.</div>
+            <span class="photo-file">glpi_tickets.png</span>
         </div>
     </div>
 
-    <!-- 5. Tests remontées et tickets -->
+    <!-- 5. Tests -->
     <div class="etape">
-        <div class="etape-title">🧪 5. Tests des remontées d'équipements et tickets d'incidents</div>
-        <p>Des tests ont été réalisés pour valider le bon fonctionnement de la solution :</p>
+        <div class="etape-title">🧪 5. Tests des remontées et tickets</div>
         <ul>
-            <li><strong>Test inventaire</strong> : Installation d'un nouveau poste → remontée automatique dans GLPI en moins de 30 minutes</li>
-            <li><strong>Test ticket</strong> : Création d'un ticket depuis l'agence → notification reçue par l'administrateur du siège</li>
-            <li><strong>Test workflow</strong> : Traitement du ticket, changement de statut, clôture avec commentaire</li>
-            <li><strong>Test notification</strong> : Email automatique envoyé au demandeur lors de la prise en charge</li>
+            <li>Test inventaire : nouveau poste → remontée automatique dans GLPI</li>
+            <li>Test ticket : création ticket → notification administrateur</li>
+            <li>Test workflow : traitement, changement de statut, clôture</li>
         </ul>
     </div>
 
-    <div class="grid-2">
-        <div class="photo-zone">
-            <div class="photo-icon">🎟️</div>
-            <div class="photo-label">PHOTO 7 — GLPI : Liste des tickets</div>
-            <div class="photo-desc">Tableau de bord des tickets d'incidents ouverts, avec suivi des statuts et priorité.</div>
-            <span class="photo-file">glpi_tickets_list.png</span>
-        </div>
-        <div class="photo-zone">
-            <div class="photo-icon">✉️</div>
-            <div class="photo-label">PHOTO 8 — Notification email GLPI</div>
-            <div class="photo-desc">Email de confirmation reçu après création d'un ticket d'incident.</div>
-            <span class="photo-file">glpi_mail_notification.png</span>
-        </div>
-    </div>
-
-    <!-- 6. Procédure utilisateur -->
+    <!-- 6. Procédure -->
     <div class="etape">
-        <div class="etape-title">📝 6. Procédure de création de ticket (Self-Service)</div>
+        <div class="etape-title">📝 6. Procédure utilisateur helpdesk</div>
     </div>
-    
     <div class="procedure-box">
-        <h4>📌 Procédure utilisateur — Création d'un ticket d'incident sur GLPI</h4>
-        <div class="procedure-step">
-            <div class="step-num">1</div>
-            <div>Ouvrir un navigateur et se rendre sur <code>https://glpi.el-cicars.es</code></div>
-        </div>
-        <div class="procedure-step">
-            <div class="step-num">2</div>
-            <div>S'authentifier avec les identifiants du domaine <code>el-cicars.es</code> (login/mot de passe Windows)</div>
-        </div>
-        <div class="procedure-step">
-            <div class="step-num">3</div>
-            <div>Dans le menu, cliquer sur <strong>« Assistance »</strong> puis <strong>« Créer un ticket »</strong></div>
-        </div>
-        <div class="procedure-step">
-            <div class="step-num">4</div>
-            <div>Sélectionner la <strong>catégorie</strong> de l'incident (Matériel, Logiciel, Réseau, Impression, Autre)</div>
-        </div>
-        <div class="procedure-step">
-            <div class="step-num">5</div>
-            <div>Évaluer l'<strong>urgence</strong> de « Très basse » à « Très haute » (selon l'impact sur l'activité)</div>
-        </div>
-        <div class="procedure-step">
-            <div class="step-num">6</div>
-            <div>Associer le <strong>matériel concerné</strong> (ex: poste EL-PC-01, imprimante EL-IMP-01) si applicable</div>
-        </div>
-        <div class="procedure-step">
-            <div class="step-num">7</div>
-            <div>Saisir un <strong>titre clair</strong> et une <strong>description détaillée</strong> du problème (avec captures d'écran si possible)</div>
-        </div>
-        <div class="procedure-step">
-            <div class="step-num">8</div>
-            <div>Cliquer sur <strong>« Soumettre la demande »</strong></div>
-        </div>
-        <div class="procedure-step">
-            <div class="step-num">9</div>
-            <div>Un email de confirmation est reçu. Le ticket sera traité par l'administrateur du siège.</div>
-        </div>
+        <h4>📌 Création d'un ticket d'incident sur GLPI</h4>
+        <div class="procedure-step"><div class="step-num">1</div><div>Aller sur <code>https://glpi.el-cicars.es</code></div></div>
+        <div class="procedure-step"><div class="step-num">2</div><div>S'authentifier (identifiants domaine)</div></div>
+        <div class="procedure-step"><div class="step-num">3</div><div>Menu "Assistance" → "Créer un ticket"</div></div>
+        <div class="procedure-step"><div class="step-num">4</div><div>Choisir catégorie et urgence</div></div>
+        <div class="procedure-step"><div class="step-num">5</div><div>Saisir titre et description détaillée</div></div>
+        <div class="procedure-step"><div class="step-num">6</div><div>Cliquer "Soumettre la demande"</div></div>
     </div>
-
     <div class="photo-zone">
         <div class="photo-icon">📋</div>
-        <div class="photo-label">PHOTO 9 — Formulaire de création de ticket GLPI</div>
-        <div class="photo-desc">Capture du formulaire Self-Service avec les champs : Type, Catégorie, Urgence, Titre, Description.</div>
+        <div class="photo-label">PHOTO 7 — Formulaire de création de ticket GLPI</div>
+        <div class="photo-desc">Formulaire Self-Service : catégorie, urgence, titre, description.</div>
         <span class="photo-file">glpi_ticket_form.png</span>
     </div>
 
-    <!-- Vérifications finales -->
-    <h3>Vérifications finales</h3>
-    <pre><span class="cmt"># Test de connexion SSH depuis MobaXterm (siège vers agence)</span>
-ssh root@192.168.54.15
-
-<span class="cmt"># Vérification des règles de filtrage Stormshield</span>
-ssh admin@192.168.54.254
-<span class="str">show configuration firewall</span>
-
-<span class="cmt"># Test de l'inventaire GLPI_Agent</span>
-systemctl status glpi-agent
-
-<span class="cmt"># Vérification des tickets GLPI via API</span>
-curl -X GET "https://glpi.el-cicars.es/apirest.php/Ticket" -H "Authorization: Basic ..."</pre>
-
-    <div class="photo-zone" style="border-style: solid; border-color: var(--accent2);">
+    <div class="photo-zone" style="border-color: var(--accent2);">
         <div class="photo-icon">✅</div>
-        <div class="photo-label">Livrables PPE 4 validés</div>
+        <div class="photo-label">Livrables PPE4 validés</div>
         <div class="photo-desc">
-            ✔ Accès distant centralisé MobaXterm opérationnel (SSH, RDP, HTTPS)<br>
-            ✔ Double authentification 2FA activée sur Stormshield (Google Authenticator)<br>
-            ✔ Gestion des flux : règles pare-feu configurées pour les accès distants<br>
-            ✔ GLPI + GLPI_Agent : inventaire automatique et helpdesk fonctionnels<br>
-            ✔ Tests de remontées d'équipements et tickets validés<br>
-            ✔ Procédure utilisateur helpdesk rédigée et testée<br>
-            ✔ Tableaux de connexion et schémas mis à jour
+            ✔ Accès distant MobaXterm (SSH, RDP, HTTPS)<br>
+            ✔ 2FA Google Authenticator sur Stormshield<br>
+            ✔ Règles de filtrage configurées<br>
+            ✔ GLPI + GLPI_Agent (inventaire + helpdesk)<br>
+            ✔ Tests remontées et tickets validés<br>
+            ✔ Procédure utilisateur rédigée
         </div>
     </div>
 
-    <a href="../index.html#projet-cicar" class="back-btn">← Retour au portfolio</a>
+    <a href="../index.html" class="back-btn">← Retour au portfolio</a>
 </div>
 
 <footer>
-    <strong>PONT Aurélien</strong> — BTS SIO SISR — AFPI Marcq-en-Barœul — Projet CICAR (Accès distant & Helpdesk) — 2026
+    <strong>PONT Aurélien</strong> — BTS SIO SISR — AFPI Marcq-en-Barœul — Projet CICAR (PPE4) — 2026
 </footer>
 
 </body>
