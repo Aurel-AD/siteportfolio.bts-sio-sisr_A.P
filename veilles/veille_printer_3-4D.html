@@ -87,9 +87,9 @@
       margin: 0;
       color: #3498db;
       font-weight: 300;
-      text-shadow: 0 0 10px rgba(52,152,219,0.6); /* effet lumineux doux */
+      text-shadow: 0 0 10px rgba(52,152,219,0.6);
     }
-    
+
     /* Curseur clignotant */
     h1::after {
       content: "_";
@@ -384,6 +384,26 @@
       .toc-sticky ol { gap: 10px; }
       .floating-back-btn { bottom: 20px; right: 20px; padding: 12px 18px; }
     }
+
+    .info-box {
+      background: rgba(52, 152, 219, 0.07);
+      border: 1px solid rgba(52, 152, 219, 0.25);
+      border-left: 5px solid var(--primary);
+      border-radius: 10px;
+      padding: 20px 25px;
+      margin: 25px 0;
+    }
+    .info-box strong { color: var(--primary); }
+
+    .novares-box {
+      background: rgba(52, 211, 153, 0.07);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      border-left: 5px solid #34d399;
+      border-radius: 10px;
+      padding: 20px 25px;
+      margin: 25px 0;
+    }
+    .novares-box strong { color: #059669; }
   </style>
 </head>
 <body>
@@ -397,13 +417,14 @@
   <!-- Sticky TOC -->
   <nav class="toc-sticky">
     <ol>
-      <li><a href="#definition" class="toc-link">1. C'est quoi l'impression 3D et 4D ?</a></li>
+      <li><a href="#definition" class="toc-link">1. Définition</a></li>
       <li><a href="#tendances" class="toc-link">2. Tendances 2025</a></li>
-      <li><a href="#outils" class="toc-link">3. Outils utilisés</a></li>
+      <li><a href="#outils" class="toc-link">3. Outils</a></li>
       <li><a href="#acteurs" class="toc-link">4. Acteurs clés</a></li>
       <li><a href="#marche" class="toc-link">5. Marché</a></li>
-      <li><a href="#avenir" class="toc-link">6. Aujourd'hui & demain</a></li>
-      <li><a href="#ressources" class="toc-link">7. Ressources</a></li>
+      <li><a href="#automobile" class="toc-link">6. Industrie auto</a></li>
+      <li><a href="#avenir" class="toc-link">7. Aujourd'hui & demain</a></li>
+      <li><a href="#ressources" class="toc-link">8. Ressources</a></li>
     </ol>
   </nav>
 
@@ -411,33 +432,19 @@
     <header>
       <h1>Les imprimantes 3D et 4D</h1>
 
-      <!-- Carte évolution constante -->
       <div class="evolution-note">
         🔄 Cette veille technologique est un projet en <strong>évolution constante</strong>.<br>
-        De nouvelles informations pourront y être ajoutées pour suivre l’avancée du <strong>secteur des imprimantes 3D et 4D</strong>.
+        De nouvelles informations pourront y être ajoutées pour suivre l'avancée du <strong>secteur des imprimantes 3D et 4D</strong>. — Mise à jour 2025
       </div>
     </header>
 
-
     <div class="content">
 
-      <!-- Table des matières (cachée) -->
-      <div style="display:none">
-        <ol>
-          <li><a href="#definition">1. C'est quoi l'impression 3D et 4D ?</a></li>
-          <li><a href="#tendances">2. Quelles sont les tendances en 2025 ?</a></li>
-          <li><a href="#outils">3. Quels outils sont utilisés ?</a></li>
-          <li><a href="#acteurs">4. Qui sont les acteurs importants ?</a></li>
-          <li><a href="#marche">5. Le marché des imprimantes 3D et 4D</a></li>
-          <li><a href="#avenir">6. Aujourd'hui et demain ?</a></li>
-          <li><a href="#ressources">7. Pour aller plus loin</a></li>
-        </ol>
-      </div>
-
       <div class="intro">
-        J'ai réalisé cette veille technologique afin de faire un point sur les dernières avancées et les usages des imprimantes 3D et 4D, deux technologies en pleine évolution qui transforment de nombreux secteurs tels que la santé, l'aéronautique ou encore le bâtiment. J'ai choisi ce sujet car la société dans laquelle je réalise mon alternance, <strong>Novares</strong>, utilise les imprimantes 3D pour créer des prototypes et effectuer des tests sur les produits avant leur mise sur le marché, afin de répondre au mieux aux besoins de ses clients.
+        J'ai réalisé cette veille technologique afin de faire un point sur les dernières avancées et les usages des imprimantes 3D et 4D, deux technologies en pleine évolution qui transforment de nombreux secteurs : santé, aéronautique, automobile et bâtiment. J'ai choisi ce sujet car la société dans laquelle je réalise mon alternance, <strong>Novares</strong>, utilise les imprimantes 3D pour créer des prototypes et effectuer des tests sur les produits avant leur mise sur le marché, afin de répondre au mieux aux besoins de ses clients constructeurs automobiles (Stellantis, Renault-Nissan, Volkswagen Group…).
       </div>
 
+      <!-- 1. Définition -->
       <section id="definition">
         <h2>1. C'est quoi l'impression 3D et 4D ?</h2>
         <div class="comparison-grid">
@@ -445,65 +452,91 @@
             <h4>L'impression 3D</h4>
             <p>Consiste à créer un objet en ajoutant de la matière couche par couche, à partir d'un modèle numérique. Elle est utilisée pour fabriquer rapidement des pièces, des prototypes ou même des produits finis.</p>
             <h5 style="color: var(--primary); margin: 20px 0 10px 0;">Principales techniques</h5>
-            <ul>
-              <li><strong>FDM</strong> (dépôt de filament fondu) : plastique, usage courant</li>
-              <li><strong>SLA</strong> (résine photopolymère) : grande précision</li>
-              <li><strong>SLS/DMLS</strong> (frittage laser) : poudres plastiques ou métalliques</li>
-              <li><strong>LMD, Jet Fusion</strong> : technologies industrielles avancées</li>
+            <ul style="text-align:left;">
+              <li><strong>FDM</strong> (dépôt de filament fondu) : plastique, usage courant et grand public</li>
+              <li><strong>SLA</strong> (résine photopolymère) : grande précision, médical et joaillerie</li>
+              <li><strong>SLS/DMLS</strong> (frittage laser) : poudres plastiques ou métalliques, aéronautique</li>
+              <li><strong>MJF / Jet Fusion</strong> (HP) : production série rapide, industrie</li>
+              <li><strong>Bioimpression</strong> : cellules vivantes, médical et recherche</li>
             </ul>
           </div>
           <div class="tech-card">
             <h4>L'impression 4D</h4>
-            <p>Utilise les mêmes principes que l'impression 3D, mais avec des matériaux spéciaux qui réagissent à des changements environnementaux. La 4e dimension, ici, c'est le temps : l'objet imprimé évolue après sa fabrication.</p>
+            <p>Utilise les mêmes principes que l'impression 3D, mais avec des matériaux spéciaux qui réagissent à des changements environnementaux. La 4e dimension, ici, c'est le <strong>temps</strong> : l'objet imprimé évolue après sa fabrication.</p>
             <h5 style="color: var(--primary); margin: 20px 0 10px 0;">Stimuli déclencheurs</h5>
-            <ul>
+            <ul style="text-align:left;">
               <li>Température (se plier avec la chaleur)</li>
               <li>Humidité (se déployer au contact de l'eau)</li>
-              <li>Lumière (se contracter à la lumière UV)</li>
-              <li>Champs magnétiques</li>
+              <li>Lumière UV (contraction ou dilatation)</li>
+              <li>Champs magnétiques ou électriques</li>
+              <li>pH (milieu biologique)</li>
             </ul>
             <h5 style="color: var(--primary); margin: 20px 0 10px 0;">Matériaux utilisés</h5>
-            <ul>
-              <li>Polymères à mémoire de forme</li>
+            <ul style="text-align:left;">
+              <li>Polymères à mémoire de forme (SMP)</li>
               <li>Hydrogels intelligents</li>
               <li>Alliages thermosensibles (Nitinol)</li>
+              <li>Composites fibres carbone actives</li>
             </ul>
           </div>
         </div>
       </section>
 
+      <!-- 2. Tendances 2025 -->
       <section id="tendances">
-        <h2>2. Quelles sont les tendances en 2025 ?</h2>
+        <h2>2. Tendances 2025</h2>
         <div class="comparison-grid">
           <div class="tech-card">
-            <h4>Pour les impressions 3D</h4>
-            <ul>
-              <li>Très utilisée dans l'aéronautique, la santé (prothèses), et le bâtiment</li>
-              <li>Nouveaux matériaux : métaux très résistants, fibres carbone, plastiques bio-sourcés</li>
-              <li>L'intelligence artificielle aide à concevoir des objets plus légers, solides et économes</li>
+            <h4>🖨️ Impression 3D — tendances</h4>
+            <ul style="text-align:left;">
+              <li><strong>IA générative et conception</strong> : des outils comme Autodesk Generative Design ou nTopology utilisent l'IA pour optimiser automatiquement les géométries des pièces (plus légères, plus solides)</li>
+              <li><strong>Matériaux bio-sourcés</strong> : filaments à base de PLA renforcé, chanvre, lin ou amidon de maïs pour réduire l'empreinte carbone</li>
+              <li><strong>Impression métal grande vitesse</strong> : les procédés DED (Directed Energy Deposition) permettent de fabriquer ou réparer de grandes pièces métalliques directement en atelier</li>
+              <li><strong>Industrialisation de la série</strong> : la frontière entre prototypage et production série s'efface dans l'automobile et l'aéronautique</li>
             </ul>
           </div>
           <div class="tech-card">
-            <h4>Pour les impressions 4D</h4>
-            <ul>
-              <li>Les objets changent de forme selon les conditions (chaleur, eau)</li>
-              <li>Matériaux utilisés : polymères à mémoire de forme, gels réactifs</li>
-              <li>Utilisée en médecine (implants évolutifs), textile (vêtements intelligents), espace (structures déployables)</li>
+            <h4>🔮 Impression 4D — tendances</h4>
+            <ul style="text-align:left;">
+              <li><strong>Médecine régénérative</strong> : stents, implants osseux et trachées artificielles capables de se reconfigurer in vivo</li>
+              <li><strong>Spatial</strong> : antennes et panneaux solaires se déployant automatiquement en orbite</li>
+              <li><strong>Soft robotics</strong> : robots souples sans moteur, actionnés par stimuli thermiques ou chimiques</li>
+              <li><strong>Textile intelligent</strong> : fibres qui s'adaptent à la transpiration ou à la température du corps</li>
+              <li><strong>Architecture adaptive</strong> : façades de bâtiments qui s'ouvrent ou se ferment selon l'ensoleillement</li>
             </ul>
           </div>
         </div>
+
+        <div class="info-box">
+          <strong>IA + impression 3D en 2025 :</strong> L'intégration de l'intelligence artificielle dans les logiciels de CAO (conception assistée par ordinateur) transforme la façon de concevoir les pièces. La « conception générative » permet à l'IA de proposer des géométries optimisées que l'humain n'aurait jamais imaginées, souvent inspirées des structures biologiques (os, corail). Ces formes complexes, impossibles à usiner classiquement, sont parfaitement réalisables en impression 3D.
+        </div>
       </section>
 
+      <!-- 3. Outils -->
       <section id="outils">
         <h2>3. Quels outils sont utilisés ?</h2>
         <div class="comparison-grid">
           <div class="tech-card">
-            <h4>Côté logiciels</h4>
-            <p>On utilise <strong>Fusion 360</strong>, <strong>Cura</strong> ou <strong>SolidWorks</strong> pour créer les modèles 3D. Pour la 4D, des logiciels de simulation comme <strong>Abaqus</strong> ou <strong>ANSYS</strong> permettent de prévoir comment les objets vont réagir.</p>
+            <h4>🖥️ Logiciels de conception (CAO)</h4>
+            <p style="text-align:left; margin-top:10px;"><strong>Fusion 360</strong> (Autodesk) — polyvalent, utilisé en industrie et formation.<br>
+            <strong>SolidWorks</strong> — référence en ingénierie mécanique industrielle.<br>
+            <strong>Cura</strong> — logiciel de tranchage open source, standard pour FDM.<br>
+            <strong>Bambu Studio / PrusaSlicer</strong> — slicers modernes pour imprimantes grand public.<br>
+            <strong>Materialise Magics</strong> — traitement de fichiers STL professionnel.</p>
           </div>
           <div class="tech-card">
-            <h4>Côté matériel</h4>
-            <p>On retrouve des imprimantes <strong>FDM</strong>, <strong>SLA</strong>, <strong>SLS</strong>, etc. La différence avec la 4D vient surtout des matériaux utilisés.</p>
+            <h4>🔬 Logiciels de simulation 4D</h4>
+            <p style="text-align:left; margin-top:10px;"><strong>Abaqus</strong> (Dassault Systèmes) — simulation mécanique avancée, prédit le comportement des matériaux actifs.<br>
+            <strong>ANSYS</strong> — simulation multiphysique (thermique, mécanique, fluides).<br>
+            <strong>COMSOL Multiphysics</strong> — modélisation des stimuli environnementaux sur les matériaux intelligents.</p>
+          </div>
+          <div class="tech-card">
+            <h4>⚙️ Technologies d'impression</h4>
+            <p style="text-align:left; margin-top:10px;"><strong>FDM</strong> — filament plastique, accessible, grand public et PME.<br>
+            <strong>SLA / DLP</strong> — résine UV, haute précision, médical et dentaire.<br>
+            <strong>SLS / MJF</strong> — frittage laser ou jet, pièces fonctionnelles sans support.<br>
+            <strong>DMLS / EBM</strong> — métaux (titane, inconel), aéronautique et médical.<br>
+            <strong>DED / WAAM</strong> — dépôt de métal fondu, réparation de grandes pièces.</p>
           </div>
         </div>
         <figure>
@@ -518,129 +551,215 @@
         </figure>
       </section>
 
+      <!-- 4. Acteurs -->
       <section id="acteurs">
         <h2>4. Qui sont les acteurs importants ?</h2>
+
+        <h3>Acteurs mondiaux — impression 3D</h3>
+        <div class="comparison-grid">
+          <div class="tech-card">
+            <h4>🇺🇸 Stratasys</h4>
+            <p>Pioneer de la technologie FDM (brevet fondateur). Leader mondial des imprimantes industrielles polymères. Fusion en cours avec Desktop Metal (2024) pour consolider le secteur.</p>
+          </div>
+          <div class="tech-card">
+            <h4>🇺🇸 HP (Jet Fusion)</h4>
+            <p>Technologie Multi Jet Fusion (MJF), très rapide pour la production en série. Prisée dans l'automobile et l'aéronautique. Partenaire de grands constructeurs dont BMW et Volkswagen.</p>
+          </div>
+          <div class="tech-card">
+            <h4>🇺🇸 3D Systems</h4>
+            <p>Inventeur de la stéréolithographie (SLA). Large portefeuille : polymères, métaux, bio-impression. Fort en médical avec la production de prothèses et guides chirurgicaux sur mesure.</p>
+          </div>
+          <div class="tech-card">
+            <h4>🇺🇸 Formlabs</h4>
+            <p>Leader de la résine SLA/SLS compacte pour les professionnels (médical, dentaire, joaillerie). Rachat de Dental Products Lab (2024). Forte croissance dans les solutions métiers.</p>
+          </div>
+          <div class="tech-card">
+            <h4>🇺🇸 Carbon</h4>
+            <p>Technologie CLIP (résine UV + lumière), très rapide. Partenaire d'Adidas pour les semelles de chaussures de sport imprimées en série. Déploiement médical et dentaire en progression.</p>
+          </div>
+          <div class="tech-card">
+            <h4>🇨🇳 Bambu Lab</h4>
+            <p>Acteur chinois émergent, devenu en 3 ans le leader du marché FDM grand public et semi-professionnel. Machines rapides, fiables, abordables. Bouscule Prusa et UltiMaker sur leur terrain.</p>
+          </div>
+        </div>
+
+        <h3>Acteurs clés — impression 4D</h3>
         <ul>
-          <li><strong>Stratasys, HP, 3D Systems</strong> : grands noms de l'impression 3D</li>
-          <li><strong>Le MIT (Self-Assembly Lab)</strong> : pionnier dans l'impression 4D</li>
-          <li>Des startups comme <strong>Carbon, Formlabs ou Desktop Metal</strong> innovent aussi beaucoup</li>
+          <li><strong>MIT Self-Assembly Lab</strong> (Skylar Tibbits) — laboratoire pionnier de l'impression 4D, à l'origine du concept en 2013. Travaux sur les matériaux programmables et l'auto-assemblage.</li>
+          <li><strong>Harvard Wyss Institute</strong> — recherche avancée en bio-impression 4D et soft robotics.</li>
+          <li><strong>Materialise</strong> (Belgique) — prestataire de services d'impression 3D/4D pour la santé et l'industrie, coté en bourse.</li>
+          <li><strong>Stratasys + J750</strong> — imprimante multi-matériaux permettant des combinaisons rigide/souple, base de nombreuses recherches 4D.</li>
+          <li><strong>Startups</strong> : Inkbit (impression 4D à jets d'encre), Allevi (bio-impression), Azul 3D (fabrication continue ultra-rapide).</li>
+        </ul>
+
+        <h3>Acteurs français</h3>
+        <ul>
+          <li><strong>Prodways</strong> (groupe Gorgé) — fabricant et prestataire français, fort en médical (prothèses dentaires, orthopédie).</li>
+          <li><strong>AddUp</strong> (Michelin + Fives) — spécialiste français de l'impression métal (LPBF), dédié à l'industrie aéronautique et automobile.</li>
+          <li><strong>Sculpteo</strong> (rachat BASF) — service de fabrication à la demande, production en France.</li>
+          <li><strong>Lynxter</strong> — imprimantes 3D industrielles polyvalentes (polymères, silicone, matériaux techniques), basé à Bayonne.</li>
         </ul>
       </section>
 
+      <!-- 5. Marché -->
       <section id="marche">
         <h2>5. Le marché des imprimantes 3D et 4D</h2>
         <h3>a) Les imprimantes 3D</h3>
         <div class="market-stats">
           <div class="stat-card">
-            <span class="stat-number">8,54</span>
-            <span class="stat-label">Milliards USD en 2024</span>
+            <span class="stat-number">20,7</span>
+            <span class="stat-label">Milliards USD — marché mondial 2024</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number">27,03</span>
-            <span class="stat-label">Milliards USD prévus en 2032</span>
+            <span class="stat-number">62,8</span>
+            <span class="stat-label">Milliards USD prévus en 2030</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number">15,50%</span>
-            <span class="stat-label">TCAC de croissance</span>
+            <span class="stat-number">+20,3%</span>
+            <span class="stat-label">TCAC de croissance 2024-2030</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number">33,01%</span>
+            <span class="stat-number">33%</span>
             <span class="stat-label">Part de marché Amérique du Nord</span>
           </div>
         </div>
-        <p>Cette croissance est tirée par des facteurs tels que l'adoption industrielle rapide, les progrès des technologies de fabrication additive et la demande croissante de composants personnalisés et complexes dans divers secteurs, notamment la santé, l'aérospatiale et l'automobile.</p>
+        <p>La croissance est tirée par plusieurs facteurs convergents : l'industrialisation de la production en série (automobile, aéronautique), le développement du médical sur mesure (prothèses, implants), les matériaux bio-sourcés, et l'essor des imprimantes de bureau accessibles aux PME et aux particuliers. L'intégration de l'IA dans les logiciels de conception accélère encore l'adoption.</p>
+
         <figure>
-          <img src="../tof/veille/marche_3D.webp" alt="Graphique de croissance du marché de l'impression 3D (2024-2032)" class="zoomable">
-          <figcaption>Évolution du marché mondial de l'impression 3D : 8,54 → 27,03 milliards USD.</figcaption>
+          <img src="../tof/veille/marche_3D.webp" alt="Graphique de croissance du marché de l'impression 3D (2024-2030)" class="zoomable">
+          <figcaption>Évolution du marché mondial de l'impression 3D : 20,7 → 62,8 milliards USD d'ici 2030.</figcaption>
         </figure>
 
         <h3>b) Les imprimantes 4D</h3>
         <div class="market-stats">
           <div class="stat-card">
-            <span class="stat-number">0,45</span>
+            <span class="stat-number">0,65</span>
             <span class="stat-label">Milliards USD en 2024</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number">2,85</span>
-            <span class="stat-label">Milliards USD prévus en 2029</span>
+            <span class="stat-number">3,9</span>
+            <span class="stat-label">Milliards USD prévus en 2030</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number">44,75%</span>
-            <span class="stat-label">Croissance annuelle</span>
+            <span class="stat-number">+34,2%</span>
+            <span class="stat-label">TCAC de croissance</span>
           </div>
         </div>
-        <p>Les progrès de la technologie de biofabrication stimuleront le marché de l'impression 4D au cours de la période de prévision. La technologie d'impression 4D permet aux objets imprimés de s'auto-transformer au fil du temps lorsqu'ils sont en contact avec des sources d'énergie externes comme la pression, la chaleur, etc.</p>
+        <p>Le marché de l'impression 4D reste émergent mais croît très rapidement, porté par les secteurs médical, spatial et défense. Les progrès dans la fabrication des matériaux intelligents (polymères à mémoire de forme, hydrogels) sont le principal moteur de cette croissance.</p>
+
         <figure>
-          <img src="../tof/veille/marche_4D.webp" alt="Graphique de croissance du marché de l'impression 4D (2024-2029)" class="zoomable">
-          <figcaption>Marché de l'impression 4D : croissance à 44,75 % par an.</figcaption>
+          <img src="../tof/veille/marche_4D.webp" alt="Graphique de croissance du marché de l'impression 4D (2024-2030)" class="zoomable">
+          <figcaption>Marché de l'impression 4D — croissance à +34 % par an jusqu'en 2030.</figcaption>
         </figure>
       </section>
 
-      <section id="avenir">
-        <h2>6. Aujourd'hui et demain ?</h2>
+      <!-- 6. Industrie automobile (nouveau) -->
+      <section id="automobile">
+        <h2>6. L'impression 3D dans l'industrie automobile</h2>
+        <p>L'industrie automobile est l'un des secteurs qui utilise le plus l'impression 3D, à toutes les étapes du cycle de vie d'un véhicule.</p>
+
         <div class="comparison-grid">
           <div class="tech-card">
-            <h4>Organes bio-imprimés</h4>
-            <p>Mini foie créé en 90 jours</p>
-            <img src="../tof/veille/foie.webp" alt="Mini foie bio-imprimé en 3D" class="zoomable">
-            <figcaption>Le mini foie a été bio-imprimé en 90 jours (crédits photo : Agência FAPESP).</figcaption>
+            <h4>🔧 Prototypage rapide</h4>
+            <p>Fabrication de maquettes et prototypes fonctionnels en quelques heures au lieu de plusieurs semaines. Permet de valider un design ou tester une pièce avant d'investir dans des outillages coûteux.</p>
           </div>
           <div class="tech-card">
-            <h4>Maisons imprimées</h4>
-            <p>Construction en quelques jours</p>
-            <img src="../tof/veille/maison.webp" alt="Maison entièrement imprimée en 3D" class="zoomable">
-            <figcaption>Maisons construites en quelques jours grâce à l'impression 3D.</figcaption>
+            <h4>🏭 Outillage de production</h4>
+            <p>Gabarits, jigs, préhenseurs de robots et outillages spéciaux fabriqués à la demande en 3D. Coût 5 à 10 fois inférieur à l'usinage traditionnel. Adopté massivement par Renault, Stellantis, BMW.</p>
           </div>
           <div class="tech-card">
-            <h4>Cuisine 3D</h4>
-            <p>Pâtisseries personnalisées</p>
-            <img src="../tof/veille/four.webp" alt="Impression 3D alimentaire : pâtisserie ou chocolat" class="zoomable">
-            <figcaption>Création de pâtisseries ou plats personnalisés par impression 3D.</figcaption>
+            <h4>🏎️ Pièces de rechange & compétition</h4>
+            <p>Fabrication à la demande de pièces rares ou obsolètes. En compétition (F1, WRC), des pièces aérodynamiques sont imprimées nuit et jour pour être montées le lendemain matin.</p>
           </div>
           <div class="tech-card">
-            <h4>Vêtements intelligents</h4>
-            <p>Adaptation automatique à la météo</p>
-            <img src="../tof/veille/habit.webp" alt="Vêtement ou chaussure 4D s'adaptant à l'environnement" class="zoomable">
-            <figcaption>Vêtements intelligents capables de réagir à la température ou à l'humidité.</figcaption>
+            <h4>🧪 Pièces finales légères</h4>
+            <p>Production de pièces intérieures complexes (clips, conduits d'air, supports de câbles) en série directement par impression 3D. Lamborghini, BMW et Volkswagen ont intégré des pièces imprimées dans leurs modèles de production.</p>
           </div>
         </div>
+
+        <div class="novares-box">
+          <strong>🏭 Lien avec Novares :</strong> En tant qu'équipementier automobile de rang 1 spécialisé dans la plasturgie, Novares utilise l'impression 3D comme outil central de son processus de R&D. Les prototypes de pièces plastiques (clips, habillages, conduits) sont imprimés en interne pour valider les concepts avant de lancer les moules d'injection, qui coûtent plusieurs dizaines de milliers d'euros. Cette approche réduit considérablement le temps de mise sur le marché et les coûts de développement, deux enjeux majeurs face aux clients constructeurs qui exigent des cycles de plus en plus courts.
+        </div>
+      </section>
+
+      <!-- 7. Aujourd'hui et demain -->
+      <section id="avenir">
+        <h2>7. Aujourd'hui et demain</h2>
+        <div class="comparison-grid">
+          <div class="tech-card">
+            <h4>🫀 Organes bio-imprimés</h4>
+            <p>En 2024, des équipes de recherche ont franchi un cap majeur avec des mini-reins fonctionnels vascularisés et des cornées humaines imprimées. La bio-impression pourrait résoudre la pénurie de greffons d'ici 2030.</p>
+            <img src="../tof/veille/foie.webp" alt="Mini foie bio-imprimé en 3D" class="zoomable">
+            <figcaption>Bio-impression d'organes : vers des greffons sur mesure.</figcaption>
+          </div>
+          <div class="tech-card">
+            <h4>🏠 Maisons et bâtiments imprimés</h4>
+            <p>Aux Pays-Bas, une dizaine de maisons habitées sont déjà entièrement imprimées en béton. Au Texas, la startup ICON imprime des quartiers résidentiels entiers. En France, Nantes a inauguré la première maison imprimée en 3D habitée en 2018.</p>
+            <img src="../tof/veille/maison.webp" alt="Maison entièrement imprimée en 3D" class="zoomable">
+            <figcaption>Maisons imprimées en béton : construction en quelques jours.</figcaption>
+          </div>
+          <div class="tech-card">
+            <h4>🍕 Alimentation et cuisine 3D</h4>
+            <p>Des imprimantes alimentaires permettent de créer des formes complexes en chocolat, pâte à sucre ou purées protéinées. Des hôpitaux utilisent l'impression alimentaire pour adapter les textures aux patients dysphasiques.</p>
+            <img src="../tof/veille/four.webp" alt="Impression 3D alimentaire" class="zoomable">
+            <figcaption>Impression 3D alimentaire : personnalisation nutritionnelle et esthétique.</figcaption>
+          </div>
+          <div class="tech-card">
+            <h4>👗 Vêtements et textiles intelligents</h4>
+            <p>Adidas Carbon imprime des semelles de chaussures en série (Futurecraft). En 4D, des chercheurs du MIT développent des vêtements qui s'ouvrent et se ferment automatiquement en fonction de la transpiration, sans électronique.</p>
+            <img src="../tof/veille/habit.webp" alt="Vêtement 4D s'adaptant à l'environnement" class="zoomable">
+            <figcaption>Textiles intelligents : la 4D au service du confort et de la performance.</figcaption>
+          </div>
+        </div>
+
+        <h3>Les grandes perspectives d'ici 2030</h3>
+        <ul>
+          <li><strong>Impression 3D dans l'espace</strong> : la NASA et l'ESA expérimentent l'impression de pièces de rechange directement à bord de la Station Spatiale Internationale (ISS), évitant des ravitaillements coûteux.</li>
+          <li><strong>Décarbonation industrielle</strong> : la fabrication additive réduit les déchets de matière de 70 à 90 % par rapport à l'usinage soustractif (fraiseuse, tour), ce qui en fait un levier clé de la transition écologique industrielle.</li>
+          <li><strong>Démocratisation du médical sur mesure</strong> : prothèses dentaires, attelles orthopédiques et aides auditives imprimées sur mesure en cabinet, réduisant délais et coûts pour les patients.</li>
+          <li><strong>Impression multi-matériaux</strong> : les imprimantes de nouvelle génération combinent plastique, métal, silicone et électronique en un seul passage, ouvrant la voie à des objets « intelligents de naissance ».</li>
+        </ul>
+
         <p style="margin-top: 30px; font-size: 1.1em; text-align: center;">
-          L'impression 3D et 4D sont promises à un bel avenir, avec des applications toujours plus concrètes.
+          L'impression 3D et 4D convergent vers une seule vision : fabriquer exactement ce dont on a besoin, où on en a besoin, quand on en a besoin — sans déchets, sans délai, sans compromis.
         </p>
       </section>
 
+      <!-- 8. Ressources -->
       <section id="ressources">
-        <h2>7. Pour aller plus loin</h2>
         <div class="footer-links">
-          <h3 style="margin-bottom: 20px; color: var(--primary);">Ressources utiles</h3>
+          <h3 style="margin-bottom: 20px; color: var(--primary);">8. Ressources et références (2024-2025)</h3>
           <div class="links-grid">
             <div>
-              <h4 style="margin-bottom: 15px; color: var(--primary);">Sites spécialisés</h4>
-              <a href="https://www.3dnatives.com" target="_blank">3Dnatives</a>
+              <h4 style="margin-bottom: 15px; color: var(--primary);">Médias spécialisés</h4>
+              <a href="https://www.3dnatives.com" target="_blank">3Dnatives — référence francophone</a>
               <a href="https://www.additivemanufacturing.media" target="_blank">Additive Manufacturing Media</a>
+              <a href="https://www.3dprintingindustry.com" target="_blank">3D Printing Industry</a>
             </div>
             <div>
-              <h4 style="margin-bottom: 15px; color: var(--primary);">Revues scientifiques</h4>
+              <h4 style="margin-bottom: 15px; color: var(--primary);">Recherche & science</h4>
               <a href="https://www.nature.com/nmat/" target="_blank">Nature Materials</a>
-              <a href="https://www.journals.elsevier.com/additive-manufacturing" target="_blank">Additive Manufacturing</a>
+              <a href="https://www.journals.elsevier.com/additive-manufacturing" target="_blank">Additive Manufacturing (Elsevier)</a>
+              <a href="https://selfassemblylab.mit.edu" target="_blank">MIT Self-Assembly Lab</a>
             </div>
             <div>
-              <h4 style="margin-bottom: 15px; color: var(--primary);">Événements</h4>
-              <a href="#" onclick="return false;">CES</a>
-              <a href="#" onclick="return false;">Formnext</a>
-              <a href="#" onclick="return false;">Rapid + TCT</a>
+              <h4 style="margin-bottom: 15px; color: var(--primary);">Industrie automobile</h4>
+              <a href="https://www.hp.com/us-en/printers/3d-printers/automotive.html" target="_blank">HP — 3D printing automotive</a>
+              <a href="https://www.addupmanufacturing.com" target="_blank">AddUp — fabrication additive métal</a>
+              <a href="https://www.stratasys.com/industries/automotive/" target="_blank">Stratasys Automotive</a>
             </div>
             <div>
-              <h4 style="margin-bottom: 15px; color: var(--primary);">Brevets</h4>
+              <h4 style="margin-bottom: 15px; color: var(--primary);">Brevets & événements</h4>
               <a href="https://patents.google.com" target="_blank">Google Patents</a>
-              <a href="https://worldwide.espacenet.com" target="_blank">Espacenet</a>
+              <a href="https://formnext.com" target="_blank">Formnext (salon mondial)</a>
+              <a href="https://worldwide.espacenet.com" target="_blank">Espacenet — base brevets européens</a>
             </div>
           </div>
         </div>
       </section>
 
       <div class="footer-credit">
-        &copy; 2025 — Veille technologique réalisée par Aurélien Pont. Tous droits réservés.
+        &copy; 2025 — Veille technologique réalisée par Aurélien Pont. Tous droits réservés. — Mise à jour mars 2025.
       </div>
     </div>
   </div>
@@ -705,7 +824,6 @@
     window.addEventListener('scroll', getActiveSection);
     window.addEventListener('load', getActiveSection);
 
-    // Gestion du clic sur un lien
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         setTimeout(getActiveSection, 100);
@@ -714,10 +832,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
