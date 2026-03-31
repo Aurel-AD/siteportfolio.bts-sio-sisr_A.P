@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>CV — Aurélien Pont</title>
+  <title>CV — Aurélien Pont (1 page)</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
   <style>
+    /* ───────────────────────────
+       Variables & compression
+    ─────────────────────────── */
     :root {
       --navy:   #1B2A41;
       --navy-l: #243552;
@@ -21,207 +24,395 @@
       --text:   #2C2C2C;
       --muted:  #5A6880;
       --border: #DDE3EC;
-      --sidebar-w: 30%; /* Réduit légèrement */
+      --sidebar-w: 32%;
     }
 
-    /* Reset & Base */
+    /* ───────────────────────────
+       Reset & Base plus compact
+    ─────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     body {
       font-family: 'Lato', sans-serif;
-      font-size: 12.5px; /* Réduit de 13.5px */
-      line-height: 1.45; /* Réduit de 1.55 */
+      font-size: 12.5px;
+      line-height: 1.48;
       color: var(--text);
       background: #E8ECF1;
     }
     a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
 
-    /* Page wrapper */
+    /* ───────────────────────────
+       Page wrapper - strict A4
+    ─────────────────────────── */
     .page {
       display: flex;
       width: 210mm;
-      height: 297mm; /* Hauteur fixe pour forcer le contenu */
-      margin: 10px auto;
+      min-height: 297mm;
+      max-height: 297mm;
+      margin: 20px auto;
       box-shadow: 0 8px 32px rgba(0,0,0,.18);
-      background: var(--white);
-      overflow: hidden; /* Empêche le dépassement */
+      overflow: hidden;
     }
 
-    /* SIDEBAR */
+    /* ───────────────────────────
+       SIDEBAR - plus compact
+    ─────────────────────────── */
     .sidebar {
       width: var(--sidebar-w);
       background: var(--navy);
       color: var(--white);
-      padding: 20px 15px; /* Réduit */
+      padding: 20px 16px;
       display: flex;
       flex-direction: column;
-      gap: 18px; /* Réduit */
+      gap: 18px;
       flex-shrink: 0;
+      overflow-y: auto;
     }
 
-    .sb-identity { border-bottom: 1px solid rgba(255,255,255,.15); padding-bottom: 12px; }
+    .sb-identity { 
+      border-bottom: 1px solid rgba(255,255,255,.15); 
+      padding-bottom: 12px;
+    }
     .sb-name {
       font-family: 'Playfair Display', serif;
-      font-size: 18px;
+      font-size: 19px;
       line-height: 1.2;
-      color: var(--white);
-      margin-bottom: 4px;
+      margin-bottom: 0;  /* plus de sous-titre ici */
     }
-    .sb-title {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--teal-l);
-    }
+    /* pas de .sb-title dans la colonne — supprimé */
 
     .sb-section { display: flex; flex-direction: column; gap: 8px; }
     .sb-heading {
-      font-size: 9px;
+      font-size: 8.5px;
       font-weight: 900;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
       color: var(--teal-l);
       padding-bottom: 4px;
       border-bottom: 1px solid rgba(255,255,255,.12);
       display: flex;
-      align-items: center; gap: 7px;
+      align-items: center;
+      gap: 6px;
+    }
+    .sb-heading i { font-size: 9px; }
+
+    .contact-list { display: flex; flex-direction: column; gap: 6px; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 11.5px;
+      line-height: 1.35;
+    }
+    .contact-item i {
+      color: var(--teal-l);
+      width: 13px;
+      text-align: center;
+      margin-top: 1px;
+      font-size: 11px;
     }
 
-    .contact-list { display: flex; flex-direction: column; gap: 5px; }
-    .contact-item { display: flex; align-items: flex-start; gap: 8px; font-size: 11.5px; }
-    .contact-item i { color: var(--teal-l); width: 12px; margin-top: 2px; font-size: 11px; }
+    .skill-group { margin-bottom: 8px; }
+    .skill-group-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--teal-l);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .skill-group-title i { font-size: 9px; }
+    .skill-group ul {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      list-style-type: disc;
+      padding-left: 14px;
+    }
+    .skill-group ul li {
+      font-size: 11px;
+      color: rgba(255,255,255,.85);
+      line-height: 1.35;
+    }
+    .skill-group ul li::marker {
+      color: var(--teal-l);
+    }
 
-    .skill-group { margin-bottom: 5px; }
-    .skill-group-title { font-size: 10.5px; font-weight: 700; color: var(--teal-l); margin-bottom: 2px; display: flex; align-items: center; gap: 5px; }
-    .skill-group ul { padding-left: 12px; list-style-type: disc; }
-    .skill-group ul li { font-size: 11px; color: rgba(255,255,255,.85); line-height: 1.3; }
+    .edu-list { display: flex; flex-direction: column; gap: 9px; }
+    .edu-diploma {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .edu-school {
+      font-size: 10px;
+      color: rgba(255,255,255,.65);
+      font-style: italic;
+    }
+    .edu-date {
+      font-size: 10px;
+      color: var(--teal-l);
+      font-weight: 700;
+    }
 
-    .edu-list { display: flex; flex-direction: column; gap: 8px; }
-    .edu-diploma { font-size: 11px; font-weight: 700; color: var(--white); line-height: 1.2; }
-    .edu-school { font-size: 10px; color: rgba(255,255,255,.65); font-style: italic; }
-    .edu-date { font-size: 10px; color: var(--teal-l); font-weight: 700; }
+    .interests { display: flex; flex-wrap: wrap; gap: 5px; }
+    .interest-tag {
+      font-size: 10px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 3px;
+      padding: 2px 7px;
+    }
 
-    .interests { display: flex; flex-wrap: wrap; gap: 4px; }
-    .interest-tag { font-size: 10px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); padding: 2px 6px; border-radius: 3px; }
+    /* ───────────────────────────
+       MAIN CONTENT - resserré
+    ─────────────────────────── */
+    .main {
+      flex: 1;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
 
-    /* MAIN CONTENT */
-    .main { flex: 1; background: var(--white); display: flex; flex-direction: column; }
+    .main-header {
+      background: var(--off);
+      padding: 18px 20px 14px;
+      border-bottom: 3px solid var(--teal);
+    }
+    .main-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+    .main-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
 
-    .main-header { background: var(--off); padding: 20px 25px 15px; border-bottom: 3px solid var(--teal); }
-    .main-name { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin-bottom: 2px; }
-    .main-title { font-size: 11.5px; font-weight: 700; text-transform: uppercase; color: var(--teal); }
-
-    .main-body { padding: 15px 25px; display: flex; flex-direction: column; gap: 15px; }
+    .main-body {
+      padding: 16px 22px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
 
     .section-title {
-      font-size: 9.5px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy);
-      padding-bottom: 5px; border-bottom: 2px solid var(--navy); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding-bottom: 5px;
+      border-bottom: 2px solid var(--navy);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
+    .section-title i { font-size: 11px; }
 
-    .profile-box { background: var(--off); border-left: 4px solid var(--teal); padding: 10px 12px; font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .profile-box {
+      background: var(--off);
+      border-left: 4px solid var(--teal);
+      padding: 8px 12px;
+      border-radius: 2px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
 
     .exp-list { display: flex; flex-direction: column; gap: 12px; }
-    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
-    .exp-role { font-size: 13px; font-weight: 900; color: var(--navy); }
-    .exp-company { font-size: 11.5px; font-weight: 700; color: var(--teal); }
-    .exp-date { font-size: 10.5px; font-weight: 700; color: var(--muted); white-space: nowrap; }
-
-    .subcat { font-size: 10px; font-weight: 900; text-transform: uppercase; color: var(--navy-l); margin: 5px 0 2px; padding-left: 6px; border-left: 2px solid var(--teal); }
-    .exp-ul { padding-left: 14px; list-style-type: disc; }
-    .exp-ul li { font-size: 11.5px; color: var(--text); line-height: 1.35; margin-bottom: 1px; }
-
-    .exp-item + .exp-item { padding-top: 10px; border-top: 1px dashed var(--border); }
-
-    @page { size: A4; margin: 0; }
-    @media print {
-      body { background: none; }
-      .page { margin: 0; box-shadow: none; width: 100%; height: 100%; }
-      .no-print { display: none !important; }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .exp-role {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+    .exp-company {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--teal);
+    }
+    .exp-date {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .exp-date::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--teal);
+      display: inline-block;
     }
 
-    .print-bar { width: 210mm; margin: 5px auto; text-align: right; }
-    .print-btn { background: var(--navy); color: #fff; border: none; padding: 6px 15px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 700; }
+    .subcat {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      color: var(--navy-l);
+      margin: 6px 0 2px;
+      padding-left: 6px;
+      border-left: 2px solid var(--teal);
+    }
+    .exp-ul {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      list-style-type: disc;
+      padding-left: 16px;
+    }
+    .exp-ul li {
+      font-size: 11.5px;
+      line-height: 1.38;
+    }
+    .exp-ul li::marker {
+      color: var(--teal);
+    }
+
+    .exp-item + .exp-item { 
+      padding-top: 10px; 
+      border-top: 1px dashed var(--border); 
+    }
+
+    /* ───────────────────────────
+       Impression 1 page
+    ─────────────────────────── */
+    @page { 
+      size: A4; 
+      margin: 0; 
+    }
+
+    @media print {
+      body { background: none; margin:0; padding:0; }
+      .page { 
+        margin: 0; 
+        box-shadow: none; 
+        width: 100%; 
+        min-height: 0;
+        max-height: 100%;
+        overflow: visible;
+      }
+      .no-print { display: none !important; }
+      .sidebar, .main { overflow: visible; }
+      .exp-ul li { break-inside: avoid; }
+      .exp-item { break-inside: avoid; page-break-inside: avoid; }
+    }
+
+    .print-bar {
+      width: 210mm;
+      margin: 0 auto 8px;
+      text-align: right;
+    }
+    .print-btn {
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .print-btn:hover { background: var(--teal); }
   </style>
 </head>
 <body>
 
   <div class="print-bar no-print">
     <button class="print-btn" onclick="window.print()">
-      <i class="fas fa-print"></i> Enregistrer / Imprimer
+      <i class="fas fa-print"></i> Enregistrer / Imprimer (1 page)
     </button>
   </div>
 
   <div class="page">
-    <aside class="sidebar">
-      <div class="sb-identity">
-        <p class="sb-name">Aurélien<br>Pont</p>
-        <p class="sb-title">Assistant administrateur<br>technique informatique</p>
-      </div>
 
+    <!-- SIDEBAR (gauche) — suppression du sous-titre "Assistant administrateur..." -->
+    <aside class="sidebar">
+     
       <div class="sb-section">
         <p class="sb-heading"><i class="fas fa-address-card"></i>Contact</p>
         <div class="contact-list">
           <div class="contact-item"><i class="fas fa-envelope"></i><span>aurelienpont@gmail.com</span></div>
           <div class="contact-item"><i class="fas fa-phone"></i><span>07 60 75 64 39</span></div>
-          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Hauts-de-France (59)</span></div>
+          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Hauts-de-France</span></div>
           <div class="contact-item"><i class="fas fa-car"></i><span>Permis B — véhiculé</span></div>
         </div>
       </div>
 
       <div class="sb-section">
         <p class="sb-heading"><i class="fas fa-tools"></i>Compétences</p>
+
         <div class="skill-group">
           <p class="skill-group-title"><i class="fas fa-headset"></i>Support & Assistance</p>
-          <ul>
-            <li>Support N1/N2, Freshservice</li>
-            <li>DameWare, TeamViewer, RDP</li>
-          </ul>
+          <ul><li>Support N1/N2 (sur site & à distance)</li><li>Freshservice — ticketing & Asset Mgmt</li><li>DameWare, TeamViewer, RDP</li><li>Rédaction de procédures utilisateurs</li><li>Formation et accompagnement</li></ul>
         </div>
+
         <div class="skill-group">
           <p class="skill-group-title"><i class="fas fa-laptop"></i>Systèmes & Déploiement</p>
-          <ul>
-            <li>SCCM, Win 10/11, Dell/Lenovo</li>
-          </ul>
+          <ul><li>Déploiement OS & apps via SCCM</li><li>Windows 10/11, postes fixes & portables</li><li>Mises à jour, correctifs, restauration</li><li>Pilotes via UNC/DFS — Dell & Lenovo</li></ul>
         </div>
+
         <div class="skill-group">
           <p class="skill-group-title"><i class="fas fa-shield-alt"></i>Sécurité & Réseau</p>
-          <ul>
-            <li>VPN FortiClient, MFA, AD</li>
-            <li>Sauvegarde Dell Avamar</li>
-          </ul>
+          <ul><li>VPN FortiClient & EMS</li><li>MFA (Microsoft Authenticator)</li><li>Wi-Fi invités (Cisco Meraki)</li><li>Active Directory — comptes & groupes</li><li>Sauvegarde / restauration distante</li></ul>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-title"><i class="fas fa-wrench"></i>Outils & Environnements</p>
+          <ul><li>SCCM, Citrix, Active Directory</li><li>Cisco Meraki, FortiClient</li><li>Freshservice, ROK (workflows)</li><li>Switches Cisco, D-Link</li></ul>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-title"><i class="fas fa-file-alt"></i>Documentation</p>
+          <ul><li>Conformité TISAX</li><li>Guides utilisateurs & FAQ techniques</li><li>Suivi workflows (entrées/sorties/mvts)</li></ul>
         </div>
       </div>
 
       <div class="sb-section">
         <p class="sb-heading"><i class="fas fa-graduation-cap"></i>Formations</p>
         <div class="edu-list">
-          <div class="edu-item">
-            <p class="edu-diploma">BTS SIO — SISR (En cours)</p>
-            <p class="edu-school">AFPI Marcq-en-Barœul</p>
-          </div>
-          <div class="edu-item">
-            <p class="edu-diploma">TP Technicien d'Assistance (BAC)</p>
-            <p class="edu-school">M2I Formation - 2024</p>
-          </div>
-          <div class="edu-item">
-            <p class="edu-diploma">MOOC ANSSI & RGPD</p>
-            <p class="edu-date">Certifiés 2025</p>
-          </div>
+          <div><p class="edu-diploma">BTS SIO — SISR</p><p class="edu-school">AFPI Marcq-en-Barœul</p><p class="edu-date">Depuis oct. 2024</p></div>
+          <div><p class="edu-diploma">Titre pro Technicien d'Assistance (BAC)</p><p class="edu-school">M2I Formation (distanciel)</p><p class="edu-date">2024</p></div>
+          <div><p class="edu-diploma">MOOC ANSSI — Sécurité des SI</p><p class="edu-school">En ligne</p><p class="edu-date">2025</p></div>
+          <div><p class="edu-diploma">MOOC RGPD — Protection des données</p><p class="edu-school">En ligne</p><p class="edu-date">2025</p></div>
         </div>
       </div>
 
       <div class="sb-section">
         <p class="sb-heading"><i class="fas fa-heart"></i>Intérêts</p>
         <div class="interests">
-          <span class="interest-tag">🤿 Plongée N3</span>
-          <span class="interest-tag">🍳 Cuisine</span>
-          <span class="interest-tag">⚽ Foot bénévole</span>
+          <span class="interest-tag">🤿 Plongée N3-RIFAP</span>
+          <span class="interest-tag">🍳 Cuisine & pâtisserie</span>
+          <span class="interest-tag">⚽ Encadrement bénévole (Wattrelos FC)</span>
+          <span class="interest-tag">🌱 Potager ouvrier</span>
         </div>
       </div>
     </aside>
 
+    <!-- MAIN (partie droite) avec titre uniquement dans l'en-tête -->
     <main class="main">
       <header class="main-header">
         <h1 class="main-name">Aurélien Pont</h1>
@@ -229,64 +420,90 @@
       </header>
 
       <div class="main-body">
+
+        <!-- Profil condensé -->
         <section>
           <h2 class="section-title"><i class="fas fa-user"></i>Profil</h2>
           <p class="profile-box">
-            Technicien informatique avec <strong>2 ans d'expérience</strong> en support technique N1/N2. Expert en déploiement <strong>SCCM</strong> et administration <strong>AD</strong>. Rigoureux sur la documentation TISAX et la sécurité SI.
+            Technicien informatique avec <strong>2 ans d'expérience</strong> en support N1/N2, multi-sites.
+            Compétences en administration système/réseau, déploiement automatisé <strong>SCCM</strong>, sécurisation des postes
+            et documentation conforme TISAX. <strong>Objectif :</strong> environnement numérique fluide, fiable et sécurisé.
           </p>
         </section>
 
+        <!-- Expériences -->
         <section>
           <h2 class="section-title"><i class="fas fa-briefcase"></i>Expériences professionnelles</h2>
           <div class="exp-list">
+
+            <!-- Novares - poste principal -->
             <div class="exp-item">
               <div class="exp-header">
-                <div>
-                  <p class="exp-role">Assistant admin. technique info.</p>
-                  <p class="exp-company">Novares — Lens & sites de production</p>
+                <div class="exp-title-block">
+                  <p class="exp-role">Assistant administrateur technique informatique</p>
+                  <p class="exp-company">Novares — Centre d'expertise (Lens) & sites de production (Libercourt, Villers-Bretonneux)</p>
                 </div>
                 <span class="exp-date">Depuis oct. 2024</span>
               </div>
-              <p class="subcat">Support & Déploiement</p>
+
+              <p class="subcat">Support utilisateur & gestion des incidents</p>
               <ul class="exp-ul">
-                <li>Gestion N1/N2 et ticketing via Freshservice.</li>
-                <li>Déploiement OS/Apps automatisé via SCCM.</li>
-                <li>Maintenance parc Dell/Lenovo (pilotes via DFS).</li>
+                <li>Diagnostic et résolution N1/N2 (matériel/logiciel) sur centre d'expertise et sites de production</li>
+                <li>Assistance à distance (DameWare, TeamViewer, RDP) ; gestion tickets via Freshservice</li>
+                <li>Inventaire matériel/logiciel (Asset Management) ; formation utilisateurs aux outils et bonnes pratiques</li>
               </ul>
-              <p class="subcat">Administration & Sécurité</p>
+
+              <p class="subcat">Déploiement & maintenance postes</p>
               <ul class="exp-ul">
-                <li>AD : Gestion comptes, GPO et droits d'accès.</li>
-                <li>Sauvegardes Avamar : Contrôle et tests de restauration.</li>
-                <li>Sécurité : VPN FortiClient, MFA, Wi-Fi Cisco Meraki.</li>
-                <li>Conformité : Documentation technique TISAX.</li>
+                <li>Installation, configuration et maintenance des postes ; déploiement automatisé OS/logiciels via SCCM</li>
+                <li>Mise à jour pilotes et logiciels (UNC/DFS, Software Center, Dell & Lenovo Update)</li>
+                <li>Déploiement et maintenance des pilotes d'impression (locaux/partagés)</li>
+              </ul>
+
+              <p class="subcat">Administration système, sauvegardes & sécurité</p>
+              <ul class="exp-ul">
+                <li><strong>Active Directory :</strong> gestion comptes et organisation des PC par OU ; habilitations et dossiers partagés</li>
+                <li><strong>Suivi sauvegardes (Dell Avamar) :</strong> contrôle hebdomadaire logs, reporting Excel ; tests restauration mensuels</li>
+                <li>Configuration VPN FortiClient & EMS, MFA, administration Wi-Fi invités (Cisco Meraki)</li>
+              </ul>
+
+              <p class="subcat">Documentation & conformité</p>
+              <ul class="exp-ul">
+                <li>Rédaction de procédures conformes TISAX, guides utilisateurs, FAQ techniques ; suivi workflows (SwF)</li>
               </ul>
             </div>
 
+            <!-- FRESC 2024 -->
             <div class="exp-item">
               <div class="exp-header">
-                <div>
+                <div class="exp-title-block">
                   <p class="exp-role">Technicien informatique</p>
                   <p class="exp-company">FRESC — Roubaix</p>
                 </div>
                 <span class="exp-date">Fév. – Avr. 2024</span>
               </div>
               <ul class="exp-ul">
-                <li>Maintenance préventive et masterisation de postes.</li>
-                <li>Config. switches (Cisco, D-Link) et infrastructure Wi-Fi.</li>
-                <li>Diagnostic et résolution incidents réseau/matériel.</li>
+                <li>Maintenance préventive et optimisation du parc ; déploiement complet des postes de travail</li>
+                <li>Déploiement automatisé OS et logiciels ; installation/remplacement matériel, mise à niveau</li>
+                <li>Résolution incidents N1/N2, diagnostic, dépannage ; administration switches Cisco, D-Link</li>
+                <li>Paramétrage routeurs Wi-Fi et infrastructure réseau</li>
               </ul>
             </div>
 
+            <!-- FRESC 2023 -->
             <div class="exp-item">
               <div class="exp-header">
-                <p class="exp-role">Technicien informatique</p>
+                <div class="exp-title-block">
+                  <p class="exp-role">Technicien informatique</p>
+                  <p class="exp-company">FRESC — Roubaix</p>
+                </div>
                 <span class="exp-date">Janvier 2023</span>
               </div>
-              <p class="exp-company">FRESC — Roubaix</p>
               <ul class="exp-ul">
-                <li>Préparation et déploiement logiciel de postes.</li>
+                <li>Installation/désinstallation de logiciels, préparation de postes</li>
               </ul>
             </div>
+
           </div>
         </section>
       </div>
