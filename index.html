@@ -1063,16 +1063,25 @@
         });
     </script>
     <!-- Modale RGPD -->
-<div id="rgpd-modal" style="display: none;">
+<div id="rgpd-modal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); z-index: 9999; align-items: center; justify-content: center;">
     <div style="background: #1e293b; border-radius: 14px; border-left: 4px solid #34d399; padding: 2.5rem; max-width: 560px; width: 90%; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
+        
         <button onclick="document.getElementById('rgpd-modal').style.display = 'none'" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">×</button>
+        
         <h3 style="color: #34d399; margin-bottom: 1rem;">Politique de Confidentialité</h3>
+        
         <p style="color: #e2e8f0; line-height: 1.6; margin-bottom: 1rem;">
-            Ce portfolio respecte votre vie privée. Aucune donnée personnelle n'est collectée sans votre consentement.
+            Ce portfolio respecte votre vie privée. La seule donnée collectée est votre <strong>adresse e-mail</strong> via le formulaire de contact.
         </p>
-        <ul style="color: #cbd5e0; margin-bottom: 1.5rem; padding-left: 1.5rem;">
-            <li>✓ Aucun tracking ou analytics</li>
-            <li>✓ Aucun cookie tiers</li>
-            <li>✓ Données de contact utilisées uniquement pour répondre à vos messages</li>
+
+        <ul style="color: #cbd5e0; margin-bottom: 1.5rem; padding-left: 1.5rem; line-height: 1.8;">
+            <li>✓ <strong>Usage :</strong> Uniquement pour répondre à vos messages.</li>
+            <li>✓ <strong>Conservation :</strong> Supprimée après 2 ans sans échange.</li>
+            <li>✓ <strong>Sécurité :</strong> Aucune revente ni tracking tiers.</li>
         </ul>
-        <p style="color: #9
+
+        <p style="color: #94a3b8; font-size: 0.85rem; border-top: 1px solid #334155; pt-3; margin-top: 1rem; padding-top: 1rem;">
+            Conformément au RGPD, vous disposez d'un droit d'accès et de suppression. Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la <strong>CNIL</strong> (cnil.fr).
+        </p>
+    </div>
+</div>
