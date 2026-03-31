@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Schéma Réseau — PPE2 · Load Balancing & Sauvegarde</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',sans-serif; background:#f0f4f8; }
+.wrap { max-width:1320px; margin:0 auto; padding:20px; }
+.hdr { background:#2c3e50; color:#fff; border-radius:8px; padding:16px 24px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+.hdr h1 { font-size:1.15rem; }
+.hdr .sub { font-size:.8rem; color:#aab; margin-top:3px; }
+.badges { display:flex; gap:6px; flex-wrap:wrap; }
+.badge { color:#fff; font-size:.72rem; padding:3px 10px; border-radius:20px; white-space:nowrap; }
+.b1 { background:#3498db; }
+.b2 { background:#e67e22; }
+.box { background:#fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,.1); overflow:hidden; }
+.tb { background:#2c3e50; padding:9px 14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+.tb-t { color:#ecf0f1; font-size:.85rem; font-weight:600; }
+.ctrls { display:flex; gap:5px; }
+.ctrls button { background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.25); padding:5px 11px; border-radius:4px; cursor:pointer; font-size:.78rem; }
+.ctrls button:hover { background:rgba(255,255,255,.22); }
+.ctrls button.p { background:#e67e22; border-color:transparent; }
+.zv { color:rgba(255,255,255,.7); font-size:.78rem; min-width:42px; text-align:center; }
+.vp { overflow:auto; background:#f7fbff; max-height:820px; cursor:grab; }
+.vp:active { cursor:grabbing; }
+.inner { padding:18px; display:inline-block; transform-origin:top left; transition:transform .2s; }
+.leg { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; padding:10px 14px; background:#fff8f0; border-top:1px solid #f5cba7; }
+.li { display:flex; align-items:center; gap:5px; padding:3px 9px; background:#fff; border-radius:20px; border:1px solid #ccc; font-size:.75rem; color:#444; }
+.lb { width:18px; height:9px; border-radius:2px; flex-shrink:0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hdr">
+  <div><h1>🗺 Infrastructure Réseau CICAR — PPE 2 · Externalisation & Load Balancing</h1><div class="sub">HAProxy Round-Robin · Sauvegardes Veeam · Agence El Hierro · BTS SIO SISR – E6</div></div>
+  <div class="badges">
+    <span class="badge b1">Infrastructure de base</span>
+    <span class="badge b2">PPE2 — HAProxy LB + Veeam</span>
+  </div>
+</div>
+<div class="box">
+  <div class="tb">
+    <div class="tb-t">🌐 Réseau El Hierro · Load Balancing &amp; Sauvegarde</div>
+    <div class="ctrls">
+      <button onclick="zm(-1)">➖</button><span class="zv" id="zv">100%</span><button onclick="zm(1)">➕</button>
+      <button onclick="zm(0)">↺</button><button class="p" onclick="dl()">⬇ SVG</button>
+    </div>
+  </div>
+  <div class="vp" id="vp"><div class="inner" id="inner">
+
+<svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 980" width="1200" height="980" style="font-family:'Segoe UI',sans-serif;display:block;">
+<defs>
+  <marker id="a"   markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L0,6L8,3z" fill="#555"/></marker>
+  <marker id="ar"  markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L0,6L8,3z" fill="#c0392b"/></marker>
+  <marker id="ad"  markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L0,6L8,3z" fill="#d4a017"/></marker>
+  <marker id="ao"  markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L0,6L8,3z" fill="#e67e22"/></marker>
+  <filter id="sh" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.13"/></filter>
+  <!-- Glow pour éléments PPE2 -->
+  <filter id="glow"><feGaussianBlur stdDeviation="3" result="c"/><feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<!-- LÉGENDE PPE2 (haut droit) -->
+<rect x="980" y="20" width="200" height="148" rx="6" fill="#fff8f0" stroke="#e67e22" stroke-width="1.5"/>
+<text x="1080" y="38" text-anchor="middle" font-size="9.5" font-weight="700" fill="#7d4007">📌 PPE2 — AJOUTS</text>
+<line x1="993" y1="50" x2="1017" y2="50" stroke="#d4a017" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#ad)"/>
+<text x="1021" y="53" font-size="8.5" fill="#7d5a00">Round-Robin HAProxy</text>
+<line x1="993" y1="66" x2="1017" y2="66" stroke="#e67e22" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#ao)"/>
+<text x="1021" y="69" font-size="8.5" fill="#7d4007">Sauvegarde Veeam</text>
+<rect x="992" y="79" width="180" height="14" rx="3" fill="rgba(230,126,34,.15)" stroke="#e67e22" stroke-width=".8"/>
+<text x="1082" y="90" text-anchor="middle" font-size="7.5" fill="#7d4007">Contour orange = modifié PPE2</text>
+<text x="993" y="108" font-size="8" fill="#555">⚖ HAProxy : round-robin + health check</text>
+<text x="993" y="121" font-size="8" fill="#555">🔄 Failover auto WEB-01 ↔ WEB-02</text>
+<text x="993" y="134" font-size="8" fill="#555">💾 Veeam : WEB-01/02 + PROXY + AD</text>
+<text x="993" y="147" font-size="8" fill="#555">🔧 Backup conf. Stormshield + switch</text>
+<text x="993" y="160" font-size="8" fill="#555">📡 Dest. : NAS SRV-Truenas-TF (VPN)</text>
+
+<!-- INTERNET -->
+<ellipse cx="580" cy="46" rx="110" ry="28" fill="#e2e3e5" stroke="#9a9b9d" stroke-width="1.5" filter="url(#sh)"/>
+<ellipse cx="515" cy="55" rx="50" ry="24" fill="#e2e3e5" stroke="#9a9b9d" stroke-width="1.5"/>
+<ellipse cx="645" cy="55" rx="50" ry="24" fill="#e2e3e5" stroke="#9a9b9d" stroke-width="1.5"/>
+<rect x="465" y="54" width="230" height="24" fill="#e2e3e5"/>
+<text x="580" y="60" text-anchor="middle" font-size="12.5" font-weight="700" fill="#333">☁  INTERNET / WAN</text>
+<line x1="580" y1="79" x2="580" y2="108" stroke="#555" stroke-width="2" marker-end="url(#a)"/>
+
+<!-- FIREWALL -->
+<rect x="446" y="110" width="268" height="66" rx="8" fill="#f8d7da" stroke="#c0392b" stroke-width="2" filter="url(#sh)"/>
+<text x="468" y="133" font-size="11.5" font-weight="700" fill="#7b0000">🛡  Stormshield SNS 310</text>
+<text x="468" y="149" font-size="9.5" fill="#a00">Pare-feu · VPN IPsec · DENY ALL</text>
+<text x="468" y="164" font-size="9.5" fill="#a00">LAN : 192.168.54.254   DMZ : 192.168.64.254</text>
+<!-- Backup config Stormshield (PPE2) -->
+<rect x="450" y="180" width="260" height="18" rx="3" fill="rgba(230,126,34,.15)" stroke="#e67e22" stroke-width="1"/>
+<text x="580" y="192" text-anchor="middle" font-size="8" fill="#7d4007">💾 Conf. sauvegardée → NAS siège (PPE2)</text>
+
+<!-- FW → Switch -->
+<line x1="490" y1="200" x2="375" y2="260" stroke="#5cb85c" stroke-width="2" marker-end="url(#a)"/>
+<text x="404" y="232" font-size="9" fill="#155724" transform="rotate(-22,404,232)">LAN</text>
+<!-- FW → HAProxy -->
+<line x1="672" y1="176" x2="878" y2="256" stroke="#d4a017" stroke-width="2" marker-end="url(#ad)"/>
+<text x="756" y="213" font-size="9" fill="#7d5a00" transform="rotate(16,756,213)">DMZ</text>
+
+<!-- ZONE LAN -->
+<rect x="20" y="262" width="798" height="440" rx="10" fill="#d4edda" stroke="#5cb85c" stroke-width="2" opacity="0.5"/>
+<text x="35" y="282" font-size="11.5" font-weight="700" fill="#155724">🟢  ZONE LAN — 192.168.54.0/24</text>
+
+<!-- Switch -->
+<rect x="296" y="292" width="184" height="52" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="388" y="314" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🔀  Switch TP-Link SG-3424</text>
+<text x="388" y="330" text-anchor="middle" font-size="9.5" fill="#555">192.168.54.20</text>
+<!-- Backup switch PPE2 badge -->
+<rect x="300" y="347" width="176" height="14" rx="3" fill="rgba(230,126,34,.15)" stroke="#e67e22" stroke-width=".8"/>
+<text x="388" y="357" text-anchor="middle" font-size="7.5" fill="#7d4007">💾 Conf. sauvegardée (PPE2)</text>
+
+<!-- WiFi -->
+<rect x="56" y="292" width="128" height="50" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="120" y="313" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">📶  Wi-Fi TP-Link</text>
+<text x="120" y="328" text-anchor="middle" font-size="9" fill="#555">TL-WA901-N · .54.30</text>
+<rect x="59" y="345" width="122" height="14" rx="3" fill="rgba(230,126,34,.15)" stroke="#e67e22" stroke-width=".8"/>
+<text x="120" y="355" text-anchor="middle" font-size="7.5" fill="#7d4007">💾 Conf. sauvegardée (PPE2)</text>
+<line x1="296" y1="317" x2="184" y2="317" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+<!-- Clients -->
+<rect x="56" y="380" width="128" height="50" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="120" y="400" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">💻  Postes Clients</text>
+<text x="120" y="414" text-anchor="middle" font-size="9" fill="#555">DHCP .54.100–200</text>
+<line x1="296" y1="332" x2="184" y2="405" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+<!-- Switch → ESXi -->
+<line x1="388" y1="362" x2="388" y2="385" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+<!-- ESXi Principal -->
+<rect x="284" y="387" width="208" height="52" rx="6" fill="#fff" stroke="#e67e22" stroke-width="2" filter="url(#sh)"/>
+<text x="388" y="410" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🖥  VMware ESXi 7.0</text>
+<text x="388" y="425" text-anchor="middle" font-size="9.5" fill="#555">Hyperviseur principal · 192.168.54.1</text>
+<!-- Veeam backup note on ESXi -->
+<rect x="288" y="442" width="200" height="14" rx="3" fill="rgba(230,126,34,.2)" stroke="#e67e22" stroke-width=".8"/>
+<text x="388" y="452" text-anchor="middle" font-size="7.5" fill="#7d4007">💾 VMs sauvegardées via Veeam (PPE2)</text>
+
+<!-- ESXi → VMs -->
+<line x1="320" y1="440" x2="82"  y2="480" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="348" y1="440" x2="208" y2="480" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="388" y1="440" x2="388" y2="480" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="426" y1="440" x2="558" y2="480" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="450" y1="440" x2="688" y2="480" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+<!-- VM AD -->
+<rect x="30"  y="482" width="108" height="80" rx="6" fill="#fff" stroke="#e67e22" stroke-width="2" filter="url(#sh)"/>
+<text x="84"  y="501" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">🗂 SRV-EL-AD</text>
+<text x="84"  y="514" text-anchor="middle" font-size="9"  fill="#555">Win Srv 2019</text>
+<text x="84"  y="527" text-anchor="middle" font-size="9"  fill="#555">AD / DNS / DHCP</text>
+<text x="84"  y="540" text-anchor="middle" font-size="8.5" fill="#888">.54.10</text>
+<rect x="34" y="548" width="100" height="13" rx="3" fill="rgba(230,126,34,.15)" stroke="#e67e22" stroke-width=".8"/>
+<text x="84" y="557" text-anchor="middle" font-size="7.5" fill="#7d4007">💾 Veeam backup</text>
+
+<!-- VM RADIUS -->
+<rect x="152" y="482" width="114" height="66" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="209" y="501" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">🔐 SRV-EL-RADIUS</text>
+<text x="209" y="514" text-anchor="middle" font-size="9"  fill="#555">Win Srv 2019</text>
+<text x="209" y="527" text-anchor="middle" font-size="9"  fill="#555">NPS / RADIUS</text>
+<text x="209" y="541" text-anchor="middle" font-size="8.5" fill="#888">.54.11</text>
+
+<!-- VM Zimbra -->
+<rect x="280" y="482" width="120" height="66" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="340" y="501" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">📧 SRV-EL-MAIL</text>
+<text x="340" y="514" text-anchor="middle" font-size="9"  fill="#555">Debian</text>
+<text x="340" y="527" text-anchor="middle" font-size="9"  fill="#555">Zimbra Collab.</text>
+<text x="340" y="541" text-anchor="middle" font-size="8.5" fill="#888">.54.40</text>
+
+<!-- VM WEB-01 (PPE2 highlight) -->
+<rect x="502" y="482" width="116" height="80" rx="6" fill="#fff" stroke="#e67e22" stroke-width="2" filter="url(#sh)"/>
+<text x="560" y="501" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">🌐 SRV-EL-WEB-01</text>
+<text x="560" y="514" text-anchor="middle" font-size="9"  fill="#555">Debian</text>
+<text x="560" y="527" text-anchor="middle" font-size="9"  fill="#555">Apache/PHP/MariaDB</text>
+<text x="560" y="540" text-anchor="middle" font-size="8.5" fill="#888">.54.15</text>
+<rect x="506" y="548" width="108" height="13" rx="3" fill="rgba(230,126,34,.15)" stroke="#e67e22" stroke-width=".8"/>
+<text x="560" y="557" text-anchor="middle" font-size="7.5" fill="#7d4007">💾 Veeam backup</text>
+
+<!-- VM WEB-02 (PPE2 highlight) -->
+<rect x="630" y="482" width="116" height="80" rx="6" fill="#fff" stroke="#e67e22" stroke-width="2" filter="url(#sh)"/>
+<text x="688" y="501" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">🌐 SRV-EL-WEB-02</text>
+<text x="688" y="514" text-anchor="middle" font-size="9"  fill="#555">Debian</text>
+<text x="688" y="527" text-anchor="middle" font-size="9"  fill="#555">Apache/PHP/MariaDB</text>
+<text x="688" y="540" text-anchor="middle" font-size="8.5" fill="#888">.54.16</text>
+<rect x="634" y="548" width="108" height="13" rx="3" fill="rgba(230,126,34,.15)" stroke="#e67e22" stroke-width=".8"/>
+<text x="688" y="557" text-anchor="middle" font-size="7.5" fill="#7d4007">💾 Veeam backup</text>
+
+<!-- ESXi Secondaire -->
+<rect x="45" y="590" width="184" height="60" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" stroke-dasharray="5,3" filter="url(#sh)"/>
+<text x="137" y="611" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🖥  ESXi Secondaire</text>
+<text x="137" y="625" text-anchor="middle" font-size="9.5" fill="#555">VMware ESXi 7.0 (secours)</text>
+<text x="137" y="639" text-anchor="middle" font-size="8.5" fill="#888">192.168.69.94</text>
+<line x1="284" y1="445" x2="190" y2="592" stroke="#5cb85c" stroke-width="1.5" stroke-dasharray="5,3"/>
+<text x="210" y="520" font-size="8.5" fill="#5cb85c" transform="rotate(-47,210,520)">Réplication</text>
+
+<!-- ZONE DMZ (HAProxy - PPE2 core) -->
+<rect x="830" y="262" width="320" height="220" rx="10" fill="#fff3cd" stroke="#e67e22" stroke-width="2.5" opacity="0.85"/>
+<text x="845" y="282" font-size="11.5" font-weight="700" fill="#7d5a00">🟡  ZONE DMZ — 192.168.64.0/24</text>
+<text x="845" y="296" font-size="8.5" fill="#e67e22" font-weight="600">★ PPE2 — Load Balancing</text>
+
+<!-- HAProxy box -->
+<rect x="856" y="305" width="270" height="68" rx="6" fill="#fff" stroke="#e67e22" stroke-width="2" filter="url(#sh)"/>
+<text x="991" y="330" text-anchor="middle" font-size="11" font-weight="700" fill="#7d5a00">⚖  SRV-EL-PROXY (HAProxy)</text>
+<text x="991" y="346" text-anchor="middle" font-size="9.5" fill="#555">Debian · Load Balancer HTTP/HTTPS · .64.1</text>
+<text x="991" y="362" text-anchor="middle" font-size="9" fill="#e67e22">Round-Robin · Health Check · Failover auto</text>
+
+<!-- HAProxy config excerpt -->
+<rect x="856" y="382" width="270" height="68" rx="5" fill="rgba(230,126,34,.08)" stroke="#e67e22" stroke-width="1"/>
+<text x="869" y="400" font-size="8.5" fill="#555" font-family="Consolas,monospace">balance roundrobin</text>
+<text x="869" y="413" font-size="8.5" fill="#555" font-family="Consolas,monospace">option httpchk GET /</text>
+<text x="869" y="426" font-size="8.5" fill="#555" font-family="Consolas,monospace">server web01 .54.15:80 check</text>
+<text x="869" y="439" font-size="8.5" fill="#555" font-family="Consolas,monospace">server web02 .54.16:80 check</text>
+<text x="869" y="452" font-size="8" fill="#888" font-style="italic">Détection panne ~2 sec</text>
+
+<!-- HAProxy → WEB-01 -->
+<line x1="856" y1="345" x2="618" y2="512" stroke="#e67e22" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#ao)"/>
+<text x="746" y="416" font-size="8.5" fill="#e67e22" transform="rotate(-25,746,416)">HTTP LB ①</text>
+<!-- HAProxy → WEB-02 -->
+<line x1="862" y1="355" x2="746" y2="518" stroke="#e67e22" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#ao)"/>
+<text x="820" y="446" font-size="8.5" fill="#e67e22" transform="rotate(-25,820,446)">HTTP LB ②</text>
+
+<!-- HAProxy sauvegardé -->
+<rect x="858" y="455" width="268" height="14" rx="3" fill="rgba(230,126,34,.15)" stroke="#e67e22" stroke-width=".8"/>
+<text x="992" y="465" text-anchor="middle" font-size="7.5" fill="#7d4007">💾 Veeam backup (PPE2)</text>
+
+<!-- VPN LINE -->
+<line x1="22" y1="778" x2="1178" y2="778" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="9,4"/>
+<text x="580" y="770" text-anchor="middle" font-size="9.5" fill="#c0392b" font-weight="700">🔒 Tunnel VPN IPsec inter-agences</text>
+<line x1="580" y1="200" x2="580" y2="748" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="9,4"/>
+
+<!-- SIÈGE TENERIFE (PPE2 highlight) -->
+<rect x="22"  y="792" width="260" height="148" rx="8" fill="#dce7f5" stroke="#e67e22" stroke-width="2" filter="url(#sh)"/>
+<text x="152" y="810" text-anchor="middle" font-size="11" font-weight="700" fill="#1a3a5c">🏢  SIÈGE TENERIFE</text>
+<text x="152" y="824" text-anchor="middle" font-size="8.5" fill="#2980b9">192.168.57.0/24</text>
+<text x="35"  y="842" font-size="9" fill="#555">📊 Centreon / Supervision SNMP</text>
+<text x="35"  y="856" font-size="9" fill="#555">🖱 Admin MobaXterm</text>
+<!-- Veeam highlight box -->
+<rect x="30" y="864" width="244" height="52" rx="4" fill="rgba(230,126,34,.2)" stroke="#e67e22" stroke-width="1.5"/>
+<text x="152" y="880" text-anchor="middle" font-size="9.5" font-weight="700" fill="#7d4007">💾 NAS SRV-Truenas-TF</text>
+<text x="152" y="894" text-anchor="middle" font-size="8.5" fill="#7d4007">Veeam Backup &amp; Replication</text>
+<text x="152" y="908" text-anchor="middle" font-size="8" fill="#7d4007">Destination : sauvegardes VMs El Hierro</text>
+<line x1="152" y1="778" x2="152" y2="792" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#ar)"/>
+
+<!-- Veeam backup flow arrow : NAS → ESXi via VPN -->
+<path d="M 282 900 Q 388 900 388 460 Q 388 440 388 440" fill="none" stroke="#e67e22" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#ao)"/>
+<text x="402" y="790" font-size="8" fill="#e67e22" transform="rotate(-90,402,790)">Backup Veeam via VPN</text>
+
+<!-- La Palma -->
+<rect x="304" y="796" width="168" height="90" rx="8" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+<text x="388" y="815" text-anchor="middle" font-size="11" font-weight="700" fill="#0c4b5c">🏝  LA PALMA</text>
+<text x="388" y="829" text-anchor="middle" font-size="9"   fill="#17a2b8">192.168.56.0/24</text>
+<text x="388" y="845" text-anchor="middle" font-size="9"   fill="#555">🛡 SNS310</text>
+<text x="388" y="859" text-anchor="middle" font-size="8.5" fill="#888">Los Llanos de Aridane</text>
+<line x1="388" y1="778" x2="388" y2="796" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#ar)"/>
+
+<!-- La Gomera -->
+<rect x="492" y="796" width="168" height="90" rx="8" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+<text x="576" y="815" text-anchor="middle" font-size="11" font-weight="700" fill="#0c4b5c">🏝  LA GOMERA</text>
+<text x="576" y="829" text-anchor="middle" font-size="9"   fill="#17a2b8">192.168.55.0/24</text>
+<text x="576" y="845" text-anchor="middle" font-size="9"   fill="#555">🛡 SNS310</text>
+<text x="576" y="859" text-anchor="middle" font-size="8.5" fill="#888">San Sebastián</text>
+<line x1="576" y1="778" x2="576" y2="796" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#ar)"/>
+
+<!-- Gran Canaria -->
+<rect x="680" y="796" width="188" height="90" rx="8" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+<text x="774" y="815" text-anchor="middle" font-size="11" font-weight="700" fill="#0c4b5c">🏝  GRAN CANARIA</text>
+<text x="774" y="829" text-anchor="middle" font-size="9"   fill="#17a2b8">192.168.53.0/24</text>
+<text x="774" y="845" text-anchor="middle" font-size="9"   fill="#555">🛡 SNS310</text>
+<text x="774" y="859" text-anchor="middle" font-size="8.5" fill="#888">Las Palmas de GC</text>
+<line x1="774" y1="778" x2="774" y2="796" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#ar)"/>
+
+<!-- El Hierro -->
+<rect x="888" y="796" width="158" height="90" rx="8" fill="#f0f4ff" stroke="#6c8ebf" stroke-width="2" stroke-dasharray="5,3" filter="url(#sh)"/>
+<text x="967" y="815" text-anchor="middle" font-size="11" font-weight="700" fill="#2c3e50">📍 EL HIERRO</text>
+<text x="967" y="829" text-anchor="middle" font-size="8.5" fill="#6c8ebf">← Cette agence</text>
+<text x="967" y="845" text-anchor="middle" font-size="9"   fill="#555">192.168.54.0/24</text>
+<text x="967" y="859" text-anchor="middle" font-size="8.5" fill="#888">Valverde</text>
+<line x1="967" y1="778" x2="967" y2="796" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#ar)"/>
+
+<!-- Adressage recap -->
+<rect x="22" y="668" width="420" height="82" rx="6" fill="#fff8f0" stroke="#e67e22" stroke-width="1"/>
+<text x="32" y="684" font-size="8.5" font-weight="700" fill="#7d4007">📋  Plan d'adressage PPE2</text>
+<text x="32" y="698" font-size="8" fill="#555">LAN : 192.168.54.0/24 · DMZ : 192.168.64.0/24 · Réplication : 192.168.69.0/24</text>
+<text x="32" y="712" font-size="8" fill="#555">HAProxy : 192.168.64.1 · WEB-01 : .54.15 · WEB-02 : .54.16</text>
+<text x="32" y="726" font-size="8" fill="#555">AD : .54.10 · RADIUS : .54.11 · Zimbra : .54.40 · ESXi : .54.1</text>
+<text x="32" y="740" font-size="8" fill="#e67e22">NAS siège (Veeam dest.) : 192.168.57.0/24 (SRV-Truenas-TF)</text>
+
+</svg>
+
+  </div></div>
+  <div class="leg">
+    <div class="li"><div class="lb" style="background:#d4edda;border:1px solid #5cb85c"></div>Zone LAN</div>
+    <div class="li"><div class="lb" style="background:#fff3cd;border:1px solid #e67e22"></div>Zone DMZ (PPE2)</div>
+    <div class="li"><div class="lb" style="background:#f8d7da;border:1px solid #c0392b"></div>Pare-feu</div>
+    <div class="li"><div class="lb" style="background:#dce7f5;border:1px solid #e67e22"></div>Siège Tenerife / Veeam</div>
+    <div class="li"><div style="width:20px;height:3px;background:#e67e22;flex-shrink:0"></div>LB HAProxy Round-Robin</div>
+    <div class="li"><div style="width:20px;height:3px;background:#e67e22;border-top:2px dashed #e67e22;flex-shrink:0"></div>Backup Veeam via VPN</div>
+    <div class="li"><div style="width:20px;height:3px;background:#c0392b;flex-shrink:0"></div>VPN IPsec</div>
+    <div class="li"><span style="color:#e67e22;font-size:.75rem">📦 Contour orange = PPE2</span></div>
+  </div>
+</div>
+</div>
+<script>
+let sc=1;
+function zm(d){ if(d===0)sc=1; else if(d>0)sc=Math.min(2.5,+(sc+.1).toFixed(2)); else sc=Math.max(0.3,+(sc-.1).toFixed(2)); const el=document.getElementById('inner'),svg=el.querySelector('svg'); el.style.transform=`scale(${sc})`; el.style.height=(svg.getAttribute('height')*sc+40)+'px'; el.style.width=(svg.getAttribute('width')*sc)+'px'; document.getElementById('zv').textContent=Math.round(sc*100)+'%'; }
+function dl(){ const svg=document.getElementById('svg'),c=svg.cloneNode(true); c.setAttribute('xmlns','http://www.w3.org/2000/svg'); const b=new Blob([new XMLSerializer().serializeToString(c)],{type:'image/svg+xml'}),u=URL.createObjectURL(b),a=document.createElement('a'); a.href=u;a.download='schema_ppe2_cicar.svg';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u); }
+</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Schéma Réseau — Infrastructure CICAR (Base)</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',sans-serif; background:#f0f4f8; }
+.wrap { max-width:1320px; margin:0 auto; padding:20px; }
+.hdr { background:#2c3e50; color:#fff; border-radius:8px; padding:16px 24px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+.hdr h1 { font-size:1.15rem; }
+.hdr .sub { font-size:.8rem; color:#aab; margin-top:3px; }
+.badge { background:#3498db; color:#fff; font-size:.72rem; padding:3px 10px; border-radius:20px; white-space:nowrap; }
+.box { background:#fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,.1); overflow:hidden; }
+.tb { background:#2c3e50; padding:9px 14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+.tb-t { color:#ecf0f1; font-size:.85rem; font-weight:600; }
+.ctrls { display:flex; gap:5px; }
+.ctrls button { background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.25); padding:5px 11px; border-radius:4px; cursor:pointer; font-size:.78rem; }
+.ctrls button:hover { background:rgba(255,255,255,.22); }
+.ctrls button.p { background:#3498db; border-color:transparent; }
+.zv { color:rgba(255,255,255,.7); font-size:.78rem; min-width:42px; text-align:center; }
+.vp { overflow:auto; background:#f7fbff; max-height:780px; cursor:grab; }
+.vp:active { cursor:grabbing; }
+.inner { padding:18px; display:inline-block; transform-origin:top left; transition:transform .2s; }
+.leg { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; padding:10px 14px; background:#eaf3fb; border-top:1px solid #cce0f5; }
+.li { display:flex; align-items:center; gap:5px; padding:3px 9px; background:#fff; border-radius:20px; border:1px solid #ccc; font-size:.75rem; color:#444; }
+.lb { width:18px; height:9px; border-radius:2px; flex-shrink:0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hdr">
+  <div><h1>🗺 Infrastructure Réseau CICAR — Agence El Hierro</h1><div class="sub">Schéma de base · el-cicars.es · BTS SIO SISR – E6</div></div>
+  <span class="badge">Projet CICAR — Infrastructure de base</span>
+</div>
+<div class="box">
+  <div class="tb">
+    <div class="tb-t">🌐 Réseau El Hierro — Vue d'ensemble</div>
+    <div class="ctrls">
+      <button onclick="zm(-1)">➖</button><span class="zv" id="zv">100%</span><button onclick="zm(1)">➕</button>
+      <button onclick="zm(0)">↺</button><button class="p" onclick="dl()">⬇ SVG</button>
+    </div>
+  </div>
+  <div class="vp" id="vp"><div class="inner" id="inner">
+
+<svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 920" width="1160" height="920" style="font-family:'Segoe UI',sans-serif;display:block;">
+<defs>
+  <marker id="a"   markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L0,6L8,3z" fill="#555"/></marker>
+  <marker id="ar"  markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L0,6L8,3z" fill="#c0392b"/></marker>
+  <marker id="ad"  markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L0,6L8,3z" fill="#d4a017"/></marker>
+  <filter id="sh" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.13"/></filter>
+</defs>
+
+<!-- INTERNET -->
+<ellipse cx="580" cy="46" rx="110" ry="28" fill="#e2e3e5" stroke="#9a9b9d" stroke-width="1.5" filter="url(#sh)"/>
+<ellipse cx="515" cy="55" rx="50" ry="24" fill="#e2e3e5" stroke="#9a9b9d" stroke-width="1.5"/>
+<ellipse cx="645" cy="55" rx="50" ry="24" fill="#e2e3e5" stroke="#9a9b9d" stroke-width="1.5"/>
+<rect x="465" y="54" width="230" height="24" fill="#e2e3e5"/>
+<text x="580" y="60" text-anchor="middle" font-size="12.5" font-weight="700" fill="#333">☁  INTERNET / WAN</text>
+<line x1="580" y1="79" x2="580" y2="108" stroke="#555" stroke-width="2" marker-end="url(#a)"/>
+<text x="592" y="98" font-size="9.5" fill="#777">WAN</text>
+
+<!-- FIREWALL -->
+<rect x="446" y="110" width="268" height="66" rx="8" fill="#f8d7da" stroke="#c0392b" stroke-width="2" filter="url(#sh)"/>
+<text x="468" y="133" font-size="11.5" font-weight="700" fill="#7b0000">🛡  Stormshield SNS 310</text>
+<text x="468" y="149" font-size="9.5" fill="#a00">Pare-feu · VPN IPsec · DENY ALL</text>
+<text x="468" y="164" font-size="9.5" fill="#a00">LAN : 192.168.54.254   DMZ : 192.168.64.254</text>
+
+<!-- FW → Switch (LAN) -->
+<line x1="490" y1="176" x2="375" y2="246" stroke="#5cb85c" stroke-width="2" marker-end="url(#a)"/>
+<text x="404" y="218" font-size="9" fill="#155724" transform="rotate(-22,404,218)">LAN</text>
+<!-- FW → HAProxy (DMZ) -->
+<line x1="672" y1="176" x2="878" y2="246" stroke="#d4a017" stroke-width="2" marker-end="url(#ad)"/>
+<text x="756" y="208" font-size="9" fill="#7d5a00" transform="rotate(16,756,208)">DMZ</text>
+
+<!-- ZONE LAN -->
+<rect x="20" y="248" width="798" height="440" rx="10" fill="#d4edda" stroke="#5cb85c" stroke-width="2" opacity="0.5"/>
+<text x="35" y="268" font-size="11.5" font-weight="700" fill="#155724">🟢  ZONE LAN — 192.168.54.0/24</text>
+
+<!-- Switch -->
+<rect x="296" y="278" width="184" height="52" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="388" y="300" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🔀  Switch TP-Link SG-3424</text>
+<text x="388" y="316" text-anchor="middle" font-size="9.5" fill="#555">192.168.54.20</text>
+
+<!-- WiFi -->
+<rect x="56" y="278" width="128" height="50" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="120" y="299" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">📶  Wi-Fi TP-Link</text>
+<text x="120" y="314" text-anchor="middle" font-size="9" fill="#555">TL-WA901-N · .54.30</text>
+<line x1="296" y1="303" x2="184" y2="303" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+<!-- Clients -->
+<rect x="56" y="355" width="128" height="50" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="120" y="375" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">💻  Postes Clients</text>
+<text x="120" y="390" text-anchor="middle" font-size="9" fill="#555">DHCP .54.100–200</text>
+<line x1="296" y1="318" x2="184" y2="380" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+<!-- Switch → ESXi -->
+<line x1="388" y1="330" x2="388" y2="368" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+<!-- ESXi Principal -->
+<rect x="284" y="370" width="208" height="52" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="388" y="393" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🖥  VMware ESXi 7.0</text>
+<text x="388" y="408" text-anchor="middle" font-size="9.5" fill="#555">Hyperviseur principal · 192.168.54.1</text>
+
+<!-- ESXi → VMs -->
+<line x1="320" y1="422" x2="82"  y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="348" y1="422" x2="208" y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="388" y1="422" x2="388" y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="426" y1="422" x2="558" y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="450" y1="422" x2="688" y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+<!-- VM AD -->
+<rect x="30"  y="464" width="108" height="66" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="84"  y="484" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">🗂 SRV-EL-AD</text>
+<text x="84"  y="497" text-anchor="middle" font-size="9"  fill="#555">Win Srv 2019</text>
+<text x="84"  y="510" text-anchor="middle" font-size="9"  fill="#555">AD / DNS / DHCP</text>
+<text x="84"  y="523" text-anchor="middle" font-size="8.5" fill="#888">.54.10</text>
+
+<!-- VM RADIUS -->
+<rect x="152" y="464" width="114" height="66" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="209" y="484" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">🔐 SRV-EL-RADIUS</text>
+<text x="209" y="497" text-anchor="middle" font-size="9"  fill="#555">Win Srv 2019</text>
+<text x="209" y="510" text-anchor="middle" font-size="9"  fill="#555">NPS / RADIUS</text>
+<text x="209" y="523" text-anchor="middle" font-size="8.5" fill="#888">.54.11</text>
+
+<!-- VM Zimbra -->
+<rect x="280" y="464" width="120" height="66" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="340" y="484" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">📧 SRV-EL-MAIL</text>
+<text x="340" y="497" text-anchor="middle" font-size="9"  fill="#555">Debian</text>
+<text x="340" y="510" text-anchor="middle" font-size="9"  fill="#555">Zimbra Collab.</text>
+<text x="340" y="523" text-anchor="middle" font-size="8.5" fill="#888">.54.40</text>
+
+<!-- VM WEB-01 -->
+<rect x="502" y="464" width="116" height="66" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="560" y="484" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">🌐 SRV-EL-WEB-01</text>
+<text x="560" y="497" text-anchor="middle" font-size="9"  fill="#555">Debian</text>
+<text x="560" y="510" text-anchor="middle" font-size="9"  fill="#555">Apache/PHP/MariaDB</text>
+<text x="560" y="523" text-anchor="middle" font-size="8.5" fill="#888">.54.15</text>
+
+<!-- VM WEB-02 -->
+<rect x="630" y="464" width="116" height="66" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="688" y="484" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">🌐 SRV-EL-WEB-02</text>
+<text x="688" y="497" text-anchor="middle" font-size="9"  fill="#555">Debian</text>
+<text x="688" y="510" text-anchor="middle" font-size="9"  fill="#555">Apache/PHP/MariaDB</text>
+<text x="688" y="523" text-anchor="middle" font-size="8.5" fill="#888">.54.16</text>
+
+<!-- ESXi Secondaire -->
+<rect x="45" y="565" width="184" height="62" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" stroke-dasharray="5,3" filter="url(#sh)"/>
+<text x="137" y="586" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🖥  ESXi Secondaire</text>
+<text x="137" y="600" text-anchor="middle" font-size="9.5" fill="#555">VMware ESXi 7.0 (secours)</text>
+<text x="137" y="614" text-anchor="middle" font-size="8.5" fill="#888">192.168.69.94</text>
+<line x1="284" y1="430" x2="190" y2="567" stroke="#5cb85c" stroke-width="1.5" stroke-dasharray="5,3"/>
+<text x="210" y="502" font-size="8.5" fill="#5cb85c" transform="rotate(-47,210,502)">Réplication</text>
+
+<!-- ZONE DMZ -->
+<rect x="830" y="248" width="300" height="165" rx="10" fill="#fff3cd" stroke="#d4a017" stroke-width="2" opacity="0.75"/>
+<text x="845" y="268" font-size="11.5" font-weight="700" fill="#7d5a00">🟡  ZONE DMZ — 192.168.64.0/24</text>
+
+<!-- HAProxy -->
+<rect x="856" y="282" width="248" height="68" rx="6" fill="#fff" stroke="#d4a017" stroke-width="1.5" filter="url(#sh)"/>
+<text x="980" y="306" text-anchor="middle" font-size="11" font-weight="700" fill="#7d5a00">⚖  SRV-EL-PROXY</text>
+<text x="980" y="322" text-anchor="middle" font-size="9.5" fill="#555">Debian — HAProxy</text>
+<text x="980" y="337" text-anchor="middle" font-size="9.5" fill="#555">Load Balancer HTTP/HTTPS · .64.1</text>
+
+<!-- HAProxy → WEB-01 / WEB-02 -->
+<line x1="856" y1="330" x2="618" y2="498" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ad)"/>
+<line x1="860" y1="340" x2="746" y2="504" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ad)"/>
+<text x="762" y="420" font-size="8.5" fill="#7d5a00" transform="rotate(-26,762,420)">HTTP / HTTPS</text>
+
+<!-- VPN LINE -->
+<line x1="22" y1="752" x2="1138" y2="752" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="9,4"/>
+<text x="580" y="744" text-anchor="middle" font-size="9.5" fill="#c0392b" font-weight="700">🔒 Réseau VPN IPsec inter-agences</text>
+<line x1="580" y1="176" x2="580" y2="722" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="9,4"/>
+
+<!-- SIÈGE TENERIFE -->
+<rect x="22"  y="766" width="220" height="104" rx="8" fill="#dce7f5" stroke="#2980b9" stroke-width="2" filter="url(#sh)"/>
+<text x="132" y="785" text-anchor="middle" font-size="11" font-weight="700" fill="#1a3a5c">🏢  SIÈGE TENERIFE</text>
+<text x="132" y="799" text-anchor="middle" font-size="9"   fill="#2980b9">192.168.57.0/24</text>
+<text x="35"  y="816" font-size="9" fill="#555">📊 Centreon / Supervision SNMP</text>
+<text x="35"  y="830" font-size="9" fill="#555">💾 NAS RAID-5 / Veeam B&amp;R</text>
+<text x="35"  y="844" font-size="9" fill="#555">🖱 Admin MobaXterm</text>
+<line x1="132" y1="752" x2="132" y2="766" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#ar)"/>
+
+<!-- La Palma -->
+<rect x="260" y="770" width="174" height="96" rx="8" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+<text x="347" y="789" text-anchor="middle" font-size="11" font-weight="700" fill="#0c4b5c">🏝  LA PALMA</text>
+<text x="347" y="803" text-anchor="middle" font-size="9"   fill="#17a2b8">192.168.56.0/24</text>
+<text x="347" y="819" text-anchor="middle" font-size="9"   fill="#555">🛡 SNS310</text>
+<text x="347" y="833" text-anchor="middle" font-size="9"   fill="#555">💻 Postes / Serveurs</text>
+<text x="347" y="848" text-anchor="middle" font-size="8.5" fill="#888">Los Llanos de Aridane</text>
+<line x1="347" y1="752" x2="347" y2="770" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#ar)"/>
+
+<!-- La Gomera -->
+<rect x="452" y="770" width="174" height="96" rx="8" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+<text x="539" y="789" text-anchor="middle" font-size="11" font-weight="700" fill="#0c4b5c">🏝  LA GOMERA</text>
+<text x="539" y="803" text-anchor="middle" font-size="9"   fill="#17a2b8">192.168.55.0/24</text>
+<text x="539" y="819" text-anchor="middle" font-size="9"   fill="#555">🛡 SNS310</text>
+<text x="539" y="833" text-anchor="middle" font-size="9"   fill="#555">💻 Postes / Serveurs</text>
+<text x="539" y="848" text-anchor="middle" font-size="8.5" fill="#888">San Sebastián</text>
+<line x1="539" y1="752" x2="539" y2="770" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#ar)"/>
+
+<!-- Gran Canaria -->
+<rect x="644" y="770" width="188" height="96" rx="8" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+<text x="738" y="789" text-anchor="middle" font-size="11" font-weight="700" fill="#0c4b5c">🏝  GRAN CANARIA</text>
+<text x="738" y="803" text-anchor="middle" font-size="9"   fill="#17a2b8">192.168.53.0/24</text>
+<text x="738" y="819" text-anchor="middle" font-size="9"   fill="#555">🛡 SNS310</text>
+<text x="738" y="833" text-anchor="middle" font-size="9"   fill="#555">💻 Postes / Serveurs</text>
+<text x="738" y="848" text-anchor="middle" font-size="8.5" fill="#888">Las Palmas de GC</text>
+<line x1="738" y1="752" x2="738" y2="770" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#ar)"/>
+
+<!-- El Hierro -->
+<rect x="850" y="770" width="160" height="96" rx="8" fill="#f0f4ff" stroke="#6c8ebf" stroke-width="2" stroke-dasharray="5,3" filter="url(#sh)"/>
+<text x="930" y="789" text-anchor="middle" font-size="11" font-weight="700" fill="#2c3e50">📍 EL HIERRO</text>
+<text x="930" y="803" text-anchor="middle" font-size="8.5" fill="#6c8ebf">← Cette agence</text>
+<text x="930" y="819" text-anchor="middle" font-size="9"   fill="#555">192.168.54.0/24</text>
+<text x="930" y="833" text-anchor="middle" font-size="9"   fill="#555">🛡 SNS310</text>
+<text x="930" y="848" text-anchor="middle" font-size="8.5" fill="#888">Valverde</text>
+<line x1="930" y1="752" x2="930" y2="770" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#ar)"/>
+
+<!-- Adressage recap -->
+<rect x="22" y="658" width="420" height="72" rx="6" fill="#f9f9f9" stroke="#ccc" stroke-width="1"/>
+<text x="32" y="674" font-size="8.5" font-weight="700" fill="#2c3e50">📋  Plan d'adressage</text>
+<text x="32" y="688" font-size="8" fill="#555">LAN : 192.168.54.0/24 · DMZ : 192.168.64.0/24 · Réplication : 192.168.69.0/24</text>
+<text x="32" y="702" font-size="8" fill="#555">Siège TF : 192.168.57.0/24 · HAProxy : .64.1 · ESXi principal : .54.1</text>
+<text x="32" y="716" font-size="8" fill="#555">AD .54.10 · RADIUS .54.11 · WEB-01 .54.15 · WEB-02 .54.16 · Zimbra .54.40</text>
+
+</svg>
+
+  </div></div>
+  <div class="leg">
+    <div class="li"><div class="lb" style="background:#d4edda;border:1px solid #5cb85c"></div>Zone LAN</div>
+    <div class="li"><div class="lb" style="background:#fff3cd;border:1px solid #d4a017"></div>Zone DMZ</div>
+    <div class="li"><div class="lb" style="background:#f8d7da;border:1px solid #c0392b"></div>Pare-feu</div>
+    <div class="li"><div class="lb" style="background:#dce7f5;border:1px solid #2980b9"></div>Siège Tenerife</div>
+    <div class="li"><div class="lb" style="background:#d1ecf1;border:1px solid #17a2b8"></div>Agences distantes</div>
+    <div class="li"><div style="width:20px;height:3px;background:#c0392b;flex-shrink:0"></div>VPN IPsec</div>
+    <div class="li"><div style="width:20px;height:3px;background:#d4a017;flex-shrink:0"></div>HAProxy LB</div>
+    <div class="li"><span style="font-size:.72rem;color:#888">💡 Scroll · Zoom +/–</span></div>
+  </div>
+</div>
+</div>
+<script>
+let sc=1;
+function zm(d){ if(d===0)sc=1; else if(d>0)sc=Math.min(2.5,+(sc+.1).toFixed(2)); else sc=Math.max(0.3,+(sc-.1).toFixed(2)); const el=document.getElementById('inner'),svg=el.querySelector('svg'); el.style.transform=`scale(${sc})`; el.style.height=(svg.getAttribute('height')*sc+40)+'px'; el.style.width=(svg.getAttribute('width')*sc)+'px'; document.getElementById('zv').textContent=Math.round(sc*100)+'%'; }
+function dl(){ const svg=document.getElementById('svg'),c=svg.cloneNode(true); c.setAttribute('xmlns','http://www.w3.org/2000/svg'); const b=new Blob([new XMLSerializer().serializeToString(c)],{type:'image/svg+xml'}),u=URL.createObjectURL(b),a=document.createElement('a'); a.href=u;a.download='schema_base_cicar.svg';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u); }
+</script>
+</body>
+</html>
