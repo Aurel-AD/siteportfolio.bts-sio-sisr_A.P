@@ -329,21 +329,113 @@
     <div class="section-title">Le plan</div>
     <div class="sub-num" data-n="1">Plan d'adressage IP</div>
     <div class="table-wrap">
-        <table>
-            <thead>
-                <tr><th>Zone / Machine</th><th>Rôle</th><th>Adresse IP</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Stormshield SNS 310</td><td>Pare-feu / VPN (LAN)</td><td><code>192.168.54.254</code></td></tr>
-                <tr><td>ESXi Principal</td><td>Hyperviseur LAN</td><td><code>192.168.54.1</code></td></tr>
-                <tr><td>AD/DNS/DHCP (VM)</td><td>Windows Server 2019</td><td><code>192.168.54.10</code></td></tr>
-                <tr><td>SRV-EL-WEB-01</td><td>Apache + PHP + MariaDB</td><td><code>192.168.54.15</code></td></tr>
-                <tr><td>SRV-EL-WEB-02</td><td>Miroir WEB-01</td><td><code>192.168.54.16</code></td></tr>
-                <tr><td>SRV-EL-PROXY</td><td>HAProxy (DMZ)</td><td><code>192.168.64.1</code></td></tr>
-                <tr><td>Siège NAS RAID-5</td><td>Destination sauvegardes Veeam</td><td><code>192.168.57.0/24</code> (VPN)</td></tr>
-            </tbody>
-        </table>
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Équipement</th>
+                <th>Nom / Rôle</th>
+                <th>Adresse IP</th>
+                <th>Identifiants (lab)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ÉQUIPEMENTS AGENCE EL HIERRO -->
+            <tr style="background: rgba(88,166,255,0.05);">
+                <td colspan="4" style="font-weight: 700; color: var(--accent);">🏢 Agence El Hierro (192.168.54.0/24)</td>
+            </tr>
+            <tr>
+                <td>Stormshield SNS 310</td>
+                <td>Pare-feu / VPN</td>
+                <td>192.168.54.254 (LAN)</td>
+                <td><code>admin / Afpi5962!</code></td>
+            </tr>
+            <tr>
+                <td>TP-Link SG-3424</td>
+                <td>Switch manageable LAN</td>
+                <td>192.168.54.20</td>
+                <td><code>admin / Afpi5962</code></td>
+            </tr>
+            <tr>
+                <td>AP WiFi WA901N</td>
+                <td>Borne WiFi 802.1X</td>
+                <td>192.168.54.30</td>
+                <td><code>admin / Afpi5962!</code></td>
+            </tr>
+            <tr>
+                <td>AD/DNS/DHCP (VM)</td>
+                <td>Windows Server 2019</td>
+                <td>192.168.54.10</td>
+                <td><code>Administrateur / @fpi5962!</code></td>
+            </tr>
+            <tr>
+                <td>SRV-EL-WEB-01 (VM)</td>
+                <td>Apache + PHP + MariaDB</td>
+                <td>192.168.54.15</td>
+                <td><code>root / Afpi5962!</code></td>
+            </tr>
+            <tr>
+                <td>SRV-EL-WEB-02 (VM)</td>
+                <td>Miroir de WEB-01</td>
+                <td>192.168.54.16</td>
+                <td><code>root / Afpi5962!</code></td>
+            </tr>
+            <tr>
+                <td>SRV-EL-PROXY (VM)</td>
+                <td>HAProxy (DMZ)</td>
+                <td>192.168.64.1</td>
+                <td><code>root / Afpi5962!</code></td>
+            </tr>
+            <tr>
+                <td>ESXi principal</td>
+                <td>Hyperviseur LAN</td>
+                <td>192.168.54.1</td>
+                <td><code>root / Afpi5962!</code></td>
+            </tr>
+            <tr>
+                <td>ESXi secondaire</td>
+                <td>Hyperviseur (Load Balancing)</td>
+                <td>192.168.69.94</td>
+                <td><code>root / Afpi5962!</code></td>
+            </tr>
+
+            <!-- ÉQUIPEMENTS SIÈGE TENERIFE -->
+            <tr style="background: rgba(63,185,80,0.05);">
+                <td colspan="4" style="font-weight: 700; color: var(--accent2);">🏢 Siège Tenerife (192.168.57.0/24)</td>
+            </tr>
+            <tr>
+                <td>Zimbra Mail (SRV-EL-MAIL)</td>
+                <td>Serveur de messagerie</td>
+                <td>192.168.57.40</td>
+                <td>
+                    <code>admin@el-cicar.es / Afpi5962</code><br>
+                    🌐 <a href="https://mail.el-cicar.es:7071" style="color: var(--accent);">https://mail.el-cicar.es:7071</a><br>
+                    <code>MDP interface web : Afpi5962!</code>
+                </td>
+            </tr>
+            <tr>
+                <td>Centreon</td>
+                <td>Supervision SNMP</td>
+                <td>192.168.57.50</td>
+                <td><code>admin / Centreon!123</code></td>
+            </tr>
+            <tr>
+                <td>TrueNAS (NAS RAID-5)</td>
+                <td>Stockage sauvegardes Veeam</td>
+                <td>192.168.57.2</td>
+                <td>
+                    📁 <strong>Lecteur réseau :</strong> <code>el-user / Afpi5962!</code><br>
+                    🖥️ <strong>Admin TrueNAS :</strong> <code>truenas_admin / Afpi5962!</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Note de contexte sécuritaire -->
+<p class="photo-desc" style="margin-top:12px; font-size:0.85rem;">
+    🔐 <strong>Contexte d'utilisation :</strong> Ces identifiants sont utilisés dans un environnement de laboratoire / projet scolaire. 
+    En production, ils seraient stockés dans un coffre-fort de mots de passe (Keepass, Bitwarden) et régulièrement renouvelés.
+</p>
     <div class="sub-num" data-n="2">Schéma d'infrastructure</div>
         <div class="photo-zone">
         <iframe src="schema_base_cicar.html" width="100%" height="600px" style="border:none; border-radius:8px;"></iframe>
