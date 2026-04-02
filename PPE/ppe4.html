@@ -362,7 +362,119 @@
         </div>
     </div>
 </div>
+<!-- ANNEXE IDENTIFIANTS -->
+<div class="page-section">
+    <div class="section-letter">D</div>
+    <div class="section-title">Annexe — Identifiants de maintenance</div>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Équipement / Service</th>
+                    <th>Adresse IP</th>
+                    <th>Identifiant</th>
+                    <th>Mot de passe / Accès</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- AGENCE EL HIERRO -->
+                <tr style="background: rgba(88,166,255,0.08);">
+                    <td colspan="4" style="font-weight: 700;">🏢 Agence El Hierro (192.168.54.0/24)</td>
+                </tr>
+                <tr>
+                    <td>Stormshield SNS 310 (avec 2FA)</td>
+                    <td>192.168.54.254</td>
+                    <td><code>admin</code></td>
+                    <td><code>Afpi5962!</code> + <strong>Code OTP (Google Authenticator)</strong></td>
+                </tr>
+                <tr>
+                    <td>TP-Link SG-3424 (switch)</td>
+                    <td>192.168.54.20</td>
+                    <td><code>admin</code></td>
+                    <td><code>Afpi5962</code></td>
+                </tr>
+                <tr>
+                    <td>AP WiFi WA901N</td>
+                    <td>192.168.54.30</td>
+                    <td><code>admin</code></td>
+                    <td><code>Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>AD / DNS / DHCP (Windows Server 2019)</td>
+                    <td>192.168.54.10</td>
+                    <td><code>Administrateur</code></td>
+                    <td><code>@fpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>SRV-EL-WEB-01 (Apache)</td>
+                    <td>192.168.54.15</td>
+                    <td><code>root</code></td>
+                    <td><code>Afpi5962!</code> (SSH via MobaXterm)</td>
+                </tr>
+                <tr>
+                    <td>SRV-EL-WEB-02 (Apache)</td>
+                    <td>192.168.54.16</td>
+                    <td><code>root</code></td>
+                    <td><code>Afpi5962!</code> (SSH via MobaXterm)</td>
+                </tr>
+                <tr>
+                    <td>SRV-EL-PROXY (HAProxy)</td>
+                    <td>192.168.64.1</td>
+                    <td><code>root</code></td>
+                    <td><code>Afpi5962!</code> (SSH via MobaXterm)</td>
+                </tr>
+                <tr>
+                    <td>ESXi principal</td>
+                    <td>192.168.54.1</td>
+                    <td><code>root</code></td>
+                    <td><code>Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>ESXi secondaire (Load Balancing)</td>
+                    <td>192.168.69.94</td>
+                    <td><code>root</code></td>
+                    <td><code>Afpi5962!</code></td>
+                </tr>
 
+                <!-- SIÈGE TENERIFE -->
+                <tr style="background: rgba(63,185,80,0.08);">
+                    <td colspan="4" style="font-weight: 700;">🏢 Siège Tenerife (192.168.57.0/24)</td>
+                </tr>
+                <tr>
+                    <td>Zimbra Mail (SRV-EL-MAIL)</td>
+                    <td>192.168.57.40</td>
+                    <td><code>admin@el-cicar.es</code></td>
+                    <td><code>Afpi5962</code> (CLI) / <code>Afpi5962!</code> (Web)</td>
+                </tr>
+                <tr>
+                    <td>Centreon (Supervision SNMP)</td>
+                    <td>192.168.57.50</td>
+                    <td><code>admin</code></td>
+                    <td><code>Centreon!123</code></td>
+                </tr>
+                <tr>
+                    <td>TrueNAS (NAS RAID-5)</td>
+                    <td>192.168.57.2</td>
+                    <td><code>el-user</code> / <code>truenas_admin</code></td>
+                    <td><code>Afpi5962!</code> / <code>Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td><strong>GLPI (Helpdesk + Inventaire)</strong></td>
+                    <td>192.168.57.60</td>
+                    <td><code>glpi-admin</code> ou compte domaine</td>
+                    <td><strong>À définir lors de l'installation</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Note de contexte sécuritaire -->
+    <div class="highlight" style="margin-top: 20px;">
+        🔐 <strong>Contexte d'utilisation :</strong> Ces identifiants sont utilisés dans un environnement de laboratoire / projet scolaire.<br>
+        En production, ils seraient stockés dans un coffre-fort de mots de passe (Keepass, Bitwarden) et régulièrement renouvelés.<br>
+        <strong>Pour l'accès 2FA :</strong> Le code OTP est généré via l'application Google Authenticator sur le smartphone de l'administrateur.
+    </div>
+</div>
 <!-- C. PROJET -->
 <div class="page-section">
     <div class="section-letter">C</div>
