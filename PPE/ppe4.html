@@ -344,15 +344,101 @@
     <div class="sub-num" data-n="1">Plan d'adressage</div>
     <div class="table-wrap">
         <table>
-            <thead><tr><th>Équipement / VM</th><th>Rôle</th><th>Adresse IP</th><th>Accès distant</th></tr></thead>
+            <thead>
+                <tr>
+                    <th>Équipement / VM</th>
+                    <th>Rôle</th>
+                    <th>Adresse IP</th>
+                    <th>Accès distant / Identifiants</th>
+                </tr>
+            </thead>
             <tbody>
-                <tr><td>Stormshield SNS 310</td><td>Pare-feu (2FA activé)</td><td><code>192.168.54.254</code></td><td>HTTPS (MFA)</td></tr>
-                <tr><td>SRV-EL-WEB-01</td><td>Serveur Apache</td><td><code>192.168.54.15</code></td><td>SSH (MobaXterm)</td></tr>
-                <tr><td>SRV-EL-WEB-02</td><td>Serveur Apache</td><td><code>192.168.54.16</code></td><td>SSH (MobaXterm)</td></tr>
-                <tr><td>AD/DNS/DHCP</td><td>Windows Server 2019</td><td><code>192.168.54.10</code></td><td>RDP (MobaXterm)</td></tr>
-                <tr><td>GLPI (siège)</td><td>Helpdesk & Inventaire</td><td><code>192.168.57.60</code></td><td>HTTPS</td></tr>
+                <tr style="background: rgba(88,166,255,0.08);">
+                    <td colspan="4" style="font-weight: 700;">🏢 Agence El Hierro (192.168.54.0/24)</td>
+                </tr>
+                <tr>
+                    <td>Stormshield SNS 310</td>
+                    <td>Pare-feu / VPN (2FA activé)</td>
+                    <td>192.168.54.254</td>
+                    <td><code>admin / Afpi5962!</code> + <strong>Code OTP</strong> (Google Authenticator)</td>
+                </tr>
+                <tr>
+                    <td>AD/DNS/DHCP</td>
+                    <td>Windows Server 2019</td>
+                    <td>192.168.54.10</td>
+                    <td>RDP : <code>Administrateur / @fpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>SRV-EL-WEB-01</td>
+                    <td>Serveur Apache</td>
+                    <td>192.168.54.15</td>
+                    <td>SSH : <code>root / Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>SRV-EL-WEB-02</td>
+                    <td>Serveur Apache</td>
+                    <td>192.168.54.16</td>
+                    <td>SSH : <code>root / Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>SRV-EL-PROXY</td>
+                    <td>HAProxy (DMZ)</td>
+                    <td>192.168.64.1</td>
+                    <td>SSH : <code>root / Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>ESXi principal</td>
+                    <td>Hyperviseur LAN</td>
+                    <td>192.168.54.1</td>
+                    <td><code>root / Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>ESXi secondaire</td>
+                    <td>Hyperviseur (Load Balancing)</td>
+                    <td>192.168.69.94</td>
+                    <td><code>root / Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>TP-Link SG-3424</td>
+                    <td>Switch manageable LAN</td>
+                    <td>192.168.54.20</td>
+                    <td><code>admin / Afpi5962</code></td>
+                </tr>
+                <tr>
+                    <td>AP WiFi WA901N</td>
+                    <td>Borne WiFi 802.1X</td>
+                    <td>192.168.54.30</td>
+                    <td><code>admin / Afpi5962!</code></td>
+                </tr>
+                <tr style="background: rgba(63,185,80,0.08);">
+                    <td colspan="4" style="font-weight: 700;">🏢 Siège Tenerife (192.168.57.0/24)</td>
+                </tr>
+                <tr>
+                    <td>Zimbra Mail</td>
+                    <td>Messagerie</td>
+                    <td>192.168.57.40</td>
+                    <td><code>admin@el-cicar.es / Afpi5962</code><br>🌐 https://mail.el-cicar.es:7071 <code>Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>Centreon</td>
+                    <td>Supervision SNMP</td>
+                    <td>192.168.57.50</td>
+                    <td>HTTPS : <code>admin / Centreon!123</code></td>
+                </tr>
+                <tr>
+                    <td>TrueNAS</td>
+                    <td>NAS RAID-5 (sauvegardes Veeam)</td>
+                    <td>192.168.57.2</td>
+                    <td>📁 <code>el-user / Afpi5962!</code><br>🖥️ <code>truenas_admin / Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td><strong>GLPI</strong></td>
+                    <td><strong>Helpdesk & Inventaire</strong></td>
+                    <td><strong>192.168.57.60</strong></td>
+                    <td><strong>HTTPS : <code>glpi-admin</code> / À définir lors de l'installation</strong></td>
+                </tr>
             </tbody>
-         </table>
+        </table>
     </div>
     <div class="sub-num" data-n="2">Schéma d'infrastructure</div>
         <div class="photo-zone">
@@ -362,125 +448,12 @@
         </div>
     </div>
 </div>
-<!-- ANNEXE IDENTIFIANTS -->
-<div class="page-section">
-    <div class="section-letter">D</div>
-    <div class="section-title">Annexe — Identifiants de maintenance</div>
-    <div class="table-wrap">
-        <table>
-            <thead>
-                <tr>
-                    <th>Équipement / Service</th>
-                    <th>Adresse IP</th>
-                    <th>Identifiant</th>
-                    <th>Mot de passe / Accès</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- AGENCE EL HIERRO -->
-                <tr style="background: rgba(88,166,255,0.08);">
-                    <td colspan="4" style="font-weight: 700;">🏢 Agence El Hierro (192.168.54.0/24)</td>
-                </tr>
-                <tr>
-                    <td>Stormshield SNS 310 (avec 2FA)</td>
-                    <td>192.168.54.254</td>
-                    <td><code>admin</code></td>
-                    <td><code>Afpi5962!</code> + <strong>Code OTP (Google Authenticator)</strong></td>
-                </tr>
-                <tr>
-                    <td>TP-Link SG-3424 (switch)</td>
-                    <td>192.168.54.20</td>
-                    <td><code>admin</code></td>
-                    <td><code>Afpi5962</code></td>
-                </tr>
-                <tr>
-                    <td>AP WiFi WA901N</td>
-                    <td>192.168.54.30</td>
-                    <td><code>admin</code></td>
-                    <td><code>Afpi5962!</code></td>
-                </tr>
-                <tr>
-                    <td>AD / DNS / DHCP (Windows Server 2019)</td>
-                    <td>192.168.54.10</td>
-                    <td><code>Administrateur</code></td>
-                    <td><code>@fpi5962!</code></td>
-                </tr>
-                <tr>
-                    <td>SRV-EL-WEB-01 (Apache)</td>
-                    <td>192.168.54.15</td>
-                    <td><code>root</code></td>
-                    <td><code>Afpi5962!</code> (SSH via MobaXterm)</td>
-                </tr>
-                <tr>
-                    <td>SRV-EL-WEB-02 (Apache)</td>
-                    <td>192.168.54.16</td>
-                    <td><code>root</code></td>
-                    <td><code>Afpi5962!</code> (SSH via MobaXterm)</td>
-                </tr>
-                <tr>
-                    <td>SRV-EL-PROXY (HAProxy)</td>
-                    <td>192.168.64.1</td>
-                    <td><code>root</code></td>
-                    <td><code>Afpi5962!</code> (SSH via MobaXterm)</td>
-                </tr>
-                <tr>
-                    <td>ESXi principal</td>
-                    <td>192.168.54.1</td>
-                    <td><code>root</code></td>
-                    <td><code>Afpi5962!</code></td>
-                </tr>
-                <tr>
-                    <td>ESXi secondaire (Load Balancing)</td>
-                    <td>192.168.69.94</td>
-                    <td><code>root</code></td>
-                    <td><code>Afpi5962!</code></td>
-                </tr>
 
-                <!-- SIÈGE TENERIFE -->
-                <tr style="background: rgba(63,185,80,0.08);">
-                    <td colspan="4" style="font-weight: 700;">🏢 Siège Tenerife (192.168.57.0/24)</td>
-                </tr>
-                <tr>
-                    <td>Zimbra Mail (SRV-EL-MAIL)</td>
-                    <td>192.168.57.40</td>
-                    <td><code>admin@el-cicar.es</code></td>
-                    <td><code>Afpi5962</code> (CLI) / <code>Afpi5962!</code> (Web)</td>
-                </tr>
-                <tr>
-                    <td>Centreon (Supervision SNMP)</td>
-                    <td>192.168.57.50</td>
-                    <td><code>admin</code></td>
-                    <td><code>Centreon!123</code></td>
-                </tr>
-                <tr>
-                    <td>TrueNAS (NAS RAID-5)</td>
-                    <td>192.168.57.2</td>
-                    <td><code>el-user</code> / <code>truenas_admin</code></td>
-                    <td><code>Afpi5962!</code> / <code>Afpi5962!</code></td>
-                </tr>
-                <tr>
-                    <td><strong>GLPI (Helpdesk + Inventaire)</strong></td>
-                    <td>192.168.57.60</td>
-                    <td><code>glpi-admin</code> ou compte domaine</td>
-                    <td><strong>À définir lors de l'installation</strong></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Note de contexte sécuritaire -->
-    <div class="highlight" style="margin-top: 20px;">
-        🔐 <strong>Contexte d'utilisation :</strong> Ces identifiants sont utilisés dans un environnement de laboratoire / projet scolaire.<br>
-        En production, ils seraient stockés dans un coffre-fort de mots de passe (Keepass, Bitwarden) et régulièrement renouvelés.<br>
-        <strong>Pour l'accès 2FA :</strong> Le code OTP est généré via l'application Google Authenticator sur le smartphone de l'administrateur.
-    </div>
-</div>
 <!-- C. PROJET -->
 <div class="page-section">
     <div class="section-letter">C</div>
     <div class="section-title">Le projet</div>
 
-    <!-- 1. MobaXterm -->
     <div class="etape">
         <div class="etape-title">🖥️ 1. Accès distant centralisé — MobaXterm</div>
         <p>MobaXterm centralise les connexions SSH (serveurs Linux), RDP (AD) et HTTPS (Stormshield) via le tunnel VPN IPsec.</p>
@@ -497,7 +470,6 @@
         <span class="photo-file">mobaxterm_sessions.png</span>
     </div>
 
-    <!-- 2. Double authentification 2FA sur Stormshield -->
     <div class="etape">
         <div class="etape-title">🔐 2. Double authentification 2FA (Google Authenticator)</div>
         <p>Pour renforcer la sécurité des accès administratifs, l'authentification à deux facteurs a été activée sur le pare-feu Stormshield SNS 310. La méthode retenue est le <strong>One Time Password (OTP)</strong> avec l'extension <strong>Google Authenticator</strong>.</p>
@@ -527,7 +499,6 @@
         </div>
     </div>
 
-    <!-- 3. Gestion des flux (règles de filtrage) -->
     <div class="etape">
         <div class="etape-title">🌊 3. Gestion des flux — VPN IPsec</div>
         <p>Un tunnel VPN IPsec est établi entre le Stormshield SNS 310 de l'agence El Hierro et le pare-feu du siège de Tenerife, permettant les accès distants sécurisés et les sauvegardes Veeam.</p>
@@ -545,7 +516,6 @@
         <span class="photo-file">Capture d'écran 2026-03-30 085743.png</span>
     </div>
 
-    <!-- 4. GLPI -->
     <div class="etape">
         <div class="etape-title">📦 4. GLPI — Inventaire et Helpdesk</div>
         <p>GLPI installé au siège, avec GLPI_Agent sur tous les postes/serveurs pour l'inventaire automatique et la gestion des tickets.</p>
@@ -573,7 +543,6 @@
         </div>
     </div>
 
-    <!-- 5. Tests -->
     <div class="etape">
         <div class="etape-title">🧪 5. Tests des remontées et tickets</div>
         <ul>
@@ -583,7 +552,6 @@
         </ul>
     </div>
 
-    <!-- 6. Procédure -->
     <div class="etape">
         <div class="etape-title">📝 6. Procédure utilisateur helpdesk</div>
     </div>
