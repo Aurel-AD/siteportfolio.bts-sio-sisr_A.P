@@ -746,19 +746,98 @@
         </div>
     </div>
 
-      <div class="photo-zone">
-        <div class="photo-icon">📋</div>
-        <div class="photo-label">PHOTO 7 — Formulaire de création de ticket GLPI</div>
-        <div class="photo-desc" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <img src="glpi_ticket_form_1.jpg" alt="Formulaire GLPI étape 1" style="max-width: 31%; border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-            <img src="glpi_ticket_form_2.jpg" alt="Formulaire GLPI étape 2" style="max-width: 31%; border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-            <img src="glpi_ticket_form_3.jpg" alt="Formulaire GLPI étape 3" style="max-width: 31%; border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+  <style>
+    /* Style pour l'arrière-plan du pop-up */
+    dialog::backdrop {
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(5px);
+    }
+
+    /* Conteneur interne au dialog pour positionner le X */
+    .modal-content {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Le fameux bouton X de fermeture */
+    .close-btn {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        width: 35px;
+        height: 35px;
+        background-color: #ff4d4d;
+        color: white;
+        border: 2px solid white;
+        border-radius: 50%;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        transition: transform 0.2s;
+    }
+
+    .close-btn:hover {
+        transform: scale(1.1);
+        background-color: #ff0000;
+    }
+
+    dialog {
+        border: none;
+        background: transparent;
+        overflow: visible; /* Pour laisser dépasser le X */
+    }
+
+    dialog img {
+        max-height: 85vh;
+        max-width: 85vw;
+        border-radius: 5px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    }
+</style>
+
+<div class="photo-zone">
+    <div class="photo-icon">📋</div>
+    <div class="photo-label">PHOTO 7 — Formulaire de création de ticket GLPI</div>
+    
+    <div class="photo-desc" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        
+        <div style="width: 31%;">
+            <img src="glpi_ticket_form_1.jpg" alt="Etape 1" onclick="document.getElementById('modal1').showModal()" style="width: 100%; cursor: pointer; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+            <dialog id="modal1">
+                <div class="modal-content">
+                    <button class="close-btn" onclick="document.getElementById('modal1').close()">×</button>
+                    <img src="glpi_ticket_form_1.jpg">
+                </div>
+            </dialog>
         </div>
-        <div class="photo-desc" style="margin-top: 5px; font-style: italic;">
-            Formulaire Self-Service : sélection de la catégorie, niveau d'urgence, titre et description détaillée.
+
+        <div style="width: 31%;">
+            <img src="glpi_ticket_form_2.jpg" alt="Etape 2" onclick="document.getElementById('modal2').showModal()" style="width: 100%; cursor: pointer; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+            <dialog id="modal2">
+                <div class="modal-content">
+                    <button class="close-btn" onclick="document.getElementById('modal2').close()">×</button>
+                    <img src="glpi_ticket_form_2.jpg">
+                </div>
+            </dialog>
         </div>
-        <span class="photo-file" style="font-family: monospace; font-size: 0.85em; color: #555;">glpi_ticket_form_1.jpg / glpi_ticket_form_2.jpg / glpi_ticket_form_3.jpg</span>
+
+        <div style="width: 31%;">
+            <img src="glpi_ticket_form_3.jpg" alt="Etape 3" onclick="document.getElementById('modal3').showModal()" style="width: 100%; cursor: pointer; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+            <dialog id="modal3">
+                <div class="modal-content">
+                    <button class="close-btn" onclick="document.getElementById('modal3').close()">×</button>
+                    <img src="glpi_ticket_form_3.jpg">
+                </div>
+            </dialog>
+        </div>
+
     </div>
+    <div class="photo-desc" style="margin-top: 10px;">Cliquez sur une capture pour l'agrandir.</div>
+</div>
 
     <div class="photo-zone" style="border-color: var(--accent2);">
         <div class="photo-icon">✅</div>
