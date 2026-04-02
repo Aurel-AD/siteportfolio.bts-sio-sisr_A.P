@@ -329,113 +329,97 @@
     <div class="section-title">Le plan</div>
     <div class="sub-num" data-n="1">Plan d'adressage IP</div>
     <div class="table-wrap">
-    <table>
-        <thead>
-            <tr>
-                <th>Équipement</th>
-                <th>Nom / Rôle</th>
-                <th>Adresse IP</th>
-                <th>Identifiants (lab)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- ÉQUIPEMENTS AGENCE EL HIERRO -->
-            <tr style="background: rgba(88,166,255,0.05);">
-                <td colspan="4" style="font-weight: 700; color: var(--accent);">🏢 Agence El Hierro (192.168.54.0/24)</td>
-            </tr>
-            <tr>
-                <td>Stormshield SNS 310</td>
-                <td>Pare-feu / VPN</td>
-                <td>192.168.54.254 (LAN)</td>
-                <td><code>admin / Afpi5962!</code></td>
-            </tr>
-            <tr>
-                <td>TP-Link SG-3424</td>
-                <td>Switch manageable LAN</td>
-                <td>192.168.54.20</td>
-                <td><code>admin / Afpi5962</code></td>
-            </tr>
-            <tr>
-                <td>AP WiFi WA901N</td>
-                <td>Borne WiFi 802.1X</td>
-                <td>192.168.54.30</td>
-                <td><code>admin / Afpi5962!</code></td>
-            </tr>
-            <tr>
-                <td>AD/DNS/DHCP (VM)</td>
-                <td>Windows Server 2019</td>
-                <td>192.168.54.10</td>
-                <td><code>Administrateur / @fpi5962!</code></td>
-            </tr>
-            <tr>
-                <td>SRV-EL-WEB-01 (VM)</td>
-                <td>Apache + PHP + MariaDB</td>
-                <td>192.168.54.15</td>
-                <td><code>root / Afpi5962!</code></td>
-            </tr>
-            <tr>
-                <td>SRV-EL-WEB-02 (VM)</td>
-                <td>Miroir de WEB-01</td>
-                <td>192.168.54.16</td>
-                <td><code>root / Afpi5962!</code></td>
-            </tr>
-            <tr>
-                <td>SRV-EL-PROXY (VM)</td>
-                <td>HAProxy (DMZ)</td>
-                <td>192.168.64.1</td>
-                <td><code>root / Afpi5962!</code></td>
-            </tr>
-            <tr>
-                <td>ESXi principal</td>
-                <td>Hyperviseur LAN</td>
-                <td>192.168.54.1</td>
-                <td><code>root / Afpi5962!</code></td>
-            </tr>
-            <tr>
-                <td>ESXi secondaire</td>
-                <td>Hyperviseur (Load Balancing)</td>
-                <td>192.168.69.94</td>
-                <td><code>root / Afpi5962!</code></td>
-            </tr>
-
-            <!-- ÉQUIPEMENTS SIÈGE TENERIFE -->
-            <tr style="background: rgba(63,185,80,0.05);">
-                <td colspan="4" style="font-weight: 700; color: var(--accent2);">🏢 Siège Tenerife (192.168.57.0/24)</td>
-            </tr>
-            <tr>
-                <td>Zimbra Mail (SRV-EL-MAIL)</td>
-                <td>Serveur de messagerie</td>
-                <td>192.168.57.40</td>
-                <td>
-                    <code>admin@el-cicar.es / Afpi5962</code><br>
-                    🌐 <a href="https://mail.el-cicar.es:7071" style="color: var(--accent);">https://mail.el-cicar.es:7071</a><br>
-                    <code>MDP interface web : Afpi5962!</code>
-                </td>
-            </tr>
-            <tr>
-                <td>Centreon</td>
-                <td>Supervision SNMP</td>
-                <td>192.168.57.50</td>
-                <td><code>admin / Centreon!123</code></td>
-            </tr>
-            <tr>
-                <td>TrueNAS (NAS RAID-5)</td>
-                <td>Stockage sauvegardes Veeam</td>
-                <td>192.168.57.2</td>
-                <td>
-                    📁 <strong>Lecteur réseau :</strong> <code>el-user / Afpi5962!</code><br>
-                    🖥️ <strong>Admin TrueNAS :</strong> <code>truenas_admin / Afpi5962!</code>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<!-- Note de contexte sécuritaire -->
-<p class="photo-desc" style="margin-top:12px; font-size:0.85rem;">
-    🔐 <strong>Contexte d'utilisation :</strong> Ces identifiants sont utilisés dans un environnement de laboratoire / projet scolaire. 
-    En production, ils seraient stockés dans un coffre-fort de mots de passe (Keepass, Bitwarden) et régulièrement renouvelés.
-</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Équipement / VM</th>
+                    <th>Rôle</th>
+                    <th>Adresse IP</th>
+                    <th>Accès distant / Identifiants</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background: rgba(88,166,255,0.08);">
+                    <td colspan="4" style="font-weight: 700;">🏢 Agence El Hierro (192.168.54.0/24)</td>
+                </tr>
+                <tr>
+                    <td>Stormshield SNS 310</td>
+                    <td>Pare-feu / VPN</td>
+                    <td>192.168.54.254</td>
+                    <td><code>admin / Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>AD/DNS/DHCP</td>
+                    <td>Windows Server 2019</td>
+                    <td>192.168.54.10</td>
+                    <td>RDP : <code>Administrateur / @fpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>SRV-EL-WEB-01</td>
+                    <td>Serveur Apache</td>
+                    <td>192.168.54.15</td>
+                    <td>SSH : <code>root / Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>SRV-EL-WEB-02</td>
+                    <td>Serveur Apache</td>
+                    <td>192.168.54.16</td>
+                    <td>SSH : <code>root / Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>SRV-EL-PROXY</td>
+                    <td>HAProxy (DMZ)</td>
+                    <td>192.168.64.1</td>
+                    <td>SSH : <code>root / Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>ESXi principal</td>
+                    <td>Hyperviseur LAN</td>
+                    <td>192.168.54.1</td>
+                    <td><code>root / Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>ESXi secondaire</td>
+                    <td>Hyperviseur (Load Balancing)</td>
+                    <td>192.168.69.94</td>
+                    <td><code>root / Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>TP-Link SG-3424</td>
+                    <td>Switch manageable LAN</td>
+                    <td>192.168.54.20</td>
+                    <td><code>admin / Afpi5962</code></td>
+                </tr>
+                <tr>
+                    <td>AP WiFi WA901N</td>
+                    <td>Borne WiFi 802.1X</td>
+                    <td>192.168.54.30</td>
+                    <td><code>admin / Afpi5962!</code></td>
+                </tr>
+                <tr style="background: rgba(63,185,80,0.08);">
+                    <td colspan="4" style="font-weight: 700;">🏢 Siège Tenerife (192.168.57.0/24)</td>
+                </tr>
+                <tr>
+                    <td>Zimbra Mail</td>
+                    <td>Messagerie</td>
+                    <td>192.168.57.40</td>
+                    <td><code>admin@el-cicar.es / Afpi5962</code><br>🌐 https://mail.el-cicar.es:7071 <code>Afpi5962!</code></td>
+                </tr>
+                <tr>
+                    <td>Centreon</td>
+                    <td>Supervision SNMP</td>
+                    <td>192.168.57.50</td>
+                    <td>HTTPS : <code>admin / Centreon!123</code></td>
+                </tr>
+                <tr>
+                    <td>TrueNAS</td>
+                    <td>NAS RAID-5 (sauvegardes Veeam)</td>
+                    <td>192.168.57.2</td>
+                    <td>📁 <code>el-user / Afpi5962!</code><br>🖥️ <code>truenas_admin / Afpi5962!</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <div class="sub-num" data-n="2">Schéma d'infrastructure</div>
         <div class="photo-zone">
         <iframe src="schema_base_cicar.html" width="100%" height="600px" style="border:none; border-radius:8px;"></iframe>
@@ -450,13 +434,11 @@
     <div class="section-letter">C</div>
     <div class="section-title">Le projet</div>
 
-    <!-- Étape 1 : architecture trois-tiers -->
     <div class="etape">
         <div class="etape-title">🏗️ 1. Architecture trois-tiers</div>
         <p>Les requêtes HTTP/HTTPS arrivent sur le pare-feu Stormshield, sont NATées vers HAProxy en DMZ (<code>192.168.64.1</code>). HAProxy distribue la charge en round-robin vers les deux serveurs web situés dans le LAN (<code>192.168.54.15</code> et <code>192.168.54.16</code>).</p>
     </div>
 
-    <!-- PHOTO 1 : Règles pare-feu Stormshield -->
     <div class="photo-zone">
         <div class="photo-icon">🛡️</div>
         <div class="photo-label">PHOTO 1 — Règles de filtrage Stormshield</div>
@@ -465,7 +447,6 @@
         <span class="photo-file">Capture d'écran 2026-03-30 122922.png</span>
     </div>
 
-        <!-- Conf Apache WEB-01 & WEB-02 -->
     <div class="etape">
         <div class="etape-title">⚙️ 1.1 Configuration Apache — Serveurs web</div>
         <p>Chaque serveur héberge un site indépendant. Le virtual host Apache est configuré pour répondre sur le domaine <code>el-cicars.es</code> et servir les fichiers depuis <code>/var/www/el-cicars</code>.</p>
@@ -482,7 +463,6 @@
     a2ensite el-cicars.conf
     systemctl reload apache2</pre>
     
-    <!-- Étape 2 : HAProxy -->
     <div class="etape">
         <div class="etape-title">⚖️ 2. Load Balancing HAProxy</div>
         <p>HAProxy est configuré en mode HTTP, avec round-robin et health checks actifs. En cas de panne d'un serveur web, le trafic bascule automatiquement sur l'autre.</p>
@@ -498,7 +478,6 @@ backend web_cluster
     server web01 192.168.54.15:80 check
     server web02 192.168.54.16:80 check</pre>
 
-    <!-- PHOTO 2 : Configuration HAProxy -->
     <div class="photo-zone">
         <div class="photo-icon">📄</div>
         <div class="photo-label">PHOTO 2 — Configuration HAProxy</div>
@@ -507,7 +486,6 @@ backend web_cluster
         <span class="photo-file">Capture d'écran 2026-03-30 124849.png</span>
     </div>
     
-    <!-- Test de basculement -->
     <div class="etape">
         <div class="etape-title">🔁 2.1 Test de basculement — Failover HAProxy</div>
         <p>Pour valider la continuité de service, le serveur <strong>WEB-01</strong> a été arrêté volontairement. HAProxy a détecté la panne via le health check (<code>option httpchk GET /</code>) et a basculé automatiquement l'intégralité du trafic vers <strong>WEB-02</strong>, sans interruption côté client.</p>
@@ -539,14 +517,12 @@ backend web_cluster
 </div>
 <div class="highlight">📌 Le health check HAProxy (<code>option httpchk GET /</code>) détecte la panne en ~2 secondes et redirige le trafic sans intervention manuelle.</div>
     
-    <!-- Étape 3 : Sauvegardes Veeam -->
     <div class="etape">
     <div class="etape-title">💾 3. Sauvegardes manuelles Veeam vers NAS siège</div>
     <p>Veeam Backup & Replication est installé au siège de Tenerife. Les sauvegardes des VMs de l'agence El Hierro (WEB-01, WEB-02, PROXY, AD) sont déclenchées manuellement par l'administrateur via la console Veeam, et transférées via le tunnel VPN IPsec vers le NAS RAID-5 du siège (<code>SRV-Truenas-TF</code>).</p>
     <div class="highlight">📌 La sauvegarde est manuelle à ce stade du projet. La planification automatique (job récurrent) est prévue en évolution.</div>
 </div>
 
-    <!-- PHOTO 3 : Veeam jobs -->
     <div class="photo-zone">
         <div class="photo-icon">📀</div>
         <div class="photo-label">PHOTO 3 — Veeam Backup & Replication : jobs actifs</div>
@@ -558,13 +534,11 @@ backend web_cluster
         <span class="photo-file">veeambackup.png</span>
     </div>
 
-    <!-- Étape 4 : Sauvegarde équipements -->
     <div class="etape">
         <div class="etape-title">🔧 4. Sauvegarde des configurations des équipements d'interconnexion</div>
         <p>Les fichiers de configuration du pare-feu Stormshield, du switch TP-Link SG-3424 et du point d'accès WiFi sont exportés et stockés sur le NAS du siège.</p>
     </div>
 
-    <!-- PHOTO 4 : Export configuration Stormshield -->
     <div class="photo-zone">
         <div class="photo-icon">📁</div>
         <div class="photo-label">PHOTO 4 — Export configuration Stormshield</div>
