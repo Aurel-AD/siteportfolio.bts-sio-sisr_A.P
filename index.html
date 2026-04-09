@@ -691,7 +691,6 @@
                         <h3>À propos du tableau</h3>
                         <p>Ce tableau E4 présente l'ensemble des <strong>situations professionnelles</strong> que j'ai réalisées durant ma formation BTS SIO, spécialité SISR.</p>
                         <p>Chaque projet ou mission est relié à des <strong>compétences spécifiques du référentiel</strong>, que j'ai pu développer en entreprise.</p>
-                        <p><em>(En bas à droite de la visionneuse, vous pouvez agrandir le document)</em></p>
                     </div>
                     
                     <!-- Boutons d'action -->
@@ -702,14 +701,16 @@
                     </div>
                     
                     <!-- Tableau intégré -->
-                    <div class="tableau-iframe">
-                        <iframe 
-                            src="https://view.officeapps.live.com/op/embed.aspx?src=https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/files/tableau_bts_e4.xlsx" 
-                            width="100%" 
-                            height="600px" 
-                            frameborder="0"
-                            loading="lazy"
-                        ></iframe>
+                    <div class="tableau-iframe" style="text-align: center; margin-top: 2rem;">
+                        <!-- L'image cliquable -->
+                        <div onclick="openPdfModal('files/tableau_bts_e4.pdf')" style="cursor: zoom-in; display: inline-block;">
+                            <img src="images/apercu-e4.png" alt="Aperçu du tableau E4" style="width: 100%; max-width: 800px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid #34d399; transition: transform 0.3s ease;">
+                            
+                            <!-- L'indication en dessous -->
+                            <p style="font-size: 1.1em; color: #34d399; margin-top: 15px; font-weight: bold;">
+                                <i class="fas fa-search-plus"></i> Cliquez sur l'image pour agrandir le tableau
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1062,7 +1063,40 @@
                 closeCertificate();
             }
         });
+        // ========== OUVRIR ET FERMER LE PDF ==========
+        function openPdfModal(pdfUrl) {
+            document.getElementById('pdf-iframe').src = pdfUrl;
+            document.getElementById('pdf-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Empêche de scroller le site derrière
+        }
+        
+        function closePdfModal() {
+            document.getElementById('pdf-modal').style.display = 'none';
+            document.getElementById('pdf-iframe').src = ''; // Vide l'iframe pour alléger la mémoire
+            document.body.style.overflow = 'auto'; // Réactive le scroll
+        }
+        
+        // Fermer en cliquant à côté du PDF
+        document.getElementById('pdf-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePdfModal();
+            }
+        });
     </script>
+    <!-- Fenêtre Modale pour le PDF -->
+<div id="pdf-modal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.95); z-index: 10000; align-items: center; justify-content: center;">
+    
+    <div style="width: 95%; height: 95%; position: relative; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,0.5);">
+        
+        <!-- Le bouton Croix Rouge -->
+        <button onclick="closePdfModal()" style="position: absolute; top: 15px; right: 25px; background: #ef4444; color: white; border: none; border-radius: 50%; width: 45px; height: 45px; font-size: 1.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10001; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: background 0.3s;">
+            &times;
+        </button>
+
+        <!-- L'affichage du PDF -->
+        <iframe id="pdf-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+</div>
     <!-- Modale RGPD -->
 <div id="rgpd-modal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); z-index: 9999; align-items: center; justify-content: center;">
     <div style="background: #1e293b; border-radius: 14px; border-left: 4px solid #34d399; padding: 2.5rem; max-width: 560px; width: 90%; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
