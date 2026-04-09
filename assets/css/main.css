@@ -281,3 +281,16 @@
     color: #8b5cf6 !important; 
     border: 1px solid #8b5cf6 !important; 
 }
+/* fresc */
+.about-image {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.about-image img {
+    width: 100%; /* S'adapte à l'écran */
+    max-width: 1000px; /* Taille maximum de la fresque */
+    height: auto;
+    border-radius: 8px; /* Arrondit légèrement les bords, optionnel */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Ajoute une petite ombre sympa, optionnel */
+}
