@@ -534,261 +534,336 @@
     </div>
 
     <!-- ========== SCHÉMA RÉSEAU CUSTOM ========== -->
-    <section class="section" id="schema-section">
-        <h2 class="schema-section-title">🗺️ Schéma d'implantation réseau</h2>
-
-        <div class="schema-wrapper">
-            <!-- Barre d'outils -->
-            <div class="schema-toolbar">
-                <div class="schema-toolbar-title">
-                    Architecture réseau CICAR — Agence El Hierro
-                    <span class="badge">Schéma interactif</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-                    <div class="schema-controls">
-                        <button onclick="zoomOut()">🔍 Zoom −</button>
-                        <span class="zoom-indicator" id="zoomDisplay">100%</span>
-                        <button onclick="zoomIn()">🔍 Zoom +</button>
-                        <button onclick="resetZoom()">🔄 Réinitialiser</button>
-                        <button class="btn-primary" onclick="downloadSVG()">💾 Télécharger SVG</button>
-                    </div>
+   <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Schéma Réseau — Infrastructure CICAR (Base)</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Segoe UI',sans-serif; background:#f0f4f8; }
+        .wrap { max-width:1450px; margin:0 auto; padding:20px; }
+        .hdr { background:#2c3e50; color:#fff; border-radius:8px; padding:16px 24px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+        .hdr h1 { font-size:1.15rem; }
+        .hdr .sub { font-size:.8rem; color:#aab; margin-top:3px; }
+        .badges { display:flex; gap:6px; flex-wrap:wrap; }
+        .badge { color:#fff; font-size:.72rem; padding:3px 10px; border-radius:20px; white-space:nowrap; }
+        .b1 { background:#3498db; }
+        .box { background:#fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,.1); overflow:hidden; }
+        .tb { background:#2c3e50; padding:9px 14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+        .tb-t { color:#ecf0f1; font-size:.85rem; font-weight:600; }
+        .ctrls { display:flex; gap:5px; }
+        .ctrls button { background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.25); padding:5px 11px; border-radius:4px; cursor:pointer; font-size:.78rem; }
+        .ctrls button:hover { background:rgba(255,255,255,.22); }
+        .ctrls button.p { background:#3498db; border-color:transparent; }
+        .zv { color:rgba(255,255,255,.7); font-size:.78rem; min-width:42px; text-align:center; }
+        .vp { overflow:auto; background:#fdfcfb; max-height:850px; cursor:grab; }
+        .vp:active { cursor:grabbing; }
+        .inner { padding:18px; display:inline-block; transform-origin:top left; transition:transform .2s; }
+        .leg { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; padding:10px 14px; background:#eaf3fb; border-top:1px solid #cce0f5; }
+        .li { display:flex; align-items:center; gap:5px; padding:3px 9px; background:#fff; border-radius:20px; border:1px solid #ccc; font-size:.75rem; color:#444; }
+        .lb { width:18px; height:9px; border-radius:2px; flex-shrink:0; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="hdr">
+            <div>
+                <h1>🗺 Infrastructure Réseau CICAR — Toutes Agences</h1>
+                <div class="sub">Topologie Initiale Complète (Audit de l'existant) · Avant Projets (PPE) · BTS SIO SISR – E6</div>
+            </div>
+            <div class="badges">
+                <span class="badge b1">Architecture de Base Complète</span>
+            </div>
+        </div>
+        <div class="box">
+            <div class="tb">
+                <div class="tb-t">🌐 Topologie Hub & Spoke — Interconnexion IPsec VPN</div>
+                <div class="ctrls">
+                    <button onclick="zm(-1)">➖</button>
+                    <span class="zv" id="zv">100%</span>
+                    <button onclick="zm(1)">➕</button>
+                    <button onclick="zm(0)">↺</button>
+                    <button class="p" onclick="dl()">⬇ SVG</button>
                 </div>
             </div>
-
-            <!-- Viewport scrollable -->
-            <div class="schema-viewport" id="schemaViewport">
-                <div class="schema-inner" id="schemaInner">
-                    <svg id="networkSVG" xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 1160 920" width="1160" height="920"
-                         style="font-family:'Segoe UI',sans-serif;display:block;">
-
-                        <!-- ===== DEFS: arrows & shadows ===== -->
+            <div class="vp" id="vp">
+                <div class="inner" id="inner">
+                    <!-- Format large pour accueillir les 5 sites en étoile -->
+                    <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 950" width="1400" height="950" style="font-family:'Segoe UI',sans-serif;display:block;">
                         <defs>
-                            <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                                <path d="M0,0 L0,6 L8,3 z" fill="#555"/>
-                            </marker>
-                            <marker id="arr-vpn" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                                <path d="M0,0 L0,6 L8,3 z" fill="#c0392b"/>
-                            </marker>
-                            <marker id="arr-dmz" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                                <path d="M0,0 L0,6 L8,3 z" fill="#d4a017"/>
-                            </marker>
-                            <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
-                                <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/>
-                            </filter>
+                            <marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L0,6L8,3z" fill="#555"/></marker>
+                            <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L0,6L8,3z" fill="#c0392b"/></marker>
+                            <filter id="sh" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/></filter>
                         </defs>
 
-                        <!-- ============================================================
-                             INTERNET
-                        ============================================================ -->
-                        <!-- Cloud shape -->
-                        <ellipse cx="580" cy="52" rx="110" ry="32" fill="#e2e3e5" stroke="#9a9b9d" stroke-width="1.5" filter="url(#shadow)"/>
-                        <ellipse cx="510" cy="60" rx="52" ry="26" fill="#e2e3e5" stroke="#9a9b9d" stroke-width="1.5"/>
-                        <ellipse cx="650" cy="60" rx="52" ry="26" fill="#e2e3e5" stroke="#9a9b9d" stroke-width="1.5"/>
-                        <rect x="460" y="60" width="240" height="26" fill="#e2e3e5" stroke="none"/>
-                        <rect x="460" y="59" width="240" height="2" fill="#e2e3e5"/>
-                        <text x="580" y="67" text-anchor="middle" font-size="13" font-weight="700" fill="#333">☁  INTERNET / WAN</text>
-                        <!-- Arrow down -->
-                        <line x1="580" y1="86" x2="580" y2="118" stroke="#555" stroke-width="2" marker-end="url(#arr)"/>
-                        <text x="594" y="106" font-size="10" fill="#777">WAN</text>
+                        <!-- LIGNES VPN ET INTERCONNEXIONS (Dessinées en premier pour être en arrière-plan) -->
+                        <line x1="210" y1="280" x2="600" y2="450" stroke="#555" stroke-width="2" marker-end="url(#a)"/> <!-- FAI -> WAN -->
+                        <line x1="700" y1="360" x2="700" y2="430" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="8,4" marker-end="url(#ar)"/> <!-- TF -> WAN -->
+                        <line x1="1150" y1="416" x2="800" y2="460" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="8,4" marker-end="url(#ar)"/> <!-- GC -> WAN -->
+                        <line x1="265" y1="600" x2="600" y2="490" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="8,4" marker-end="url(#ar)"/> <!-- LP -> WAN -->
+                        <line x1="700" y1="600" x2="700" y2="490" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="8,4" marker-end="url(#ar)"/> <!-- EL -> WAN -->
+                        <line x1="1135" y1="600" x2="800" y2="490" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="8,4" marker-end="url(#ar)"/> <!-- LG -> WAN -->
 
-                        <!-- ============================================================
-                             PARE-FEU SNS310
-                        ============================================================ -->
-                        <rect x="450" y="120" width="260" height="68" rx="8" fill="#f8d7da" stroke="#c0392b" stroke-width="2" filter="url(#shadow)"/>
-                        <text x="480" y="143" font-size="12" font-weight="700" fill="#7b0000">🛡  Stormshield SNS 310</text>
-                        <text x="480" y="160" font-size="10.5" fill="#a00">Pare-feu • VPN IPsec • DENY ALL</text>
-                        <text x="480" y="176" font-size="10" fill="#a00">LAN : 192.168.54.254   DMZ : 192.168.64.254</text>
+                        <!-- LABEL CENTRAL VPN -->
+                        <rect x="580" y="370" width="240" height="30" rx="15" fill="#f8d7da" stroke="#c0392b" stroke-width="1.5" opacity="0.9"/>
+                        <text x="700" y="390" text-anchor="middle" font-size="12" font-weight="bold" fill="#c0392b">⚡ LIAISONS VPN IPSEC ⚡</text>
 
-                        <!-- Arrow FW → Switch (LAN) -->
-                        <line x1="500" y1="188" x2="380" y2="248" stroke="#5cb85c" stroke-width="2" marker-end="url(#arr)"/>
-                        <text x="407" y="226" font-size="10" fill="#155724" transform="rotate(-22,407,226)">LAN</text>
+                        <!-- ========================================== -->
+                        <!-- CENTRE : SWITCH WAN -->
+                        <!-- ========================================== -->
+                        <rect x="600" y="430" width="200" height="60" rx="8" fill="#34495e" stroke="#2c3e50" stroke-width="2" filter="url(#sh)"/>
+                        <text x="700" y="455" text-anchor="middle" font-size="13" font-weight="bold" fill="#ecf0f1">🔀 WAN-SW1</text>
+                        <text x="700" y="475" text-anchor="middle" font-size="11" font-weight="bold" fill="#3498db">192.168.69.150</text>
 
-                        <!-- Arrow FW → HAProxy (DMZ) -->
-                        <line x1="670" y1="188" x2="940" y2="248" stroke="#d4a017" stroke-width="2" marker-end="url(#arr-dmz)"/>
-                        <text x="780" y="218" font-size="10" fill="#7d5a00" transform="rotate(18,780,218)">DMZ</text>
+                        <!-- ========================================== -->
+                        <!-- HAUT GAUCHE : INTERNET & FAI -->
+                        <!-- ========================================== -->
+                        <rect x="80" y="120" width="260" height="160" rx="10" fill="#e2e3e5" stroke="#9a9b9d" stroke-width="2" filter="url(#sh)"/>
+                        <text x="210" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">☁ INTERNET / FAI</text>
+                        
+                        <rect x="110" y="170" width="200" height="40" rx="6" fill="#fff" stroke="#9a9b9d" stroke-width="1.5"/>
+                        <text x="210" y="188" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">🌐 Routeur FAI</text>
+                        <text x="210" y="202" text-anchor="middle" font-size="9" fill="#555">Accès réseau global</text>
 
-                        <!-- ============================================================
-                             ZONE LAN  192.168.54.0/24
-                        ============================================================ -->
-                        <rect x="20" y="255" width="760" height="430" rx="10" fill="#d4edda" stroke="#5cb85c" stroke-width="2" opacity="0.5"/>
-                        <text x="35" y="276" font-size="12" font-weight="700" fill="#155724">🟢  ZONE LAN — 192.168.54.0/24</text>
+                        <rect x="100" y="225" width="220" height="40" rx="4" fill="#fff" stroke="#3498db" stroke-width="1"/>
+                        <text x="210" y="240" text-anchor="middle" font-size="10" font-weight="bold" fill="#2980b9">GW-SIO : 192.168.69.8</text>
+                        <text x="210" y="255" text-anchor="middle" font-size="10" font-weight="bold" fill="#2980b9">DNS SIO : 192.168.69.6</text>
 
-                        <!-- ---- Switch ---- -->
-                        <rect x="305" y="288" width="185" height="54" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#shadow)"/>
-                        <text x="397" y="311" text-anchor="middle" font-size="11" font-weight="700" fill="#155724">🔀  Switch TP-Link SG-3424</text>
-                        <text x="397" y="328" text-anchor="middle" font-size="10" fill="#555">IP : 192.168.54.20</text>
+                        <!-- ========================================== -->
+                        <!-- HAUT CENTRE : SIÈGE TENERIFE -->
+                        <!-- ========================================== -->
+                        <rect x="450" y="40" width="500" height="310" rx="10" fill="#dce7f5" stroke="#2980b9" stroke-width="2" filter="url(#sh)"/>
+                        <text x="700" y="70" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a3a5c">🏢 Siège de TENERIFE</text>
+                        
+                        <!-- Badges TF -->
+                        <rect x="520" y="85" width="140" height="22" rx="4" fill="#d4edda" stroke="#5cb85c" stroke-width="1"/>
+                        <text x="590" y="100" font-size="11" text-anchor="middle" font-weight="bold" fill="#155724">LAN: 192.168.57.0</text>
+                        
+                        <rect x="740" y="85" width="140" height="22" rx="4" fill="#f8d7da" stroke="#c0392b" stroke-width="1"/>
+                        <text x="810" y="100" font-size="11" text-anchor="middle" font-weight="bold" fill="#c0392b">WAN: 192.168.69.97</text>
 
-                        <!-- Arrow Switch → ESXi -->
-                        <line x1="397" y1="342" x2="397" y2="380" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+                        <!-- Composants TF -->
+                        <rect x="620" y="125" width="160" height="40" rx="4" fill="#f8d7da" stroke="#c0392b" stroke-width="1.5"/>
+                        <text x="700" y="142" text-anchor="middle" font-size="12" font-weight="bold" fill="#7b0000">🛡 TF-SNS</text>
+                        <text x="700" y="158" text-anchor="middle" font-size="10" fill="#a00">GW: 192.168.57.254</text>
 
-                        <!-- ---- ESXi Principal ---- -->
-                        <rect x="295" y="382" width="205" height="54" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#shadow)"/>
-                        <text x="397" y="406" text-anchor="middle" font-size="11" font-weight="700" fill="#155724">🖥  VMware ESXi 7.0</text>
-                        <text x="397" y="421" text-anchor="middle" font-size="10" fill="#555">Hyperviseur principal • IP : 192.168.54.1</text>
+                        <rect x="520" y="195" width="160" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="600" y="212" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">🔀 TF-SW1</text>
+                        <text x="600" y="228" text-anchor="middle" font-size="10" fill="#555">192.168.57.20</text>
 
-                        <!-- Lines ESXi → VMs -->
-                        <!-- to AD -->
-                        <line x1="330" y1="436" x2="88" y2="478" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
-                        <!-- to RADIUS -->
-                        <line x1="360" y1="436" x2="220" y2="478" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
-                        <!-- to Zimbra -->
-                        <line x1="397" y1="436" x2="397" y2="478" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
-                        <!-- to Web1 -->
-                        <line x1="430" y1="436" x2="560" y2="478" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
-                        <!-- to Web2 -->
-                        <line x1="460" y1="436" x2="695" y2="478" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+                        <rect x="730" y="195" width="140" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="800" y="212" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">📶 TF-AP1</text>
+                        <text x="800" y="228" text-anchor="middle" font-size="10" fill="#555">192.168.57.30</text>
 
-                        <!-- ---- AD ---- -->
-                        <rect x="32" y="480" width="114" height="64" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#shadow)"/>
-                        <text x="89" y="502" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🗂 SRV-EL-AD</text>
-                        <text x="89" y="517" text-anchor="middle" font-size="9.5" fill="#555">Win Server 2019</text>
-                        <text x="89" y="530" text-anchor="middle" font-size="9.5" fill="#555">AD / DNS / DHCP</text>
-                        <text x="89" y="543" text-anchor="middle" font-size="9" fill="#888">.54.10</text>
+                        <rect x="470" y="260" width="150" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="545" y="277" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">🖥 TF-ESXi</text>
+                        <text x="545" y="293" text-anchor="middle" font-size="10" fill="#555">192.168.57.1</text>
 
-                        <!-- ---- RADIUS ---- -->
-                        <rect x="160" y="480" width="118" height="64" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#shadow)"/>
-                        <text x="219" y="502" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🔐 SRV-EL-RADIUS</text>
-                        <text x="219" y="517" text-anchor="middle" font-size="9.5" fill="#555">Win Server 2019</text>
-                        <text x="219" y="530" text-anchor="middle" font-size="9.5" fill="#555">NPS / RADIUS</text>
-                        <text x="219" y="543" text-anchor="middle" font-size="9" fill="#888">.54.11</text>
+                        <rect x="635" y="260" width="150" height="40" rx="4" fill="#fff" stroke="#8e44ad" stroke-width="1.5"/>
+                        <text x="710" y="277" text-anchor="middle" font-size="11" font-weight="bold" fill="#5b2c8e">🗂 SRV-AD-TENERIFE</text>
+                        <text x="710" y="293" text-anchor="middle" font-size="10" fill="#555">192.168.57.10</text>
 
-                        <!-- ---- Zimbra ---- -->
-                        <rect x="334" y="480" width="126" height="64" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#shadow)"/>
-                        <text x="397" y="502" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">📧 SRV-EL-MAIL</text>
-                        <text x="397" y="517" text-anchor="middle" font-size="9.5" fill="#555">Debian</text>
-                        <text x="397" y="530" text-anchor="middle" font-size="9.5" fill="#555">Zimbra Collaboration</text>
-                        <text x="397" y="543" text-anchor="middle" font-size="9" fill="#888">.54.40</text>
+                        <rect x="800" y="260" width="140" height="40" rx="4" fill="#fff" stroke="#e67e22" stroke-width="1.5"/>
+                        <text x="870" y="277" text-anchor="middle" font-size="12" font-weight="bold" fill="#d35400">💾 TF-NAS</text>
+                        <text x="870" y="293" text-anchor="middle" font-size="10" fill="#555">192.168.57.2</text>
 
-                        <!-- ---- Web1 ---- -->
-                        <rect x="502" y="480" width="118" height="64" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#shadow)"/>
-                        <text x="561" y="502" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🌐 WEB-01</text>
-                        <text x="561" y="517" text-anchor="middle" font-size="9.5" fill="#555">Debian</text>
-                        <text x="561" y="530" text-anchor="middle" font-size="9.5" fill="#555">Apache/PHP/MariaDB</text>
-                        <text x="561" y="543" text-anchor="middle" font-size="9" fill="#888">.54.15</text>
+                        <!-- Connexions internes TF -->
+                        <line x1="700" y1="165" x2="600" y2="195" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="680" y1="215" x2="730" y2="215" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="560" y1="235" x2="545" y2="260" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="600" y1="235" x2="710" y2="260" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="640" y1="235" x2="870" y2="260" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        
+                        <!-- PC indépendant (relié au SW virtuellement) -->
+                        <text x="600" y="335" font-size="10" font-weight="bold" fill="#3498db">💻 TF-PC1 (en DHCP)</text>
 
-                        <!-- ---- Web2 ---- -->
-                        <rect x="636" y="480" width="118" height="64" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#shadow)"/>
-                        <text x="695" y="502" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🌐 WEB-02</text>
-                        <text x="695" y="517" text-anchor="middle" font-size="9.5" fill="#555">Debian</text>
-                        <text x="695" y="530" text-anchor="middle" font-size="9.5" fill="#555">Apache/PHP/MariaDB</text>
-                        <text x="695" y="543" text-anchor="middle" font-size="9" fill="#888">.54.16</text>
+                        <!-- ========================================== -->
+                        <!-- HAUT DROITE : GRAN CANARIA -->
+                        <!-- ========================================== -->
+                        <rect x="980" y="120" width="340" height="300" rx="10" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+                        <text x="1150" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="#0c4b5c">🏝 Agence de GRAN CANARIA</text>
+                        
+                        <rect x="1020" y="165" width="120" height="20" rx="4" fill="#d4edda" stroke="#5cb85c" stroke-width="1"/>
+                        <text x="1080" y="179" font-size="10" text-anchor="middle" font-weight="bold" fill="#155724">LAN: 192.168.53.0</text>
+                        <rect x="1160" y="165" width="120" height="20" rx="4" fill="#f8d7da" stroke="#c0392b" stroke-width="1"/>
+                        <text x="1220" y="179" font-size="10" text-anchor="middle" font-weight="bold" fill="#c0392b">WAN: 192.168.69.93</text>
 
-                        <!-- ---- WiFi ---- -->
-                        <rect x="55" y="300" width="130" height="52" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#shadow)"/>
-                        <text x="120" y="322" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">📶  Wi-Fi TP-Link</text>
-                        <text x="120" y="337" text-anchor="middle" font-size="9.5" fill="#555">TL-WA901-N • .54.30</text>
-                        <!-- Switch → WiFi -->
-                        <line x1="305" y1="315" x2="185" y2="326" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+                        <rect x="1080" y="200" width="140" height="40" rx="4" fill="#f8d7da" stroke="#c0392b" stroke-width="1.5"/>
+                        <text x="1150" y="217" text-anchor="middle" font-size="12" font-weight="bold" fill="#7b0000">🛡 GC-SNS</text>
+                        <text x="1150" y="233" text-anchor="middle" font-size="10" fill="#a00">GW: 192.168.53.254</text>
 
-                        <!-- ---- Clients ---- -->
-                        <rect x="55" y="390" width="130" height="52" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#shadow)"/>
-                        <text x="120" y="412" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">💻  Postes Clients</text>
-                        <text x="120" y="427" text-anchor="middle" font-size="9.5" fill="#555">DHCP .54.100–200</text>
-                        <!-- Switch → Clients -->
-                        <line x1="305" y1="336" x2="185" y2="416" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+                        <rect x="1020" y="260" width="120" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="1080" y="277" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">🔀 GC-SW1</text>
+                        <text x="1080" y="293" text-anchor="middle" font-size="10" fill="#555">192.168.53.20</text>
 
-                        <!-- ---- ESXi Secondaire ---- -->
-                        <rect x="55" y="580" width="185" height="64" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" stroke-dasharray="5,3" filter="url(#shadow)"/>
-                        <text x="147" y="602" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🖥  ESXi Secondaire</text>
-                        <text x="147" y="617" text-anchor="middle" font-size="9.5" fill="#555">VMware ESXi 7.0 (secours)</text>
-                        <text x="147" y="630" text-anchor="middle" font-size="9" fill="#888">IP : 192.168.69.94</text>
-                        <!-- ESXi1 → ESXi2 dashed -->
-                        <line x1="295" y1="440" x2="200" y2="582" stroke="#5cb85c" stroke-width="1.5" stroke-dasharray="6,3"/>
-                        <text x="218" y="515" font-size="9" fill="#5cb85c" transform="rotate(-50,218,515)">Réplication</text>
+                        <rect x="1160" y="260" width="120" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="1220" y="277" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">📶 GC-AP1</text>
+                        <text x="1220" y="293" text-anchor="middle" font-size="10" fill="#555">192.168.53.30</text>
 
-                        <!-- ============================================================
-                             ZONE DMZ  192.168.64.0/24
-                        ============================================================ -->
-                        <rect x="820" y="255" width="320" height="180" rx="10" fill="#fff3cd" stroke="#d4a017" stroke-width="2" opacity="0.7"/>
-                        <text x="835" y="276" font-size="12" font-weight="700" fill="#7d5a00">🟡  ZONE DMZ — 192.168.64.0/24</text>
+                        <rect x="1020" y="320" width="120" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="1080" y="337" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">🖥 GC-ESXi</text>
+                        <text x="1080" y="353" text-anchor="middle" font-size="10" fill="#555">192.168.53.1</text>
 
-                        <!-- HAProxy -->
-                        <rect x="865" y="290" width="230" height="70" rx="6" fill="#fff" stroke="#d4a017" stroke-width="1.5" filter="url(#shadow)"/>
-                        <text x="980" y="315" text-anchor="middle" font-size="11" font-weight="700" fill="#7d5a00">⚖  SRV-EL-PROXY</text>
-                        <text x="980" y="331" text-anchor="middle" font-size="10" fill="#555">Debian — HAProxy</text>
-                        <text x="980" y="347" text-anchor="middle" font-size="10" fill="#555">Load Balancer HTTP/HTTPS • .64.1</text>
+                        <rect x="1160" y="320" width="120" height="40" rx="4" fill="#fff" stroke="#8e44ad" stroke-width="1.5"/>
+                        <text x="1220" y="337" text-anchor="middle" font-size="10" font-weight="bold" fill="#5b2c8e">🗂 SRV-AD-GRANCANARIA</text>
+                        <text x="1220" y="353" text-anchor="middle" font-size="10" fill="#555">192.168.53.10</text>
 
-                        <!-- HAProxy → Web1 -->
-                        <line x1="865" y1="340" x2="620" y2="512" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-dmz)"/>
-                        <!-- HAProxy → Web2 -->
-                        <line x1="865" y1="350" x2="754" y2="518" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-dmz)"/>
-                        <text x="760" y="432" font-size="9.5" fill="#7d5a00" transform="rotate(-25,760,432)">HTTP/HTTPS</text>
+                        <line x1="1150" y1="240" x2="1080" y2="260" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="1140" y1="280" x2="1160" y2="280" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="1080" y1="300" x2="1080" y2="320" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="1080" y1="360" x2="1160" y2="340" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        
+                        <text x="1150" y="390" font-size="10" font-weight="bold" fill="#3498db" text-anchor="middle">💻 GC-PC1 (en DHCP)</text>
 
-                        <!-- ============================================================
-                             VPN CONNECTIONS — ligne horizontale de VPN
-                        ============================================================ -->
-                        <!-- Trait horizontal VPN -->
-                        <line x1="130" y1="790" x2="1090" y2="790" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4"/>
-                        <text x="580" y="782" text-anchor="middle" font-size="10" fill="#c0392b" font-weight="700">🔒 Réseau VPN IPsec inter-agences</text>
+                        <!-- ========================================== -->
+                        <!-- BAS GAUCHE : LA PALMA -->
+                        <!-- ========================================== -->
+                        <rect x="95" y="600" width="340" height="300" rx="10" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+                        <text x="265" y="630" text-anchor="middle" font-size="14" font-weight="bold" fill="#0c4b5c">🏝 Agence de LA PALMA</text>
+                        
+                        <rect x="135" y="645" width="120" height="20" rx="4" fill="#d4edda" stroke="#5cb85c" stroke-width="1"/>
+                        <text x="195" y="659" font-size="10" text-anchor="middle" font-weight="bold" fill="#155724">LAN: 192.168.56.0</text>
+                        <rect x="275" y="645" width="120" height="20" rx="4" fill="#f8d7da" stroke="#c0392b" stroke-width="1"/>
+                        <text x="335" y="659" font-size="10" text-anchor="middle" font-weight="bold" fill="#c0392b">WAN: 192.168.69.96</text>
 
-                        <!-- FW → VPN line (descend from FW) -->
-                        <line x1="580" y1="188" x2="580" y2="760" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4"/>
+                        <rect x="195" y="680" width="140" height="40" rx="4" fill="#f8d7da" stroke="#c0392b" stroke-width="1.5"/>
+                        <text x="265" y="697" text-anchor="middle" font-size="12" font-weight="bold" fill="#7b0000">🛡 LP-SNS</text>
+                        <text x="265" y="713" text-anchor="middle" font-size="10" fill="#a00">GW: 192.168.56.254</text>
 
-                        <!-- ---- SIÈGE TENERIFE ---- -->
-                        <rect x="30" y="800" width="220" height="100" rx="8" fill="#dce7f5" stroke="#2980b9" stroke-width="2" filter="url(#shadow)"/>
-                        <text x="140" y="820" text-anchor="middle" font-size="11" font-weight="700" fill="#1a3a5c">🏢  SIÈGE TENERIFE</text>
-                        <text x="140" y="834" text-anchor="middle" font-size="9.5" fill="#2980b9">192.168.57.0/24</text>
-                        <text x="140" y="850" text-anchor="middle" font-size="9.5" fill="#555">📊 Centreon / Supervision</text>
-                        <text x="140" y="864" text-anchor="middle" font-size="9.5" fill="#555">💾 NAS RAID-5 / Veeam</text>
-                        <text x="140" y="878" text-anchor="middle" font-size="9.5" fill="#555">🖱 Admin MobaXterm</text>
-                        <!-- VPN line down from horizontal -->
-                        <line x1="140" y1="790" x2="140" y2="800" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arr-vpn)"/>
+                        <rect x="135" y="740" width="120" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="195" y="757" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">🔀 LP-SW1</text>
+                        <text x="195" y="773" text-anchor="middle" font-size="10" fill="#555">192.168.56.20</text>
 
-                        <!-- ---- LA PALMA ---- -->
-                        <rect x="300" y="800" width="185" height="100" rx="8" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#shadow)"/>
-                        <text x="392" y="820" text-anchor="middle" font-size="11" font-weight="700" fill="#0c4b5c">🏝  LA PALMA</text>
-                        <text x="392" y="834" text-anchor="middle" font-size="9.5" fill="#17a2b8">192.168.56.0/24</text>
-                        <text x="392" y="852" text-anchor="middle" font-size="9.5" fill="#555">🛡 SNS310</text>
-                        <text x="392" y="866" text-anchor="middle" font-size="9.5" fill="#555">💻 Postes / Serveurs</text>
-                        <text x="392" y="880" text-anchor="middle" font-size="9" fill="#888">Los Llanos de Aridane</text>
-                        <line x1="392" y1="790" x2="392" y2="800" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arr-vpn)"/>
+                        <rect x="275" y="740" width="120" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="335" y="757" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">📶 LP-AP1</text>
+                        <text x="335" y="773" text-anchor="middle" font-size="10" fill="#555">192.168.56.30</text>
 
-                        <!-- ---- LA GOMERA ---- -->
-                        <rect x="535" y="800" width="185" height="100" rx="8" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#shadow)"/>
-                        <text x="627" y="820" text-anchor="middle" font-size="11" font-weight="700" fill="#0c4b5c">🏝  LA GOMERA</text>
-                        <text x="627" y="834" text-anchor="middle" font-size="9.5" fill="#17a2b8">192.168.55.0/24</text>
-                        <text x="627" y="852" text-anchor="middle" font-size="9.5" fill="#555">🛡 SNS310</text>
-                        <text x="627" y="866" text-anchor="middle" font-size="9.5" fill="#555">💻 Postes / Serveurs</text>
-                        <text x="627" y="880" text-anchor="middle" font-size="9" fill="#888">San Sebastián de la Gomera</text>
-                        <line x1="627" y1="790" x2="627" y2="800" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arr-vpn)"/>
+                        <rect x="135" y="800" width="120" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="195" y="817" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">🖥 LP-ESXi</text>
+                        <text x="195" y="833" text-anchor="middle" font-size="10" fill="#555">192.168.56.1</text>
 
-                        <!-- ---- GRAN CANARIA ---- -->
-                        <rect x="770" y="800" width="200" height="100" rx="8" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#shadow)"/>
-                        <text x="870" y="820" text-anchor="middle" font-size="11" font-weight="700" fill="#0c4b5c">🏝  GRAN CANARIA</text>
-                        <text x="870" y="834" text-anchor="middle" font-size="9.5" fill="#17a2b8">192.168.53.0/24</text>
-                        <text x="870" y="852" text-anchor="middle" font-size="9.5" fill="#555">🛡 SNS310</text>
-                        <text x="870" y="866" text-anchor="middle" font-size="9.5" fill="#555">💻 Postes / Serveurs</text>
-                        <text x="870" y="880" text-anchor="middle" font-size="9" fill="#888">Las Palmas de Gran Canaria</text>
-                        <line x1="870" y1="790" x2="870" y2="800" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arr-vpn)"/>
+                        <rect x="275" y="800" width="120" height="40" rx="4" fill="#fff" stroke="#8e44ad" stroke-width="1.5"/>
+                        <text x="335" y="817" text-anchor="middle" font-size="11" font-weight="bold" fill="#5b2c8e">🗂 SRV-AD-LAPALMA</text>
+                        <text x="335" y="833" text-anchor="middle" font-size="10" fill="#555">192.168.56.10</text>
 
-                        <!-- ---- EL HIERRO (this agency) note ---- -->
-                        <rect x="990" y="800" width="148" height="100" rx="8" fill="#f0f4ff" stroke="#6c8ebf" stroke-width="2" stroke-dasharray="5,3" filter="url(#shadow)"/>
-                        <text x="1064" y="820" text-anchor="middle" font-size="11" font-weight="700" fill="#2c3e50">📍 EL HIERRO</text>
-                        <text x="1064" y="834" text-anchor="middle" font-size="9.5" fill="#6c8ebf">Cette agence</text>
-                        <text x="1064" y="852" text-anchor="middle" font-size="9.5" fill="#555">192.168.54.0/24</text>
-                        <text x="1064" y="866" text-anchor="middle" font-size="9.5" fill="#555">🛡 SNS310</text>
-                        <text x="1064" y="880" text-anchor="middle" font-size="9" fill="#888">Valverde</text>
-                        <line x1="1064" y1="790" x2="1064" y2="800" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arr-vpn)"/>
+                        <line x1="265" y1="720" x2="195" y2="740" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="255" y1="760" x2="275" y2="760" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="195" y1="780" x2="195" y2="800" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="195" y1="840" x2="275" y2="820" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        
+                        <text x="265" y="870" font-size="10" font-weight="bold" fill="#3498db" text-anchor="middle">💻 LP-PC1 (en DHCP)</text>
+
+                        <!-- ========================================== -->
+                        <!-- BAS CENTRE : EL HIERRO -->
+                        <!-- ========================================== -->
+                        <rect x="530" y="600" width="340" height="300" rx="10" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+                        <text x="700" y="630" text-anchor="middle" font-size="14" font-weight="bold" fill="#0c4b5c">🏝 Agence d'EL HIERRO</text>
+                        
+                        <rect x="570" y="645" width="120" height="20" rx="4" fill="#d4edda" stroke="#5cb85c" stroke-width="1"/>
+                        <text x="630" y="659" font-size="10" text-anchor="middle" font-weight="bold" fill="#155724">LAN: 192.168.54.0</text>
+                        <rect x="710" y="645" width="120" height="20" rx="4" fill="#f8d7da" stroke="#c0392b" stroke-width="1"/>
+                        <text x="770" y="659" font-size="10" text-anchor="middle" font-weight="bold" fill="#c0392b">WAN: 192.168.69.94</text>
+
+                        <rect x="630" y="680" width="140" height="40" rx="4" fill="#f8d7da" stroke="#c0392b" stroke-width="1.5"/>
+                        <text x="700" y="697" text-anchor="middle" font-size="12" font-weight="bold" fill="#7b0000">🛡 EL-SNS</text>
+                        <text x="700" y="713" text-anchor="middle" font-size="10" fill="#a00">GW: 192.168.54.254</text>
+
+                        <rect x="570" y="740" width="120" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="630" y="757" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">🔀 EL-SW1</text>
+                        <text x="630" y="773" text-anchor="middle" font-size="10" fill="#555">192.168.54.20</text>
+
+                        <rect x="710" y="740" width="120" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="770" y="757" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">📶 EL-AP1</text>
+                        <text x="770" y="773" text-anchor="middle" font-size="10" fill="#555">192.168.54.30</text>
+
+                        <rect x="570" y="800" width="120" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="630" y="817" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">🖥 EL-ESXi</text>
+                        <text x="630" y="833" text-anchor="middle" font-size="10" fill="#555">192.168.54.1</text>
+
+                        <rect x="710" y="800" width="120" height="40" rx="4" fill="#fff" stroke="#8e44ad" stroke-width="1.5"/>
+                        <text x="770" y="817" text-anchor="middle" font-size="11" font-weight="bold" fill="#5b2c8e">🗂 SRV-AD-ELHIERRO</text>
+                        <text x="770" y="833" text-anchor="middle" font-size="10" fill="#555">192.168.54.10</text>
+
+                        <line x1="700" y1="720" x2="630" y2="740" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="690" y1="760" x2="710" y2="760" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="630" y1="780" x2="630" y2="800" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="630" y1="840" x2="710" y2="820" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        
+                        <text x="700" y="870" font-size="10" font-weight="bold" fill="#3498db" text-anchor="middle">💻 EL-PC1 (en DHCP)</text>
+
+                        <!-- ========================================== -->
+                        <!-- BAS DROITE : LA GOMERA -->
+                        <!-- ========================================== -->
+                        <rect x="965" y="600" width="340" height="300" rx="10" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+                        <text x="1135" y="630" text-anchor="middle" font-size="14" font-weight="bold" fill="#0c4b5c">🏝 Agence de LA GOMERA</text>
+                        
+                        <rect x="1005" y="645" width="120" height="20" rx="4" fill="#d4edda" stroke="#5cb85c" stroke-width="1"/>
+                        <text x="1065" y="659" font-size="10" text-anchor="middle" font-weight="bold" fill="#155724">LAN: 192.168.55.0</text>
+                        <rect x="1145" y="645" width="120" height="20" rx="4" fill="#f8d7da" stroke="#c0392b" stroke-width="1"/>
+                        <text x="1205" y="659" font-size="10" text-anchor="middle" font-weight="bold" fill="#c0392b">WAN: 192.168.69.95</text>
+
+                        <rect x="1065" y="680" width="140" height="40" rx="4" fill="#f8d7da" stroke="#c0392b" stroke-width="1.5"/>
+                        <text x="1135" y="697" text-anchor="middle" font-size="12" font-weight="bold" fill="#7b0000">🛡 LG-SNS</text>
+                        <text x="1135" y="713" text-anchor="middle" font-size="10" fill="#a00">GW: 192.168.55.254</text>
+
+                        <rect x="1005" y="740" width="120" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="1065" y="757" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">🔀 LG-SW1</text>
+                        <text x="1065" y="773" text-anchor="middle" font-size="10" fill="#555">192.168.55.20</text>
+
+                        <rect x="1145" y="740" width="120" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="1205" y="757" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">📶 LG-AP1</text>
+                        <text x="1205" y="773" text-anchor="middle" font-size="10" fill="#555">192.168.55.30</text>
+
+                        <rect x="1005" y="800" width="120" height="40" rx="4" fill="#fff" stroke="#5cb85c" stroke-width="1.5"/>
+                        <text x="1065" y="817" text-anchor="middle" font-size="12" font-weight="bold" fill="#155724">🖥 LG-ESXi</text>
+                        <text x="1065" y="833" text-anchor="middle" font-size="10" fill="#555">192.168.55.1</text>
+
+                        <rect x="1145" y="800" width="120" height="40" rx="4" fill="#fff" stroke="#8e44ad" stroke-width="1.5"/>
+                        <text x="1205" y="817" text-anchor="middle" font-size="11" font-weight="bold" fill="#5b2c8e">🗂 SRV-AD-LAGOMERA</text>
+                        <text x="1205" y="833" text-anchor="middle" font-size="10" fill="#555">192.168.55.10</text>
+
+                        <line x1="1135" y1="720" x2="1065" y2="740" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="1125" y1="760" x2="1145" y2="760" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="1065" y1="780" x2="1065" y2="800" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        <line x1="1065" y1="840" x2="1145" y2="820" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+                        
+                        <text x="1135" y="870" font-size="10" font-weight="bold" fill="#3498db" text-anchor="middle">💻 LG-PC1 (en DHCP)</text>
 
                     </svg>
                 </div>
             </div>
-
-            <!-- Légende -->
-            <div class="legend">
-                <div class="legend-item"><div class="color-box" style="background:#e2e3e5;border:1px solid #9a9b9d"></div>Internet / WAN</div>
-                <div class="legend-item"><div class="color-box" style="background:#f8d7da;border:1px solid #c0392b"></div>Pare-feu</div>
-                <div class="legend-item"><div class="color-box" style="background:#d4edda;border:1px solid #5cb85c"></div>Zone LAN</div>
-                <div class="legend-item"><div class="color-box" style="background:#fff3cd;border:1px solid #d4a017"></div>Zone DMZ</div>
-                <div class="legend-item"><div class="color-box" style="background:#dce7f5;border:1px solid #2980b9"></div>Siège Tenerife</div>
-                <div class="legend-item"><div class="color-box" style="background:#d1ecf1;border:1px solid #17a2b8"></div>Agences distantes</div>
-                <div class="legend-item"><div style="width:28px;height:3px;background:#c0392b;border-radius:2px;flex-shrink:0;border-top:1px dashed #c0392b"></div>VPN IPsec</div>
-                <div class="legend-item"><div style="width:28px;height:3px;background:#5cb85c;border-radius:2px;flex-shrink:0;border-top:1px dashed #5cb85c"></div>Réplication ESXi</div>
-                <div class="legend-item" style="border:none;background:none;"><span style="font-size:0.78rem;color:#888;">💡 Scroll pour naviguer • Boutons pour zoomer</span></div>
+            <div class="leg">
+                <div class="li"><div class="lb" style="background:#d4edda;border:1px solid #5cb85c"></div>Zone LAN</div>
+                <div class="li"><div class="lb" style="background:#f8d7da;border:1px solid #c0392b"></div>Pare-feu / Routeur</div>
+                <div class="li"><div class="lb" style="background:#dce7f5;border:1px solid #2980b9"></div>Siège Tenerife</div>
+                <div class="li"><div class="lb" style="background:#d1ecf1;border:1px solid #17a2b8"></div>Agences distantes</div>
+                <div class="li"><div style="width:20px;height:3px;background:#c0392b;flex-shrink:0;border-top:2px dashed #c0392b"></div>Liaison VPN IPsec</div>
+                <div class="li"><span style="font-size:.72rem;color:#888">💡 Topologie complète avant implémentation des PPE (Aucun ajout)</span></div>
             </div>
         </div>
-    </section>
+    </div>
+    <script>
+        let sc=1;
+        function zm(d){ 
+            if(d===0)sc=1; 
+            else if(d>0)sc=Math.min(2.5,+(sc+.1).toFixed(2)); 
+            else sc=Math.max(0.3,+(sc-.1).toFixed(2)); 
+            const el=document.getElementById('inner'),svg=el.querySelector('svg'); 
+            el.style.transform=`scale(${sc})`; 
+            el.style.height=(svg.getAttribute('height')*sc+40)+'px'; 
+            el.style.width=(svg.getAttribute('width')*sc)+'px'; 
+            document.getElementById('zv').textContent=Math.round(sc*100)+'%'; 
+        }
+        function dl(){ 
+            const svg=document.getElementById('svg'),c=svg.cloneNode(true); 
+            c.setAttribute('xmlns','http://www.w3.org/2000/svg'); 
+            const b=new Blob([new XMLSerializer().serializeToString(c)],{type:'image/svg+xml'}),u=URL.createObjectURL(b),a=document.createElement('a'); 
+            a.href=u;a.download='schema_base_cicar_complet.svg';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u); 
+        }
+    </script>
+</body>
+</html>
 
     <!-- FOOTER -->
     <footer>
