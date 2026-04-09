@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Schéma Réseau — Agence El Hierro (Conforme Image)</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',sans-serif; background:#f0f4f8; }
+.wrap { max-width:1100px; margin:0 auto; padding:20px; }
+.hdr { background:#2c3e50; color:#fff; border-radius:8px; padding:16px 24px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+.hdr h1 { font-size:1.15rem; }
+.hdr .sub { font-size:.8rem; color:#aab; margin-top:3px; }
+.badge { background:#3498db; color:#fff; font-size:.72rem; padding:3px 10px; border-radius:20px; white-space:nowrap; }
+.box { background:#fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,.1); overflow:hidden; }
+.tb { background:#2c3e50; padding:9px 14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+.tb-t { color:#ecf0f1; font-size:.85rem; font-weight:600; }
+.ctrls { display:flex; gap:5px; }
+.ctrls button { background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.25); padding:5px 11px; border-radius:4px; cursor:pointer; font-size:.78rem; }
+.ctrls button:hover { background:rgba(255,255,255,.22); }
+.ctrls button.p { background:#3498db; border-color:transparent; }
+.zv { color:rgba(255,255,255,.7); font-size:.78rem; min-width:42px; text-align:center; }
+.vp { overflow:auto; background:#fdfcfb; max-height:850px; cursor:grab; }
+.vp:active { cursor:grabbing; }
+.inner { padding:18px; display:inline-block; transform-origin:top left; transition:transform .2s; margin:0 auto; text-align:center; width:100%; }
+.leg { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; padding:10px 14px; background:#eaf3fb; border-top:1px solid #cce0f5; }
+.li { display:flex; align-items:center; gap:5px; padding:3px 9px; background:#fff; border-radius:20px; border:1px solid #ccc; font-size:.75rem; color:#444; }
+.lb { width:18px; height:9px; border-radius:2px; flex-shrink:0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hdr">
+  <div><h1>🗺 Infrastructure Réseau CICAR — Agence El Hierro</h1><div class="sub">Conforme au croquis initial + Siège et Agences distantes · BTS SIO</div></div>
+  <span class="badge">Architecture de Base</span>
+</div>
+<div class="box">
+  <div class="tb">
+    <div class="tb-t">🌐 Topologie Réseau — Vue Logique</div>
+    <div class="ctrls">
+      <button onclick="zm(-1)">➖</button><span class="zv" id="zv">100%</span><button onclick="zm(1)">➕</button>
+      <button onclick="zm(0)">↺</button><button class="p" onclick="dl()">⬇ SVG</button>
+    </div>
+  </div>
+  <div class="vp" id="vp"><div class="inner" id="inner">
+
+<svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 950" width="1000" height="950" style="font-family:'Segoe UI',sans-serif;display:inline-block;">
+<defs>
+  <marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L0,6L8,3z" fill="#555"/></marker>
+  <marker id="aw" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L0,6L8,3z" fill="#c0392b"/></marker>
+  <filter id="sh" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.13"/></filter>
+</defs>
+
+<!-- ================= FAI & SIO (HAUT GAUCHE) ================= -->
+<circle cx="200" cy="80" r="30" fill="#3498db" stroke="#2980b9" stroke-width="2" filter="url(#sh)"/>
+<text x="200" y="85" text-anchor="middle" font-size="24">🌍</text>
+<text x="200" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="#2c3e50">Routeur FAI</text>
+
+<line x1="200" y1="140" x2="200" y2="180" stroke="#555" stroke-width="1.5"/>
+<line x1="200" y1="180" x2="400" y2="180" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+<rect x="220" y="155" width="150" height="40" rx="4" fill="#fdfdfd" stroke="#ccc" stroke-width="1"/>
+<text x="230" y="170" font-size="9" fill="#555">GW-SIO : <tspan font-weight="bold">192.168.69.8</tspan></text>
+<text x="230" y="185" font-size="9" fill="#555">DNS SIO : <tspan font-weight="bold">192.168.69.6</tspan></text>
+
+<!-- ================= WAN SWITCH (HAUT CENTRE) ================= -->
+<rect x="420" y="150" width="160" height="50" rx="6" fill="#fff" stroke="#c0392b" stroke-width="1.5" filter="url(#sh)"/>
+<text x="500" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="#c0392b">WAN-SW1</text>
+<rect x="440" y="178" width="120" height="14" rx="3" fill="#f8d7da" stroke="#c0392b" stroke-width="0.5"/>
+<text x="500" y="188" text-anchor="middle" font-size="8" font-weight="bold" fill="#c0392b">192.168.69.150</text>
+
+<!-- ================= LIAISON VPN ================= -->
+<line x1="500" y1="200" x2="500" y2="280" stroke="#f1c40f" stroke-width="4" stroke-dasharray="10,5" marker-end="url(#a)"/>
+<text x="515" y="245" font-size="10" font-weight="bold" fill="#d35400">⚡ LIAISONS VPN</text>
+
+<!-- ================= ZONE LAN (FOND VERT) ================= -->
+<rect x="150" y="340" width="700" height="380" rx="10" fill="#d4edda" stroke="#5cb85c" stroke-width="2" opacity="0.4"/>
+<text x="500" y="700" text-anchor="middle" font-size="11" font-weight="bold" fill="#155724">LAN : 192.168.54.0</text>
+<text x="500" y="715" text-anchor="middle" font-size="10" fill="#155724">Agence d'EL HIERRO</text>
+
+<!-- ================= PARE-FEU EL-SNS ================= -->
+<rect x="400" y="280" width="200" height="60" rx="6" fill="#2c3e50" stroke="#1a252f" stroke-width="2" filter="url(#sh)"/>
+<text x="500" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🛡 EL-SNS</text>
+<rect x="420" y="255" width="100" height="14" rx="3" fill="#f8d7da" stroke="#c0392b" stroke-width="0.5"/>
+<text x="470" y="265" text-anchor="middle" font-size="8" font-weight="bold" fill="#c0392b">WAN: 192.168.69.94</text>
+<rect x="450" y="310" width="100" height="14" rx="3" fill="#d4edda" stroke="#5cb85c" stroke-width="0.5"/>
+<text x="500" y="320" text-anchor="middle" font-size="8" font-weight="bold" fill="#155724">GW: 192.168.54.254</text>
+
+<!-- FW to Switch -->
+<line x1="500" y1="340" x2="500" y2="390" stroke="#5cb85c" stroke-width="2" marker-end="url(#a)"/>
+
+<!-- ================= SWITCH EL-SW1 ================= -->
+<rect x="400" y="390" width="200" height="50" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="2" filter="url(#sh)"/>
+<text x="500" y="410" text-anchor="middle" font-size="11" font-weight="700" fill="#155724">🔀 EL-SW1</text>
+<rect x="450" y="418" width="100" height="14" rx="3" fill="#d4edda" stroke="#5cb85c" stroke-width="0.5"/>
+<text x="500" y="428" text-anchor="middle" font-size="8" font-weight="bold" fill="#155724">192.168.54.20</text>
+
+<!-- Switch to AP -->
+<line x1="600" y1="415" x2="650" y2="415" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+<!-- ================= AP EL-AP1 ================= -->
+<rect x="650" y="390" width="140" height="50" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="720" y="410" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">📶 EL-AP1</text>
+<rect x="670" y="418" width="100" height="14" rx="3" fill="#d4edda" stroke="#5cb85c" stroke-width="0.5"/>
+<text x="720" y="428" text-anchor="middle" font-size="8" font-weight="bold" fill="#155724">192.168.54.30</text>
+
+<!-- Switch lines down (écarter ESXi de PC1) -->
+<line x1="430" y1="440" x2="380" y2="490" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="570" y1="440" x2="620" y2="490" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+<!-- ================= ESXI (Décalé à gauche) ================= -->
+<rect x="280" y="490" width="200" height="50" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="2" filter="url(#sh)"/>
+<text x="380" y="510" text-anchor="middle" font-size="11" font-weight="700" fill="#155724">🖥 EL-ESXI</text>
+<rect x="330" y="518" width="100" height="14" rx="3" fill="#d4edda" stroke="#5cb85c" stroke-width="0.5"/>
+<text x="380" y="528" text-anchor="middle" font-size="8" font-weight="bold" fill="#155724">192.168.54.1</text>
+
+<!-- ESXi to VM -->
+<line x1="380" y1="540" x2="380" y2="580" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+<!-- ================= VM AD (Sous l'ESXi) ================= -->
+<rect x="310" y="580" width="140" height="60" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="380" y="600" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">🗂 SRV-AD-ELHIERRO</text>
+<text x="380" y="612" text-anchor="middle" font-size="8" fill="#555">Serveur Windows</text>
+<rect x="330" y="618" width="100" height="14" rx="3" fill="#d4edda" stroke="#5cb85c" stroke-width="0.5"/>
+<text x="380" y="628" text-anchor="middle" font-size="8" font-weight="bold" fill="#155724">192.168.54.10</text>
+
+<!-- ================= PC CLIENT (Décalé à droite) ================= -->
+<rect x="560" y="490" width="120" height="50" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
+<text x="620" y="510" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">💻 EL-PC1</text>
+<rect x="575" y="518" width="90" height="14" rx="3" fill="#d4edda" stroke="#5cb85c" stroke-width="0.5"/>
+<text x="620" y="528" text-anchor="middle" font-size="8" font-weight="bold" fill="#155724">en DHCP</text>
+
+
+<!-- ========================================================= -->
+<!-- ================= SIÈGE & AUTRES AGENCES ================ -->
+<!-- ========================================================= -->
+
+<!-- VPN Backbone Line -->
+<line x1="50" y1="770" x2="950" y2="770" stroke="#c0392b" stroke-width="3" stroke-dasharray="10,5"/>
+<text x="500" y="760" text-anchor="middle" font-size="10" font-weight="700" fill="#c0392b">RÉSEAU INTER-SITES (TUNNELS VPN IPSEC)</text>
+<line x1="500" y1="280" x2="500" y2="770" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" opacity="0.6"/>
+
+<!-- SIÈGE TENERIFE (Avec WAN ajouté) -->
+<rect x="50" y="800" width="220" height="90" rx="8" fill="#dce7f5" stroke="#2980b9" stroke-width="2" filter="url(#sh)"/>
+<text x="160" y="820" text-anchor="middle" font-size="11" font-weight="700" fill="#1a3a5c">🏢 SIÈGE TENERIFE</text>
+<rect x="100" y="830" width="120" height="14" rx="3" fill="#d4edda" stroke="#5cb85c" stroke-width="0.5"/>
+<text x="160" y="840" text-anchor="middle" font-size="8" font-weight="bold" fill="#155724">LAN: 192.168.57.0/24</text>
+<rect x="100" y="850" width="120" height="14" rx="3" fill="#f8d7da" stroke="#c0392b" stroke-width="0.5"/>
+<text x="160" y="860" text-anchor="middle" font-size="8" font-weight="bold" fill="#c0392b">WAN: 192.168.69.97</text>
+<line x1="160" y1="770" x2="160" y2="800" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#aw)"/>
+
+<!-- La Palma -->
+<rect x="300" y="800" width="180" height="90" rx="8" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+<text x="390" y="820" text-anchor="middle" font-size="11" font-weight="700" fill="#0c4b5c">🏝 LA PALMA</text>
+<rect x="330" y="830" width="120" height="14" rx="3" fill="#d4edda" stroke="#5cb85c" stroke-width="0.5"/>
+<text x="390" y="840" text-anchor="middle" font-size="8" font-weight="bold" fill="#155724">LAN: 192.168.56.0/24</text>
+<rect x="330" y="850" width="120" height="14" rx="3" fill="#f8d7da" stroke="#c0392b" stroke-width="0.5"/>
+<text x="390" y="860" text-anchor="middle" font-size="8" font-weight="bold" fill="#c0392b">WAN: 192.168.69.96</text>
+<line x1="390" y1="770" x2="390" y2="800" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#aw)"/>
+
+<!-- La Gomera -->
+<rect x="520" y="800" width="180" height="90" rx="8" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+<text x="610" y="820" text-anchor="middle" font-size="11" font-weight="700" fill="#0c4b5c">🏝 LA GOMERA</text>
+<rect x="550" y="830" width="120" height="14" rx="3" fill="#d4edda" stroke="#5cb85c" stroke-width="0.5"/>
+<text x="610" y="840" text-anchor="middle" font-size="8" font-weight="bold" fill="#155724">LAN: 192.168.55.0/24</text>
+<rect x="550" y="850" width="120" height="14" rx="3" fill="#f8d7da" stroke="#c0392b" stroke-width="0.5"/>
+<text x="610" y="860" text-anchor="middle" font-size="8" font-weight="bold" fill="#c0392b">WAN: 192.168.69.95</text>
+<line x1="610" y1="770" x2="610" y2="800" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#aw)"/>
+
+<!-- Gran Canaria -->
+<rect x="740" y="800" width="180" height="90" rx="8" fill="#d1ecf1" stroke="#17a2b8" stroke-width="2" filter="url(#sh)"/>
+<text x="830" y="820" text-anchor="middle" font-size="11" font-weight="700" fill="#0c4b5c">🏝 GRAN CANARIA</text>
+<rect x="770" y="830" width="120" height="14" rx="3" fill="#d4edda" stroke="#5cb85c" stroke-width="0.5"/>
+<text x="830" y="840" text-anchor="middle" font-size="8" font-weight="bold" fill="#155724">LAN: 192.168.53.0/24</text>
+<rect x="770" y="850" width="120" height="14" rx="3" fill="#f8d7da" stroke="#c0392b" stroke-width="0.5"/>
+<text x="830" y="860" text-anchor="middle" font-size="8" font-weight="bold" fill="#c0392b">WAN: 192.168.69.93</text>
+<line x1="830" y1="770" x2="830" y2="800" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#aw)"/>
+
+</svg>
+
+  </div></div>
+  <div class="leg">
+    <div class="li"><div class="lb" style="background:#d4edda;border:1px solid #5cb85c"></div>Réseau Local (LAN)</div>
+    <div class="li"><div class="lb" style="background:#f8d7da;border:1px solid #c0392b"></div>Réseau Externe (WAN)</div>
+    <div class="li"><div style="width:20px;height:3px;background:#c0392b;flex-shrink:0; border-top: 1px dashed #c0392b"></div>Tunnels VPN</div>
+    <div class="li"><div class="lb" style="background:#2c3e50;border:1px solid #1a252f"></div>Pare-feu SNS</div>
+    <div class="li"><span style="font-size:.72rem;color:#888">💡 Scroll / Zoom pour ajuster la vue</span></div>
+  </div>
+</div>
+</div>
+<script>
+let sc=1;
+function zm(d){ if(d===0)sc=1; else if(d>0)sc=Math.min(2.5,+(sc+.1).toFixed(2)); else sc=Math.max(0.3,+(sc-.1).toFixed(2)); const el=document.getElementById('inner'),svg=el.querySelector('svg'); el.style.transform=`scale(${sc})`; el.style.height=(svg.getAttribute('height')*sc+40)+'px'; el.style.width=(svg.getAttribute('width')*sc)+'px'; document.getElementById('zv').textContent=Math.round(sc*100)+'%'; }
+function dl(){ const svg=document.getElementById('svg'),c=svg.cloneNode(true); c.setAttribute('xmlns','http://www.w3.org/2000/svg'); const b=new Blob([new XMLSerializer().serializeToString(c)],{type:'image/svg+xml'}),u=URL.createObjectURL(b),a=document.createElement('a'); a.href=u;a.download='schema_elhierro_strict.svg';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u); }
+</script>
+</body>
+</html>
