@@ -349,3 +349,14 @@ body.is-booting #wrapper {
 body #wrapper {
     transition: opacity 1s ease-in;
 }
+/* projets-bts */
+.bts-skills{
+  margin-top: .8rem;
+  padding: .75rem .9rem;
+  border-left: 3px solid #34d399;
+  background: rgba(52, 211, 153, 0.08);
+  border-radius: 8px;
+  font-size: 0.95em;
+  line-height: 1.4;
+  color: #e2e8f0;
+}
