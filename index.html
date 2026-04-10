@@ -1104,31 +1104,39 @@
                 closeCertificate();
             }
         });
-        // ========== OUVRIR ET FERMER LE PDF ==========
+// ========== OUVRIR ET FERMER LE PDF ==========
         function openPdfModal(pdfUrl) {
-            document.getElementById('pdf-iframe').src = pdfUrl;
-            document.getElementById('pdf-modal').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Empêche de scroller le site derrière
+            var iframe = document.getElementById('pdf-iframe');
+            var modal = document.getElementById('pdf-modal');
+            
+            if (!modal || !iframe) {
+                console.warn("Erreur : La modale PDF est introuvable dans le code.");
+                return;
+            }
 
-          // ========== OUVRIR ET FERMER LE PDF + secu ==========   
-        if (!pdfModal || !pdfIframe) {
-          console.warn("Modal PDF introuvable");
-          return
-
+            iframe.src = pdfUrl;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Empêche de scroller derrière
         }
         
         function closePdfModal() {
-            document.getElementById('pdf-modal').style.display = 'none';
-            document.getElementById('pdf-iframe').src = ''; // Vide l'iframe pour alléger la mémoire
+            var iframe = document.getElementById('pdf-iframe');
+            var modal = document.getElementById('pdf-modal');
+            
+            if (modal) modal.style.display = 'none';
+            if (iframe) iframe.src = ''; // Vide l'iframe pour la mémoire
             document.body.style.overflow = 'auto'; // Réactive le scroll
         }
         
         // Fermer en cliquant à côté du PDF
-        document.getElementById('pdf-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closePdfModal();
-            }
-        });
+        var pdfModalBg = document.getElementById('pdf-modal');
+        if (pdfModalBg) {
+            pdfModalBg.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePdfModal();
+                }
+            });
+        }
     </script>
     <!-- Fenêtre Modale pour le PDF -->
 <div id="pdf-modal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.95); z-index: 10000; align-items: center; justify-content: center;">
