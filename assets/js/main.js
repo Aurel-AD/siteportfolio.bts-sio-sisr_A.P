@@ -488,3 +488,16 @@ document.addEventListener("DOMContentLoaded", function() {
         
     }, delay + 1000); // Pause finale sur "WELCOME ADMIN" réduite à 1 seconde
 });
+// Permettre de passer l'animation en cliquant n'importe où ou en appuyant sur une touche
+function skipBoot() {
+    const bootScreen = document.getElementById('boot-screen');
+    if (bootScreen && !bootScreen.classList.contains('hidden')) {
+        bootScreen.style.display = 'none';
+        document.body.classList.remove('is-booting');
+        document.getElementById('wrapper').style.opacity = '1';
+        sessionStorage.setItem('bootAnimationPlayed', 'true');
+    }
+}
+
+document.addEventListener('click', skipBoot);
+document.addEventListener('keydown', skipBoot);
