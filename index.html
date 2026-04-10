@@ -957,6 +957,7 @@
                     <p>N'hésitez pas à me contacter pour toute opportunité ou question</p>
                 </header>
             
+                <!-- Boutons principaux (Email, GitHub, LinkedIn) -->
                 <ul class="actions special contact-actions">
                     <li>
                         <a href="mailto:aurelienpont@gmail.com" class="button primary icon solid fa-envelope" aria-label="Envoyer un e-mail à Aurélien Pont">
@@ -964,23 +965,26 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/aurel-ad" class="button icon brands fa-github" target="_blank" rel="noopener noreferrer">
+                        <!-- Bouton GitHub avec contour sombre officiel -->
+                        <a href="https://github.com/aurel-ad" class="button icon brands fa-github" target="_blank" rel="noopener noreferrer" style="box-shadow: inset 0 0 0 2px #24292e !important; color: #24292e !important;">
                             GitHub
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/aurelienpont" class="button icon brands fa-linkedin" target="_blank" rel="noopener noreferrer">
+                        <!-- Bouton LinkedIn avec contour bleu officiel -->
+                        <a href="https://www.linkedin.com/in/aurelienpont" class="button icon brands fa-linkedin" target="_blank" rel="noopener noreferrer" style="box-shadow: inset 0 0 0 2px #0a66c2 !important; color: #0a66c2 !important;">
                             LinkedIn
                         </a>
                     </li>
-                    <li>
-                        <button onclick="document.getElementById('rgpd-modal').style.display = 'flex'" class="button small icon solid fa-shield-alt rgpd-button">
-                            Confidentialité
-                        </button>
-                    </li>
                 </ul>
-            </section>
 
+                <!-- Lien RGPD repensé (discret et professionnel) -->
+                <div style="margin-top: 3rem;">
+                    <a href="#" onclick="document.getElementById('rgpd-modal').style.display = 'flex'; return false;" style="font-size: 0.9em; color: #64748b; text-decoration: none; border-bottom: 1px dotted #64748b; transition: color 0.2s;" onmouseover="this.style.color='#34d399'; this.style.borderBottomColor='#34d399'" onmouseout="this.style.color='#64748b'; this.style.borderBottomColor='#64748b'">
+                        <i class="fas fa-shield-alt"></i> Politique de confidentialité et RGPD
+                    </a>
+                </div>
+            </section>
         </div>
 
         <!-- FOOTER -->
