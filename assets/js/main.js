@@ -420,22 +420,28 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 // essai
 document.addEventListener("DOMContentLoaded", function() {
-    // Vérifier si l'animation a déjà été jouée durant cette session
-    // Cela évite de l'afficher à chaque fois que l'utilisateur rafraîchit la page !
+    // Vérifie si l'animation a déjà été jouée (évite de spammer l'utilisateur)
     if (sessionStorage.getItem('bootAnimationPlayed')) {
-        document.getElementById('boot-screen').style.display = 'none';
+        const bootScreen = document.getElementById('boot-screen');
+        if(bootScreen) bootScreen.style.display = 'none';
         document.body.classList.remove('is-booting');
         return;
     }
 
     document.body.classList.add('is-booting');
     
+    // Ajout de plus de lignes, personnalisées avec vos outils (Novares / SISR)
     const lines = [
         "INITIATING SYSTEM BOOT...",
         "LOADING KERNEL [VERSION 5.15.0-72-GENERIC]... <span class='success'>[OK]</span>",
         "MOUNTING ENCRYPTED FILESYSTEM... <span class='success'>[OK]</span>",
+        "STARTING NETWORK INTERFACES... <span class='success'>[OK]</span>",
+        "LOADING CISCO MERAKI CONFIGURATIONS... <span class='success'>[OK]</span>",
         "INITIALIZING ACTIVE DIRECTORY PROTOCOLS... <span class='success'>[OK]</span>",
+        "STARTING SCCM DEPLOYMENT SERVICES... <span class='success'>[OK]</span>",
+        "MOUNTING DELL EMC AVAMAR BACKUP DAEMONS... <span class='success'>[OK]</span>",
         "ESTABLISHING SECURE VPN TUNNEL (FORTICLIENT)... <span class='success'>[OK]</span>",
+        "VERIFYING TISAX SECURITY COMPLIANCE... <span class='success'>[OK]</span>",
         "CHECKING FIREWALL RULES... <span class='success'>[OK]</span>",
         "BYPASSING MFA PROTOCOLS... <span class='warning'>[WARNING]</span>",
         "FORCING HANDSHAKE... <span class='success'>[ACCESS GRANTED]</span>",
@@ -446,11 +452,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const terminalLines = document.getElementById('terminal-lines');
     let delay = 0;
 
-    // Fonction pour ajouter les lignes une par une
+    // Boucle pour afficher les lignes
     lines.forEach((line, index) => {
-        // Temps aléatoire entre chaque ligne pour faire "vrai"
-        let randomDelay = Math.floor(Math.random() * 400) + 200; 
-        if (index === lines.length - 1) randomDelay = 800; // Pause avant la fin
+        // VITESSE ACCÉLÉRÉE : entre 40ms et 180ms par ligne (au lieu de 200 à 600ms)
+        let randomDelay = Math.floor(Math.random() * 140) + 40; 
+        
+        // Petite pause dramatique avant le "WELCOME ADMIN"
+        if (index === lines.length - 1) randomDelay = 600; 
 
         delay += randomDelay;
 
@@ -459,6 +467,8 @@ document.addEventListener("DOMContentLoaded", function() {
             div.className = 'terminal-line';
             div.innerHTML = `> ${line}`;
             terminalLines.appendChild(div);
+            // Fait défiler vers le bas si ça dépasse l'écran
+            window.scrollTo(0, document.body.scrollHeight);
         }, delay);
     });
 
@@ -467,15 +477,14 @@ document.addEventListener("DOMContentLoaded", function() {
         const bootScreen = document.getElementById('boot-screen');
         bootScreen.classList.add('hidden');
         
-        // Fait apparaître le vrai site
         setTimeout(() => {
             document.body.classList.remove('is-booting');
             document.getElementById('wrapper').style.opacity = '1';
             bootScreen.style.display = 'none';
             
-            // Enregistre que l'animation a été vue
+            // Mémorise la session
             sessionStorage.setItem('bootAnimationPlayed', 'true');
-        }, 800); // Temps de la transition CSS
+        }, 500); // Correspond à la durée de la transition CSS (0.5s)
         
-    }, delay + 1500); // On laisse le mot "WELCOME ADMIN" affiché 1.5s
+    }, delay + 1000); // Pause finale sur "WELCOME ADMIN" réduite à 1 seconde
 });
