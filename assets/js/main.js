@@ -418,86 +418,81 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 })();
-// essai
-document.addEventListener("DOMContentLoaded", function() {
-    // Vérifie si l'animation a déjà été jouée (évite de spammer l'utilisateur)
-    if (sessionStorage.getItem('bootAnimationPlayed')) {
-        const bootScreen = document.getElementById('boot-screen');
-        if(bootScreen) bootScreen.style.display = 'none';
-        document.body.classList.remove('is-booting');
-        return;
-    }
-
-    document.body.classList.add('is-booting');
-    
-    // Ajout de plus de lignes, personnalisées avec vos outils (Novares / SISR)
-    const lines = [
-        "INITIATING SYSTEM BOOT...",
-        "LOADING KERNEL [VERSION 5.15.0-72-GENERIC]... <span class='success'>[OK]</span>",
-        "MOUNTING ENCRYPTED FILESYSTEM... <span class='success'>[OK]</span>",
-        "STARTING NETWORK INTERFACES... <span class='success'>[OK]</span>",
-        "LOADING CISCO MERAKI CONFIGURATIONS... <span class='success'>[OK]</span>",
-        "INITIALIZING ACTIVE DIRECTORY PROTOCOLS... <span class='success'>[OK]</span>",
-        "STARTING SCCM DEPLOYMENT SERVICES... <span class='success'>[OK]</span>",
-        "MOUNTING DELL EMC AVAMAR BACKUP DAEMONS... <span class='success'>[OK]</span>",
-        "ESTABLISHING SECURE VPN TUNNEL (FORTICLIENT)... <span class='success'>[OK]</span>",
-        "VERIFYING TISAX SECURITY COMPLIANCE... <span class='success'>[OK]</span>",
-        "CHECKING FIREWALL RULES... <span class='success'>[OK]</span>",
-        "BYPASSING MFA PROTOCOLS... <span class='warning'>[WARNING]</span>",
-        "FORCING HANDSHAKE... <span class='success'>[ACCESS GRANTED]</span>",
-        "DECRYPTING PORTFOLIO DATA (AURELIEN_PONT_BTS_SIO)... <span class='success'>[OK]</span>",
-        "WELCOME ADMIN."
-    ];
-
-    const terminalLines = document.getElementById('terminal-lines');
-    let delay = 0;
-
-    // Boucle pour afficher les lignes
-    lines.forEach((line, index) => {
-        // VITESSE ACCÉLÉRÉE : entre 40ms et 180ms par ligne (au lieu de 200 à 600ms)
-        let randomDelay = Math.floor(Math.random() * 140) + 40; 
-        
-        // Petite pause dramatique avant le "WELCOME ADMIN"
-        if (index === lines.length - 1) randomDelay = 600; 
-
-        delay += randomDelay;
-
-        setTimeout(() => {
-            const div = document.createElement('div');
-            div.className = 'terminal-line';
-            div.innerHTML = `> ${line}`;
-            terminalLines.appendChild(div);
-            // Fait défiler vers le bas si ça dépasse l'écran
-            window.scrollTo(0, document.body.scrollHeight);
-        }, delay);
-    });
-
-    // Fin de l'animation
-    setTimeout(() => {
-        const bootScreen = document.getElementById('boot-screen');
-        bootScreen.classList.add('hidden');
-        
-        setTimeout(() => {
+// essai SCRIPT DE L'ANIMATION TERMINAL
+	
+    document.addEventListener("DOMContentLoaded", function() {
+        if (sessionStorage.getItem('bootAnimationPlayed')) {
+            const bootScreen = document.getElementById('boot-screen');
+            if(bootScreen) bootScreen.style.display = 'none';
             document.body.classList.remove('is-booting');
-            document.getElementById('wrapper').style.opacity = '1';
-            bootScreen.style.display = 'none';
-            
-            // Mémorise la session
-            sessionStorage.setItem('bootAnimationPlayed', 'true');
-        }, 500); // Correspond à la durée de la transition CSS (0.5s)
-        
-    }, delay + 1000); // Pause finale sur "WELCOME ADMIN" réduite à 1 seconde
-});
-// Permettre de passer l'animation en cliquant n'importe où ou en appuyant sur une touche
-function skipBoot() {
-    const bootScreen = document.getElementById('boot-screen');
-    if (bootScreen && !bootScreen.classList.contains('hidden')) {
-        bootScreen.style.display = 'none';
-        document.body.classList.remove('is-booting');
-        document.getElementById('wrapper').style.opacity = '1';
-        sessionStorage.setItem('bootAnimationPlayed', 'true');
-    }
-}
+            return;
+        }
 
-document.addEventListener('click', skipBoot);
-document.addEventListener('keydown', skipBoot);
+        document.body.classList.add('is-booting');
+        
+        const lines = [
+            "INITIATING SYSTEM BOOT...",
+            "LOADING KERNEL [VERSION 5.15.0-72-GENERIC]... <span style='color:#34d399'>[OK]</span>",
+            "MOUNTING ENCRYPTED FILESYSTEM... <span style='color:#34d399'>[OK]</span>",
+            "STARTING NETWORK INTERFACES... <span style='color:#34d399'>[OK]</span>",
+            "LOADING CISCO MERAKI CONFIGURATIONS... <span style='color:#34d399'>[OK]</span>",
+            "INITIALIZING ACTIVE DIRECTORY PROTOCOLS... <span style='color:#34d399'>[OK]</span>",
+            "STARTING SCCM DEPLOYMENT SERVICES... <span style='color:#34d399'>[OK]</span>",
+            "MOUNTING DELL EMC AVAMAR BACKUP DAEMONS... <span style='color:#34d399'>[OK]</span>",
+            "ESTABLISHING SECURE VPN TUNNEL (FORTICLIENT)... <span style='color:#34d399'>[OK]</span>",
+            "VERIFYING TISAX SECURITY COMPLIANCE... <span style='color:#34d399'>[OK]</span>",
+            "CHECKING FIREWALL RULES... <span style='color:#34d399'>[OK]</span>",
+            "BYPASSING MFA PROTOCOLS... <span style='color:#fbbf24'>[WARNING]</span>",
+            "FORCING HANDSHAKE... <span style='color:#34d399'>[ACCESS GRANTED]</span>",
+            "DECRYPTING PORTFOLIO DATA (AURELIEN_PONT_BTS_SIO)... <span style='color:#34d399'>[OK]</span>",
+            "WELCOME ADMIN."
+        ];
+
+        const terminalLines = document.getElementById('terminal-lines');
+        let delay = 0;
+
+        lines.forEach((line, index) => {
+            let randomDelay = Math.floor(Math.random() * 140) + 40; 
+            if (index === lines.length - 1) randomDelay = 600; 
+            delay += randomDelay;
+
+            setTimeout(() => {
+                const div = document.createElement('div');
+                div.style.marginBottom = "5px";
+                div.style.lineHeight = "1.4";
+                div.innerHTML = `> ${line}`;
+                terminalLines.appendChild(div);
+                // La ligne problématique a été supprimée ici !
+            }, delay);
+        });
+
+        // Fonction pour terminer l'animation proprement
+        function endBootAnimation() {
+            const bootScreen = document.getElementById('boot-screen');
+            if (bootScreen) {
+                bootScreen.style.opacity = '0';
+                bootScreen.style.visibility = 'hidden';
+                
+                setTimeout(() => {
+                    document.body.classList.remove('is-booting');
+                    const wrapper = document.getElementById('wrapper');
+                    if(wrapper) wrapper.style.opacity = '1';
+                    bootScreen.style.display = 'none';
+                    window.scrollTo(0, 0); // <-- FORCER LE SCROLL TOUT EN HAUT ICI
+                    sessionStorage.setItem('bootAnimationPlayed', 'true');
+                }, 500);
+            }
+        }
+
+        // Fin normale de l'animation
+        setTimeout(endBootAnimation, delay + 1000); 
+
+        // Permettre de passer l'animation si on clique ou si on appuie sur une touche
+        document.getElementById('boot-screen').addEventListener('click', endBootAnimation);
+        document.addEventListener('keydown', function(e) {
+            // Éviter de déclencher si l'animation est déjà finie
+            if (document.body.classList.contains('is-booting')) {
+                endBootAnimation();
+            }
+        });
+    });
