@@ -418,3 +418,64 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 })();
+// essai
+document.addEventListener("DOMContentLoaded", function() {
+    // Vérifier si l'animation a déjà été jouée durant cette session
+    // Cela évite de l'afficher à chaque fois que l'utilisateur rafraîchit la page !
+    if (sessionStorage.getItem('bootAnimationPlayed')) {
+        document.getElementById('boot-screen').style.display = 'none';
+        document.body.classList.remove('is-booting');
+        return;
+    }
+
+    document.body.classList.add('is-booting');
+    
+    const lines = [
+        "INITIATING SYSTEM BOOT...",
+        "LOADING KERNEL [VERSION 5.15.0-72-GENERIC]... <span class='success'>[OK]</span>",
+        "MOUNTING ENCRYPTED FILESYSTEM... <span class='success'>[OK]</span>",
+        "INITIALIZING ACTIVE DIRECTORY PROTOCOLS... <span class='success'>[OK]</span>",
+        "ESTABLISHING SECURE VPN TUNNEL (FORTICLIENT)... <span class='success'>[OK]</span>",
+        "CHECKING FIREWALL RULES... <span class='success'>[OK]</span>",
+        "BYPASSING MFA PROTOCOLS... <span class='warning'>[WARNING]</span>",
+        "FORCING HANDSHAKE... <span class='success'>[ACCESS GRANTED]</span>",
+        "DECRYPTING PORTFOLIO DATA (AURELIEN_PONT_BTS_SIO)... <span class='success'>[OK]</span>",
+        "WELCOME ADMIN."
+    ];
+
+    const terminalLines = document.getElementById('terminal-lines');
+    let delay = 0;
+
+    // Fonction pour ajouter les lignes une par une
+    lines.forEach((line, index) => {
+        // Temps aléatoire entre chaque ligne pour faire "vrai"
+        let randomDelay = Math.floor(Math.random() * 400) + 200; 
+        if (index === lines.length - 1) randomDelay = 800; // Pause avant la fin
+
+        delay += randomDelay;
+
+        setTimeout(() => {
+            const div = document.createElement('div');
+            div.className = 'terminal-line';
+            div.innerHTML = `> ${line}`;
+            terminalLines.appendChild(div);
+        }, delay);
+    });
+
+    // Fin de l'animation
+    setTimeout(() => {
+        const bootScreen = document.getElementById('boot-screen');
+        bootScreen.classList.add('hidden');
+        
+        // Fait apparaître le vrai site
+        setTimeout(() => {
+            document.body.classList.remove('is-booting');
+            document.getElementById('wrapper').style.opacity = '1';
+            bootScreen.style.display = 'none';
+            
+            // Enregistre que l'animation a été vue
+            sessionStorage.setItem('bootAnimationPlayed', 'true');
+        }, 800); // Temps de la transition CSS
+        
+    }, delay + 1500); // On laisse le mot "WELCOME ADMIN" affiché 1.5s
+});
