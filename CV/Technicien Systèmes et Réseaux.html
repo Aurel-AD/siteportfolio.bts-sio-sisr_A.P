@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>CV Aurélien Pont - Technicien Systèmes et Réseaux</title>
   
-  <!-- Polices & Icônes -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   
   <style>
-    /* ----- VARIABLES & RESET ----- */
     :root {
       --navy: #1E293B;
       --navy-light: #334155;
@@ -23,36 +21,25 @@
       --text-main: #1E293B;
       --text-muted: #475569;
       --border-light: #E2E8F0;
-      --sidebar-w: 31%;
+      --sidebar-w: 32%;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #CBD5E1;
-    }
-    
     body {
       font-family: 'Inter', sans-serif;
-      font-size: 10.5px;
-      line-height: 1.45;
+      font-size: 10px;
+      line-height: 1.4;
       color: var(--text-main);
+      background: #CBD5E1;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
     
-    a { color: inherit; text-decoration: none; }
-    a:hover { text-decoration: underline; color: var(--teal-light); }
-    
-    /* ----- PAGE A4 EXACTE ----- */
     .page {
       display: flex;
-      align-items: stretch;
       width: 210mm;
       height: 297mm;
-      margin: 0 auto;
+      margin: 10px auto;
       background: var(--white);
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
@@ -63,445 +50,261 @@
       width: var(--sidebar-w);
       background: var(--navy);
       color: #F1F5F9;
-      padding: 18px 14px;
+      padding: 15px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      flex-shrink: 0;
-      height: 100%;
-      overflow-y: auto;
+      gap: 12px;
     }
     
-    .sb-section { display: flex; flex-direction: column; gap: 6px; }
-    
+    .sb-section { display: flex; flex-direction: column; gap: 5px; }
     .sb-title {
       font-size: 8.5px;
       font-weight: 800;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
       color: var(--teal-light);
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      padding-bottom: 4px;
-      margin-bottom: 2px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 3px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .sb-title i { font-size: 9px; width: 12px; }
 
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 5px;
-      font-size: 10.5px;
-      line-height: 1.3;
-    }
-    .contact-item i { color: var(--teal-light); width: 12px; margin-top: 2px; font-size: 10px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 6px; font-size: 9.5px; margin-bottom: 2px; }
+    .contact-item i { color: var(--teal-light); width: 12px; text-align: center; margin-top: 2px; }
 
-    /* QR Code + Lien */
     .qr-wrapper {
       background: white;
       padding: 8px;
       border-radius: 6px;
-      margin: 6px 0 4px;
       width: 85px;
       align-self: center;
       text-align: center;
     }
-    .qr-wrapper img { width: 100%; height: auto; display: block; }
-    .qr-label { 
-      font-size: 7.5px; 
-      font-weight: 800; 
-      color: var(--navy); 
-      margin-top: 4px; 
-    }
+    .qr-wrapper img { width: 100%; height: auto; }
+    .qr-label { font-size: 7px; font-weight: 800; color: var(--navy); margin-top: 2px; }
+
     .portfolio-link {
-      font-size: 10px;
+      font-size: 8px;
       text-align: center;
-      color: var(--teal-light);
-      margin-top: 4px;
-      font-weight: 700;
-      background: rgba(255,255,255,0.1);
-      padding: 4px 8px;
+      background: rgba(255,255,255,0.05);
+      padding: 4px;
       border-radius: 4px;
-      display: inline-block;
-      align-self: center;
+      border: 1px dashed rgba(255,255,255,0.2);
     }
-    .portfolio-link i { margin-right: 5px; }
-    .portfolio-link a { color: var(--teal-light); }
+    .portfolio-link a { color: var(--teal-light); font-weight: 700; text-decoration: none; word-break: break-all; }
 
-    /* Skills */
-    .skill-group { margin-bottom: 6px; }
-    .skill-group-name {
-      font-weight: 700;
-      color: white;
-      font-size: 10px;
-      margin-bottom: 2px;
-    }
-    .skill-list { list-style: none; padding-left: 0; }
+    .skill-group { margin-bottom: 4px; }
+    .skill-group-name { font-weight: 700; color: white; font-size: 9.5px; margin-bottom: 1px; display: flex; align-items: center; gap: 4px; }
+    .skill-group-name i { font-size: 9px; color: var(--teal-light); }
+    .skill-list { list-style: none; padding-left: 2px; }
     .skill-list li {
-      font-size: 9.5px;
+      font-size: 8.8px;
       color: #CBD5E1;
-      margin-bottom: 2px;
-      padding-left: 12px;
+      padding-left: 10px;
       position: relative;
-      line-height: 1.35;
+      line-height: 1.3;
     }
-    .skill-list li::before { content: "▹"; position: absolute; left: 0; color: var(--teal-light); font-size: 11px; }
+    .skill-list li::before { content: "•"; position: absolute; left: 0; color: var(--teal-light); }
 
-    /* Formations */
-    .edu-item { margin-bottom: 7px; }
-    .edu-diploma { font-weight: 700; color: white; font-size: 10px; }
-    .edu-school { font-size: 9px; color: #94A3B8; }
-    .edu-date { font-size: 8.5px; color: var(--teal-light); font-weight: 600; }
-
-    /* Atouts side */
-    .atout-side-item {
-      font-size: 10px;
-      padding: 3px 0 3px 8px;
-      border-left: 2px solid var(--teal-light);
-      margin-bottom: 5px;
-      font-weight: 500;
-    }
-
-    /* ----- MAIN CONTENT ----- */
-    .main {
-      flex: 1;
-      background: var(--white);
-      display: flex;
-      flex-direction: column;
-      padding: 18px 22px 16px;
-      height: 100%;
-      overflow-y: auto;
-    }
+    /* ----- MAIN ----- */
+    .main { flex: 1; padding: 18px 25px; display: flex; flex-direction: column; gap: 10px; }
     
-    .header-main { 
-      border-bottom: 3px solid var(--teal); 
-      padding-bottom: 6px; 
-      margin-bottom: 10px; 
-    }
-    .name-main {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: #0F172A;
-      line-height: 1.1;
-    }
-    .job-main {
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--teal);
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      margin-bottom: 2px;
-    }
-    .job-subtitle {
-      font-size: 9.5px;
-      font-weight: 600;
-      color: var(--navy-light);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
+    .header-main { border-bottom: 3px solid var(--teal); padding-bottom: 8px; }
+    .name-main { font-family: 'Playfair Display', serif; font-size: 28px; color: #0F172A; line-height: 1; }
+    .job-main { font-size: 13px; font-weight: 800; color: var(--teal); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
 
     .profile-box {
       background: var(--off-white);
-      padding: 8px 14px;
-      border-radius: 6px;
-      margin-bottom: 12px;
-      font-size: 10.5px;
+      padding: 10px;
+      border-radius: 4px;
       border-left: 4px solid var(--teal);
+      font-size: 10.5px;
     }
 
     .section-header {
       font-size: 10px;
       font-weight: 800;
-      color: #0F172A;
       text-transform: uppercase;
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      margin-top: 4px;
+      gap: 10px;
+      color: var(--navy);
+      margin-top: 5px;
     }
-    .section-header i { color: var(--teal); font-size: 11px; }
     .section-header::after { content: ""; flex: 1; height: 1px; background: var(--border-light); }
+    .section-header i { color: var(--teal); }
 
-    /* Expérience */
     .exp-item { margin-bottom: 12px; }
-    .exp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      margin-bottom: 2px;
-    }
-    .exp-role { font-size: 12px; font-weight: 800; color: #0F172A; }
-    .exp-date {
-      font-size: 9px;
-      font-weight: 700;
-      color: var(--teal);
-      background: #F0F9FF;
-      padding: 2px 6px;
-      border-radius: 12px;
-    }
-    .exp-company {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--navy-light);
-      margin-bottom: 5px;
-    }
-    .subcat {
-      font-weight: 800;
-      font-size: 8.5px;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin: 5px 0 2px;
-    }
-    .exp-ul {
-      list-style: none;
-      margin-bottom: 3px;
-      padding-left: 4px;
-    }
-    .exp-ul li {
-      padding-left: 14px;
-      position: relative;
-      margin-bottom: 2px;
-      font-size: 10px;
-      line-height: 1.38;
-    }
-    .exp-ul li::before {
-      content: "›";
-      position: absolute;
-      left: 0;
-      color: var(--teal);
-      font-weight: bold;
-      font-size: 13px;
-      top: -1px;
-    }
+    .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+    .exp-role { font-size: 11.5px; font-weight: 800; color: #0F172A; }
+    .exp-date { font-size: 9px; color: var(--teal); font-weight: 700; white-space: nowrap; }
+    .exp-company { font-size: 9.5px; color: var(--navy-light); font-weight: 700; margin-bottom: 4px; }
+    
+    .subcat { font-weight: 800; font-size: 8.5px; text-transform: uppercase; color: var(--teal); margin: 6px 0 2px; border-left: 2px solid var(--teal); padding-left: 5px; }
+    .exp-ul { list-style: none; padding-left: 5px; }
+    .exp-ul li { position: relative; padding-left: 12px; font-size: 10px; margin-bottom: 1px; line-height: 1.35; }
+    .exp-ul li::before { content: "›"; position: absolute; left: 0; color: var(--teal); font-weight: bold; font-size: 12px; }
 
-    /* Atouts grid */
-    .atouts-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 4px;
-    }
-    .atout-item {
-      font-size: 10px;
-      padding: 5px 10px;
-      background: #F8FAFC;
-      border-radius: 4px;
-      border: 1px solid #E2E8F0;
-    }
+    .atouts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .atout-item { background: var(--off-white); padding: 6px; border-radius: 4px; border: 1px solid var(--border-light); font-size: 9.5px; }
 
-    /* ----- IMPRESSION ----- */
+    .edu-item { margin-bottom: 6px; }
+    .edu-date { font-size: 8.5px; color: var(--teal-light); font-weight: 700; }
+    .edu-diploma { font-size: 9.5px; font-weight: 700; color: white; }
+    .edu-school { font-size: 8.5px; color: #94A3B8; font-style: italic; }
+
     @media print {
-      @page {
-        size: A4;
-        margin: 0;
-      }
-      
-      html, body {
-        margin: 0;
-        padding: 0;
-        width: 210mm;
-        height: 297mm;
-        background: none;
-      }
-      
-      body { background: none; }
-      
-      .page { 
-        margin: 0; 
-        box-shadow: none; 
-        height: 297mm;
-        width: 210mm;
-        page-break-after: avoid;
-      }
-      
-      .sidebar, .main {
-        overflow: visible;
-      }
-      
-      .no-print { display: none !important; }
-      
-      a { text-decoration: none; color: inherit; }
+      body { background: white; }
+      .page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; }
+      .no-print { display: none; }
     }
-
-    /* Bouton impression */
-    .no-print {
-      position: fixed; 
-      top: 12px; 
-      right: 12px; 
-      background: var(--navy); 
-      color: white;
-      border: none; 
-      padding: 8px 16px; 
-      border-radius: 30px; 
-      cursor: pointer;
-      z-index: 1000; 
-      font-weight: 700; 
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      font-size: 12px;
-    }
-    .no-print:hover { background: var(--teal); }
+    .no-print { position: fixed; top: 15px; right: 15px; background: var(--navy); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; z-index: 100; font-size: 11px; }
   </style>
 </head>
 <body>
-  <button class="no-print" onclick="window.print()"><i class="fas fa-file-pdf"></i> Enregistrer en PDF</button>
+
+  <button class="no-print" onclick="window.print()"><i class="fas fa-file-pdf"></i> Exporter en PDF</button>
 
   <div class="page">
-    <!-- ========== SIDEBAR GAUCHE ========== -->
+    <!-- ========== SIDEBAR ========== -->
     <aside class="sidebar">
-      <!-- Contact -->
       <div class="sb-section">
-        <div class="sb-title"><i class="fas fa-address-card"></i>Contact</div>
-        <div class="contact-item"><i class="fas fa-envelope"></i> <span>aurelienpont@gmail.com</span></div>
-        <div class="contact-item"><i class="fas fa-phone"></i> <span>07 60 75 64 39</span></div>
-        <div class="contact-item"><i class="fab fa-linkedin"></i> <span>linkedin.com/in/aurelienpont</span></div>
-        <div class="contact-item"><i class="fas fa-car"></i> <span><strong>Permis B — Véhiculé</strong></span></div>
+        <div class="sb-title"><i class="fas fa-address-card"></i> Contact</div>
+        <div class="contact-item"><i class="fas fa-envelope"></i> aurelienpont@gmail.com</div>
+        <div class="contact-item"><i class="fas fa-phone"></i> 07 60 75 64 39</div>
+        <div class="contact-item"><i class="fab fa-linkedin"></i> linkedin.com/in/aurelienpont</div>
+        <div class="contact-item"><i class="fas fa-car"></i> Permis B — Véhiculé</div>
       </div>
 
-      <!-- QR Code + Lien Portfolio -->
-      <div class="sb-section">
+      <div class="sb-section" style="align-items: center; gap: 4px;">
         <div class="qr-wrapper">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" alt="QR Code Portfolio GitHub">
-          <div class="qr-label">PORTFOLIO</div>
-          <div class="qr-label" style="font-size: 6.5px; margin-top: 0; color: #666;">GITHUB</div>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" alt="QR Code">
+          <div class="qr-label">PORTFOLIO GITHUB</div>
         </div>
         <div class="portfolio-link">
-          <i class="fab fa-github"></i>
-          <a href="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" target="_blank"><strong>Voir sur GitHub</strong></a>
+          <a href="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" target="_blank">Lien vers mon site portfolio</a>
         </div>
       </div>
 
-      <!-- Compétences -->
       <div class="sb-section">
-        <div class="sb-title"><i class="fas fa-code"></i>Compétences</div>
+        <div class="sb-title"><i class="fas fa-tools"></i> Compétences techniques</div>
         
         <div class="skill-group">
-          <p class="skill-group-name">Support & Assistance</p>
+          <p class="skill-group-name"><i class="fas fa-headset"></i> Support & Assistance</p>
           <ul class="skill-list">
-            <li><strong>Support N1/N2</strong> (Site & Distance)</li>
-            <li><strong>Freshservice</strong> (Ticketing/Asset)</li>
-            <li>DameWare, TeamViewer, RDP</li>
-            <li>Rédaction procédures & accompagnement</li>
+            <li>Support N1/N2 (Site & Distance)</li>
+            <li><strong>Freshservice</strong> (Ticketing & Asset)</li>
+            <li><strong>DameWare</strong>, TeamViewer, RDP</li>
+            <li>Rédaction de procédures utilisateurs</li>
+            <li>Formation et accompagnement</li>
           </ul>
         </div>
-        
+
         <div class="skill-group">
-          <p class="skill-group-name">Systèmes & Déploiement</p>
+          <p class="skill-group-name"><i class="fas fa-laptop"></i> Systèmes & Déploiement</p>
           <ul class="skill-list">
             <li><strong>SCCM</strong> (Déploiement OS & Apps)</li>
-            <li>Windows 10/11, BIOS/UEFI</li>
-            <li>Pilotes via <strong>UNC/DFS</strong>, Software Center</li>
-            <li>Dell & Lenovo Update</li>
-            <li><strong>Masterisation (ISO/WIM)</strong> / Clés bootables</li>
+            <li>Windows 10/11, <strong>BIOS/UEFI</strong></li>
+            <li><strong>Masterisation</strong> (ISO/WIM, clés bootables)</li>
+            <li>Citrix & Environnements virtualisés</li>
+            <li>Pilotes via UNC/DFS (Dell & Lenovo)</li>
           </ul>
         </div>
-        
+
         <div class="skill-group">
-          <p class="skill-group-name">Sécurité & Réseau</p>
+          <p class="skill-group-name"><i class="fas fa-shield-alt"></i> Sécurité & Réseau</p>
           <ul class="skill-list">
             <li><strong>VPN FortiClient</strong> & EMS</li>
             <li>MFA (Microsoft Authenticator)</li>
-            <li>Cisco Meraki (Wi-Fi invités)</li>
-            <li><strong>Active Directory</strong> (OU/Groupes)</li>
-            <li><strong>Dell Avamar</strong> (Sauvegarde/Backup)</li>
-          </ul>
-        </div>
-
-        <div class="skill-group">
-          <p class="skill-group-name">Documentation & Conformité</p>
-          <ul class="skill-list">
-            <li>Procédures conformes <strong>TISAX</strong></li>
-            <li>Guides utilisateurs & FAQ techniques</li>
-            <li>Suivi workflows (SwF)</li>
+            <li>Wi-Fi invités (Cisco Meraki)</li>
+            <li><strong>Active Directory</strong> (OU & Groupes)</li>
+            <li><strong>Dell Avamar</strong> (Backup/Restore)</li>
           </ul>
         </div>
       </div>
 
-      <!-- Formations -->
       <div class="sb-section">
-        <div class="sb-title"><i class="fas fa-graduation-cap"></i>Formations</div>
+        <div class="sb-title"><i class="fas fa-graduation-cap"></i> Formations</div>
         <div class="edu-item">
           <p class="edu-date">Depuis Oct. 2024</p>
-          <p class="edu-diploma">BTS SIO — Option SISR</p>
+          <p class="edu-diploma">BTS SIO — SISR (Apprentissage)</p>
           <p class="edu-school">AFPI Marcq-en-Barœul</p>
         </div>
         <div class="edu-item">
           <p class="edu-date">2024</p>
-          <p class="edu-diploma">Titre Pro TAI (Niveau BAC)</p>
+          <p class="edu-diploma">Titre Pro Technicien d'Assistance (BAC)</p>
           <p class="edu-school">M2I Formation (distanciel)</p>
         </div>
         <div class="edu-item">
           <p class="edu-date">2025</p>
-          <p class="edu-diploma">MOOC ANSSI & RGPD</p>
-          <p class="edu-school">Certifications en ligne</p>
+          <p class="edu-diploma">MOOC ANSSI — Sécurité des SI</p>
+          <p class="edu-school">Certifié en ligne</p>
+        </div>
+        <div class="edu-item">
+          <p class="edu-date">2025</p>
+          <p class="edu-diploma">MOOC RGPD — Protection des données</p>
+          <p class="edu-school">Certifié en ligne</p>
         </div>
       </div>
 
-      <!-- Atouts & Loisirs -->
       <div class="sb-section">
-        <div class="sb-title"><i class="fas fa-heart"></i>Atouts & Loisirs</div>
-        <div class="atout-side-item"><i class="fas fa-water" style="margin-right: 6px;"></i> Plongée N3 (RIFAP)</div>
-        <div class="atout-side-item"><i class="fas fa-users" style="margin-right: 6px;"></i> Bénévole Wattrelos FC</div>
-        <div class="atout-side-item"><i class="fas fa-utensils" style="margin-right: 6px;"></i> Cuisine & Pâtisserie</div>
-        <div class="atout-side-item"><i class="fas fa-leaf" style="margin-right: 6px;"></i> Potager associatif</div>
+        <div class="sb-title"><i class="fas fa-star"></i> Engagements & Loisirs</div>
+        <div style="font-size: 9px; color:#CBD5E1; line-height:1.4;">
+          • <strong>Plongée :</strong> Niveau 3 (RIFAP)<br>
+          • <strong>Bénévolat :</strong> Encadrement Wattrelos FC<br>
+          • <strong>Cuisine :</strong> Cuisine & Pâtisserie<br>
+          • <strong>Nature :</strong> Entretien potager associatif
+        </div>
       </div>
     </aside>
 
-    <!-- ========== MAIN CONTENT DROITE ========== -->
+    <!-- ========== MAIN CONTENT ========== -->
     <main class="main">
       <header class="header-main">
         <h1 class="name-main">Aurélien PONT</h1>
-        <!-- MODIFICATION ICI : Nouveau titre -->
         <p class="job-main">Technicien Systèmes et Réseaux (Apprenti)</p>
-        <p class="job-subtitle">Option : Administration & Sécurité des Infrastructures</p>
+        <p style="font-weight:600; color:var(--navy-light); font-size:9.5px; text-transform:uppercase; letter-spacing:0.5px;">Administration & Sécurité des Infrastructures numériques</p>
       </header>
 
-      <!-- Profil -->
       <div class="profile-box">
-        Technicien informatique avec <strong>2 ans d'expérience</strong> en support N1/N2 multi-sites. 
-        Expert en déploiement automatisé <strong>SCCM</strong>, administration système/réseau et sécurisation conforme <strong>TISAX</strong>. 
-        Objectif : garantir un environnement numérique fiable et sécurisé.
+        Technicien informatique avec <strong>2 ans d'expérience</strong> en support N1/N2, multi-sites. Compétences en administration système/réseau, déploiement automatisé <strong>SCCM</strong>, sécurisation des postes et documentation conforme <strong>TISAX</strong>. Objectif : environnement numérique fluide, fiable et sécurisé.
       </div>
 
-      <!-- Expériences Professionnelles -->
-      <div class="section-header"><i class="fas fa-briefcase"></i>Expériences professionnelles</div>
+      <div class="section-header"><i class="fas fa-briefcase"></i> Expériences professionnelles détaillées</div>
 
-      <!-- Novares -->
+      <!-- NOVARES -->
       <div class="exp-item">
         <div class="exp-header">
-          <span class="exp-role">Assistant administrateur technique</span>
-          <span class="exp-date">Depuis oct. 2024</span>
+          <span class="exp-role">Assistant administrateur technique informatique</span>
+          <span class="exp-date">Oct. 2024 — Présent</span>
         </div>
-        <p class="exp-company">Novares — Centre d'expertise (Lens) & sites de production</p>
+        <p class="exp-company">Novares — Centre d'expertise (Lens) & sites de production (Libercourt, Villers-Bretonneux)</p>
         
-        <span class="subcat">Support & gestion des incidents</span>
+        <p class="subcat">Support utilisateur & gestion des incidents</p>
         <ul class="exp-ul">
-          <li>Diagnostic et résolution <strong>N1/N2</strong> (matériel/logiciel) sur site et en production.</li>
-          <li>Assistance à distance (<strong>DameWare, TeamViewer, RDP</strong>) ; ticketing <strong>Freshservice</strong>.</li>
-          <li><strong>Asset Management</strong> et formation utilisateurs.</li>
+          <li>Diagnostic et résolution N1/N2 (matériel/logiciel) sur centre d'expertise et sites de production industriels.</li>
+          <li>Assistance à distance via <strong>DameWare, TeamViewer, RDP</strong> ; gestion des tickets via <strong>Freshservice</strong>.</li>
+          <li>Gestion d'inventaire (<strong>Asset Management</strong>) et formation des utilisateurs aux outils.</li>
         </ul>
 
-        <span class="subcat">Déploiement & maintenance</span>
+        <p class="subcat">Déploiement & maintenance des postes</p>
         <ul class="exp-ul">
-          <li>Déploiement OS/Apps via <strong>SCCM</strong> ; gestion pilotes (<strong>UNC/DFS, Software Center</strong>).</li>
-          <li>Mise à jour <strong>Dell & Lenovo Update</strong> ; support impression.</li>
+          <li>Installation, configuration et maintenance du parc ; déploiement automatisé OS/logiciels via <strong>SCCM</strong>.</li>
+          <li>Mise à jour pilotes et logiciels (<strong>UNC/DFS, Software Center, Dell & Lenovo Update</strong>).</li>
+          <li>Déploiement et maintenance des pilotes d'impression (locaux et partagés).</li>
         </ul>
 
-        <span class="subcat">Administration & sécurité</span>
+        <p class="subcat">Administration système, sauvegardes & sécurité</p>
         <ul class="exp-ul">
-          <li><strong>Active Directory :</strong> comptes, OU, droits.</li>
-          <li><strong>Dell Avamar :</strong> supervision sauvegardes (<strong>backup</strong>), tests de restauration.</li>
-          <li><strong>VPN FortiClient</strong>, MFA, Wi-Fi <strong>Cisco Meraki</strong>.</li>
+          <li><strong>Active Directory :</strong> Gestion des comptes, organisation par OU, habilitations et dossiers partagés.</li>
+          <li><strong>Sauvegardes (Dell Avamar) :</strong> Contrôle hebdomadaire des logs, <strong>reporting Excel</strong> et tests de restauration mensuels.</li>
+          <li>Configuration <strong>VPN FortiClient & EMS</strong>, MFA, administration Wi-Fi invités (<strong>Cisco Meraki</strong>).</li>
         </ul>
 
-        <span class="subcat">Documentation & conformité</span>
+        <p class="subcat">Documentation & conformité</p>
         <ul class="exp-ul">
-          <li>Rédaction procédures <strong>TISAX</strong>, guides, FAQ ; suivi workflows (<strong>SwF</strong>).</li>
+          <li>Rédaction de procédures conformes <strong>TISAX</strong>, guides utilisateurs et FAQ techniques ; suivi des workflows (<strong>SwF</strong>).</li>
         </ul>
       </div>
 
@@ -509,13 +312,14 @@
       <div class="exp-item">
         <div class="exp-header">
           <span class="exp-role">Technicien informatique</span>
-          <span class="exp-date">Fév. – Avr. 2024</span>
+          <span class="exp-date">Fév. — Avr. 2024</span>
         </div>
         <p class="exp-company">FRESC — Roubaix</p>
         <ul class="exp-ul">
-          <li>Déploiement via <strong>clés bootables (ISO/WIM)</strong> ; maintenance hardware.</li>
-          <li>Administration switches <strong>Cisco et D-Link</strong> ; Wi-Fi.</li>
-          <li>Résolution incidents N1/N2.</li>
+          <li>Maintenance préventive, optimisation du parc et déploiement complet des postes de travail.</li>
+          <li>Déploiement automatisé OS et logiciels via <strong>clés bootables (ISO/WIM)</strong> ; maintenance hardware.</li>
+          <li>Résolution d'incidents N1/N2 ; administration de switches <strong>Cisco et D-Link</strong>.</li>
+          <li>Paramétrage des routeurs Wi-Fi et de l'infrastructure réseau.</li>
         </ul>
       </div>
 
@@ -523,23 +327,23 @@
       <div class="exp-item">
         <div class="exp-header">
           <span class="exp-role">Technicien informatique (Stage)</span>
-          <span class="exp-date">Janv. 2023</span>
+          <span class="exp-date">Janvier 2023</span>
         </div>
         <p class="exp-company">FRESC — Roubaix</p>
         <ul class="exp-ul">
-          <li>Préparation de postes (masterisation) et installation logiciels.</li>
+          <li>Préparation de postes (masterisation) et installation de logiciels.</li>
         </ul>
       </div>
 
-      <!-- Atouts & Soft Skills -->
-      <div class="section-header"><i class="fas fa-star"></i>Atouts & Soft Skills</div>
+      <div class="section-header"><i class="fas fa-check-circle"></i> Atouts professionnels</div>
       <div class="atouts-grid">
-        <div class="atout-item"><strong>Rigueur :</strong> Respect normes <strong>TISAX</strong>.</div>
-        <div class="atout-item"><strong>Pédagogie :</strong> Formation utilisateurs.</div>
-        <div class="atout-item"><strong>Polyvalence :</strong> Bureau & atelier.</div>
-        <div class="atout-item"><strong>Adaptabilité :</strong> Diagnostic pannes complexes.</div>
+        <div class="atout-item"><strong>Rigueur industrielle :</strong> Respect des normes TISAX et de la sécurité.</div>
+        <div class="atout-item"><strong>Pédagogie :</strong> Capacité à former et accompagner les utilisateurs.</div>
+        <div class="atout-item"><strong>Analyse :</strong> Diagnostic efficace des pannes matérielles et logicielles.</div>
+        <div class="atout-item"><strong>Polyvalence :</strong> Intervention en bureau technique comme en production.</div>
       </div>
     </main>
   </div>
+
 </body>
 </html>
