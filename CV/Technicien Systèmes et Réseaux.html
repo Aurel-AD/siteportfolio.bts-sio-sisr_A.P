@@ -88,11 +88,12 @@
       font-size: 8px;
       text-align: center;
       background: rgba(255,255,255,0.05);
-      padding: 4px;
+      padding: 6px;
       border-radius: 4px;
       border: 1px dashed rgba(255,255,255,0.2);
+      word-break: break-all;
     }
-    .portfolio-link a { color: var(--teal-light); font-weight: 700; text-decoration: none; word-break: break-all; }
+    .portfolio-link a { color: var(--teal-light); font-weight: 600; text-decoration: none; }
 
     .skill-group { margin-bottom: 4px; }
     .skill-group-name { font-weight: 700; color: white; font-size: 9.5px; margin-bottom: 1px; display: flex; align-items: center; gap: 4px; }
@@ -119,7 +120,8 @@
       padding: 10px;
       border-radius: 4px;
       border-left: 4px solid var(--teal);
-      font-size: 10.5px;
+      font-size: 10.2px;
+      line-height: 1.5;
     }
 
     .section-header {
@@ -177,13 +179,14 @@
         <div class="contact-item"><i class="fas fa-car"></i> Permis B — Véhiculé</div>
       </div>
 
-      <div class="sb-section" style="align-items: center; gap: 4px;">
+      <!-- SECTION PORTFOLIO / GIT -->
+      <div class="sb-section" style="align-items: center; gap: 6px;">
         <div class="qr-wrapper">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" alt="QR Code">
-          <div class="qr-label">PORTFOLIO GITHUB</div>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" alt="QR Code Portfolio">
+          <div class="qr-label">MON PORTFOLIO</div>
         </div>
         <div class="portfolio-link">
-          <a href="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" target="_blank">Lien vers mon site portfolio</a>
+          <a href="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" target="_blank">https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/</a>
         </div>
       </div>
 
@@ -267,8 +270,9 @@
         <p style="font-weight:600; color:var(--navy-light); font-size:9.5px; text-transform:uppercase; letter-spacing:0.5px;">Administration & Sécurité des Infrastructures numériques</p>
       </header>
 
+      <!-- TEXTE EXACT DEMANDÉ -->
       <div class="profile-box">
-        Technicien informatique avec <strong>2 ans d'expérience</strong> en support N1/N2, multi-sites. Compétences en administration système/réseau, déploiement automatisé <strong>SCCM</strong>, sécurisation des postes et documentation conforme <strong>TISAX</strong>. Objectif : environnement numérique fluide, fiable et sécurisé.
+        Technicien informatique avec 2 ans d'expérience en support N1/N2, multi-sites. Compétences en administration système/réseau, déploiement automatisé SCCM, sécurisation des postes et documentation conforme TISAX. Objectif : environnement numérique fluide, fiable et sécurisé.
       </div>
 
       <div class="section-header"><i class="fas fa-briefcase"></i> Expériences professionnelles détaillées</div>
@@ -324,7 +328,7 @@
       </div>
 
       <!-- FRESC 2023 -->
-      <div class="exp-item">
+      <div class="exp-item" style="margin-bottom: 0;">
         <div class="exp-header">
           <span class="exp-role">Technicien informatique (Stage)</span>
           <span class="exp-date">Janvier 2023</span>
