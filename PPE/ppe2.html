@@ -306,7 +306,6 @@
     </ul>
 </div>
 
-<!-- A. DEMANDE -->
 <div class="page-section">
     <div class="section-letter">A</div>
     <div class="section-title">La demande</div>
@@ -316,14 +315,13 @@
     <div class="sub-num" data-n="2">Objectifs du projet</div>
     <ul>
         <li>Architecture trois-tiers : HAProxy en DMZ → 2 serveurs web (LAN) en miroir</li>
-        <li>Load balancing round-robin avec détection de panne</li>
+        <li>Load balancing round-robin with détection de panne</li>
         <li>Sauvegardes quotidiennes des VMs vers NAS RAID-5 (siège) via Veeam</li>
         <li>Sauvegarde des configurations des équipements réseau (Stormshield, switch, AP)</li>
         <li>Tests de basculement et mise à jour de la documentation</li>
     </ul>
 </div>
 
-<!-- B. PLAN -->
 <div class="page-section">
     <div class="section-letter">B</div>
     <div class="section-title">Le plan</div>
@@ -429,7 +427,6 @@
     </div>
 </div>
 
-<!-- C. PROJET -->
 <div class="page-section">
     <div class="section-letter">C</div>
     <div class="section-title">Le projet</div>
@@ -444,7 +441,7 @@
         <div class="photo-label">PHOTO 1 — Règles de filtrage Stormshield</div>
         <div class="photo-desc">Console Stormshield : règles autorisant HTTP/HTTPS depuis WAN vers DMZ (HAProxy) et DMZ vers LAN (WEB-01, WEB-02).</div>
         <img class="photo-img" src="Capture d'écran 2026-03-30 122922.png" alt="Règles de filtrage Stormshield">
-        <span class="photo-file">Capture d'écran 2026-03-30 122922.png</span>
+        <span class="photo-file">Regles_Filtrage_Stormshield_SNS310.png</span>
     </div>
 
     <div class="etape">
@@ -483,7 +480,7 @@ backend web_cluster
         <div class="photo-label">PHOTO 2 — Configuration HAProxy</div>
         <div class="photo-desc">Fichier <code>/etc/haproxy/haproxy.cfg</code> avec frontend HTTP, backend en round-robin et les serveurs WEB-01 et WEB-02.</div>
         <img class="photo-img" src="Capture d'écran 2026-03-30 124849.png" alt="Configuration HAProxy">
-        <span class="photo-file">Capture d'écran 2026-03-30 124849.png</span>
+        <span class="photo-file">Config_Service_HAProxy_LoadBalancer.png</span>
     </div>
     
     <div class="etape">
@@ -531,7 +528,7 @@ backend web_cluster
             Statut : <strong>Success</strong> — Destination : NAS SRV-Truenas-TF (siège Tenerife)
         </div>
         <img class="photo-img" src="veeambackup.png" alt="Veeam Backup jobs">
-        <span class="photo-file">veeambackup.png</span>
+        <span class="photo-file">Console_Veeam_Backup_Status.png</span>
     </div>
 
     <div class="etape">
@@ -548,7 +545,7 @@ backend web_cluster
             La sauvegarde est ensuite stockée sur le NAS du siège.
         </div>
         <img class="photo-img" src="Capture d'écran 2026-03-30 132300.png" alt="Export configuration Stormshield">
-        <span class="photo-file">Capture d'écran 2026-03-30 132300.png</span>
+        <span class="photo-file">Export_Config_Maintenance_Stormshield.png</span>
     </div>
 
     <pre><span class="cmt"># Exemple CLI sauvegarde switch TP-Link</span>
