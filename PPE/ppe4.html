@@ -893,13 +893,13 @@
     <div class="photo-zone" style="border-color: #8e44ad;">
         <div class="photo-icon">🖊️</div>
         <div class="photo-label">Figure 1 — Architecture réseau redondante HSRP pour RE4</div>
-        <img src="PPE/schema-hsrp.png" 
+        <img src="schema-hsrp.png" 
              alt="Schéma maquette HSRP"
              onclick="document.getElementById('modal_tableau').showModal()"
              style="max-width:100%;border-radius:8px;cursor:pointer;margin-top:10px;">
         <dialog id="modal_tableau"><div class="modal-content">
             <button class="close-btn" onclick="document.getElementById('modal_tableau').close()">×</button>
-            <img src="PPE/schema-hsrp.png" alt="Schéma maquette HSRP">
+            <img src="schema-hsrp.png" alt="Schéma maquette HSRP">
         </div></dialog>
         <div class="photo-desc">
             FAI 1 → R1 (192.168.1.250) — FAI 2 → R2 (192.168.1.251)<br>
@@ -917,26 +917,26 @@
         <div class="photo-zone">
             <div class="photo-icon">🖥️</div>
             <div class="photo-label">Configuration interfaces — Router1</div>
-            <img src="PPE/conf-interfaces-router1.png" 
+            <img src="conf-interfaces-router1.png" 
                  alt="Config interfaces router1" 
                  onclick="document.getElementById('modal_r1_int').showModal()"
                  style="max-width:100%;border-radius:8px;cursor:pointer;margin-top:10px;">
             <dialog id="modal_r1_int"><div class="modal-content">
                 <button class="close-btn" onclick="document.getElementById('modal_r1_int').close()">×</button>
-                <img src="PPE/conf-interfaces-router1.png" alt="Config interfaces router1">
+                <img src="conf-interfaces-router1.png" alt="Config interfaces router1">
             </div></dialog>
             <div class="photo-desc">Interface Fa0/3/0 : 192.168.1.250/24 (LAN) — Fa0/3/1 : DHCP (WAN)</div>
         </div>
         <div class="photo-zone">
             <div class="photo-icon">🖥️</div>
             <div class="photo-label">Configuration interfaces — Router2</div>
-            <img src="PPE/conf-interfaces-router2.png" 
+            <img src="conf-interfaces-router2.png" 
                  alt="Config interfaces router2"
                  onclick="document.getElementById('modal_r2_int').showModal()"
                  style="max-width:100%;border-radius:8px;cursor:pointer;margin-top:10px;">
             <dialog id="modal_r2_int"><div class="modal-content">
                 <button class="close-btn" onclick="document.getElementById('modal_r2_int').close()">×</button>
-                <img src="PPE/conf-interfaces-router2.png" alt="Config interfaces router2">
+                <img src="conf-interfaces-router2.png" alt="Config interfaces router2">
             </div></dialog>
             <div class="photo-desc">Interface Fa0/3/0 : 192.168.1.251/24 (LAN) — Fa0/3/1 : DHCP (WAN)</div>
         </div>
@@ -956,26 +956,26 @@
         <div class="photo-zone">
             <div class="photo-icon">⚙️</div>
             <div class="photo-label">HSRP — Router1 (configuration)</div>
-            <img src="PPE/config-hsrp-router1.png" 
+            <img src="config-hsrp-router1.png" 
                  alt="HSRP router1"
                  onclick="document.getElementById('modal_hsrp1').showModal()"
                  style="max-width:100%;border-radius:8px;cursor:pointer;margin-top:10px;">
             <dialog id="modal_hsrp1"><div class="modal-content">
                 <button class="close-btn" onclick="document.getElementById('modal_hsrp1').close()">×</button>
-                <img src="PPE/config-hsrp-router1.png" alt="HSRP router1">
+                <img src="config-hsrp-router1.png" alt="HSRP router1">
             </div></dialog>
             <div class="photo-desc">Standby IP 192.168.1.254 — Priorité 95 — Preempt — Track Fa0/3/1</div>
         </div>
         <div class="photo-zone">
             <div class="photo-icon">⚙️</div>
             <div class="photo-label">HSRP — Router2 (configuration)</div>
-            <img src="PPE/conf-standby-router2.png" 
+            <img src="conf-standby-router2.png" 
                  alt="HSRP router2"
                  onclick="document.getElementById('modal_hsrp2').showModal()"
                  style="max-width:100%;border-radius:8px;cursor:pointer;margin-top:10px;">
             <dialog id="modal_hsrp2"><div class="modal-content">
                 <button class="close-btn" onclick="document.getElementById('modal_hsrp2').close()">×</button>
-                <img src="PPE/conf-standby-router2.png" alt="HSRP router2">
+                <img src="conf-standby-router2.png" alt="HSRP router2">
             </div></dialog>
             <div class="photo-desc">Router2 : priorité 100 (défaut) — devient actif si router1 bascule</div>
         </div>
@@ -992,26 +992,26 @@ ip nat inside source list 1 interface fastEthernet 0/3/1 overload</pre>
         <div class="photo-zone">
             <div class="photo-icon">🔄</div>
             <div class="photo-label">NAT — Router1</div>
-            <img src="PPE/nat-router1.png" 
+            <img src="nat-router1.png" 
                  alt="NAT router1"
                  onclick="document.getElementById('modal_nat1').showModal()"
                  style="max-width:100%;border-radius:8px;cursor:pointer;margin-top:10px;">
             <dialog id="modal_nat1"><div class="modal-content">
                 <button class="close-btn" onclick="document.getElementById('modal_nat1').close()">×</button>
-                <img src="PPE/nat-router1.png" alt="NAT router1">
+                <img src="nat-router1.png" alt="NAT router1">
             </div></dialog>
             <div class="photo-desc">NAT overload sur Fa0/3/1 — access-list 1 / 192.168.1.0/24</div>
         </div>
         <div class="photo-zone">
             <div class="photo-icon">🔄</div>
             <div class="photo-label">NAT — Router2</div>
-            <img src="PPE/nat-router2.png" 
+            <img src="nat-router2.png" 
                  alt="NAT router2"
                  onclick="document.getElementById('modal_nat2').showModal()"
                  style="max-width:100%;border-radius:8px;cursor:pointer;margin-top:10px;">
             <dialog id="modal_nat2"><div class="modal-content">
                 <button class="close-btn" onclick="document.getElementById('modal_nat2').close()">×</button>
-                <img src="PPE/nat-router2.png" alt="NAT router2">
+                <img src="nat-router2.png" alt="NAT router2">
             </div></dialog>
             <div class="photo-desc">NAT overload sur Fa0/3/1 — access-list 1 / 192.168.1.0/24</div>
         </div>
@@ -1019,13 +1019,13 @@ ip nat inside source list 1 interface fastEthernet 0/3/1 overload</pre>
     <div class="photo-zone">
         <div class="photo-icon">📋</div>
         <div class="photo-label">NAT router2 — vue configuration complète</div>
-        <img src="PPE/conf-nat-router2.png" 
+        <img src="conf-nat-router2.png" 
              alt="Conf NAT router2"
              onclick="document.getElementById('modal_nat2b').showModal()"
              style="max-width:100%;border-radius:8px;cursor:pointer;margin-top:10px;">
         <dialog id="modal_nat2b"><div class="modal-content">
             <button class="close-btn" onclick="document.getElementById('modal_nat2b').close()">×</button>
-            <img src="PPE/conf-nat-router2.png" alt="Conf NAT router2">
+            <img src="conf-nat-router2.png" alt="Conf NAT router2">
         </div></dialog>
         <div class="photo-desc">Configuration NAT complète sur router2 — ip nat inside / outside + overload</div>
     </div>
@@ -1045,13 +1045,13 @@ line vty 0 4
     <div class="photo-zone">
         <div class="photo-icon">🔐</div>
         <div class="photo-label">Installation SSH — Router1</div>
-        <img src="PPE/install-ssh-router.png" 
+        <img src="install-ssh-router.png" 
              alt="SSH router"
              onclick="document.getElementById('modal_ssh').showModal()"
              style="max-width:100%;border-radius:8px;cursor:pointer;margin-top:10px;">
         <dialog id="modal_ssh"><div class="modal-content">
             <button class="close-btn" onclick="document.getElementById('modal_ssh').close()">×</button>
-            <img src="PPE/install-ssh-router.png" alt="SSH router">
+            <img src="install-ssh-router.png" alt="SSH router">
         </div></dialog>
         <div class="photo-desc">Génération clé RSA 2048 bits — SSH v2 activé — domaine cicar.es</div>
     </div>
@@ -1060,13 +1060,13 @@ line vty 0 4
     <div class="photo-zone">
         <div class="photo-icon">✅</div>
         <div class="photo-label">Configuration finale — Router1 (show running-config)</div>
-        <img src="PPE/config-finale-router1.png" 
+        <img src="config-finale-router1.png" 
              alt="Config finale router1"
              onclick="document.getElementById('modal_final').showModal()"
              style="max-width:100%;border-radius:8px;cursor:pointer;margin-top:10px;">
         <dialog id="modal_final"><div class="modal-content">
             <button class="close-btn" onclick="document.getElementById('modal_final').close()">×</button>
-            <img src="PPE/config-finale-router1.png" alt="Config finale router1">
+            <img src="config-finale-router1.png" alt="Config finale router1">
         </div></dialog>
         <div class="photo-desc">Running-config complet de router1 : HSRP, NAT, SSH, interfaces configurées</div>
     </div>
@@ -1080,26 +1080,26 @@ line vty 0 4
         <div class="photo-zone">
             <div class="photo-icon">🟢</div>
             <div class="photo-label">show standby — Router1</div>
-            <img src="PPE/show-standby-router1.png" 
+            <img src="show-standby-router1.png" 
                  alt="Show standby router1"
                  onclick="document.getElementById('modal_st1').showModal()"
                  style="max-width:100%;border-radius:8px;cursor:pointer;margin-top:10px;">
             <dialog id="modal_st1"><div class="modal-content">
                 <button class="close-btn" onclick="document.getElementById('modal_st1').close()">×</button>
-                <img src="PPE/show-standby-router1.png" alt="Show standby router1">
+                <img src="show-standby-router1.png" alt="Show standby router1">
             </div></dialog>
             <div class="photo-desc">State: <strong>Active</strong> — VIP: 192.168.1.254 — Priorité 95 — Track Fa0/3/1 (Up, -10)</div>
         </div>
         <div class="photo-zone">
             <div class="photo-icon">🟡</div>
             <div class="photo-label">show standby — Router2</div>
-            <img src="PPE/show-standby-router2.png" 
+            <img src="show-standby-router2.png" 
                  alt="Show standby router2"
                  onclick="document.getElementById('modal_st2').showModal()"
                  style="max-width:100%;border-radius:8px;cursor:pointer;margin-top:10px;">
             <dialog id="modal_st2"><div class="modal-content">
                 <button class="close-btn" onclick="document.getElementById('modal_st2').close()">×</button>
-                <img src="PPE/show-standby-router2.png" alt="Show standby router2">
+                <img src="show-standby-router2.png" alt="Show standby router2">
             </div></dialog>
             <div class="photo-desc">State: <strong>Active</strong> (quand router1 bascule) — VIP: 192.168.1.254 — Priorité 100</div>
         </div>
@@ -1135,4 +1135,8 @@ line vty 0 4
 </div>
 
 <footer>
-    <strong>PONT Au
+    <strong>PONT Aurélien</strong> — BTS SIO SISR — AFPI Marcq-en-Barœul — Projet CICAR (El Hierro) — 2026
+</footer>
+
+</body>
+</html>
