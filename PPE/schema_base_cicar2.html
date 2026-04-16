@@ -88,12 +88,6 @@ body { font-family:'Segoe UI',sans-serif; background:#f0f4f8; }
 <text x="120" y="314" text-anchor="middle" font-size="9" fill="#555">TL-WA901-N · .54.30</text>
 <line x1="296" y1="303" x2="184" y2="303" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
 
-<!-- Clients -->
-<rect x="56" y="355" width="128" height="50" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
-<text x="120" y="375" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">💻  Postes Clients</text>
-<text x="120" y="390" text-anchor="middle" font-size="9" fill="#555">DHCP .54.100–200</text>
-<line x1="296" y1="318" x2="184" y2="380" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
-
 <!-- Switch → ESXi -->
 <line x1="388" y1="330" x2="388" y2="368" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
 
@@ -103,11 +97,13 @@ body { font-family:'Segoe UI',sans-serif; background:#f0f4f8; }
 <text x="388" y="408" text-anchor="middle" font-size="9.5" fill="#555">Hyperviseur principal · 192.168.54.1</text>
 
 <!-- ESXi → VMs -->
-<line x1="320" y1="422" x2="82"  y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
-<line x1="348" y1="422" x2="208" y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="320" y1="422" x2="84"  y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="348" y1="422" x2="209" y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
 <line x1="388" y1="422" x2="388" y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
-<line x1="426" y1="422" x2="558" y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="426" y1="422" x2="560" y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
 <line x1="450" y1="422" x2="688" y2="462" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<!-- ESXi → EL-PC1 (New Connection) -->
+<line x1="320" y1="422" x2="84" y2="535" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
 
 <!-- VM AD -->
 <rect x="30"  y="464" width="108" height="66" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" filter="url(#sh)"/>
@@ -144,13 +140,19 @@ body { font-family:'Segoe UI',sans-serif; background:#f0f4f8; }
 <text x="688" y="510" text-anchor="middle" font-size="9"  fill="#555">Apache/PHP/MariaDB</text>
 <text x="688" y="523" text-anchor="middle" font-size="8.5" fill="#888">.54.16</text>
 
+<!-- EL-PC1 (Moved from Switch to ESXi) -->
+<rect x="30" y="535" width="108" height="50" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" stroke-dasharray="4,2" filter="url(#sh)"/>
+<text x="84" y="555" text-anchor="middle" font-size="10" font-weight="700" fill="#155724">💻 EL-PC1</text>
+<text x="84" y="570" text-anchor="middle" font-size="9" fill="#555">Win 10 Pro (VDI)</text>
+<text x="84" y="582" text-anchor="middle" font-size="8.5" fill="#888">.54.101</text>
+
 <!-- ESXi Secondaire -->
-<rect x="45" y="565" width="184" height="62" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" stroke-dasharray="5,3" filter="url(#sh)"/>
-<text x="137" y="586" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🖥  ESXi Secondaire</text>
-<text x="137" y="600" text-anchor="middle" font-size="9.5" fill="#555">VMware ESXi 7.0 (secours)</text>
-<text x="137" y="614" text-anchor="middle" font-size="8.5" fill="#888">192.168.69.94</text>
-<line x1="284" y1="430" x2="190" y2="567" stroke="#5cb85c" stroke-width="1.5" stroke-dasharray="5,3"/>
-<text x="210" y="502" font-size="8.5" fill="#5cb85c" transform="rotate(-47,210,502)">Réplication</text>
+<rect x="45" y="595" width="184" height="62" rx="6" fill="#fff" stroke="#5cb85c" stroke-width="1.5" stroke-dasharray="5,3" filter="url(#sh)"/>
+<text x="137" y="616" text-anchor="middle" font-size="10.5" font-weight="700" fill="#155724">🖥  ESXi Secondaire</text>
+<text x="137" y="630" text-anchor="middle" font-size="9.5" fill="#555">VMware ESXi 7.0 (secours)</text>
+<text x="137" y="644" text-anchor="middle" font-size="8.5" fill="#888">192.168.69.94</text>
+<line x1="284" y1="430" x2="190" y2="597" stroke="#5cb85c" stroke-width="1.5" stroke-dasharray="5,3"/>
+<text x="210" y="532" font-size="8.5" fill="#5cb85c" transform="rotate(-47,210,532)">Réplication</text>
 
 <!-- ZONE DMZ -->
 <rect x="830" y="248" width="300" height="165" rx="10" fill="#fff3cd" stroke="#d4a017" stroke-width="2" opacity="0.75"/>
@@ -218,11 +220,11 @@ body { font-family:'Segoe UI',sans-serif; background:#f0f4f8; }
 <line x1="930" y1="752" x2="930" y2="770" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#ar)"/>
 
 <!-- Adressage recap -->
-<rect x="22" y="658" width="420" height="72" rx="6" fill="#f9f9f9" stroke="#ccc" stroke-width="1"/>
-<text x="32" y="674" font-size="8.5" font-weight="700" fill="#2c3e50">📋  Plan d'adressage</text>
-<text x="32" y="688" font-size="8" fill="#555">LAN : 192.168.54.0/24 · DMZ : 192.168.64.0/24 · Réplication : 192.168.69.0/24</text>
-<text x="32" y="702" font-size="8" fill="#555">Siège TF : 192.168.57.0/24 · HAProxy : .64.1 · ESXi principal : .54.1</text>
-<text x="32" y="716" font-size="8" fill="#555">AD .54.10 · RADIUS .54.11 · WEB-01 .54.15 · WEB-02 .54.16 · Zimbra .54.40</text>
+<rect x="22" y="688" width="420" height="72" rx="6" fill="#f9f9f9" stroke="#ccc" stroke-width="1"/>
+<text x="32" y="704" font-size="8.5" font-weight="700" fill="#2c3e50">📋  Plan d'adressage</text>
+<text x="32" y="718" font-size="8" fill="#555">LAN : 192.168.54.0/24 · DMZ : 192.168.64.0/24 · Réplication : 192.168.69.0/24</text>
+<text x="32" y="732" font-size="8" fill="#555">Siège TF : 192.168.57.0/24 · HAProxy : .64.1 · ESXi principal : .54.1</text>
+<text x="32" y="746" font-size="8" fill="#555">AD .54.10 · RADIUS .54.11 · WEB-01 .54.15 · WEB-02 .54.16 · Zimbra .54.40</text>
 
 </svg>
 
