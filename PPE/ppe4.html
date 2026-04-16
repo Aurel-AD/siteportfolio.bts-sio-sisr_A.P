@@ -402,8 +402,7 @@
     <ul>
         <li>Accès distant centralisé MobaXterm (SSH, RDP, HTTPS)</li>
         <li>Authentification 2FA sur Stormshield (Google Authenticator)</li>
-        <li>Gestion des flux (règles de filtrage pare-feu)</li>
-        <li>GLPI + GLPI_Agent (inventaire + helpdesk)</li>
+        <li>Gestion des flux (règles de filtrage SNS)</li> <li>GLPI + GLPI_Agent</li>        
         <li>Tests remontées équipements et tickets</li>
         <li>Procédure utilisateur helpdesk</li>
     </ul>
@@ -572,7 +571,7 @@
     </div>
 
     <div class="etape">
-        <div class="etape-title">🌊 3. Gestion des flux — VPN IPsec</div>
+        <div class="etape-title">🌊 3.A Gestion des flux — VPN IPsec</div>
         <p>Un tunnel VPN IPsec est établi entre le Stormshield SNS 310 de l'agence El Hierro et le pare-feu du siège de Tenerife, permettant les accès distants sécurisés et les sauvegardes Veeam.</p>
     </div>
     
@@ -587,7 +586,20 @@
         </div>
         <span class="photo-file">Capture d'écran 2026-03-30 085743.png</span>
     </div>
+     <div class="etape">
+        <div class="etape-title">🛡️ 3.B Gestion des flux (Règles de filtrage)</div>
+        <p>Configuration des politiques de sécurité sur le Stormshield SNS 310 pour autoriser uniquement les flux nécessaires (HTTP, HTTPS, SSH) et assurer la segmentation réseau.</p>
+    </div>
 
+    <div class="photo-zone">
+        <div class="photo-icon">🛡️</div> <div class="photo-label">PHOTO 5 — Politique de filtrage Stormshield SNS</div>
+        <div class="photo-desc">
+            <img src="Capture d'écran 2026-03-30 122922.png" alt="Règles de filtrage" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">
+            <br>
+            Détail des règles de filtrage (Slot 1) : les flux sont inspectés par l'IPS. On autorise l'administration du firewall et les communications inter-sites via le VPN.
+        </div>
+        <span class="photo-file">Capture d'écran 2026-03-30 122922.png</span>
+    </div>
     <div class="etape">
         <div class="etape-title">📦 4. GLPI — Inventaire et Helpdesk</div>
         <p>GLPI installé au siège, avec GLPI_Agent sur tous les postes/serveurs pour l'inventaire automatique et la gestion des tickets.</p>
