@@ -12,25 +12,15 @@
     <meta property="og:title" content="Portfolio Aurélien Pont">
     <meta property="og:description" content="Portfolio BTS SIO SISR - administration système et cybersécurité">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/images/photo1.webp">
+    <meta property="og:image" content="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/images/photo1.png">
     <meta property="og:url" content="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='15' fill='%2334d399'/><text x='50' y='50' font-size='45' text-anchor='middle' dominant-baseline='central' fill='white' font-family='Arial, sans-serif' font-weight='bold'>AP</text></svg>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
 </head>
 
-<body>
-    <script>
-if (sessionStorage.getItem('bootAnimationPlayed') ||
-    navigator.userAgent.includes("Lighthouse") ||
-    navigator.userAgent.includes("Googlebot") || navigator.userAgent.includes("Chrome-Lighthouse")) {
-    document.write('<style>#boot-screen { display: none !important; } body.is-booting #wrapper { opacity: 1 !important; }</style>');
-}
-</script>
+<body class="is-preload">
     <!-- ANIMATION DE DEMARRAGE (BOOT SEQUENCE) essai-->
 <div id="boot-screen">
     <div class="terminal-content">
@@ -89,7 +79,7 @@ if (sessionStorage.getItem('bootAnimationPlayed') ||
                         </header>
                         <p>Je suis <strong>Aurélien Pont</strong>, étudiant en BTS SIO option SISR en alternance chez <strong>Novares</strong>. Je me spécialise dans l'administration système, la gestion des infrastructures réseau et la cybersécurité en environnement industriel. Au quotidien, j'interviens sur des problématiques concrètes : déploiement de postes, gestion des accès, sécurisation des connexions (VPN, MFA) et support utilisateurs.</p>
                     </div>
-                    <span class="image"><img src="images/photo1.png" alt="Photo professionnelle d'Aurélien Pont" fetchpriority="high"></span>
+                    <span class="image"><img src="images/photo1.png" alt="Photo professionnelle d'Aurélien Pont" loading="lazy"></span>
                 </div>
             </section>
 
@@ -153,7 +143,7 @@ if (sessionStorage.getItem('bootAnimationPlayed') ||
                     
                     <!-- Image en bas -->
                     <div class="about-image">
-                        <img src="images/fresc.webp" alt="Transition professionnelle" loading="lazy">
+                        <img src="images/fresc.png" alt="Transition professionnelle">
                         <p class="image-caption">De la matière à la donnée, chaque métier a posé une brique de mon parcours</p>
                     </div>
                 </section>
@@ -730,7 +720,7 @@ if (sessionStorage.getItem('bootAnimationPlayed') ||
                     <div class="tableau-iframe" style="text-align: center; margin-top: 2rem;">
                         <!-- L'image cliquable -->
                         <div onclick="openPdfModal('files/tableau_bts_e4.pdf')" style="cursor: zoom-in; display: inline-block;">
-                            <img src="images/apercu-e4.png" loading="lazy" alt="Aperçu du tableau E4" style="width: 100%; max-width: 800px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid #34d399; transition: transform 0.3s ease;">
+                            <img src="images/apercu-e4.png" alt="Aperçu du tableau E4" style="width: 100%; max-width: 800px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid #34d399; transition: transform 0.3s ease;">
                             
                             <!-- L'indication en dessous -->
                             <p style="font-size: 1.1em; color: #34d399; margin-top: 15px; font-weight: bold;">
@@ -1034,13 +1024,12 @@ if (sessionStorage.getItem('bootAnimationPlayed') ||
 
     <!-- SCRIPTS -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.min.js" defer></script>
-    <script src="assets/js/jquery.scrollex.min.js" defer></script>
-    <script src="assets/js/jquery.scrolly.min.js" defer></script>
-    <script src="assets/js/browser.min.js" defer></script>
-    <script src="assets/js/breakpoints.min.js" defer></script>
-    <script src="assets/js/util.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
     <!-- Lightbox pour les attestations -->
     <div id="certificate-viewer" class="certificate-viewer" onclick="closeCertificateOnBackground(event)">
@@ -1197,85 +1186,3 @@ if (sessionStorage.getItem('bootAnimationPlayed') ||
         </p>
     </div>
 </div>
-    <!-- 1. ON AJOUTE LE CERVEAU DU SITE (LE JAVASCRIPT) ICI -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        
-        // ==========================================
-        // LOGIQUE DU BOOT SCREEN (L'animation de démarrage)
-        // ==========================================
-        const bootLines = [
-            "Initializing system...",
-            "Loading kernel modules...",
-            "Connecting to Novares network...",
-            "Establishing secure VPN tunnel...",
-            "Loading cybersecurity protocols...",
-            "Access granted. Welcome, Aurélien Pont.",
-            "Launching portfolio.exe..."
-        ];
-
-        const terminalLines = document.getElementById("terminal-lines");
-        const currentLineElement = document.getElementById("terminal-current-line");
-        const bootScreen = document.getElementById("boot-screen");
-
-        if (bootScreen && terminalLines && currentLineElement) {
-            let lineIndex = 0;
-            let charIndex = 0;
-
-            function typeLine() {
-                if (lineIndex < bootLines.length) {
-                    let currentLineText = bootLines[lineIndex];
-                    if (charIndex < currentLineText.length) {
-                        currentLineElement.textContent += currentLineText.charAt(charIndex);
-                        charIndex++;
-                        setTimeout(typeLine, 40);
-                    } else {
-                        const div = document.createElement("div");
-                        div.className = "terminal-line success";
-                        div.textContent = currentLineText;
-                        terminalLines.appendChild(div);
-                        currentLineElement.textContent = "";
-                        charIndex = 0;
-                        lineIndex++;
-                        setTimeout(typeLine, 500);
-                    }
-                } else {
-                    setTimeout(() => {
-                        bootScreen.classList.add("hidden");
-                        document.body.classList.remove("is-booting");
-                    }, 1000);
-                }
-            }
-            typeLine();
-        }
-
-        // ==========================================
-        // LOGIQUE DES FILTRES (Réalisations Tech)
-        // ==========================================
-        const filterButtons = document.querySelectorAll(".filter-btn");
-        const certCards = document.querySelectorAll(".cert-card");
-
-        filterButtons.forEach(btn => {
-            btn.addEventListener("click", () => {
-                filterButtons.forEach(b => b.classList.remove("active"));
-                btn.classList.add("active");
-
-                const filterValue = btn.getAttribute("data-filter");
-
-                certCards.forEach(card => {
-                    const category = card.getAttribute("data-category");
-                    if (filterValue === "top") {
-                        card.style.display = card.classList.contains("top") ? "flex" : "none";
-                    } else if (category && category.includes(filterValue)) {
-                        card.style.display = "flex";
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
-            });
-        });
-    });
-    </script>
-
-</body>
-</html> 
