@@ -143,6 +143,11 @@
         .info-card p {
             color: #1e3a8a;
             line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .info-card p:last-child {
+            margin-bottom: 0;
         }
         
         .demo-section {
@@ -159,6 +164,11 @@
             font-size: 1.8em;
             border-bottom: 3px solid #667eea;
             padding-bottom: 10px;
+        }
+
+        .demo-section h4 {
+            color: #667eea;
+            margin-bottom: 15px;
         }
         
         .tool-demo {
@@ -233,6 +243,86 @@
             font-size: 1.2em;
         }
 
+        .ticket-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .ticket-badge {
+            background: #d73a4a;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .ticket-meta {
+            color: #586069;
+        }
+
+        .ticket-recu {
+            background: white;
+            border-left: 4px solid #d73a4a;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 25px;
+        }
+
+        .ticket-recu strong {
+            color: #d73a4a;
+        }
+
+        .ticket-recu p {
+            margin: 8px 0 0 0;
+            color: #24292f;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 15px 20px;
+            align-items: start;
+        }
+
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .step-content strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .step-content p {
+            margin: 0;
+            color: #586069;
+        }
+
+        .ticket-resolu {
+            background: #dcffe4;
+            border: 1px solid #2ea44f;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 25px;
+        }
+
+        .ticket-resolu strong {
+            color: #2ea44f;
+        }
+
         .citrix-info {
             background: #eff6ff;
             border: 2px solid #3b82f6;
@@ -253,6 +343,10 @@
             margin-bottom: 10px;
         }
 
+        .citrix-info p:last-child {
+            margin-bottom: 0;
+        }
+
         .highlight-box {
             background: #fef3c7;
             border: 2px solid #f59e0b;
@@ -261,11 +355,24 @@
             margin: 20px 0;
         }
 
+        .highlight-box h4 {
+            color: #92400e;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .highlight-box p {
+            color: #92400e;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
         .highlight-box strong {
             color: #92400e;
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.1em;
         }
 
         .footer {
@@ -329,6 +436,17 @@
                 grid-template-columns: 1fr;
             }
             
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .step-number {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8em;
+            }
+            
             .back-to-top {
                 bottom: 20px;
                 right: 20px;
@@ -346,7 +464,7 @@
                 <p class="subtitle">Support technique via infrastructure Citrix</p>
             </div>
             
-         <div class="competences-sidebar">
+            <div class="competences-sidebar">
                 <h3>🎯 Compétences E4 validées</h3>
                 <div class="competence-list">
                     <div class="competence-item">
@@ -360,7 +478,58 @@
         <div class="content">
             <div class="info-card">
                 <h3>📋 Contexte professionnel</h3>
-                <p>Dans le cadre de mes missions de support technique, j'interviens à distance sur les postes de travail des utilisateurs via des outils professionnels. L'infrastructure repose sur des serveurs Citrix qui centralisent l'accès aux applications d'assistance à distance. Les connexions sont sécurisées par authentification multi-facteurs et toutes les sessions sont tracées pour garantir la sécurité et la conformité.</p>
+                <p>Dans le cadre de mes missions de support technique, j'interviens à distance sur les postes de travail des utilisateurs via des outils professionnels. Le parc est constitué de postes Windows 10/11 gérés via Active Directory, répartis sur plusieurs sites.</p>
+                <p>J'utilise les serveurs Citrix pour accéder à DameWare, complétés par le client RDP natif de Windows et TeamViewer pour les accès hors réseau. Les connexions sont sécurisées par authentification multi-facteurs (MFA) et toutes les sessions sont tracées pour garantir la sécurité et la conformité.</p>
+            </div>
+
+            <div class="demo-section">
+                <h2>📝 Mise en situation</h2>
+                
+                <div style="background: #f6f8fa; border: 1px solid #d1d9e0; border-radius: 12px; padding: 30px;">
+                    <div class="ticket-header">
+                        <span class="ticket-badge">Ticket #4872</span>
+                        <span class="ticket-meta">Priorité : Moyenne</span>
+                        <span class="ticket-meta">|</span>
+                        <span class="ticket-meta">Utilisateur : Sophie M. — Service Comptabilité</span>
+                    </div>
+                    
+                    <div class="ticket-recu">
+                        <strong>📥 Ticket reçu :</strong>
+                        <p>« Depuis la mise à jour de ce matin, je ne peux plus lancer le logiciel de facturation. J'ai un message d'erreur "Accès refusé". Besoin d'aide rapidement svp. »</p>
+                    </div>
+
+                    <h4>🔽 Déroulé de l'intervention</h4>
+
+                    <div class="steps-grid">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong>Prise de contact via Teams</strong>
+                            <p>J'appelle l'utilisatrice via Teams pour la rassurer et lui expliquer comment je vais procéder. Je lui indique que je vais prendre la main à distance avec DameWare et qu'elle pourra suivre mes actions directement sur son écran.</p>
+                        </div>
+
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <strong>Connexion DameWare via Citrix</strong>
+                            <p>Je me connecte au portail Citrix, je lance DameWare et je prends la main sur le poste de Sophie. Comme nous sommes toujours en communication Teams, je commente chacune de mes actions.</p>
+                        </div>
+
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <strong>Diagnostic et résolution</strong>
+                            <p>Via DameWare, je vérifie les permissions du dossier de l'application. L'utilisatrice voit en direct ce que je fais sur son écran. Je constate que le groupe "Utilisateurs" a perdu les droits d'exécution après la mise à jour. Je rétablis les permissions via les propriétés du dossier.</p>
+                        </div>
+
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <strong>Vérification et clôture</strong>
+                            <p>Je demande à Sophie de tester le logiciel : il s'ouvre normalement. Je la remercie via Teams, je ferme la session DameWare et je clôture le ticket avec le compte-rendu de l'intervention.</p>
+                        </div>
+                    </div>
+
+                    <div class="ticket-resolu">
+                        <strong>✅ Ticket résolu</strong> — Durée : 15 minutes — Outils : DameWare (Citrix) + Teams
+                    </div>
+                </div>
             </div>
 
             <div class="demo-section">
@@ -368,35 +537,36 @@
                 
                 <p style="color: #586069; margin-bottom: 30px;">Pour réaliser mes interventions à distance, j'utilise trois outils professionnels complémentaires adaptés à différents contextes :</p>
 
-                <div class="tool-demo" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="tool-demo">
                     <div class="tool-card">
                         <span class="tool-card-icon">🖥️</span>
                         <h3>Remote Desktop Protocol (RDP)</h3>
-                        <p>Protocole Microsoft permettant de prendre le contrôle d'un ordinateur distant. Fonctionne sur le port 3389 et ouvre une session sur le poste en tant qu'administrateur ou utilisateur standard. J'utilise RDP pour les interventions standard nécessitant un accès au bureau Windows complet.</p>
+                        <p>Protocole Microsoft natif de Windows permettant de prendre le contrôle d'un ordinateur distant. Fonctionne sur le port 3389. J'utilise RDP directement depuis mon poste technicien, principalement après un déploiement SCCM pour finaliser la configuration sur certains postes. La session verrouille l'écran de l'utilisateur pendant l'intervention.</p>
                     </div>
 
                     <div class="tool-card">
                         <span class="tool-card-icon">🔧</span>
                         <h3>DameWare Remote Support</h3>
-                        <p>Solution professionnelle de contrôle à distance développée par SolarWinds. Elle permet d'accéder directement à l'interface complète de l'utilisateur ainsi qu'aux outils système (invite de commandes, gestionnaire des tâches, registre) et prend en charge le Wake-on-LAN pour démarrer des machines éteintes. Déployée via Citrix.</p>
+                        <p>Solution professionnelle de contrôle à distance développée par SolarWinds. Le service utilise le port 6129. Elle permet d'accéder directement à l'interface complète de l'utilisateur ainsi qu'aux outils système (invite de commandes, gestionnaire des tâches, registre). L'application est publiée sur les serveurs Citrix et accessible depuis le portail web.</p>
                     </div>
 
                     <div class="tool-card">
                         <span class="tool-card-icon">🌐</span>
                         <h3>TeamViewer</h3>
-                        <p>Solution cloud indépendante, idéale pour les interventions rapides ou pour assister des utilisateurs hors réseau d'entreprise (télétravail, sites distants). Fonctionne sur le port 80 via Internet sans configuration réseau complexe. Je me connecte en tant qu'administrateur avec les identifiants issus de l'Active Directory ou via un simple ID et mot de passe temporaire.</p>
+                        <p>Solution cloud indépendante, idéale pour les interventions rapides ou pour assister des utilisateurs hors réseau d'entreprise (télétravail, sites distants). Fonctionne via Internet sans configuration réseau complexe [Port principal 5938 TCP / UDP ou 443 TCP voir 80 TCP mais pas securisé]. Je me connecte avec les identifiants administrateur de la société. Pour les utilisateurs en télétravail, je peux également utiliser l'ID temporaire et le mot de passe fournis par l'utilisateur.</p>
                     </div>
                 </div>
 
                 <div class="feature-list">
                     <h4>Fonctionnalités techniques utilisées :</h4>
                     <ul>
-                        <li>Prise de contrôle à distance via RDP (port 3389), DameWare ou TeamViewer (port 80) selon le contexte</li>
-                        <li>Transfert de fichiers entre mon poste et le poste utilisateur</li>
-                        <li>Messagerie instantanée intégrée pour communiquer avec l'utilisateur pendant l'intervention</li>
-                        <li>Accès aux outils Windows : Observateur d'événements, Gestionnaire des tâches, Services</li>
-                        <li>Consultation des partages réseau et configuration des imprimantes</li>
-                        <li>Enregistrement des sessions d'assistance pour la documentation et le suivi (RDP/DameWare)</li>
+                        <li>Prise de contrôle à distance selon le contexte : RDP pour les finalisations post-SCCM, DameWare pour l'accès aux outils système, TeamViewer pour le télétravail</li>
+                        <li>Communication avec l'utilisateur via Teams en parallèle de la prise en main (DameWare)</li>
+                        <li>Transfert de fichiers entre mon poste et le poste utilisateur (RDP, DameWare)</li>
+                        <li>Messagerie instantanée intégrée pour communiquer avec l'utilisateur pendant l'intervention (DameWare, TeamViewer)</li>
+                        <li>Accès aux outils Windows : Observateur d'événements, Gestionnaire des tâches, Services (RDP, DameWare)</li>
+                        <li>Consultation des partages réseau et configuration des imprimantes (RDP)</li>
+                        <li>Enregistrement des sessions d'assistance pour la documentation et le suivi (RDP, DameWare)</li>
                         <li>Connexion simplifiée via ID TeamViewer pour les utilisateurs en télétravail</li>
                     </ul>
                 </div>
@@ -406,10 +576,16 @@
                 <h2>🖧 Infrastructure et déploiement</h2>
                 
                 <div class="citrix-info">
-                    <h3>Infrastructure Citrix (RDP & DameWare)</h3>
-                    <p><strong>Principe de fonctionnement :</strong> Citrix est une plateforme de virtualisation qui permet de publier des applications sur des serveurs centralisés. Au lieu d'installer RDP et DameWare sur chaque poste de technicien, ces outils sont hébergés sur les serveurs Citrix et accessibles depuis n'importe quel navigateur web.</p>
-                    <p><strong>Processus de connexion :</strong> Je me connecte au portail Citrix avec mes identifiants → J'accède aux applications publiées (RDP ou DameWare) → Je lance l'outil désiré → L'application s'exécute sur le serveur Citrix → Je peux alors me connecter au poste de l'utilisateur final.</p>
-                    <p><strong>Avantages :</strong> Cette architecture centralise la gestion (pas besoin d'installer les outils sur chaque poste), améliore la sécurité (les connexions passent par un point contrôlé), et garantit que tous les techniciens utilisent la même version des logiciels.</p>
+                    <h3>Infrastructure Citrix (DameWare)</h3>
+                    <p><strong>Principe de fonctionnement :</strong> Citrix est une plateforme de virtualisation qui permet de centraliser les applications métiers. Au lieu d'installer DameWare sur mon propre ordinateur, l'application est hébergée sur des serveurs distants. Cela me permet d'accéder à mes outils de support depuis n'importe quel poste via un simple portail web.</p>
+                    <p><strong>Processus de connexion :</strong> Je me connecte au portail Citrix avec mes identifiants → J'accède au catalogue d'applications → Je lance DameWare (l'application s'exécute sur le serveur Citrix) → Je saisis le nom du poste cible → Le serveur Citrix établit la connexion avec l'utilisateur via le port TCP 6129.</p>
+                    <p><strong>Avantages :</strong> Cette architecture centralise la gestion (pas besoin d'installer les outils sur chaque poste), améliore la sécurité (les connexions passent par un point contrôlé), et garantit que tous les techniciens utilisent la même version du logiciel.</p>
+                </div>
+
+                <div class="citrix-info" style="margin-top: 20px;">
+                    <h3>RDP (Protocole natif Windows)</h3>
+                    <p><strong>Fonctionnement :</strong> RDP est intégré nativement à Windows. Je l'utilise directement depuis mon poste technicien via le client Bureau à distance (mstsc.exe) pour établir une connexion sur le port 3389 vers le poste de l'utilisateur.</p>
+                    <p><strong>Usage typique :</strong> J'interviens principalement après un déploiement d'applications ou de mises à jour via SCCM, pour finaliser la configuration sur certains postes (vérification de la bonne installation, ajustement de paramètres, reprise d'anciennes données). La session RDP verrouille l'écran de l'utilisateur pendant toute la durée de l'intervention.</p>
                 </div>
 
                 <div class="citrix-info" style="margin-top: 20px;">
@@ -420,11 +596,17 @@
                 </div>
 
                 <div class="highlight-box">
-                    <strong>🔐 Sécurité et traçabilité</strong>
-                    <strong>Authentification :</strong> Connexion sécurisée avec identifiant et mot de passe Active Directory, complétée par une authentification à double facteur (code reçu sur smartphone ou clé de sécurité).<br><br>
-                    <strong>Chiffrement :</strong> Toutes les communications sont chiffrées pour protéger les données échangées entre les serveurs et les postes de travail.<br><br>
-                    <strong>Contrôle d'accès :</strong> Seuls les techniciens autorisés (appartenant aux groupes Active Directory appropriés) peuvent accéder aux outils d'assistance. Des règles de pare-feu limitent également les accès par adresse IP.<br><br>
-                    <strong>Traçabilité :</strong> Chaque session d'assistance est enregistrée dans les journaux système (qui s'est connecté, quand, sur quel poste) pour assurer un suivi complet et respecter les obligations de sécurité (RGPD, audits).
+                    <h4>🔐 Authentification</h4>
+                    <p>Connexion sécurisée avec identifiant et mot de passe Active Directory, complétée par une authentification multi-facteurs (MFA) : code reçu sur smartphone ou clé de sécurité.</p>
+                    
+                    <h4>🔒 Chiffrement</h4>
+                    <p>Toutes les communications sont chiffrées pour protéger les données échangées entre les serveurs et les postes de travail.</p>
+                    
+                    <h4>🛡️ Contrôle d'accès</h4>
+                    <p>Seuls les techniciens autorisés (appartenant aux groupes Active Directory appropriés) peuvent accéder aux outils d'assistance. Des règles de pare-feu limitent également les accès par adresse IP.</p>
+                    
+                    <h4>📝 Traçabilité</h4>
+                    <p>Chaque session d'assistance est enregistrée dans les journaux système (qui s'est connecté, quand, sur quel poste) pour assurer un suivi complet et respecter les obligations de conformité (audits internes).</p>
                 </div>
             </div>
 
@@ -434,6 +616,8 @@
                 <div class="feature-list">
                     <h4>Interventions techniques courantes :</h4>
                     <ul>
+                        <li>Finalisation post-déploiement SCCM : vérification et ajustement de la configuration via RDP</li>
+                        <li>Résolution d'incidents utilisateur via DameWare avec accompagnement en direct sur Teams</li>
                         <li>Diagnostic réseau : utilisation de commandes ipconfig, ping, tracert pour identifier les problèmes de connexion</li>
                         <li>Gestion des services Windows : démarrage/arrêt de services via la console services.msc</li>
                         <li>Installation de logiciels : déploiement silencieux d'applications avec les paramètres appropriés</li>
@@ -447,7 +631,7 @@
                 <div class="info-card">
                     <h3>💡 Bénéfices de cette solution</h3>
                     <p><strong>Efficacité opérationnelle :</strong> L'assistance à distance réduit considérablement les temps d'intervention. Plus besoin de se déplacer physiquement, ce qui permet de traiter plus de demandes et de résoudre les incidents plus rapidement.</p>
-                    <p><strong>Disponibilité :</strong> Les outils sont accessibles depuis n'importe où via le portail Citrix, ce qui facilite le télétravail et les interventions en dehors des horaires de bureau si nécessaire.</p>
+                    <p><strong>Disponibilité :</strong> Les outils sont accessibles depuis n'importe où via le portail Citrix ou le client RDP natif, ce qui facilite le télétravail et les interventions en dehors des horaires de bureau si nécessaire.</p>
                     <p><strong>Standardisation :</strong> Tous les techniciens utilisent les mêmes outils et versions, ce qui simplifie la formation, le partage de connaissances et assure une qualité de service homogène.</p>
                     <p><strong>Supervision :</strong> Les responsables peuvent suivre l'activité des techniciens, identifier les postes problématiques récurrents et améliorer continuellement les processus de support.</p>
                 </div>
@@ -460,8 +644,7 @@
         </div>
     </div>
 
-        <a href="#" class="back-to-top" id="backToTop">Retour</a>
-    </div>
+    <a href="#" class="back-to-top" id="backToTop">← Retour au portfolio</a>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
