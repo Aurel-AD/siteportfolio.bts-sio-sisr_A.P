@@ -34,9 +34,12 @@
             background: linear-gradient(135deg, #78be20, #5a9e18);
             color: white;
             padding: 40px;
-            text-align: center;
             position: relative;
             overflow: hidden;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
         }
         
         .header::before {
@@ -48,6 +51,11 @@
             bottom: 0;
             background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
             opacity: 0.1;
+        }
+        
+        .header-main {
+            position: relative;
+            z-index: 1;
         }
         
         .header h1 {
@@ -75,6 +83,8 @@
             border-radius: 10px;
             padding: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
         }
 
         .competences-sidebar h3 {
@@ -265,20 +275,21 @@
             bottom: 30px;
             right: 30px;
             z-index: 9999;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            padding: 12px 18px;
             background: linear-gradient(135deg, #78be20, #5a9e18);
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            text-align: center;
             text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 24px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            font-size: 1.5em;
+            border: none;
+            cursor: pointer;
         }
         
         .back-to-top.show {
@@ -298,9 +309,9 @@
             }
             
             .header {
+                grid-template-columns: 1fr;
+                gap: 20px;
                 padding: 24px;
-                grid-template-columns: 1fr !important;
-                gap: 20px !important;
             }
             
             .header h1 {
@@ -324,24 +335,24 @@
             .back-to-top {
                 bottom: 20px;
                 right: 20px;
-                width: 45px;
-                height: 45px;
+                padding: 10px 16px;
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header" style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
-            <div>
+        <div class="header">
+            <div class="header-main">
                 <h1>👥 Ajout d'utilisateur Meraki</h1>
-                <div class="subtitle">Procédure Novares - Gestion des accès Cisco Meraki</div>
+                <p class="subtitle">Procédure Novares - Gestion des accès Cisco Meraki</p>
             </div>
             
             <div class="competences-sidebar">
                 <h3>🎯 Compétences E4 validées</h3>
                 <div class="competence-list">
-                    <div class="competence-item"
+                    <div class="competence-item">
                         <span class="competence-badge">A1, A6</span>
                         <span class="competence-text">Gestion des droits d'accès réseau</span>
                     </div>
@@ -356,7 +367,7 @@
             </div>
             
             <div class="highlight">
-                <strong>🎯 Déclenchement :</strong> La procédure est initiée par une demande validée via Freshdesk, après autorisation du responsable hiérarchique et vérification des besoins d'accès.
+                <strong>🎯 Déclenchement :</strong> La procédure est initiée par une demande validée via Freshservice, après autorisation du responsable hiérarchique et vérification des besoins d'accès.
             </div>
             
             <div class="procedure">
@@ -368,7 +379,7 @@
                         <h3>Connexion au portail Cisco Meraki</h3>
                     </div>
                     <div class="step-content">
-                        <p>Accès au tableau de bord Cisco Meraki via une connexion sécurisée avec authentification administrateur.</p>
+                        <p>Accéder au tableau de bord Cisco Meraki via une connexion sécurisée avec authentification administrateur.</p>
                         
                         <div class="tech-info">
                             <strong>🔐 Sécurité :</strong> L'accès au portail Meraki nécessite des identifiants administrateur avec des privilèges de gestion des utilisateurs. La connexion est sécurisée via HTTPS et peut nécessiter une authentification multi-facteurs.
@@ -382,7 +393,7 @@
                         <h3>Navigation vers la gestion des utilisateurs</h3>
                     </div>
                     <div class="step-content">
-                        <p>Accès au menu de gestion des utilisateurs dans l'interface d'administration Meraki.</p>
+                        <p>Accéder au menu de gestion des utilisateurs dans l'interface d'administration Meraki.</p>
                         
                         <div class="tech-info">
                             <strong>📍 Navigation :</strong> Network-wide > Configure > Users and Splash Access
@@ -398,23 +409,22 @@
                         <h3>Création du nouvel utilisateur</h3>
                     </div>
                     <div class="step-content">
-                        <p>Saisie des informations de l'utilisateur et configuration de ses paramètres d'accès.</p>
+                        <p>Saisir les informations de l'utilisateur et configurer ses paramètres d'accès.</p>
                         
                         <div style="margin: 16px 0;">
                             <h4 style="margin-bottom: 8px;">Informations requises :</h4>
                             <ul style="margin-left: 20px; color: #656d76;">
                                 <li><strong>Nom complet</strong> : Prénom et nom de l'utilisateur</li>
                                 <li><strong>Adresse email</strong> : Adresse professionnelle obligatoire</li>
-                                <li><strong>Durée</strong> : Temps que la personne reste dans l'entreprise( heures, jours, semaines</li>
+                                <li><strong>Durée</strong> : Temps que la personne reste dans l'entreprise (heures, jours, semaines)</li>
                             </ul>
                         </div>
                         
-                         <div class="tech-info">
+                        <div class="tech-info">
                             <strong>🛡️ Principe du moindre privilège :</strong> Chaque utilisateur ne reçoit que les droits strictement nécessaires à l'exercice de ses fonctions, limitant ainsi les risques de sécurité.
                         </div>
                     </div>
                 </div>
-                
                 
                 <div class="step">
                     <div class="step-header">
@@ -422,10 +432,10 @@
                         <h3>Validation et enregistrement</h3>
                     </div>
                     <div class="step-content">
-                        <p>Vérification des informations saisies et activation du compte utilisateur.</p>
+                        <p>Vérifier les informations saisies et activer le compte utilisateur.</p>
                         
                         <div class="highlight">
-                            <strong>✅ Contrôle qualité :</strong> Vérifier la correspondance email/identité,  et l'attribution du mot de passe se fait par e-mail et c'est la plateforme qui fournit le mot de passe.
+                            <strong>✅ Contrôle qualité :</strong> Vérifier la correspondance email/identité. L'attribution du mot de passe se fait par e-mail, c'est la plateforme qui fournit le mot de passe.
                         </div>
                         
                         <p>Une fois validé, le compte est immédiatement actif et l'utilisateur peut se connecter au réseau Wi-Fi avec ses identifiants.</p>
@@ -438,13 +448,13 @@
                         <h3>Documentation et clôture</h3>
                     </div>
                     <div class="step-content">
-                        <p>Mise à jour des registres et fermeture du ticket de demande.</p>
+                        <p>Mettre à jour les registres et fermer le ticket de demande.</p>
                         
                         <div style="margin: 16px 0;">
                             <h4 style="margin-bottom: 8px;">Actions de finalisation :</h4>
                             <ul style="margin-left: 20px; color: #656d76;">
                                 <li>Mise à jour du registre des accès réseau</li>
-                                <li>Documentation dans le ticket Freshdesk</li>
+                                <li>Documentation dans le ticket Freshservice</li>
                                 <li>Notification au demandeur de la création du compte</li>
                                 <li>Archivage pour traçabilité et audits</li>
                             </ul>
@@ -465,7 +475,7 @@
                     <div style="margin: 8px 0;">✅ <strong>Droits :</strong> Attribution du profil approprié au rôle</div>
                     <div style="margin: 8px 0;">✅ <strong>Sécurité :</strong> Politique de mot de passe respectée</div>
                     <div style="margin: 8px 0;">✅ <strong>Communication :</strong> Transmission sécurisée des identifiants</div>
-                    <div style="margin: 8px 0;">✅ <strong>Documentation :</strong> Traçabilité complète dans Freshdesk</div>
+                    <div style="margin: 8px 0;">✅ <strong>Documentation :</strong> Traçabilité complète dans Freshservice</div>
                 </div>
             </div>
         </div>
@@ -476,88 +486,25 @@
         </div>
     </div>
     
-    <a href="#" class="back-to-top" id="backToTop">Retour</a>
+    <a href="#" class="back-to-top" id="backToTop">← Retour au portfolio</a>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const style = document.createElement('style');
-        style.textContent = `
-            #backToTop {
-                position: fixed !important;
-                bottom: 30px !important;
-                right: 30px !important;
-                z-index: 9999 !important;
-                width: auto !important;
-                height: auto !important;
-                padding: 12px 18px !important;
-                background: var(--btn-gradient) !important;
-                color: white !important;
-                text-align: center !important;
-                text-decoration: none !important;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-                font-size: 1rem !important;
-                font-weight: 600 !important;
-                border-radius: 24px !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease !important;
-                border: none;
-                cursor: pointer;
-            }
-
-            #backToTop.show {
-                opacity: 1 !important;
-                visibility: visible !important;
-            }
-
-            #backToTop:hover {
-                transform: translateY(-3px) !important;
-                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
-            }
-
-            @media (max-width: 768px) {
-                #backToTop {
-                    bottom: 20px !important;
-                    right: 20px !important;
-                    padding: 10px 16px !important;
-                    font-size: 0.95rem !important;
+        document.addEventListener('DOMContentLoaded', function () {
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            backToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                history.go(-1);
+            });
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
                 }
-            }
-        `;
-        document.head.appendChild(style);
-
-        const header = document.querySelector('.header');
-        let gradient = 'linear-gradient(135deg, #78be20, #5a9e18)';
-        
-        if (header) {
-            const headerStyle = window.getComputedStyle(header);
-            const headerBg = headerStyle.backgroundImage;
-            if (headerBg && headerBg.includes('gradient')) {
-                gradient = headerBg;
-            }
-        }
-        
-        document.documentElement.style.setProperty('--btn-gradient', gradient);
-
-        const btn = document.getElementById('backToTop');
-        if (!btn) return;
-
-        btn.textContent = 'Retour';
-
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            history.go(-1);
+            });
         });
-
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > 300) {
-                btn.classList.add('show');
-            } else {
-                btn.classList.remove('show');
-            }
-        });
-    });
     </script>
 </body>
 </html>
