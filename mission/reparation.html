@@ -34,9 +34,12 @@
             background: linear-gradient(135deg, #dc2626, #ef4444);
             color: white;
             padding: 40px;
-            text-align: center;
             position: relative;
             overflow: hidden;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
         }
         
         .header::before {
@@ -48,6 +51,11 @@
             bottom: 0;
             background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
             opacity: 0.1;
+        }
+        
+        .header-main {
+            position: relative;
+            z-index: 1;
         }
         
         .header h1 {
@@ -64,24 +72,61 @@
             position: relative;
             z-index: 1;
         }
+
+        .competences-sidebar {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .competences-sidebar h3 {
+            color: white;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1em;
+        }
+
+        .competence-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .competence-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .competence-badge {
+            background: white;
+            color: #24292f;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .competence-text {
+            font-size: 0.9em;
+            color: white;
+            font-weight: 500;
+        }
         
         .content {
             padding: 40px;
-        }
-        
-        .github-badge {
-            background: #f6f8fa;
-            border: 1px solid #d1d9e0;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .github-badge-icon {
-            font-size: 1.5em;
         }
         
         .info-card {
@@ -184,32 +229,6 @@
             line-height: 1.6;
         }
         
-        .visual-demo {
-            background: #f6f8fa;
-            border: 1px solid #d1d9e0;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 16px 0;
-            text-align: center;
-        }
-        
-        .visual-demo-icon {
-            font-size: 3em;
-            margin-bottom: 12px;
-            display: block;
-        }
-        
-        .visual-demo h4 {
-            color: #24292f;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .visual-demo p {
-            color: #656d76;
-            font-size: 0.9em;
-        }
-        
         .status-indicator {
             padding: 4px 12px;
             border-radius: 16px;
@@ -223,12 +242,6 @@
             background: #dcfce7;
             color: #166534;
             border: 1px solid #bbf7d0;
-        }
-        
-        .status-failed {
-            background: #fef2f2;
-            color: #dc2626;
-            border: 1px solid #fecaca;
         }
         
         .highlight {
@@ -282,41 +295,6 @@
             font-weight: 500;
         }
         
-        .mock-interface {
-            background: #1f2937;
-            color: #f9fafb;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 16px 0;
-            font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 0.875em;
-        }
-        
-        .mock-interface .title-bar {
-            background: #374151;
-            margin: -16px -16px 12px -16px;
-            padding: 8px 16px;
-            border-radius: 8px 8px 0 0;
-            font-weight: 600;
-        }
-        
-        .mock-ticket {
-            background: #ffffff;
-            border: 1px solid #d1d9e0;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 16px 0;
-        }
-        
-        .mock-ticket-header {
-            background: #dc2626;
-            color: white;
-            margin: -16px -16px 16px -16px;
-            padding: 12px 16px;
-            border-radius: 8px 8px 0 0;
-            font-weight: 600;
-        }
-        
         .mock-console {
             background: #0d1117;
             color: #c9d1d9;
@@ -349,35 +327,26 @@
             font-size: 0.9em;
         }
         
-        .footer a {
-            color: #58a6ff;
-            text-decoration: none;
-        }
-        
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Bouton retour flottant */
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
             z-index: 9999;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            padding: 12px 18px;
             background: linear-gradient(135deg, #dc2626, #ef4444);
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            text-align: center;
             text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 24px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            font-size: 1.5em;
+            border: none;
+            cursor: pointer;
         }
         
         .back-to-top.show {
@@ -397,6 +366,8 @@
             }
             
             .header {
+                grid-template-columns: 1fr;
+                gap: 20px;
                 padding: 24px;
             }
             
@@ -421,87 +392,29 @@
             .back-to-top {
                 bottom: 20px;
                 right: 20px;
-                width: 45px;
-                height: 45px;
+                padding: 10px 16px;
+                font-size: 0.95rem;
             }
         }
     </style>
-    <style>
-.competences-sidebar {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.competences-sidebar h3 {
-    color: white;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.1em;
-}
-
-.competence-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.competence-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.competence-badge {
-    background: white;
-    color: #24292f;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8em;
-    font-weight: 600;
-    min-width: 70px;
-    text-align: center;
-}
-
-.competence-text {
-    font-size: 0.9em;
-    color: white;
-    font-weight: 500;
-}
-
-@media (max-width: 768px) {
-    .header {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-    }
-}
-</style>
 </head>
 <body>
     <div class="container">
-        <div class="header" style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
-    <div>
-        <h1>🔧 Réparation Matériel</h1>
-        <div class="subtitle">Diagnostic et remplacement composants</div>
-    </div>
-    <div class="competences-sidebar">
-        <h3>🎯 Compétences E4</h3>
-        <div class="competence-list">
-            <div class="competence-item">
-                <span class="competence-badge">A1, B1, B2</span>
-                <span class="competence-text">Diagnostic et réparation matériel</span>
+        <div class="header">
+            <div class="header-main">
+                <h1>🔧 Réparation Matériel</h1>
+                <p class="subtitle">Diagnostic et remplacement composants</p>
+            </div>
+            <div class="competences-sidebar">
+                <h3>🎯 Compétences E4</h3>
+                <div class="competence-list">
+                    <div class="competence-item">
+                        <span class="competence-badge">A1, B1, B2</span>
+                        <span class="competence-text">Diagnostic et réparation matériel</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
         
         <div class="content">
             <div class="info-card">
@@ -537,7 +450,7 @@
                         <h3>Récupération et diagnostic du matériel</h3>
                     </div>
                     <div class="step-content">
-                        <p>Récupération du PC portable endommagé et diagnostic initial des composants.</p>
+                        <p>Récupérer le PC portable endommagé et effectuer un diagnostic initial des composants.</p>
                         
                         <div class="image-container">
                             <img src="../tof/rep/rep1.jpeg" alt="PC portable ouvert avec SSD visible" class="procedure-image">
@@ -556,7 +469,7 @@
                         <h3>Préparation du PC de remplacement</h3>
                     </div>
                     <div class="step-content">
-                        <p>Utilisation d'un PC de rechange du stock et installation du SSD récupéré.</p>
+                        <p>Utiliser un PC de rechange du stock et installer le SSD récupéré.</p>
                         
                         <div class="tech-info">
                             <strong>🔧 Configuration :</strong> Le SSD de 250Go contenant le système d'exploitation et les données de la collaboratrice est installé dans le PC de remplacement avec la batterie récupérée.
@@ -591,7 +504,7 @@
                         <h3>Récupération de la clé BitLocker via ADManager</h3>
                     </div>
                     <div class="step-content">
-                        <p>Connexion à ADManager pour récupérer la clé de récupération BitLocker associée à l'ordinateur.</p>
+                        <p>Se connecter à ADManager pour récupérer la clé de récupération BitLocker associée à l'ordinateur.</p>
                         
                         <div class="image-container">
                             <img src="../tof/rep/rep3.jpeg" alt="Récupération de la clé BitLocker dans ADManager" class="procedure-image">
@@ -615,7 +528,7 @@
                         <h3>Déverrouillage du système</h3>
                     </div>
                     <div class="step-content">
-                        <p>Saisie de la clé de récupération BitLocker pour déverrouiller le système et accéder aux données.</p>
+                        <p>Saisir la clé de récupération BitLocker pour déverrouiller le système et accéder aux données.</p>
                         
                         <div class="tech-info">
                             <strong>✅ Validation :</strong> Après saisie de la clé, le système démarre normalement et tous les fichiers de la collaboratrice sont accessibles.
@@ -636,7 +549,7 @@
                         <h3>Gestion de l'inventaire</h3>
                     </div>
                     <div class="step-content">
-                        <p>Mise à jour de l'inventaire avec les changements matériels et logiciels.</p>
+                        <p>Mettre à jour l'inventaire avec les changements matériels et logiciels.</p>
                         
                         <div style="overflow-x: auto;">
                             <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9em;">
@@ -681,7 +594,7 @@
                         <h3>Finalisation et remise à l'utilisatrice</h3>
                     </div>
                     <div class="step-content">
-                        <p>Vérification finale du système et remise du PC à la collaboratrice.</p>
+                        <p>Effectuer une vérification finale du système et remettre le PC à la collaboratrice.</p>
                         
                         <div class="tech-info">
                             <strong>📝 Points de contrôle :</strong> 
@@ -718,101 +631,25 @@
         </div>
     </div>
     
-    <!-- Bouton retour vers le haut -->
-    <a href="#" class="back-to-top" id="backToTop">↑</a>
-    
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Ajouter le style personnalisé pour le bouton
-        const style = document.createElement('style');
-        style.textContent = `
-            #backToTop {
-                position: fixed !important;
-                bottom: 30px !important;
-                right: 30px !important;
-                z-index: 9999 !important;
-                width: auto !important;
-                height: auto !important;
-                padding: 12px 18px !important;
-                background: linear-gradient(135deg, #dc2626, #ef4444) !important;
-                color: white !important;
-                text-align: center !important;
-                text-decoration: none !important;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-                font-size: 1rem !important;
-                font-weight: 600 !important;
-                border-radius: 24px !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease !important;
-                border: none;
-                cursor: pointer;
-            }
+    <a href="#" class="back-to-top" id="backToTop">← Retour au portfolio</a>
 
-            #backToTop.show {
-                opacity: 1 !important;
-                visibility: visible !important;
-            }
-
-            #backToTop:hover {
-                transform: translateY(-3px) !important;
-                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
-            }
-
-            @media (max-width: 768px) {
-                #backToTop {
-                    bottom: 20px !important;
-                    right: 20px !important;
-                    padding: 10px 16px !important;
-                    font-size: 0.95rem !important;
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            backToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                history.go(-1);
+            });
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
                 }
-            }
-        `;
-        document.head.appendChild(style);
-
-     // Détecter le gradient en fonction de la page
-    const header = document.querySelector('.header');
-    let gradient = 'linear-gradient(135deg, #0969da, #218bff)'; // Par défaut
-    
-    if (header) {
-        const headerStyle = window.getComputedStyle(header);
-        const headerBg = headerStyle.backgroundImage;
-        if (headerBg && headerBg.includes('gradient')) {
-            gradient = headerBg;
-        }
-    }
-    
-    // Appliquer le gradient au bouton
-    document.documentElement.style.setProperty('--btn-gradient', gradient);
-
-    // Cibler le bouton
-    const btn = document.getElementById('backToTop');
-    if (!btn) return;
-
-    // Changer le texte
-    btn.textContent = 'Retour';
-
-    // Rediriger au clic avec historique
-    btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        history.go(-1);
-    });
-
-    // Afficher le bouton après défilement
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 300) {
-            btn.classList.add('show');
-        } else {
-            btn.classList.remove('show');
-        }
-    });
-});
-</script>
+            });
+        });
+    </script>
 </body>
-
 </html>
-
-
-
-
