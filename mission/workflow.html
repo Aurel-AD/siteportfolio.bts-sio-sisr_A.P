@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workflow OUT - Procédure de Sortie Collaborateur - Novares</title>
     <style>
+        /* --- RESET & BASE --- */
         * {
             margin: 0;
             padding: 0;
@@ -30,11 +31,11 @@
             border: 1px solid #d1d9e0;
         }
         
+        /* --- HEADER MARRON/AMBRÉ --- */
         .header {
-            background: linear-gradient(135deg, #c05621, #ed8936);
+            background: linear-gradient(135deg, #92400e, #d97706);
             color: white;
             padding: 40px;
-            text-align: center;
             position: relative;
             overflow: hidden;
         }
@@ -49,36 +50,94 @@
             background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
             opacity: 0.1;
         }
+
+        /* Wrapper pour la grille du header */
+        .header-content-wrapper {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+            position: relative;
+            z-index: 1;
+        }
         
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
             font-weight: 600;
-            position: relative;
-            z-index: 1;
         }
         
         .header .subtitle {
             font-size: 1.1em;
             opacity: 0.9;
-            position: relative;
-            z-index: 1;
+        }
+
+        /* --- SIDEBAR COMPETENCES --- */
+        .competences-sidebar {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .competences-sidebar h3 {
+            color: white;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1em;
+        }
+
+        .competence-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .competence-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .competence-badge {
+            background: white;
+            color: #24292f;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .competence-text {
+            font-size: 0.9em;
+            color: white;
+            font-weight: 500;
         }
         
+        /* --- CONTENT --- */
         .content {
             padding: 40px;
         }
         
         .info-card {
-            background: #fffaf0;
-            border: 1px solid #fed7aa;
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
             border-radius: 8px;
             padding: 16px;
             margin-bottom: 24px;
         }
         
         .info-card h3 {
-            color: #9c4221;
+            color: #92400e;
             margin-bottom: 8px;
             font-weight: 600;
         }
@@ -105,7 +164,7 @@
         }
         
         .site-card h4 {
-            color: #c05621;
+            color: #92400e;
             font-size: 1.1em;
             font-weight: 600;
         }
@@ -116,7 +175,7 @@
         
         .procedure h2 {
             color: #24292f;
-            border-bottom: 2px solid #c05621;
+            border-bottom: 2px solid #92400e;
             padding-bottom: 8px;
             margin-bottom: 24px;
             font-size: 1.5em;
@@ -133,7 +192,7 @@
         }
         
         .step:hover {
-            border-color: #c05621;
+            border-color: #92400e;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
@@ -144,7 +203,7 @@
         }
         
         .step-number {
-            background: #c05621;
+            background: #92400e;
             color: white;
             width: 32px;
             height: 32px;
@@ -167,77 +226,6 @@
         .step-content {
             color: #656d76;
             line-height: 1.6;
-        }
-        
-        .visual-demo {
-            background: #f6f8fa;
-            border: 1px solid #d1d9e0;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 16px 0;
-            text-align: center;
-        }
-        
-        .visual-demo-icon {
-            font-size: 3em;
-            margin-bottom: 12px;
-            display: block;
-        }
-        
-        .visual-demo h4 {
-            color: #24292f;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .visual-demo p {
-            color: #656d76;
-            font-size: 0.9em;
-        }
-        
-        .status-indicator {
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-weight: 600;
-            display: inline-block;
-            margin: 4px;
-            font-size: 0.875em;
-        }
-        
-        .status-ok {
-            background: #dcfce7;
-            color: #166534;
-            border: 1px solid #bbf7d0;
-        }
-        
-        .status-failed {
-            background: #fef2f2;
-            color: #dc2626;
-            border: 1px solid #fecaca;
-        }
-        
-        .highlight {
-            background: #fff7ed;
-            border: 1px solid #fdba74;
-            padding: 16px;
-            border-radius: 8px;
-            margin: 16px 0;
-        }
-        
-        .highlight strong {
-            color: #9c4221;
-        }
-        
-        .tech-info {
-            background: #fffaf0;
-            border: 1px solid #fed7aa;
-            padding: 16px;
-            border-radius: 8px;
-            margin: 16px 0;
-        }
-        
-        .tech-info strong {
-            color: #9c4221;
         }
         
         .image-container {
@@ -268,8 +256,8 @@
         }
         
         .mock-interface {
-            background: #1f2937;
-            color: #f9fafb;
+            background: #0d1117;
+            color: #c9d1d9;
             border-radius: 8px;
             padding: 16px;
             margin: 16px 0;
@@ -283,6 +271,7 @@
             padding: 8px 16px;
             border-radius: 8px 8px 0 0;
             font-weight: 600;
+            color: white;
         }
         
         .mock-ticket {
@@ -294,22 +283,12 @@
         }
         
         .mock-ticket-header {
-            background: #c05621;
+            background: #92400e;
             color: white;
             margin: -16px -16px 16px -16px;
             padding: 12px 16px;
             border-radius: 8px 8px 0 0;
             font-weight: 600;
-        }
-        
-        .mock-vpn-console {
-            background: #0d1117;
-            color: #c9d1d9;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 16px 0;
-            font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 0.875em;
         }
         
         .vpn-line {
@@ -326,6 +305,43 @@
             color: #10b981;
         }
         
+        .status-ok {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 4px;
+            font-size: 0.875em;
+        }
+        
+        .highlight {
+            background: #fff7ed;
+            border: 1px solid #fdba74;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .highlight strong {
+            color: #92400e;
+        }
+        
+        .tech-info {
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .tech-info strong {
+            color: #92400e;
+        }
+        
+        /* --- FOOTER --- */
         .footer {
             background: #24292f;
             color: #f0f6fc;
@@ -343,26 +359,26 @@
             text-decoration: underline;
         }
         
-        /* Bouton retour flottant */
+        /* --- BOUTON FLOTTANT MARRON/AMBRÉ --- */
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
             z-index: 9999;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #c05621, #ed8936);
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #92400e, #d97706);
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
         }
         
         .back-to-top.show {
@@ -375,6 +391,7 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.3);
         }
         
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
@@ -385,6 +402,11 @@
                 padding: 24px;
             }
             
+            .header-content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
             .header h1 {
                 font-size: 2em;
             }
@@ -402,91 +424,39 @@
             .step-number {
                 margin-right: 0;
             }
+
+            .competences-sidebar {
+                padding: 15px;
+            }
             
             .back-to-top {
                 bottom: 20px;
                 right: 20px;
-                width: 45px;
-                height: 45px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
             }
         }
     </style>
-    <style>
-.competences-sidebar {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.competences-sidebar h3 {
-    color: white;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.1em;
-}
-
-.competence-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.competence-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.competence-badge {
-    background: white;
-    color: #24292f;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8em;
-    font-weight: 600;
-    min-width: 70px;
-    text-align: center;
-}
-
-.competence-text {
-    font-size: 0.9em;
-    color: white;
-    font-weight: 500;
-}
-
-@media (max-width: 768px) {
-    .header {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-    }
-}
-</style>
 </head>
 <body>
     <div class="container">
-       <div class="header" style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
-    <div>
-        <h1>📋 Suivi Workflows</h1>
-        <div class="subtitle">Gestion mouvements matériel</div>
-    </div>
-    <div class="competences-sidebar">
-        <h3>🎯 Compétences E4</h3>
-        <div class="competence-list">
-            <div class="competence-item">
-                <span class="competence-badge">A1, A4</span>
-                <span class="competence-text">Suivi matériel (entrées/sorties/mouvements)</span>
+        <div class="header">
+            <div class="header-content-wrapper">
+                <div>
+                    <h1>📋 Suivi Workflows</h1>
+                    <div class="subtitle">Gestion mouvements matériel</div>
+                </div>
+                <div class="competences-sidebar">
+                    <h3>🎯 Compétences E4</h3>
+                    <div class="competence-list">
+                        <div class="competence-item">
+                            <span class="competence-badge">A1, A4</span>
+                            <span class="competence-text">Suivi matériel (entrées/sorties/mouvements)</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
         
         <div class="content">
             <div class="info-card">
@@ -522,7 +492,7 @@
                         <h3>Création du ticket de demande</h3>
                     </div>
                     <div class="step-content">
-                        <p>Les ressources humaines crée un ticket dans le système de gestion des demandes pour initier le processus de sortie.</p>
+                        <p>Les ressources humaines créent un ticket dans le système de gestion des demandes pour initier le processus de sortie.</p>
                         
                         <div class="image-container">
                             <img src="../tof/out/out1.png" alt="Création du ticket de demande" class="procedure-image">
@@ -584,7 +554,7 @@
                         
                         <div class="mock-ticket">
                             <div class="mock-ticket-header">Dossier OUT #OUT-2024-001-123</div>
-                            <p><strong>Collaborateur :</strong>Alternante</p>
+                            <p><strong>Collaborateur :</strong> Alternante</p>
                             <p><strong>Matricule :</strong> 12345</p>
                             <p><strong>Date création :</strong> ex: 01/11/2024</p>
                             <p><strong>Échéance :</strong> ex: 15/11/2024</p>
@@ -641,7 +611,7 @@
                         
                         <div class="mock-ticket">
                             <div class="mock-ticket-header">Ticket #OUT-2024-001 - FERMÉ</div>
-                            <p><strong>Date clôture :</strong>ex: 14/11/2024</p>
+                            <p><strong>Date clôture :</strong> ex: 14/11/2024</p>
                             <p><strong>Résolution :</strong> Processus de sortie complété</p>
                             <p><strong>Dossier OUT :</strong> #OUT-2024-001-123</p>
                             <p><strong>Statut :</strong> <span style="color: green; font-weight: bold;">Résolu</span></p>
@@ -670,103 +640,28 @@
         </div>
     </div>
     
-    <!-- À placer juste avant </body> dans chaque fichier HTML -->
+    <a href="#" class="back-to-top" id="backToTop">← Retour au portfolio</a>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const btn = document.getElementById('backToTop');
+        if (!btn) return;
 
-<!-- Bouton retour vers le haut -->
-<a href="#" class="back-to-top" id="backToTop">↑</a>
+        // Action : Remonter en haut de page
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Ajouter le style personnalisé pour le bouton
-    const style = document.createElement('style');
-    style.textContent = `
-        #backToTop {
-            position: fixed !important;
-            bottom: 30px !important;
-            right: 30px !important;
-            z-index: 9999 !important;
-            width: auto !important;
-            height: auto !important;
-            padding: 12px 18px !important;
-            background: var(--btn-gradient) !important;
-            color: white !important;
-            text-align: center !important;
-            text-decoration: none !important;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 1rem !important;
-            font-weight: 600 !important;
-            border-radius: 24px !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease !important;
-            border: none;
-            cursor: pointer;
-        }
-
-        #backToTop.show {
-            opacity: 1 !important;
-            visibility: visible !important;
-        }
-
-        #backToTop:hover {
-            transform: translateY(-3px) !important;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
-        }
-
-        @media (max-width: 768px) {
-            #backToTop {
-                bottom: 20px !important;
-                right: 20px !important;
-                padding: 10px 16px !important;
-                font-size: 0.95rem !important;
+        // Afficher le bouton après défilement
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
             }
-        }
-    `;
-    document.head.appendChild(style);
-
-    // Détecter le gradient en fonction de la page
-    const header = document.querySelector('.header');
-    let gradient = 'linear-gradient(135deg, #0969da, #218bff)'; // Par défaut
-    
-    if (header) {
-        const headerStyle = window.getComputedStyle(header);
-        const headerBg = headerStyle.backgroundImage;
-        if (headerBg && headerBg.includes('gradient')) {
-            gradient = headerBg;
-        }
-    }
-    
-    // Appliquer le gradient au bouton
-    document.documentElement.style.setProperty('--btn-gradient', gradient);
-
-    // Cibler le bouton
-    const btn = document.getElementById('backToTop');
-    if (!btn) return;
-
-    // Changer le texte
-    btn.textContent = 'Retour';
-
-    // Rediriger au clic avec historique
-    btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        history.go(-1);
+        });
     });
-
-    // Afficher le bouton après défilement
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 300) {
-            btn.classList.add('show');
-        } else {
-            btn.classList.remove('show');
-        }
-    });
-});
-</script>
+    </script>
 </body>
-
 </html>
-
-
-
-
