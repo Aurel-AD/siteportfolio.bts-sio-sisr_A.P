@@ -312,15 +312,15 @@
         .back-to-top {
             position: fixed;
             bottom: 30px;
-            left: 30px;
-            background: var(--white);
-            color: var(--primary);
+            right: 30px; /* Déplacé à DROITE */
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); /* Dégradé comme l'en-tête */
+            color: white; /* Texte en blanc */
             padding: 12px 24px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             font-family: 'Poppins', sans-serif;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             opacity: 0;
             visibility: hidden;
             transform: translateY(20px);
@@ -329,7 +329,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .back-to-top.show {
@@ -339,10 +339,10 @@
         }
 
         .back-to-top:hover {
-            background: var(--primary);
-            color: var(--white);
-            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.3);
             transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+            color: white;
+            filter: brightness(1.1); /* Rend le dégradé légèrement plus clair au survol */
         }
 
         /* Adaptabilité Mobile */
@@ -357,15 +357,18 @@
             .content-section { padding: 30px 20px; }
             .header-content h1 { font-size: 2.2em; }
             
-            /* Centrage du bouton retour sur mobile */
+            /* Ajustement du bouton retour sur mobile (fixé en bas à droite) */
             .back-to-top {
                 bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%) translateY(20px);
-                width: max-content;
+                right: 20px;
+                left: auto;
+                transform: translateY(20px);
+                font-size: 0.9em;
+                padding: 10px 18px;
+                width: auto;
             }
             .back-to-top.show {
-                transform: translateX(-50%) translateY(0);
+                transform: translateY(0);
             }
         }
     </style>
