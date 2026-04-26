@@ -4,120 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Parcours SISR - Aurélien Pont</title>
+    <!-- Polices & Icônes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        /* Variables globales modernisées */
         :root {
             --primary: #1565C0;
+            --primary-dark: #0D47A1;
             --secondary: #2E7D32;
             --accent: #00BFA5;
             --light: #E3F2FD;
             --text: #263238;
+            --white: #ffffff;
+            --bg-gradient-1: #f4f7f6;
+            --bg-gradient-2: #e0e8e6;
+            --radius: 12px;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 12px 25px -5px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        ::selection {
+            background: var(--accent);
+            color: var(--white);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
             color: var(--text);
-            background: linear-gradient(135deg, #f5f5f5, #e0f2f1);
-            padding: 20px;
+            background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
+            padding: 30px 20px;
         }
         
+        h1, h2, h3, h4, .exp-title, .nav-btn {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
             overflow: hidden;
         }
         
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
+            position: relative;
             color: white;
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
+            overflow: hidden;
         }
-        
+
+        /* Motif subtil en arrière-plan du header */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="2" fill="rgba(255,255,255,0.05)"/></svg>');
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
         .header-content h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
         .header-content .subtitle {
             font-size: 1.2em;
-            opacity: 0.9;
+            opacity: 0.95;
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto;
         }
         
         .nav-buttons {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 30px;
         }
         
         .nav-btn {
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.2);
+            padding: 12px 28px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            transition: all 0.3s;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
         }
         
         .nav-btn:hover {
             background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
         
         .content-section {
-            padding: 40px;
+            padding: 50px;
         }
         
         .section-title {
             color: var(--primary);
-            margin-bottom: 30px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid var(--light);
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            font-size: 2em;
         }
         
         .section-title i {
             color: var(--secondary);
+            background: var(--light);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 0.65em;
         }
         
         .grid-2 {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
         .card {
-            background: var(--light);
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid var(--secondary);
-            transition: transform 0.3s;
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-left: 5px solid var(--secondary);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
         }
         
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
         }
         
         .card h3 {
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-size: 1.3em;
+        }
+        
+        .card h3 i {
+            color: var(--accent);
         }
         
         .card ul {
@@ -126,143 +192,183 @@
         }
         
         .card li {
-            margin-bottom: 10px;
-            padding-left: 25px;
+            margin-bottom: 12px;
+            padding-left: 30px;
             position: relative;
         }
         
         .card li::before {
-            content: "▸";
+            content: "\f054"; /* chevron-right FontAwesome */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
             color: var(--accent);
             position: absolute;
             left: 0;
+            top: 4px;
+            font-size: 0.85em;
         }
         
         .experience-timeline {
             position: relative;
-            margin-left: 20px;
+            margin-left: 10px;
         }
         
         .experience-item {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--accent);
+            background: var(--white);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: var(--shadow-sm);
+            border-left: 5px solid var(--accent);
+            transition: var(--transition);
+        }
+        
+        .experience-item:hover {
+            transform: translateX(6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .experience-item h3 {
+            font-size: 1.3em;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .experience-item p {
+            margin-bottom: 15px;
         }
         
         .exp-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            align-items: center;
+            margin-bottom: 5px;
         }
         
         .exp-title {
-            font-weight: bold;
+            font-size: 1.4em;
             color: var(--primary);
-        }
-        
-        .exp-date {
-            color: var(--secondary);
-            font-weight: 500;
         }
         
         .exp-company {
             color: var(--text);
-            margin-bottom: 10px;
-            font-style: italic;
+            opacity: 0.7;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 1.05em;
+        }
+        
+        .experience-item > ul {
+            list-style-type: none;
+            margin-bottom: 20px;
+            padding-left: 0;
+        }
+        
+        .experience-item > ul > li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .experience-item > ul > li::before {
+            content: "\f00c"; /* check FontAwesome */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            top: 4px;
+            font-size: 0.9em;
         }
         
         .learning-points {
             background: #e8f5e9;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 10px;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid var(--secondary);
         }
         
         .learning-points h4 {
             color: var(--secondary);
             margin-bottom: 10px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         footer {
-            background: var(--primary);
+            background: var(--primary-dark);
             color: white;
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            padding: 30px 20px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
-        
+
+        /* --- STYLES BOUTON RETOUR AU PORTFOLIO --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--white);
+            color: var(--primary);
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Adaptabilité Mobile */
         @media (max-width: 768px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            
+            body { padding: 10px; }
+            .grid-2 { grid-template-columns: 1fr; }
             .nav-buttons {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
+            }
+            .nav-btn { text-align: center; }
+            .content-section { padding: 30px 20px; }
+            .header-content h1 { font-size: 2.2em; }
+            
+            /* Centrage du bouton retour sur mobile */
+            .back-to-top {
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%) translateY(20px);
+                width: max-content;
+            }
+            .back-to-top.show {
+                transform: translateX(-50%) translateY(0);
             }
         }
     </style>
-    <style>
-.competences-sidebar {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.competences-sidebar h3 {
-    color: white;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.1em;
-}
-
-.competence-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.competence-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.competence-badge {
-    background: white;
-    color: #24292f;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8em;
-    font-weight: 600;
-    min-width: 70px;
-    text-align: center;
-}
-
-.competence-text {
-    font-size: 0.9em;
-    color: white;
-    font-weight: 500;
-}
-
-@media (max-width: 768px) {
-    .header {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-    }
-}
-</style>
 </head>
 <body>
     <div class="container">
@@ -326,42 +432,42 @@
             </section>
             
             <section id="experience">
-                <h2 class="section-title"><i class="fas fa-briefcase"></i> Mon Expérience chez Novares (depuis octobre 2024)</h2>
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Mon Expérience chez Novares (depuis oct. 2024)</h2>
                 
                 <div class="experience-timeline">
                     <div class="experience-item">
                         <div class="exp-header">
-                            <div class="exp-title">Support Utilisateur & Résolution de Problèmes</div>
+                            <div class="exp-title">Support Utilisateur & Gestion des Incidents</div>
                         </div>
-                        <div class="exp-company">Ce que je fais au quotidien :</div>
+                        <div class="exp-company">Centre d'expertise (Lens) & sites de production (Libercourt, Villers-Bretonneux)</div>
                         <ul>
-                            <li>Je réponds aux appels et tickets des utilisateurs qui ont des problèmes informatiques</li>
-                            <li>Je diagnostique si c'est un problème matériel (écran, clavier, souris) ou logiciel (Windows, logiciels métiers)</li>
-                            <li>J'utilise des outils de prise de main à distance pour aider les collègues sans me déplacer</li>
-                            <li>Je forme les nouveaux employés à utiliser leurs outils informatiques en suivant les procédures de sécurité TISAX</li>
+                            <li>Je réponds aux appels et gère les tickets des utilisateurs via <strong>Freshservice</strong> (centre d'expertise et sites de production).</li>
+                            <li>Je diagnostique les pannes N1/N2 matérielles et logicielles dans un environnement industriel exigeant.</li>
+                            <li>J'utilise <strong>DameWare, TeamViewer et RDP</strong> pour l'assistance à distance sans me déplacer.</li>
+                            <li>Je gère l'inventaire matériel (Asset Management) et j'accompagne les utilisateurs selon les normes de sécurité <strong>TISAX</strong>.</li>
                         </ul>
                         
                         <div class="learning-points">
-                            <h4>📚 Ce que j'apprends en BTS SISR :</h4>
-                            <p>La gestion d'un service d'assistance, les méthodologies de résolution de problèmes, et l'importance de la documentation technique.</p>
+                            <h4><i class="fas fa-book-open"></i> Ce que j'apprends en BTS SISR :</h4>
+                            <p>La gestion professionnelle d'un service d'assistance, les méthodologies de résolution de problèmes (ITIL), et l'importance du support dans les processus métiers d'une entreprise.</p>
                         </div>
                     </div>
                     
                     <div class="experience-item">
                         <div class="exp-header">
-                            <div class="exp-title">Déploiement et Installation des Postes</div>
+                            <div class="exp-title">Déploiement et Maintenance des Postes</div>
                         </div>
-                        <div class="exp-company">Mon travail concret :</div>
+                        <div class="exp-company">Industrialisation du parc informatique :</div>
                         <ul>
-                            <li>Quand un nouveau collègue arrive, je prépare son poste de travail</li>
-                            <li>J'utilise SCCM pour installer Windows et tous les logiciels nécessaires automatiquement</li>
-                            <li>Je configure les imprimantes et les accès réseau dont la personne a besoin</li>
-                            <li>Je m'assure que les mises à jour de sécurité sont bien appliquées</li>
+                            <li>Je déploie massivement des OS (Windows 10/11) et logiciels automatiquement grâce à <strong>SCCM</strong>.</li>
+                            <li>Je gère la masterisation via clés bootables (ISO/WIM) pour préparer rapidement les nouveaux postes.</li>
+                            <li>J'assure la mise à jour centralisée des pilotes via <strong>UNC/DFS, Software Center, Dell & Lenovo Update</strong>.</li>
+                            <li>Je configure et maintiens les pilotes d'impression (locaux et partagés) sur l'ensemble du réseau.</li>
                         </ul>
                         
                         <div class="learning-points">
-                            <h4>📚 Lien avec la formation :</h4>
-                            <p>J'apprends les concepts derrière les outils que j'utilise : comment fonctionne le déploiement d'images, la gestion des configurations, et l'automatisation des tâches.</p>
+                            <h4><i class="fas fa-book-open"></i> Lien avec la formation :</h4>
+                            <p>J'apprends les concepts derrière les outils que j'utilise : comment fonctionne le déploiement d'images réseau, la virtualisation, et la gestion centralisée des configurations.</p>
                         </div>
                     </div>
                     
@@ -369,35 +475,35 @@
                         <div class="exp-header">
                             <div class="exp-title">Sécurité et Administration Réseau</div>
                         </div>
-                        <div class="exp-company">Mes missions de sécurisation :</div>
+                        <div class="exp-company">Sécurisation des accès et gestion des identités :</div>
                         <ul>
-                            <li>Je configure le VPN pour que les collègues puissent travailler de chez eux en sécurité</li>
-                            <li>Je gère l'authentification à deux facteurs pour protéger les comptes</li>
-                            <li>J'administre le Wi-Fi invités avec Cisco Meraki</li>
-                            <li>Dans Active Directory, je crée les comptes des nouveaux arrivants et je gère leurs permissions</li>
+                            <li>Je configure les accès distants via le VPN <strong>FortiClient & EMS</strong> pour sécuriser le télétravail.</li>
+                            <li>Je déploie l'authentification multifacteur (<strong>MFA</strong>) via Microsoft Authenticator.</li>
+                            <li>J'administre le réseau Wi-Fi invités via la solution Cloud <strong>Cisco Meraki</strong>.</li>
+                            <li>Dans <strong>Active Directory</strong>, je gère les comptes, l'organisation par OU, les habilitations et les dossiers partagés.</li>
                         </ul>
                         
                         <div class="learning-points">
-                            <h4>📚 Apports du BTS SISR :</h4>
-                            <p>Je comprends maintenant les protocoles de sécurité, le fonctionnement d'Active Directory, et les principes de la cybersécurité que j'applique au quotidien.</p>
+                            <h4><i class="fas fa-book-open"></i> Apports du BTS SISR :</h4>
+                            <p>Je comprends maintenant les protocoles réseau sous-jacents, l'architecture des annuaires LDAP/AD, et les grands principes de cybersécurité que j'applique au quotidien.</p>
                         </div>
                     </div>
                     
                     <div class="experience-item">
                         <div class="exp-header">
-                            <div class="exp-title">Gestion des Données et Sauvegardes</div>
+                            <div class="exp-title">Gestion des Données et Conformité</div>
                         </div>
-                        <div class="exp-company">Ce que je mets en place :</div>
+                        <div class="exp-company">Sauvegardes et procédures :</div>
                         <ul>
-                            <li>Je fais des sauvegardes des données importantes sur les serveurs</li>
-                            <li>Je gère l'espace de stockage des collaborateurs</li>
-                            <li>Je récupère des fichiers quand quelqu'un les a supprimés par erreur</li>
-                            <li>Je documente toutes mes actions pour respecter les normes de l'entreprise</li>
+                            <li>Je gère les sauvegardes de l'infrastructure via <strong>Dell Avamar</strong>.</li>
+                            <li>Je contrôle hebdomadairement les logs de sauvegarde et génère des reportings Excel.</li>
+                            <li>J'effectue des tests mensuels de restauration pour garantir la fiabilité et l'intégrité de nos données.</li>
+                            <li>Je rédige des procédures et guides techniques conformes <strong>TISAX</strong> avec un suivi strict des workflows (<strong>SwF</strong>).</li>
                         </ul>
                         
                         <div class="learning-points">
-                            <h4>📚 Complément formation :</h4>
-                            <p>Le BTS m'apprend les stratégies de sauvegarde, les types de stockage, et l'importance de la planification de la reprise d'activité après incident.</p>
+                            <h4><i class="fas fa-book-open"></i> Complément formation :</h4>
+                            <p>Le BTS m'enseigne les stratégies de sauvegarde, la notion de Plan de Reprise d'Activité (PRA), et l'importance cruciale de la documentation normée en entreprise.</p>
                         </div>
                     </div>
                 </div>
@@ -408,39 +514,39 @@
                 
                 <div class="grid-2">
                     <div class="card">
-                        <h3><i class="fas fa-cogs"></i> Compétences Techniques Acquises</h3>
+                        <h3><i class="fas fa-cogs"></i> Compétences Techniques (Hard Skills)</h3>
                         <ul>
-                            <li>Maîtrise de SCCM pour le déploiement automatisé</li>
-                            <li>Gestion d'Active Directory (comptes, groupes, permissions)</li>
-                            <li>Configuration et maintenance des VPN (FortiClient)</li>
-                            <li>Administration de réseaux Wi-Fi d'entreprise (Cisco Meraki)</li>
-                            <li>Utilisation avancée des outils de support à distance</li>
-                            <li>Gestion des sauvegardes et restaurations</li>
+                            <li>Déploiement OS/Apps avec <strong>SCCM</strong> et Masterisation (ISO/WIM)</li>
+                            <li>Gestion <strong>Active Directory</strong> (OU, Groupes, Habilitations)</li>
+                            <li>Configuration VPN <strong>FortiClient & EMS</strong> et MFA</li>
+                            <li>Administration du réseau Wi-Fi (<strong>Cisco Meraki</strong>)</li>
+                            <li>Ticketing N1/N2 et Asset Management (<strong>Freshservice</strong>)</li>
+                            <li>Gestion des sauvegardes et restaurations (<strong>Dell Avamar</strong>)</li>
                         </ul>
                     </div>
                     
                     <div class="card">
-                        <h3><i class="fas fa-users"></i> Compétences Transversales</h3>
+                        <h3><i class="fas fa-users"></i> Compétences Transversales (Soft Skills)</h3>
                         <ul>
-                            <li>Communication technique avec des non-techniciens</li>
-                            <li>Rédaction de documentation claire et précise</li>
-                            <li>Gestion du temps et priorisation des incidents</li>
-                            <li>Travail en équipe et partage des connaissances</li>
-                            <li>Respect des procédures et normes de sécurité</li>
+                            <li><strong>Rigueur industrielle</strong> : Respect strict des normes de sécurité (TISAX)</li>
+                            <li><strong>Pédagogie</strong> : Formation et accompagnement des utilisateurs métiers</li>
+                            <li><strong>Analyse</strong> : Diagnostic efficace face à des pannes complexes (logiciel/hardware)</li>
+                            <li><strong>Polyvalence</strong> : Intervention en bureau technique comme en pleine zone de production</li>
+                            <li><strong>Rédaction</strong> : Création de documentations et guides techniques clairs</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="experience-item" style="margin-top: 30px;">
                     <h3>🔗 Le lien entre pratique et théorie</h3>
-                    <p>Mon expérience chez Novares me permet de <strong>comprendre concrètement</strong> les concepts vus en BTS SISR. Chaque jour, je vois l'importance :</p>
+                    <p>Mon expérience d'apprenti chez Novares me permet de <strong>comprendre concrètement</strong> les concepts vus en BTS SISR. Chaque jour, je vois l'importance :</p>
                     <ul>
-                        <li>Des <strong>réseaux</strong> quand je configure le VPN ou le Wi-Fi</li>
-                        <li>De la <strong>sécurité</strong> quand je mets en place l'authentification à deux facteurs</li>
-                        <li>De l'<strong>automatisation</strong> quand je déploie 10 postes avec SCCM</li>
-                        <li>De la <strong>documentation</strong> quand je crée des guides pour les utilisateurs</li>
+                        <li>Des <strong>réseaux</strong> quand je configure le VPN ou le Wi-Fi Meraki.</li>
+                        <li>De la <strong>sécurité</strong> quand je mets en place la MFA ou que je restaure des données via Dell Avamar.</li>
+                        <li>De l'<strong>automatisation</strong> quand je déploie des dizaines de postes avec SCCM.</li>
+                        <li>De la <strong>conformité</strong> quand je rédige des guides respectant les normes TISAX.</li>
                     </ul>
-                    <p>Inversement, le BTS SISR me donne <strong>les bases théoriques</strong> pour comprendre <em>pourquoi</em> je fais telle ou telle action, et pas seulement <em>comment</em> la faire.</p>
+                    <p>Inversement, le BTS SISR me donne <strong>les bases théoriques</strong> pour comprendre <em>pourquoi</em> je fais telle ou telle action, et d'acquérir une vraie posture d'Administrateur Système et Réseau.</p>
                 </div>
             </section>
         </div>
@@ -449,7 +555,8 @@
             <p>Aurélien Pont - BTS SIO SISR en alternance - Assistant administrateur technique informatique</p>
         </footer>
     </div>
-  <a href="#" class="back-to-top" id="backToTop">← Retour au portfolio</a>
+    
+  <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-left"></i> Retour au portfolio</a>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
