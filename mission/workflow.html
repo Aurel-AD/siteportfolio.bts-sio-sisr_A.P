@@ -640,28 +640,28 @@
         </div>
     </div>
     
-    <a href="#" class="back-to-top" id="backToTop">← Retour au portfolio</a>
-    
-    <script>
+ <a href="#" class="back-to-top" id="backToTop">← Retour au portfolio</a>
+
+<script>
     document.addEventListener('DOMContentLoaded', function () {
-        const btn = document.getElementById('backToTop');
-        if (!btn) return;
-
-        // Action : Remonter en haut de page
-        btn.addEventListener('click', function (e) {
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        // Gestion du clic pour revenir à l'index
+        backToTopBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Redirection vers index.html à l'ancre #experiences
+            window.location.href = '../index.html#experiences';
         });
-
-        // Afficher le bouton après défilement
-        window.addEventListener('scroll', function () {
+        
+        // Affichage du bouton lors du scroll
+        window.addEventListener('scroll', function() {
             if (window.scrollY > 300) {
-                btn.classList.add('show');
+                backToTopBtn.classList.add('show');
             } else {
-                btn.classList.remove('show');
+                backToTopBtn.classList.remove('show');
             }
         });
     });
-    </script>
+</script>
 </body>
 </html>
