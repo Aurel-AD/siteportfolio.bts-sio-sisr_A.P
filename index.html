@@ -364,49 +364,54 @@
             
 <!-- SECTION NOVARES -->
 <section id="novares" class="main special">
+    
+    <!-- TITRE ET SOUS-TITRE (Comme dans l'index) -->
     <header class="major">
-                    <h2>Novares Group</h2>
-                    <p>La societe et mon poste en tant que Support & Administration IT</p>
-                </header>
-    <!-- SPOTLIGHT LOGO + INFOS -->
-    <div style="display: flex; align-items: center; gap: 3rem; padding: 2rem 0 2.5rem; flex-wrap: wrap;">
+        <h2>Novares Group</h2>
+        <p>L'entreprise et mon poste en tant qu'Assistant IT / Administrateur Technique</p>
+    </header>
+
+    <!-- CONTENEUR FLEX : LOGO À GAUCHE / TEXTE À DROITE -->
+    <div style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: flex-start; margin-bottom: 3rem;">
         
-        <!-- Logo : Ovale, marges supprimées et zoom très fort (scale 1.7) -->
-        <div style="flex-shrink: 0; width: 320px; height: 160px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 6px rgba(52,211,153,0.15); border: 2px solid #34d399; overflow: hidden;">
-            <img src="tof/novares/novares.jpg" alt="Logo Novares" loading="lazy" style="width: 100%; height: 100%; object-fit: contain; transform: scale(1.7);">
+        <!-- COLONNE GAUCHE : LOGO -->
+        <div style="flex: 0 0 auto; width: 320px; margin: 0 auto;">
+            <!-- Logo : Ovale, zoom (scale 1.7) -->
+            <div style="width: 100%; height: 160px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 0 6px rgba(52,211,153,0.15); border: 2px solid #34d399; overflow: hidden; position: sticky; top: 20px;">
+                <img src="tof/novares/novares.jpg" alt="Logo Novares" loading="lazy" style="width: 100%; height: 100%; object-fit: contain; transform: scale(1.7);">
+            </div>
         </div>
 
-    <!-- PHOTO NOVACAR -->
+        <!-- COLONNE DROITE : PRÉSENTATION -->
+        <div class="novares-presentation" style="flex: 1 1 300px; text-align: left;">
+            
+            <h3 style="font-weight: 600; margin-top: 0;">Partenaire des constructeurs historiques</h3>
+            <p>Anciennement Mecaplast, Novares conçoit et fabrique des composants vitaux pour les géants de l'automobile (Stellantis, Renault-Nissan, VW Group...). Ce positionnement stratégique implique un système d'information mondialisé, robuste et hautement disponible.</p>
+            
+            <h3 style="font-weight: 600; margin-top: 2rem;">Un environnement IT critique</h3>
+            <p>Opérant dans un cadre industriel strict et régi par les normes de cybersécurité de l'industrie automobile (TISAX), l'infrastructure réseau et système ne laisse aucune place à l'improvisation. C'est un terrain d'apprentissage exceptionnel pour intervenir en conditions réelles de production.</p>
+
+            <!-- Encadré Innovation -->
+            <div style="background: rgba(52, 211, 153, 0.05); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #34d399; margin-top: 2rem;">
+                <h4 style="margin-top: 0; font-weight: 600; color: #34d399;"><i class="fas fa-microchip"></i> L'innovation soutenue par l'IT</h4>
+                <p style="margin-bottom: 0; font-size: 0.95em;">Pour transformer des concepts futuristes en solutions concrètes (allègement des véhicules, intégration de surfaces intelligentes), l'entreprise s'appuie sur une R&D de pointe. Les équipes informatiques y jouent un rôle crucial pour garantir la performance des outils de conception et de simulation.</p>
+            </div>
+            
+        </div>
+    </div> <!-- Fin du conteneur Flex -->
+
+    <!-- PHOTO NOVACAR (Pleine largeur sous la présentation) -->
     <div style="position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
         <img src="tof/novares/novacar.jpg" alt="Véhicule équipé de pièces Novares" loading="lazy" style="width: 100%; height: auto; display: block; filter: brightness(0.95);">
         
-        <div style="position: absolute; bottom: 0; left: 0; right: 0; margin: 0; padding: 40px 20px 15px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); text-align: left;">
-            <p style="margin: 0; font-size: 0.85em; color: rgba(255,255,255,0.9); font-weight: 500;">
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 40px 20px 15px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); text-align: left;">
+            <p style="margin: 0; font-size: 0.9em; color: rgba(255,255,255,0.9); font-weight: 500;">
                 <i class="fas fa-car" style="color: #34d399; margin-right: 8px;"></i> Solutions plastiques Novares — intégration sur véhicule de série
             </p>
         </div>
     </div>
 
-    <!-- PRÉSENTATION TEXTE -->
-    <div class="novares-presentation" style="text-align: left; margin-bottom: 2rem;">
-        <div class="row">
-            <div class="col-6 col-12-medium">
-                <h3 style="font-weight: 600;">Partenaire des constructeurs historiques</h3>
-                <p>Anciennement Mecaplast, Novares conçoit et fabrique des composants vitaux pour les géants de l'automobile (Stellantis, Renault-Nissan, VW Group...). Ce positionnement stratégique implique un système d'information mondialisé, robuste et hautement disponible.</p>
-            </div>
-            <div class="col-6 col-12-medium">
-                <h3 style="font-weight: 600;">Un environnement IT critique</h3>
-                <p>Opérant dans un cadre industriel strict et régi par les normes de cybersécurité de l'industrie automobile, l'infrastructure réseau et système ne laisse aucune place à l'improvisation. C'est un terrain d'apprentissage exceptionnel pour intervenir en conditions réelles de production.</p>
-            </div>
-        </div>
-        
-        <div style="background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 12px; border-left: 4px solid #34d399; margin-top: 2rem;">
-            <h3 style="margin-top: 0; font-weight: 600;"><i class="fas fa-microchip" style="color: #34d399;"></i> L'innovation soutenue par l'IT</h3>
-            <p style="margin-bottom: 0;">Pour transformer des concepts futuristes en solutions concrètes (allègement des véhicules, intégration de surfaces intelligentes), l'entreprise s'appuie sur une R&D de pointe. Les équipes informatiques y jouent un rôle crucial pour garantir la performance des outils de conception et de simulation.</p>
-        </div>
-    </div>
-
-    <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0;" />
+    <hr style="border: none; border-top: 1px solid rgba(150,150,150,0.2); margin: 3rem 0;" />
 
     <!-- COMPTEURS ANIMÉS -->
     <ul class="statistics">
@@ -418,19 +423,20 @@
     </ul>
 
     <!-- SPOTLIGHT MON RÔLE -->
-    <div class="spotlight novares-spotlight" style="margin-top: 3rem; background: rgba(0,0,0,0.2); border-radius: 12px; padding: 2.5rem; text-align: left;">
-        <div class="content">
+    <div class="spotlight novares-spotlight" style="margin-top: 3rem; background: rgba(0,0,0,0.2); border-radius: 12px; padding: 2.5rem; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <div class="content" style="width: 100%;">
             <h3 style="font-weight: 600;"><i class="fas fa-user-tie" style="color: #34d399;"></i> Mon Périmètre d'Intervention</h3>
             <p>Basé au centre d'expertise de <strong>Lens</strong> (pilier technologique de Novares inauguré en 2021), j'assure le maintien en conditions opérationnelles des équipements sous la supervision d'un administrateur technique IT.</p>
             <p>Mon quotidien combine <strong>support local et à distance</strong> en étroite collaboration avec les équipes IT nationales (Vélizy, Monaco, Lyon) et internationales. J'interviens également sur le terrain, notamment sur les sites de production de <strong>Libercourt (62)</strong> et <strong>Villers-Bretonneux (80)</strong>.</p>
             <p style="margin-bottom: 0;">Cette mission itinérante et polyvalente me permet de veiller à la continuité des services numériques au cœur même des lignes de production.</p>
+            
             <ul class="actions" style="margin-top: 2rem;">
                 <li><a href="https://www.novaresteam.com/fr/" class="button primary" target="_blank" rel="noopener noreferrer">Découvrir le groupe Novares</a></li>
             </ul>
         </div>
     </div>
-
 </section>
+            
           <!-- SECTION RÉALISATIONS TECHNIQUES -->
             <section id="experiences" class="main special">
                 <header class="major">
