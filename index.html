@@ -15,9 +15,31 @@
     <meta property="og:image" content="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/images/photo1.webp">
     <meta property="og:url" content="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='15' fill='%2334d399'/><text x='50' y='50' font-size='45' text-anchor='middle' dominant-baseline='central' fill='white' font-family='Arial, sans-serif' font-weight='bold'>AP</text></svg>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="assets/css/main.css">
     <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
+    <style>
+        .novares-intro {
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+        .novares-highlight {
+            background: rgba(52, 211, 153, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            border: 1px solid #34d399;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        .novares-highlight h3 {
+            margin-top: 0;
+        }
+        #about .cert-grid {
+            align-items: start;
+        }
+    </style>
 </head>
 
 <body class>
@@ -79,7 +101,7 @@
                         </header>
                         <p>Je suis <strong>Aurélien Pont</strong>, étudiant en BTS SIO option SISR en alternance chez <strong>Novares</strong>. Je me spécialise dans l'administration système, la gestion des infrastructures réseau et la cybersécurité en environnement industriel. Au quotidien, j'interviens sur des problématiques concrètes : déploiement de postes, gestion des accès, sécurisation des connexions (VPN, MFA) et support utilisateurs.</p>
                     </div>
-                    <span class="image"><img src="images/photo1.webp" alt="Photo professionnelle d'Aurélien Pont" loading="lazy"></span>
+                    <span class="image"><img src="images/photo1.webp" alt="Photo professionnelle d'Aurélien Pont" fetchpriority="high"></span>
                 </div>
             </section>
 
@@ -366,8 +388,8 @@
                 <header class="major">
                     <h2>Le Groupe Novares : Leader Mondial</h2>
                 </header>
-             <div class="novares-presentation" style="text-align: left; margin-bottom: 4rem;">
-                <div class="row">
+
+                <div class="row novares-intro">
                     <div class="col-6 col-12-medium">
                         <h3>Un équipementier automobile mondial</h3>
                         <p><strong>Novares</strong> (anciennement Mecaplast) est un leader mondial de la plasturgie automobile, équipementier de <strong>Rang 1</strong> travaillant directement avec Stellantis, Renault-Nissan, VW Group, Toyota ou encore Ford.</p>
@@ -377,13 +399,12 @@
                         <p>Avec plus de <strong>11 000 collaborateurs</strong> dans 32 pays et une démarche de certification TISAX, Novares opère dans un cadre de sécurité industrielle rigoureux — terrain idéal pour développer des compétences IT en conditions réelles.</p>
                     </div>
                 </div>
-                <hr />
-                <div style="background: rgba(52, 211, 153, 0.1); padding: 2rem; border-radius: 8px; border: 1px solid #34d399;">
-                    <h3 style="margin-top: 0;"><i class="fas fa-microchip"></i> L'innovation au cœur de l'ADN</h3>
+
+                <div class="novares-highlight">
+                    <h3><i class="fas fa-microchip"></i> L'innovation au cœur de l'ADN</h3>
                     <p>Avec plus de <strong>300 ingénieurs</strong> et un portefeuille de plus de <strong>700 brevets</strong>, Novares investit massivement dans la R&D pour transformer des concepts futuristes en solutions industrielles concrètes.</p>
                 </div>
-            </div>
-        <hr />
+
                 <ul class="statistics">
                     <li class="style1"><span class="icon solid fa-users"></span><strong class="counter" data-target="11000">0</strong><span>Collaborateurs</span></li>
                     <li class="style2"><span class="icon solid fa-globe"></span><strong class="counter" data-target="32">0</strong><span>Pays</span></li>
@@ -391,6 +412,7 @@
                     <li class="style4"><span class="icon solid fa-chart-line"></span><strong class="counter" data-target="1700">0</strong><span>Millions € CA</span></li>
                     <li class="style5"><span class="icon solid fa-lightbulb"></span><strong class="counter" data-target="300">0</strong><span>Ingénieurs R&amp;D</span></li>
                 </ul>
+
                 <div class="spotlight novares-spotlight">
                     <div class="content">
                         <h3><i class="fas fa-user-tie"></i> Mon Rôle</h3>
@@ -1036,13 +1058,14 @@
     </div>
 
     <!-- SCRIPTS -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script>
+    <script src="assets/js/jquery.min.js" defer></script>
+    <script src="assets/js/jquery.scrollex.min.js" defer></script>
+    <script src="assets/js/jquery.scrolly.min.js" defer></script>
+    <script src="assets/js/browser.min.js" defer></script>
+    <script src="assets/js/breakpoints.min.js" defer></script>
+    <script src="assets/js/util.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 
     <!-- Lightbox pour les attestations -->
     <div id="certificate-viewer" class="certificate-viewer" onclick="closeCertificateOnBackground(event)">
