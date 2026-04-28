@@ -21,7 +21,7 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
     
     <style>
-        /* Outils - Design Professionnel */
+        /* --- Ajustements Design Professionnel --- */
         .tools-grid-pro {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -46,10 +46,7 @@
         .tool-card-pro::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
+            top: 0; left: 0; width: 100%; height: 4px;
             background: #34d399;
             opacity: 0.8;
         }
@@ -66,17 +63,8 @@
             padding: 12px;
             border-radius: 10px;
         }
-        .tool-card-header h3 {
-            margin: 0;
-            font-size: 1.2em;
-            font-weight: 600;
-            color: inherit;
-        }
-        .tool-tags-pro {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
+        .tool-card-header h3 { margin: 0; font-size: 1.2em; font-weight: 600; color: inherit; }
+        .tool-tags-pro { display: flex; flex-wrap: wrap; gap: 8px; }
         .tool-tags-pro span {
             background: rgba(255, 255, 255, 0.08);
             color: #e2e8f0;
@@ -85,58 +73,71 @@
             font-size: 0.85em;
             font-weight: 500;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: background 0.2s, color 0.2s;
         }
         .tool-card-pro:hover .tool-tags-pro span {
             background: rgba(52, 211, 153, 0.15);
             color: #34d399;
             border-color: rgba(52, 211, 153, 0.3);
         }
-        .section-divider {
-            border: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            width: 60%;
-            margin: 4rem auto;
-        }
-        .sub-heading-pro {
-            font-size: 1.8em;
-            margin-bottom: 1rem;
-            color: #ffffff;
+
+        /* --- Section À Propos optimisée --- */
+        .about-container-expert {
             display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
+            margin-top: 2rem;
+        }
+        .cert-card-full {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        .about-image-full {
+            width: 100%;
+            max-width: 1000px;
+            margin: 1rem 0;
+        }
+        .about-image-full img {
+            width: 100%;
+            height: auto; /* Affiche l'image en entier */
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .timeline-simple {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(52, 211, 153, 0.03);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(52, 211, 153, 0.1);
         }
 
-        /* --- SCROLLBOX POUR LA LISTE NOVARES --- */
+        /* --- Autres outils --- */
         .scrollbox-tasks {
             max-height: 250px;
             overflow-y: auto;
-            padding-right: 15px;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
             padding: 15px;
             background: rgba(0, 0, 0, 0.15);
-            /* Design barre de défilement Firefox */
+            border-radius: 8px;
             scrollbar-width: thin;
             scrollbar-color: #34d399 rgba(255, 255, 255, 0.05);
         }
-        /* Design barre de défilement Chrome/Edge/Safari */
         .scrollbox-tasks::-webkit-scrollbar { width: 6px; }
-        .scrollbox-tasks::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
         .scrollbox-tasks::-webkit-scrollbar-thumb { background: #34d399; border-radius: 10px; }
-        .scrollbox-tasks::-webkit-scrollbar-thumb:hover { background: #2cb181; }
-
-        /* --- CLASSE POUR LE FILTRE JS --- */
-        .hidden-card {
-            display: none !important;
-        }
+        
+        .hidden-card { display: none !important; }
+        .section-divider { border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); width: 60%; margin: 4rem auto; }
     </style>
 </head>
 
 <body class>
-    <!-- ANIMATION DE DEMARRAGE -->
+    <!-- TERMINAL DE DÉMARRAGE -->
     <div id="boot-screen">
         <div class="terminal-content">
             <div id="terminal-lines"></div>
@@ -146,7 +147,6 @@
         </div>
     </div>
 
-    <!-- WRAPPER -->
     <div id="wrapper">
         <!-- HEADER -->
         <header id="header" class="alt">
@@ -155,7 +155,6 @@
                 <span><i class="fas fa-user-cog"></i> Technicien systèmes & réseaux</span><br>
                 <span><i class="fas fa-shield-alt"></i> Spécialisation cybersécurité</span>
             </p>
-            
             <p class="hero-skills">
                 <span><i class="fas fa-server"></i> Active Directory</span> • 
                 <span><i class="fas fa-network-wired"></i> SCCM</span> • 
@@ -164,864 +163,344 @@
             </p>
         </header>
 
-       <!-- NAVIGATION -->
+        <!-- NAVIGATION -->
         <nav id="nav">
             <ul>
                 <li><a href="#intro" class="active"><i class="fas fa-home"></i> Accueil</a></li>
                 <li><a href="#about"><i class="fas fa-user"></i> À propos</a></li>
-                <li><a href="#competences"><i class="fas fa-cogs"></i> Compétences & Outils</a></li>
+                <li><a href="#competences"><i class="fas fa-cogs"></i> Compétences</a></li>
                 <li><a href="#parcours"><i class="fas fa-graduation-cap"></i> Parcours & Novares</a></li>
-                <li><a href="#experiences"><i class="fas fa-tasks"></i> Réalisations Tech.</a></li>
+                <li><a href="#experiences"><i class="fas fa-tasks"></i> Réalisations</a></li>
                 <li><a href="#projet-cicar"><i class="fas fa-laptop-code"></i> Projets BTS</a></li>
                 <li><a href="#veilles"><i class="fas fa-binoculars"></i> Veilles Tech.</a></li>
-                <li><a href="#attestations"><i class="fas fa-certificate"></i> Attestations</a></li>
+                <li><a href="#attestations"><i class="fas fa-certificate"></i> Certifs</a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
         </nav>
 
-        <!-- MAIN CONTENT -->
         <div id="main">
-            
-            <!-- SECTION INTRODUCTION -->
+            <!-- INTRODUCTION -->
             <section id="intro" class="main">
                 <div class="spotlight">
                     <div class="content">
                         <header class="major">
                             <h2>Bienvenue sur mon portfolio</h2>
                         </header>
-                        <p>Bienvenue sur mon portfolio.<br>
-                        Je suis Aurélien Pont, étudiant en BTS SIO option SISR en alternance chez Novares. Je me spécialise dans l’administration système, la gestion des infrastructures réseau et la cybersécurité en environnement industriel. Au quotidien, j’interviens sur des problématiques concrètes : déploiement de postes, gestion des accès, sécurisation des connexions (VPN, MFA) et support utilisateurs.</p>
-
-                        <p>Cette alternance me permet d’acquérir une vraie expérience du terrain et de mieux comprendre les enjeux techniques des entreprises. J’apprends à travailler avec méthode, à m’adapter aux besoins des équipes et à proposer des solutions fiables et efficaces.</p>
-
-                        <p>À travers ce portfolio, je partage mes projets, mes compétences et mon évolution dans le domaine de l’informatique, avec l’objectif de continuer à progresser vers des postes à responsabilité en administration systèmes, réseaux et sécurité.</p>                    </div>
-                    <span class="image"><img src="images/photo1.webp" alt="Photo professionnelle d'Aurélien Pont" fetchpriority="high" width="288" height="288" style="width: 100%; height: auto;"></span>
+                        <p>Je suis Aurélien Pont, étudiant en BTS SIO option SISR en alternance chez Novares. Je me spécialise dans l’administration système, la gestion des infrastructures réseau et la cybersécurité en environnement industriel.</p>
+                        <p>Cette alternance me permet d’acquérir une vraie expérience du terrain : déploiement de postes, sécurisation (VPN, MFA) et support sur des sites de production critiques.</p>
+                    </div>
+                    <span class="image"><img src="images/photo1.webp" alt="Photo Aurélien Pont" width="288" height="288"></span>
                 </div>
             </section>
 
-            <!-- SECTION À PROPOS AMÉLIORÉE -->
+            <!-- SECTION À PROPOS (RÉORGANISÉE) -->
             <section id="about" class="main special">
                 <header class="major">
                     <h2>À propos de moi</h2>
-                    <p>Mon parcours, mes valeurs et ma passion pour l'informatique</p>
+                    <p>Une trajectoire atypique au service de la technologie</p>
                 </header>
                 
                 <div class="about-intro">
                     <h3>Une reconversion guidée par la passion</h3>
-                    <p>Après 20 ans dans des métiers manuels, j'ai décidé de donner un nouveau sens à ma carrière en me tournant vers ma passion de toujours : <strong>l'informatique et la résolution de problèmes techniques</strong>.</p>
+                    <p>Après 20 ans dans des métiers manuels, j'ai décidé de transformer ma passion pour l'informatique en une carrière solide centrée sur la <strong>résolution de problèmes complexes</strong>.</p>
                 </div>
 
-                <div class="cert-grid">
-                    <!-- Carte Valeurs -->
-                    <div class="cert-card">
-                        <i class="fas fa-heart"></i>
-                        <h4>Mes Valeurs</h4>
-                        <ul class="card-list">
-                            <li><strong>Soin</strong> Apporter une attention réelle à chaque mission</li>
-                            <li><strong>Débrouillardise</strong> Un esprit d'initiative pour débloquer toutes les situations</li>
-                            <li><strong>Expérience</strong> 20 ans de savoir-faire en relation humaine</li>
-                            <li><strong>Curiosité</strong> Veille technologique constante</li>
-                            <li><strong>Adaptabilité</strong> Reconversion réussie à 40 ans</li>
-                        </ul>
-                    </div>
-            
-                    <!-- Carte Motivation -->
-                    <div class="cert-card">
-                        <i class="fas fa-bullseye"></i>
-                        <h4>Ma Motivation</h4>
-                        <ul class="card-list">
-                            <li><strong>Sécuriser</strong> les infrastructures et protéger les données</li>
-                            <li><strong>Automatiser</strong> les processus pour gagner en efficacité</li>
-                            <li><strong>Accompagner</strong> pour rendre l'informatique plus simple et accessible</li>
-                            <li><strong>Innovation</strong> Rester à la pointe des technologies</li>
-                                        <li><strong>Documenter</strong> Transmettre et pérenniser les connaissances</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                 <!-- Timeline simplifiée -->
-                <div class="timeline-simple">
-                    <h4>Mon parcours en bref</h4>
-                    <div class="timeline-items">
-                        <div class="timeline-item">
-                            <span class="year">2003-2023</span>
-                            <span class="role">Métiers manuels & relation client</span>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="year">2023-2024</span>
-                            <span class="role">Formation TAI - Technicien informatique</span>
-                        </div>
-                        <div class="timeline-item current">
-                            <span class="year">2024-2026</span>
-                            <span class="role">BTS SIO SISR chez Novares</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="about-container-expert">
                     
-                <!-- Image en bas -->
-                <div class="about-image">
-                    <img src="images/fresc.webp" alt="Transition professionnelle" width="1376" height="768" loading="lazy" style="max-height: 320px; object-fit: cover; object-position: top; width: 100%; border-radius: 8px;">
-                    <p class="image-caption">De la matière à la donnée, chaque métier a posé une brique de mon parcours</p>
-                </div>
+                    <!-- 1. MES VALEURS -->
+                    <div class="cert-card cert-card-full">
+                        <i class="fas fa-heart" style="font-size: 2.5em; color: #34d399; margin-bottom: 1rem;"></i>
+                        <h4 style="font-size: 1.5em; color: #fff;">Mes Valeurs</h4>
+                        <ul class="card-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: left; gap: 15px; margin-top: 1rem;">
+                            <li><i class="fas fa-check" style="color:#34d399"></i> <strong>Soin :</strong> Rigueur dans chaque mission</li>
+                            <li><i class="fas fa-check" style="color:#34d399"></i> <strong>Débrouillardise :</strong> Initiative et autonomie</li>
+                            <li><i class="fas fa-check" style="color:#34d399"></i> <strong>Expérience :</strong> 20 ans de relation client</li>
+                            <li><i class="fas fa-check" style="color:#34d399"></i> <strong>Curiosité :</strong> Veille technologique active</li>
+                            <li><i class="fas fa-check" style="color:#34d399"></i> <strong>Adaptabilité :</strong> Reconversion réussie à 40 ans</li>
+                        </ul>
+                    </div>
 
-                <!-- BILAN intégré -->
-                <div style="background: rgba(52, 211, 153, 0.05); padding: 2.5rem; border-radius: 12px; border: 1px solid rgba(52, 211, 153, 0.3); border-left: 5px solid #34d399; text-align: left; max-width: 850px; margin: 3rem auto 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                    <h3 style="margin-top: 0; color: #34d399;"><i class="fas fa-flag-checkered"></i> Une reconversion transformée en expertise</h3>
-                    <p style="font-size: 1.1em; line-height: 1.7; color: #e2e8f0;">Cette formation m'a permis de consolider mes compétences techniques en <strong>environnement réel</strong>, de comprendre les enjeux complexes de la <strong>sécurité industrielle</strong> (exigences TISAX) et de développer une posture professionnelle orientée vers <strong>le service, la rigueur et l'amélioration continue</strong>.</p>
-                    <p style="font-size: 1.1em; line-height: 1.7; color: #e2e8f0; margin-bottom: 0;"><i class="fas fa-arrow-right" style="color: #34d399; margin-right: 8px;"></i> <em>Fort de cette expérience enrichissante, je suis aujourd'hui prêt à relever de nouveaux défis. Mon ambition est de continuer à mettre mon expertise technique et mon sens du service au profit d'infrastructures exigeantes, tout en maintenant une veille active pour m'adapter aux évolutions de notre métier.</em></p>
-                </div>
-            </section>
-
-            <!-- SECTION COMPÉTENCES & OUTILS -->
-            <section id="competences" class="main special">
-                <header class="major">
-                    <h2>Compétences & Outils</h2>
-                    <p>Mon expertise globale et mon environnement technique quotidien</p>
-                </header>
-                
-                <div class="skills-container">
-                    <div class="skill-card">
-                        <div class="skill-icon"><i class="fas fa-users-cog"></i></div>
-                        <h3>Active Directory</h3>
-                        <p class="skill-description">Gestion des utilisateurs, groupes et politiques</p>
-                        <span class="skill-badge niveau-op">Opérationnel</span>
-                        <div class="skill-tags">
-                            <span class="tag">ADDS</span><span class="tag">GPO</span>
-                            <span class="tag">LDAP</span><span class="tag">DNS</span>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
-                        <h3>Réseau</h3>
-                        <p class="skill-description">Configuration et dépannage réseau</p>
-                        <span class="skill-badge niveau-op">Opérationnel</span>
-                        <div class="skill-tags">
-                            <span class="tag">TCP/IP</span><span class="tag">VLAN</span>
-                            <span class="tag">Firewall</span>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3>Cybersécurité</h3>
-                        <p class="skill-description">Protection des systèmes et données</p>
-                        <span class="skill-badge niveau-op">Opérationnel</span>
-                        <div class="skill-tags">
-                            <span class="tag">MFA</span><span class="tag">VPN</span>
-                            <span class="tag">TISAX</span><span class="tag">RGPD</span>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon"><i class="fas fa-server"></i></div>
-                        <h3>Windows Server</h3>
-                        <p class="skill-description">Administration serveur et services réseau</p>
-                        <span class="skill-badge niveau-op">Opérationnel</span>
-                        <div class="skill-tags">
-                            <span class="tag">DHCP</span><span class="tag">Print Server</span>
-                            <span class="tag">DFS (Partages)</span><span class="tag">NTFS (Droits)</span>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon"><i class="fas fa-terminal"></i></div>
-                        <h3>PowerShell</h3>
-                        <p class="skill-description">Automatisation et scripting</p>
-                        <span class="skill-badge niveau-notions">Notions</span>
-                        <div class="skill-tags">
-                            <span class="tag">Scripting</span><span class="tag">Automatisation</span>
-                            <span class="tag">Cmdlets</span>
-                        </div>
-                    </div>
-                </div>
-                        
-                <div class="skill-legend" style="margin-top: 2rem;">
-                    <div class="legend-item"><span class="legend-dot" style="background:#94a3b8;"></span><span>Notions</span></div>
-                    <div class="legend-item"><span class="legend-dot" style="background:#34d399;"></span><span>Opérationnel</span></div>
-                    <div class="legend-item"><span class="legend-dot" style="background:#8b5cf6;"></span><span>Maîtrisé</span></div>
-                </div>
-
-                <hr class="section-divider">
-
-                <h3 class="sub-heading-pro"><i class="fas fa-toolbox" style="color: #34d399;"></i> Environnement Technique</h3>
-                <p style="margin-bottom: 2rem;">Les solutions matérielles et logicielles que j'utilise au quotidien</p>
-
-                <div class="tools-grid-pro">
-                    <div class="tool-card-pro">
-                        <div class="tool-card-header"><i class="fab fa-windows"></i><h3>Administration Windows</h3></div>
-                        <div class="tool-tags-pro"><span>Active Directory</span><span>RSAT</span><span>SCCM</span><span>PowerShell</span><span>CMD</span><span>DFS</span><span>Office 365</span></div>
-                    </div>
-                    <div class="tool-card-pro">
-                        <div class="tool-card-header"><i class="fas fa-shield-alt"></i><h3>Réseau & Sécurité</h3></div>
-                        <div class="tool-tags-pro"><span>Cisco Meraki</span><span>FortiClient VPN</span><span>FortiClient EMS</span><span>Authentification MFA</span><span>Putty</span></div>
-                    </div>
-                    <div class="tool-card-pro">
-                        <div class="tool-card-header"><i class="fas fa-headset"></i><h3>Support & Assistance</h3></div>
-                        <div class="tool-tags-pro"><span>FreshService</span><span>DameWare</span><span>TeamViewer</span><span>RDP / RDC Manager</span></div>
-                    </div>
-                    <div class="tool-card-pro">
-                        <div class="tool-card-header"><i class="fas fa-database"></i><h3>Sauvegarde & Gestion</h3></div>
-                        <div class="tool-tags-pro"><span>DELL EMC Avamar</span><span>ROK (SWF)</span><span>Gestion des Workflows</span></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION PARCOURS -->
-            <section id="parcours" class="main special">
-                <header class="major">
-                    <h2>Parcours Professionnel</h2>
-                    <p>Détail chronologique de mes formations et expériences</p>
-                </header>
-                
-                <div class="content parcours-content">
-                    <div class="two-columns">
-                        
-                        <!-- COLONNE GAUCHE : FORMATIONS -->
-                        <div class="section-box">
-                            <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Formations</h3>
-                            <ul class="timeline">
-                                <li class="timeline-item"><strong class="timeline-title">BTS SIO SISR</strong><span class="timeline-place">AFPI – Marcq-en-Barœul</span><span class="timeline-date">2024 – 2026</span></li>
-                                <li class="timeline-item"><strong class="timeline-title">Technicien d'Assistance Informatique</strong><span class="timeline-place">M2i Formation (distanciel)</span><span class="timeline-date">2023 – 2024</span></li>
-                                <li class="timeline-item"><strong class="timeline-title">CAP Poissonnier Traiteur</strong><span class="timeline-place">Campus Pro – Hellemmes</span><span class="timeline-date">2015 – 2017</span></li>
-                                <li class="timeline-item"><strong class="timeline-title">CAP Plâtrier Plaquiste</strong><span class="timeline-place">BATIFORM – Hazebrouck</span><span class="timeline-date">2008 – 2009</span></li>
-                                <li class="timeline-item"><strong class="timeline-title">CAP Carreleur mosaïste</strong><span class="timeline-place">CFA – Roubaix</span><span class="timeline-date">2005 – 2007</span></li>
-                                <li class="timeline-item"><strong class="timeline-title">CAP Électrotechnique</strong><span class="timeline-place">Dinah Derrick / CFA – Roubaix</span><span class="timeline-date">2003 – 2005</span></li>
-                            </ul>
-                        </div>
-
-                        <!-- COLONNE DROITE : EXPÉRIENCE ACTUELLE AVEC SCROLLBOX -->
-                        <div class="section-box">
-                            <h3 class="section-title"><i class="fas fa-briefcase"></i> Expérience Actuelle</h3>
-                            <h4 class="experience-title">Assistant IT – Administrateur Technique</h4>
-                            <p class="experience-meta">
-                                <span class="experience-company">Novares</span> · 
-                                <span class="experience-location">Lens, Libercourt, Villers-Bretonneux</span> · 
-                                <span class="experience-date">Oct. 2024 – Août 2026</span>
-                            </p>
-                            
-                            <!-- LA FAMEUSE SCROLLBOX -->
-                            <div class="scrollbox-tasks">
-                                <ul class="experience-list" style="margin-bottom: 0;">
-                                    <li>Installation, configuration et maintenance de postes fixes et portables</li>
-                                    <li>Réparation de matériel informatique (tours et pc portables)</li>
-                                    <li>Déploiement automatisé d'OS Windows et de logiciels via SCCM</li>
-                                    <li>Installation de logiciels et de pilotes</li>
-                                    <li>Installation et gestion d'imprimantes</li>
-                                    <li>Mise en place de la double authentification (MFA)</li>
-                                    <li>Configuration de VPN FortiClient avec EMS</li>
-                                    <li>Administration des comptes, groupes et droits d'accès</li>
-                                    <li>Gestion des mises à jour et correctifs de sécurité</li>
-                                    <li>Gestion du Wi‑Fi invités via Cisco Meraki</li>
-                                    <li>Sauvegarde et restauration avec DELL EMC Avamar</li>
-                                    <li>Assistance utilisateurs (DameWare, TeamViewer, RDP)</li>
-                                    <li>Gestion des tickets via Freshworks</li>
-                                    <li>Inventaire matériel et logiciel</li>
-                                    <li>Suivi des workflows SWF via ROK</li>
-                                </ul>
+                    <!-- 2. MON PARCOURS (TIMELINE) -->
+                    <div class="timeline-simple">
+                        <h4 style="margin-bottom: 1.5rem; color: #fff;">Mon parcours en bref</h4>
+                        <div class="timeline-items">
+                            <div class="timeline-item">
+                                <span class="year">2003-2023</span>
+                                <span class="role">Expertise manuelle & relation client</span>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="year">2023-2024</span>
+                                <span class="role">Formation TAI - Technicien informatique</span>
+                            </div>
+                            <div class="timeline-item current">
+                                <span class="year">2024-2026</span>
+                                <span class="role">BTS SIO SISR chez Novares</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="cv-download">
-                        <ul class="actions special">
-                            <li><a href="files/Aurelien_Pont_Alternance_IT.pdf" class="button primary icon solid fa-download" download>Télécharger mon CV</a></li>
+                    <!-- 3. LA FRESQUE (IMAGE ENTIÈRE) -->
+                    <div class="about-image-full">
+                        <img src="images/fresc.webp" alt="Frise chronologique du parcours d'Aurélien Pont" loading="lazy">
+                        <p style="margin-top: 1rem; font-style: italic; color: #94a3b8;">"De la matière à la donnée, chaque métier a posé une brique de mon parcours."</p>
+                    </div>
+
+                    <!-- 4. MA MOTIVATION -->
+                    <div class="cert-card cert-card-full">
+                        <i class="fas fa-bullseye" style="font-size: 2.5em; color: #34d399; margin-bottom: 1rem;"></i>
+                        <h4 style="font-size: 1.5em; color: #fff;">Ma Motivation</h4>
+                        <ul class="card-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: left; gap: 15px; margin-top: 1rem;">
+                            <li><i class="fas fa-shield-alt" style="color:#34d399"></i> <strong>Sécuriser :</strong> Protéger les infrastructures industrielles</li>
+                            <li><i class="fas fa-cogs" style="color:#34d399"></i> <strong>Automatiser :</strong> Optimiser les processus via PowerShell/SCCM</li>
+                            <li><i class="fas fa-user-shield" style="color:#34d399"></i> <strong>Accompagner :</strong> Support utilisateur de proximité</li>
+                            <li><i class="fas fa-chart-line" style="color:#34d399"></i> <strong>Innovation :</strong> IA et outils de demain</li>
+                            <li><i class="fas fa-book" style="color:#34d399"></i> <strong>Documenter :</strong> Pérenniser le savoir-faire</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- NOVARES intégré dans Parcours -->
-                <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0;" />
-                <h3 style="font-size:1.6em; margin-bottom:0.5rem;"><i class="fas fa-building" style="color:#34d399;"></i> Novares Group</h3>
-                <p style="margin-bottom:2.5rem;">L'entreprise et mon poste en tant qu'Assistant IT / Administrateur Technique</p>
+                <!-- BILAN INTÉGRÉ -->
+                <div style="background: rgba(52, 211, 153, 0.05); padding: 2rem; border-radius: 12px; border: 1px solid rgba(52, 211, 153, 0.3); border-left: 5px solid #34d399; text-align: left; max-width: 900px; margin: 3rem auto 0;">
+                    <h3 style="margin-top: 0; color: #34d399;"><i class="fas fa-flag-checkered"></i> Une reconversion au service de l'expertise</h3>
+                    <p style="font-size: 1.1em; color: #e2e8f0; margin-bottom: 0;">Cette formation m'a permis de consolider mes acquis en <strong>environnement réel</strong>. Je maîtrise aujourd'hui les exigences de la <strong>sécurité industrielle</strong> (TISAX) tout en développant une posture orientée vers le service et la rigueur technique.</p>
+                </div>
+            </section>
 
-                <div id="novares" style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: flex-start; margin-bottom: 4rem; text-align: left;">
-                    <div style="flex: 0 0 auto; width: 380px; margin: 0 auto; padding-top: 5px;">
-                        <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05);">
-                            <img src="tof/novares/novares.jpg" alt="Image Novares" loading="lazy" style="width: 100%; height: auto; display: block;">
-                        </div>
+            <!-- SECTION COMPÉTENCES -->
+            <section id="competences" class="main special">
+                <header class="major">
+                    <h2>Compétences & Outils</h2>
+                </header>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-users-cog"></i></div>
+                        <h3>Active Directory</h3>
+                        <span class="skill-badge niveau-op">Opérationnel</span>
+                        <div class="skill-tags"><span class="tag">ADDS</span><span class="tag">GPO</span><span class="tag">DNS</span></div>
                     </div>
-
-                    <div class="novares-presentation" style="flex: 1 1 300px;">
-                        <h3 style="font-weight: 600; margin-top: 0;">Partenaire des constructeurs historiques</h3>
-                        <p>Anciennement Mecaplast, Novares conçoit et fabrique des composants vitaux pour les géants de l'automobile (Stellantis, Renault-Nissan, VW Group...). Ce positionnement stratégique implique un système d'information mondialisé, robuste et hautement disponible.</p>
-                        
-                        <h3 style="font-weight: 600; margin-top: 2rem;">Un environnement IT critique</h3>
-                        <p>Opérant dans un cadre industriel strict et régi par les normes de cybersécurité de l'industrie automobile (TISAX), l'infrastructure réseau et système ne laisse aucune place à l'improvisation. C'est un terrain d'apprentissage exceptionnel pour intervenir en conditions réelles de production.</p>
-
-                        <div style="background: rgba(52, 211, 153, 0.05); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #34d399; margin-top: 2rem;">
-                            <h4 style="margin-top: 0; font-weight: 600;"><i class="fas fa-microchip" style="color: #34d399;"></i> L'innovation soutenue par l'IT</h4>
-                            <p style="margin-bottom: 0; font-size: 0.95em;">Pour transformer des concepts futuristes en solutions concrètes (allègement des véhicules, intégration de surfaces intelligentes), l'entreprise s'appuie sur une R&D de pointe. Les équipes informatiques y jouent un rôle crucial pour garantir la performance des outils de conception et de simulation.</p>
-                        </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
+                        <h3>Réseau</h3>
+                        <span class="skill-badge niveau-op">Opérationnel</span>
+                        <div class="skill-tags"><span class="tag">TCP/IP</span><span class="tag">VLAN</span><span class="tag">Meraki</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Cybersécurité</h3>
+                        <span class="skill-badge niveau-op">Opérationnel</span>
+                        <div class="skill-tags"><span class="tag">MFA</span><span class="tag">VPN</span><span class="tag">TISAX</span></div>
                     </div>
                 </div>
 
-                <div style="position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); margin-bottom: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
-                    <img src="tof/novares/novacar.jpg" alt="Véhicule équipé de pièces Novares" loading="lazy" style="width: 100%; height: auto; display: block; filter: brightness(0.95);">
-                    
-                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 40px 20px 15px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); text-align: left;">
-                        <p style="margin: 0; font-size: 0.9em; color: #ffffff; font-weight: 500;">
-                            <i class="fas fa-car" style="color: #34d399; margin-right: 8px;"></i> Solutions plastiques Novares — intégration sur véhicule de série
-                        </p>
+                <hr class="section-divider">
+                <h3>Environnement Technique</h3>
+                <div class="tools-grid-pro">
+                    <div class="tool-card-pro">
+                        <div class="tool-card-header"><i class="fab fa-windows"></i><h3>Admin Windows</h3></div>
+                        <div class="tool-tags-pro"><span>SCCM</span><span>RSAT</span><span>PowerShell</span><span>DFS</span></div>
                     </div>
-                </div>
-
-                <hr style="border: none; border-top: 1px solid rgba(150,150,150,0.2); margin: 3rem 0;" />
-
-                <ul class="statistics">
-                    <li class="style1"><span class="icon solid fa-users"></span><strong class="counter" data-target="11000">0</strong><span>Collaborateurs</span></li>
-                    <li class="style2"><span class="icon solid fa-globe"></span><strong class="counter" data-target="32">0</strong><span>Pays</span></li>
-                    <li class="style3"><span class="icon solid fa-industry"></span><strong class="counter" data-target="45">0</strong><span>Sites de production</span></li>
-                    <li class="style4"><span class="icon solid fa-chart-line"></span><strong class="counter" data-target="1700">0</strong><span>Millions € CA</span></li>
-                    <li class="style5"><span class="icon solid fa-lightbulb"></span><strong class="counter" data-target="300">0</strong><span>Ingénieurs R&amp;D</span></li>
-                </ul>
-
-                <div class="spotlight novares-spotlight" style="margin-top: 3rem; border-radius: 12px; padding: 2.5rem; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
-                    <div class="content" style="width: 100%;">
-                        <h3 style="font-weight: 600;"><i class="fas fa-user-tie" style="color: #34d399;"></i> Mon Périmètre d'Intervention</h3>
-                        <p>Basé au centre d'expertise de <strong>Lens</strong> (pilier technologique de Novares inauguré en 2021), j'assure le maintien en conditions opérationnelles des équipements sous la supervision d'un administrateur technique IT.</p>
-                        <p>Mon quotidien combine <strong>support local et à distance</strong> en étroite collaboration avec les équipes IT nationales (Vélizy, Monaco...) et internationales. J'interviens également sur le terrain, notamment sur les sites de production de <strong>Libercourt (62)</strong> et <strong>Villers-Bretonneux (80)</strong>.</p>
-                        <p style="margin-bottom: 0;">Cette mission itinérante et polyvalente me permet de veiller à la continuité des services numériques au cœur même des lignes de production.</p>
-                        
-                        <ul class="actions" style="margin-top: 2rem;">
-                            <li><a href="https://www.novaresteam.com/fr/" class="button primary" target="_blank" rel="noopener noreferrer">Découvrir le groupe Novares</a></li>
-                        </ul>
+                    <div class="tool-card-pro">
+                        <div class="tool-card-header"><i class="fas fa-shield-alt"></i><h3>Réseau & Cyber</h3></div>
+                        <div class="tool-tags-pro"><span>Cisco Meraki</span><span>FortiClient</span><span>MFA</span><span>EMS</span></div>
                     </div>
                 </div>
             </section>
-            
-            <!-- SECTION RÉALISATIONS TECHNIQUES AVEC LES FILTRES ACTIFS ET DATA-CATEGORY CORRIGÉS -->
+
+            <!-- PARCOURS & NOVARES -->
+            <section id="parcours" class="main special">
+                <header class="major">
+                    <h2>Parcours & Novares Group</h2>
+                </header>
+                <div class="two-columns" style="text-align: left;">
+                    <div class="section-box">
+                        <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Formations</h3>
+                        <ul class="timeline">
+                            <li class="timeline-item"><strong>BTS SIO SISR</strong><span class="timeline-place">AFPI Marcq</span><span class="timeline-date">2024-2026</span></li>
+                            <li class="timeline-item"><strong>T.A.I</strong><span class="timeline-place">M2i Formation</span><span class="timeline-date">2023-2024</span></li>
+                        </ul>
+                    </div>
+                    <div class="section-box">
+                        <h3 class="section-title"><i class="fas fa-briefcase"></i> Novares</h3>
+                        <div class="scrollbox-tasks">
+                            <ul>
+                                <li>Déploiement SCCM (OS & Logiciels)</li>
+                                <li>Gestion MFA & VPN Fortinet</li>
+                                <li>Administration Active Directory</li>
+                                <li>Support multi-sites (Lens, Libercourt)</li>
+                                <li>Conformité TISAX</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="statistics" style="margin-top:3rem;">
+                    <li class="style1"><span class="icon solid fa-users"></span><strong class="counter" data-target="11000">0</strong><span>Staff</span></li>
+                    <li class="style2"><span class="icon solid fa-globe"></span><strong class="counter" data-target="32">0</strong><span>Pays</span></li>
+                    <li class="style3"><span class="icon solid fa-industry"></span><strong class="counter" data-target="45">0</strong><span>Usines</span></li>
+                </ul>
+            </section>
+
+            <!-- RÉALISATIONS TECHNIQUES -->
             <section id="experiences" class="main special">
                 <header class="major">
                     <h2>Réalisations Techniques</h2>
-                    <p>Documentation détaillée de mes missions chez Novares</p>
                 </header>
-            
-                <ul class="experiences-intro">
-                    <li><i class="fas fa-check"></i> Description détaillée de chaque situation professionnelle</li>
-                    <li><i class="fas fa-check"></i> Liens cliquables vers les documentations détaillées</li>
-                    <li><i class="fas fa-check"></i> Outils et technologies utilisés</li>
-                </ul>
-            
-                <!-- Filtres -->
                 <div class="filters">
-                   <button class="filter-btn active" data-filter="top">Projets principaux</button>
+                    <button class="filter-btn active" data-filter="top">Top Missions</button>
                     <button class="filter-btn" data-filter="support">Support</button>
                     <button class="filter-btn" data-filter="reseau">Réseau</button>
                     <button class="filter-btn" data-filter="securite">Sécurité</button>
-                    <button class="filter-btn" data-filter="deploiement">Déploiement</button>
                 </div>
-            
-                <!-- Conteneur des cartes -->
                 <div class="cert-grid" id="portfolio-grid">
-                    
-                    <!-- Synthèse (top) -->
-                    <div class="cert-card top" data-category="top" style="border: 2px solid #34d399; box-shadow: 0 0 20px rgba(52, 211, 153, 0.15); position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 15px; right: -35px; background: #34d399; color: #1e293b; padding: 5px 40px; font-weight: bold; font-size: 0.8em; transform: rotate(45deg);">Synthèse</div>
-                        <i class="fas fa-route" style="color: #34d399; font-size: 2.5em; margin-bottom: 15px;"></i>
-                        <h4 style="color: #34d399;">Lien BTS SIO & Entreprise</h4>
-                        <p><strong>Enjeu :</strong> Faire le pont entre la théorie du BTS et la pratique en milieu industriel.</p>
-                        <p><strong>Action :</strong> Synthèse globale de mon alternance et de mes missions chez Novares.</p>
-                        <p><strong>Impact :</strong> Vue d'ensemble structurée de mes compétences techniques et transversales.</p>
-                        <ul class="actions special"><li><a href="mission/parcours-sisr.html" class="button primary small" style="background-color: #34d399; color: #1e293b; box-shadow: none;">Découvrir le bilan</a></li></ul>
-                    </div>
-
-                    <!-- SCCM (top + deploiement) -->
-                    <div class="cert-card top" data-category="deploiement top">
+                    <div class="cert-card top" data-category="top deploiement">
                         <i class="fas fa-rocket"></i>
                         <h4>Déploiement SCCM</h4>
-                        <p><strong>Enjeu :</strong> Réduire le temps de préparation des postes.</p>
-                        <p><strong>Action :</strong> Mise en place d’un déploiement centralisé via SCCM.</p>
-                        <p><strong>Impact :</strong> Standardisation des configurations et gain d’efficacité pour l’équipe IT.</p>
-                        <ul class="actions special"><li><a href="mission/sccm.html" class="button small">Voir la procédure</a></li></ul>
+                        <p>Standardisation des postes et automatisation du déploiement Windows.</p>
+                        <ul class="actions special"><li><a href="mission/sccm.html" class="button small">Voir</a></li></ul>
                     </div>
-
-                    <!-- MFA (top + securite) -->
-                    <div class="cert-card top" data-category="securite top">
+                    <div class="cert-card top" data-category="top securite">
                         <i class="fas fa-mobile-alt"></i>
-                        <h4>Double authentification</h4>
-                        <p><strong>Enjeu :</strong> Protéger les accès aux systèmes critiques contre les compromissions d'identifiants.</p>
-                        <p><strong>Action :</strong> Déploiement et configuration de la double authentification (MFA) pour l'ensemble des utilisateurs.</p>
-                        <p><strong>Impact :</strong> Sécurisation des comptes et forte diminution des risques d'intrusion.</p>
-                        <ul class="actions special"><li><a href="mission/mfa.html" class="button small">Voir le guide</a></li></ul>
+                        <h4>Double Authentification</h4>
+                        <p>Sécurisation des accès critiques via déploiement MFA global.</p>
+                        <ul class="actions special"><li><a href="mission/mfa.html" class="button small">Voir</a></li></ul>
                     </div>
-
-                    <!-- VPN (top + securite reseau) -->
-                    <div class="cert-card top" data-category="securite reseau top">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>VPN FortiClient</h4>
-                        <p><strong>Enjeu :</strong> Garantir aux collaborateurs nomades un accès distant sûr aux ressources de l'entreprise.</p>
-                        <p><strong>Action :</strong> Configuration et déploiement du VPN FortiClient (intégrant EMS et MFA).</p>
-                        <p><strong>Impact :</strong> Continuité d'activité assurée avec des connexions distantes hautement sécurisées.</p>
-                        <ul class="actions special"><li><a href="mission/vpn.html" class="button small">Voir la procédure</a></li></ul>
-                    </div>
-
-                    <!-- Wi-Fi (top + reseau) -->
-                    <div class="cert-card top" data-category="reseau top">
+                    <div class="cert-card top" data-category="top reseau">
                         <i class="fas fa-wifi"></i>
-                        <h4>Wi-Fi Invité</h4>
-                        <p><strong>Enjeu :</strong> Offrir une connectivité aux visiteurs sans compromettre l'intégrité du réseau LAN interne.</p>
-                        <p><strong>Action :</strong> Création d'un SSID dédié et isolé avec portail captif via l'interface Cisco Meraki.</p>
-                        <p><strong>Impact :</strong> Accueil professionnel des visiteurs garantissant la totale étanchéité du réseau d'entreprise.</p>
-                        <ul class="actions special"><li><a href="mission/meraki.html" class="button small">Voir la procédure</a></li></ul>
-                    </div>
-
-                    <!-- Reste des cartes (sans 'top' dans data-category) -->
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-desktop"></i>
-                        <h4>Installation &amp; Maintenance</h4>
-                        <p><strong>Enjeu :</strong> Garantir la disponibilité et le bon fonctionnement du parc informatique utilisateur.</p>
-                        <p><strong>Action :</strong> Installation, configuration et maintenance préventive/curative des postes fixes et portables.</p>
-                        <p><strong>Impact :</strong> Maintien en condition opérationnelle optimal et forte réduction des pannes.</p>
-                        <ul class="actions special"><li><a href="mission/maintenance.html" class="button small">Voir le document</a></li></ul>
-                    </div>
-                    
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-tools"></i>
-                        <h4>Réparation matériel</h4>
-                        <p><strong>Enjeu :</strong> Minimiser l'indisponibilité des utilisateurs face aux pannes matérielles.</p>
-                        <p><strong>Action :</strong> Diagnostic précis et remplacement des composants défectueux sur site.</p>
-                        <p><strong>Impact :</strong> Prolongation de la durée de vie des équipements et réduction des coûts de renouvellement.</p>
-                        <ul class="actions special"><li><a href="mission/reparation.html" class="button small">Voir la procédure</a></li></ul>
-                    </div>
-                    
-                    <div class="cert-card" data-category="deploiement">
-                        <i class="fas fa-download"></i>
-                        <h4>Installation logiciels</h4>
-                        <p><strong>Enjeu :</strong> Automatiser les tâches chronophages liées aux installations manuelles.</p>
-                        <p><strong>Action :</strong> Déploiement via scripts UNC, Software Center et gestion centralisée des pilotes.</p>
-                        <p><strong>Impact :</strong> Standardisation des postes et gain de temps considérable lors des déploiements.</p>
-                        <ul class="actions special"><li><a href="mission/unc.html" class="button small">Voir la procédure</a></li></ul>
-                    </div>
-                    
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-print"></i>
-                        <h4>Gestion imprimantes</h4>
-                        <p><strong>Enjeu :</strong> Fiabiliser et centraliser l'accès aux services d'impression pour tous les collaborateurs.</p>
-                        <p><strong>Action :</strong> Configuration des imprimantes locales et administration des serveurs d’impression.</p>
-                        <p><strong>Impact :</strong> Réduction drastique des incidents d'impression et expérience utilisateur fluidifiée.</p>
-                        <ul class="actions special"><li><a href="mission/printer.html" class="button small">Voir la procédure</a></li></ul>
-                    </div>
-                    
-                    <div class="cert-card" data-category="securite">
-                        <i class="fas fa-users-cog"></i>
-                        <h4>Gestion des comptes AD</h4>
-                        <p><strong>Enjeu :</strong> Structurer l'annuaire d'entreprise et contrôler rigoureusement les droits d'accès.</p>
-                        <p><strong>Action :</strong> Administration quotidienne des comptes, groupes de sécurité et droits via Active Directory.</p>
-                        <p><strong>Impact :</strong> Cycle de vie des identités maîtrisé et conformité sécuritaire renforcée.</p>
-                        <ul class="actions special"><li><a href="mission/gpo.html" class="button small">Voir la procédure</a></li></ul>
-                    </div>
-                    
-                    <div class="cert-card" data-category="deploiement">
-                        <i class="fas fa-cloud-download-alt"></i>
-                        <h4>Mise à jour</h4>
-                        <p><strong>Enjeu :</strong> Protéger le parc informatique contre les vulnérabilités logicielles et matérielles.</p>
-                        <p><strong>Action :</strong> Déploiement des correctifs via SCCM, Windows Update et outils de gestion DELL.</p>
-                        <p><strong>Impact :</strong> Parc informatique homogène, à jour, et surface d'attaque considérablement réduite.</p>
-                        <ul class="actions special"><li><a href="mission/update.html" class="button small">Voir la procédure</a></li></ul>
-                    </div>
-                    
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-database"></i>
-                        <h4>Sauvegarde &amp; Restauration</h4>
-                        <p><strong>Enjeu :</strong> Prévenir la perte de données critiques et garantir le plan de continuité d'activité (PCA).</p>
-                        <p><strong>Action :</strong> Configuration, supervision des jobs de sauvegarde et tests de restauration avec Avamar.</p>
-                        <p><strong>Impact :</strong> Intégrité des données assurée et capacité de récupération rapide éprouvée.</p>
-                        <ul class="actions special"><li><a href="mission/backups.html" class="button small">Voir la procédure</a></li></ul>
-                    </div>
-                    
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-headset"></i>
-                        <h4>Assistance distante</h4>
-                        <p><strong>Enjeu :</strong> Fournir un support technique ultra-réactif, quel que soit le lieu de travail de l'utilisateur.</p>
-                        <p><strong>Action :</strong> Prise en main à distance via des outils sécurisés et standards (DameWare, TeamViewer, RDP).</p>
-                        <p><strong>Impact :</strong> Baisse significative du temps de résolution des incidents et satisfaction utilisateur accrue.</p>
-                        <ul class="actions special"><li><a href="mission/assistance.html" class="button small">Voir la procédure</a></li></ul>
-                    </div>
-                    
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-ticket-alt"></i>
-                        <h4>Gestion incidents</h4>
-                        <p><strong>Enjeu :</strong> Centraliser, prioriser et tracer efficacement l'ensemble des sollicitations du support IT.</p>
-                        <p><strong>Action :</strong> Exploitation de la solution de ticketing Freshworks pour traiter les demandes selon leur criticité.</p>
-                        <p><strong>Impact :</strong> Respect strict des niveaux de service (SLA) et pilotage optimisé de l'activité support.</p>
-                        <ul class="actions special"><li><a href="mission/sla.html" class="button small">Voir la procédure</a></li></ul>
-                    </div>
-                    
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-exchange-alt"></i>
-                        <h4>Suivi des Workflows</h4>
-                        <p><strong>Enjeu :</strong> Maîtriser le cycle de vie du matériel (entrées, sorties, prêts, pannes).</p>
-                        <p><strong>Action :</strong> Exploitation de workflows SWF automatisés pour tracer rigoureusement chaque mouvement d'équipement.</p>
-                        <p><strong>Impact :</strong> Inventaire physique fiable à 100% et optimisation de la gestion des stocks de l'entreprise.</p>
-                        <ul class="actions special"><li><a href="mission/workflow.html" class="button small">Voir la procédure</a></li></ul>
-                    </div>
-                    
-                    <div class="cert-card" data-category="securite">
-                        <i class="fas fa-eye-slash"></i>
-                        <h4>Conformité TISAX</h4>
-                        <p><strong>Enjeu :</strong> Valider les plus hauts standards de cybersécurité exigés par le secteur de l'industrie automobile.</p>
-                        <p><strong>Action :</strong> Réalisation d'audits internes, d'inventaires précis et remédiation technique des écarts sécuritaires.</p>
-                        <p><strong>Impact :</strong> Obtention/maintien de la conformité TISAX, gage de confiance pour les partenaires et clients.</p>
-                        <ul class="actions special"><li><a href="mission/tisax.html" class="button small">Voir la procédure</a></li></ul>
-                    </div>
-                    
-                    <div class="cert-card" data-category="support">
-                        <i class="fas fa-file-alt"></i>
-                        <h4>Guides utilisateurs</h4>
-                        <p><strong>Enjeu :</strong> Rendre les utilisateurs autonomes sur les tâches IT basiques pour désengorger le support.</p>
-                        <p><strong>Action :</strong> Rédaction, mise en page et diffusion de documentations pas-à-pas claires et didactiques.</p>
-                        <p><strong>Impact :</strong> Transfert de compétences réussi se traduisant par une baisse significative des tickets de niveau 0.</p>
-                        <ul class="actions special"><li><a href="mission/document.html" class="button small">Voir le guide</a></li></ul>
+                        <h4>Wi-Fi Meraki</h4>
+                        <p>Gestion isolée du réseau invité sur contrôleur Cisco Cloud.</p>
+                        <ul class="actions special"><li><a href="mission/meraki.html" class="button small">Voir</a></li></ul>
                     </div>
                 </div>
             </section>
-            
-            <!-- SECTION PROJET CICAR -->
-            <section id="projet-cicar" class="main special">
-                <header class="major">
-                    <h2>Projets BTS SIO</h2>
-                    <p>Mes projets réalisés durant ma formation (RP & projet final)</p>
-                </header>
 
-                <div class="cert-grid projet-grid">
+            <!-- PROJETS BTS -->
+            <section id="projet-cicar" class="main special">
+                <header class="major"><h2>Projets BTS SIO</h2></header>
+                <div class="cert-grid">
                     <div class="cert-card">
                         <i class="fas fa-server"></i>
                         <h4>Projet CICAR</h4>
-                        <p><strong>Contexte :</strong> Mise en place d'une infrastructure réseau pour une agence automobile fictive.</p>
-                        <p><strong>Objectif :</strong> Déployer un réseau complet et opérationnel de A à Z.</p>
-                        <p><strong>Solution :</strong> Conception du plan d'adressage, configuration des équipements, mise en place des services (AD, DHCP, DNS).</p>
-                        <p><strong>Résultat :</strong> Infrastructure fonctionnelle documentée et présentée en soutenance.</p>
-                        <ul class="actions special">
-                            <li><a href="mission/projet_cicar.html" class="button small">Voir le projet</a></li>
-                        </ul>
+                        <p>Infrastructure complète (AD, DNS, DHCP) pour une agence automobile.</p>
+                        <a href="mission/projet_cicar.html" class="button small">Détails</a>
                     </div>
-                
                     <div class="cert-card">
-                        <i class="fas fa-network-wired"></i>
-                        <h4>RP 2 — Haute disponibilité</h4>
-                        <p><strong>Contexte :</strong> Une infrastructure classique sans redondance exposée aux pannes.</p>
-                        <p><strong>Objectif :</strong> Garantir la continuité de service en cas de défaillance.</p>
-                        <p><strong>Solution :</strong> Déploiement de HAProxy pour l'équilibrage de charge, VPN IPsec site-à-site et pare-feu.</p>
-                        <p><strong>Résultat :</strong> Architecture haute disponibilité avec basculement automatique.</p>
-                        <ul class="actions special">
-                            <li><a href="PPE/ppe2.html" class="button small">Voir le projet</a></li>
-                        </ul>
-                    </div>
-                
-                    <div class="cert-card">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>RP 4 — Supervision & sécurité</h4>
-                        <p><strong>Contexte :</strong> Absence de supervision centralisée sur le SI.</p>
-                        <p><strong>Objectif :</strong> Améliorer la visibilité et la protection du système d'information.</p>
-                        <p><strong>Solution :</strong> Déploiement de Centreon (supervision SNMP), GLPI (gestion du parc) et MFA.</p>
-                        <p><strong>Résultat :</strong> Alertes en temps réel, inventaire automatisé et authentification renforcée.</p>
-                        <ul class="actions special">
-                            <li><a href="PPE/ppe4.html" class="button small">Voir le projet</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- TABLEAU E4 intégré dans Projets BTS -->
-                <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0;" />
-                <div id="Tableau-E4" class="tableau-container">
-                    <i class="fas fa-file-excel tableau-icon-top"></i>
-                    <h3 style="margin-bottom:0.5rem;">Tableau de Compétences E4</h3>
-                    <p style="margin-bottom:1.5rem;">Synthèse des situations professionnelles réalisées</p>
-                    
-                    <div class="tableau-description">
-                        <h3>À propos du tableau</h3>                          
-                        <p>Ce tableau E4 présente l'ensemble des <strong>situations professionnelles</strong> que j'ai réalisées durant ma formation BTS SIO, spécialité SISR.</p>
-                        <p>Chaque projet ou mission est relié à des <strong>compétences spécifiques du référentiel</strong>, développées en entreprise ou au centre de formation, notamment à travers le <strong>projet Cicar</strong> présenté <strong>dans la section ci-dessus</strong>.</p>
-                    </div>
-                    
-                    <div class="tableau-buttons">
-                        <a href="files/tableau_bts_e4.xlsx" download class="button primary icon solid fa-download">Télécharger le tableau</a>
-                    </div>
-                    
-                    <div class="tableau-iframe" style="text-align: center; margin-top: 2rem;">
-                        <div onclick="openPdfModal('files/tableau_bts_e4.pdf')" style="cursor: zoom-in; display: inline-block;">
-                            <img src="images/apercu-e4.png" alt="Aperçu du tableau E4" width="1600" height="900" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid #34d399; transition: transform 0.3s ease;">
-                            <p style="font-size: 1.1em; color: #34d399; margin-top: 15px; font-weight: bold;">
-                                <i class="fas fa-search-plus"></i> Cliquez sur l'image pour agrandir le tableau
-                            </p>
-                        </div>
+                        <i class="fas fa-file-excel"></i>
+                        <h4>Tableau E4</h4>
+                        <p>Synthèse de mes compétences en format officiel.</p>
+                        <a href="#" onclick="openPdfModal('files/tableau_bts_e4.pdf'); return false;" class="button small">Ouvrir</a>
                     </div>
                 </div>
             </section>
 
-            <!-- SECTION VEILLES + SOURCES fusionnées -->
+            <!-- VEILLES -->
             <section id="veilles" class="main special">
-                <header class="major">
-                    <h2>Veilles Technologiques</h2>
-                    <p>Réalisées dans le cadre de mon BTS SIO</p>
-                </header>
-                
+                <header class="major"><h2>Veilles Technologiques</h2></header>
                 <div class="cert-grid">
                     <div class="cert-card">
                         <i class="fas fa-cloud"></i>
                         <h4>Cloud Computing</h4>
-                        <p>IaaS, PaaS, SaaS : comparaison Office 365 vs Google Apps, avantages et inconvénients pour les entreprises</p>
-                        <ul class="actions special">
-                            <li><a href="veilles/veille_cloud.html" class="button small">Lire la veille</a></li>
-                        </ul>
+                        <a href="veilles/veille_cloud.html" class="button small">Lire</a>
                     </div>
-                    
                     <div class="cert-card">
                         <i class="fas fa-print"></i>
-                        <h4>Imprimantes 3D et 4D</h4>
-                        <p>Tendances 2025, applications industrielles, analyse du marché et perspectives d'avenir</p>
-                        <ul class="actions special">
-                            <li><a href="veilles/veille_printer_3-4D.html" class="button small">Lire la veille</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- SOURCES intégrées dans Veilles -->
-                <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0;" />
-                <h3 id="sources" style="font-size:1.5em; margin-bottom:0.5rem;"><i class="fas fa-rss" style="color:#34d399;"></i> Mes Sources de Veille</h3>
-                <p style="margin-bottom:2rem;">J'utilise un agrégateur RSS (Feedly) pour centraliser mes sources et consulter les nouveautés chaque semaine.</p>
-
-                <div class="cert-grid sources-grid">
-                    <div class="cert-card">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>Cybersécurité</h4>
-                        <ul class="sources-list">
-                            <li><a href="https://www.cve.org" target="_blank" rel="noopener noreferrer">Common Vulnerabilities and Exposures</a><small>Base de données mondiale des failles.</small></li>
-                            <li><a href="https://www.zataz.com/" target="_blank" rel="noopener noreferrer">ZATAZ</a><small>Actualités cyberattaques en France.</small></li>
-                            <li><a href="https://www.cert.ssi.gouv.fr/" target="_blank" rel="noopener noreferrer">CERT-FR</a><small>Alertes officielles de l'ANSSI.</small></li>
-                            <li><a href="https://www.lemondeinformatique.fr/" target="_blank" rel="noopener noreferrer">Le Monde Informatique</a><small>Actualité IT professionnelle.</small></li>
-                        </ul>
-                    </div>
-
-                    <div class="cert-card">
-                        <i class="fas fa-server"></i>
-                        <h4>Technique &amp; Systèmes</h4>
-                        <ul class="sources-list">
-                            <li><a href="https://korben.info/" target="_blank" rel="noopener noreferrer">KORBEN</a><small>Outils, scripts et astuces.</small></li>
-                            <li><a href="https://www.it-connect.fr/" target="_blank" rel="noopener noreferrer">IT-Connect</a><small>Tutoriels en français.</small></li>
-                            <li><a href="https://rdr-it.com/" target="_blank" rel="noopener noreferrer">RDR-IT</a><small>Documentations techniques.</small></li>
-                            <li><a href="https://www.reddit.com/r/sysadmin/" target="_blank" rel="noopener noreferrer">r/sysadmin (Reddit)</a><small>Retours d'expérience terrain.</small></li>
-                        </ul>
-                    </div>
-
-                    <div class="cert-card">
-                        <i class="fas fa-brain"></i>
-                        <h4>Veille Digitale &amp; IA</h4>
-                        <ul class="sources-list">
-                            <li><a href="https://next.ink/" target="_blank" rel="noopener noreferrer">NEXT</a><small>Actualité tech indépendante.</small></li>
-                            <li><a href="https://www.leptidigital.fr/" target="_blank" rel="noopener noreferrer">LEPTIDIGITAL</a><small>Tendances digitales, IA.</small></li>
-                            <li><a href="https://www.journaldunet.com/" target="_blank" rel="noopener noreferrer">Journal du Net</a><small>Actualité business et transformation.</small></li>
-                        </ul>
+                        <h4>Impression 3D/4D</h4>
+                        <a href="veilles/veille_printer_3-4D.html" class="button small">Lire</a>
                     </div>
                 </div>
             </section>
 
-            <!-- SECTION ATTESTATIONS -->
+            <!-- ATTESTATIONS -->
             <section id="attestations" class="main special">
-                <header class="major">
-                    <h2>Certifications &amp; Attestations</h2>
-                    <p>Expertise RGPD &amp; Cybersécurité ANSSI</p>
-                </header>
-            
-                <h3 class="certifications-title"><i class="fa fa-shield-alt"></i> Certifications RGPD</h3>
-            
+                <header class="major"><h2>Certifications</h2></header>
                 <div class="cert-grid">
-                    <div class="cert-card"><i class="fas fa-file-contract"></i><h4>Module 1 : Le RGPD et ses notions clés</h4><ul class="actions special"><li><a href="tof/mooc/RGPD1.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD1.jpg'); return false;">Voir</a></li></ul></div>
-                    <div class="cert-card"><i class="fas fa-lock"></i><h4>Module 2 : Les principes de la protection des données</h4><ul class="actions special"><li><a href="tof/mooc/RGPD2.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD2.jpg'); return false;">Voir</a></li></ul></div>
-                    <div class="cert-card"><i class="fas fa-users"></i><h4>Module 3 : Les responsabilités des acteurs</h4><ul class="actions special"><li><a href="tof/mooc/RGPD3.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD3.jpg'); return false;">Voir</a></li></ul></div>
-                    <div class="cert-card"><i class="fas fa-clipboard-check"></i><h4>Module 4 : Le DPO et les outils de la conformité</h4><ul class="actions special"><li><a href="tof/mooc/RGPD4.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD4.jpg'); return false;">Voir</a></li></ul></div>
-                    <div class="cert-card"><i class="fas fa-landmark"></i><h4>Module 5 : Les collectivités territoriales</h4><ul class="actions special"><li><a href="tof/mooc/RGPD5.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD5.jpg'); return false;">Voir</a></li></ul></div>
-                    <div class="cert-card"><i class="fas fa-user-lock"></i><h4>Module 6 : Travail et données personnelles</h4><ul class="actions special"><li><a href="tof/mooc/RGPD6.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD6.jpg'); return false;">Voir</a></li></ul></div>
-                </div>
-            
-                <h3 class="certifications-title"><i class="fas fa-lock"></i> Certification ANSSI</h3>
-            
-                <div class="cert-grid">
-                    <div class="cert-card"><i class="fas fa-user-shield"></i><h4>Cybersécurité ANSSI</h4><p>Protection des systèmes critiques</p><ul class="actions special"><li><a href="tof/mooc/ANSSI.jpg" class="button small" onclick="openCertificate('tof/mooc/ANSSI.jpg'); return false;">Voir</a></li></ul></div>
+                    <div class="cert-card"><i class="fas fa-shield-alt"></i><h4>MOOC ANSSI</h4><a href="#" onclick="openCertificate('tof/mooc/ANSSI.jpg'); return false;" class="button small">Voir</a></div>
+                    <div class="cert-card"><i class="fas fa-lock"></i><h4>MOOC RGPD (CNIL)</h4><a href="#" onclick="openCertificate('tof/mooc/RGPD1.jpg'); return false;" class="button small">Voir</a></div>
                 </div>
             </section>
 
-            <!-- SECTION CONTACT -->
+            <!-- CONTACT -->
             <section id="contact" class="main special">
-                <header class="major">
-                    <h2>Me contacter</h2>
-                    <p>N'hésitez pas à me contacter pour toute opportunité ou question</p>
-                </header>
-            
-                <div style="max-width: 650px; margin: 0 auto 2.5rem; text-align: left; line-height: 1.8; color: #cbd5e0;">
-                    <p>Avec une expérience concrète en environnement industriel — déploiement de postes, gestion des accès, sécurisation des connexions, conformité TISAX — je suis opérationnel sur les missions du quotidien d'un service IT.</p>
-                    <p style="margin-bottom: 0;">Mon objectif à moyen terme est d'évoluer vers un poste d'administrateur systèmes et sécurité, en approfondissant la cybersécurité opérationnelle et l'automatisation.</p>
-                </div>
-
-                <ul class="actions special contact-actions">
-                    <li><a href="mailto:aurelienpont@gmail.com" class="button primary icon solid fa-envelope" aria-label="Envoyer un e-mail à Aurélien Pont"><span class="label">Email</span></a></li>
-                    <li><a href="https://github.com/aurel-ad" class="button icon brands fa-github" target="_blank" rel="noopener noreferrer" style="box-shadow: inset 0 0 0 2px #24292e !important; color: #24292e !important;">GitHub</a></li>
-                    <li><a href="https://www.linkedin.com/in/aurelienpont" class="button icon brands fa-linkedin" target="_blank" rel="noopener noreferrer" style="box-shadow: inset 0 0 0 2px #0a66c2 !important; color: #0a66c2 !important;">LinkedIn</a></li>
+                <header class="major"><h2>Contact</h2></header>
+                <ul class="actions special">
+                    <li><a href="mailto:aurelienpont@gmail.com" class="button primary icon solid fa-envelope">Email</a></li>
+                    <li><a href="https://linkedin.com/in/aurelienpont" class="button icon brands fa-linkedin">LinkedIn</a></li>
+                    <li><a href="https://github.com/aurel-ad" class="button icon brands fa-github">GitHub</a></li>
                 </ul>
-
-                <div style="margin-top: 3rem;">
-                    <a href="#" onclick="document.getElementById('rgpd-modal').style.display = 'flex'; return false;" style="font-size: 0.9em; color: #64748b; text-decoration: none; border-bottom: 1px dotted #64748b; transition: color 0.2s;" onmouseover="this.style.color='#34d399'; this.style.borderBottomColor='#34d399'" onmouseout="this.style.color='#64748b'; this.style.borderBottomColor='#64748b'">
-                        <i class="fas fa-shield-alt"></i> Politique de confidentialité et RGPD
-                    </a>
-                </div>
             </section>
         </div>
 
         <!-- FOOTER -->
         <footer id="footer">
-            <section>
-                <h2>Aurélien Pont</h2>
-                <p>Portfolio professionnel BTS SIO SISR - Spécialisation cybersécurité et infrastructure réseau. Documentation complète de mes compétences et réalisations en alternance chez Novares.</p>
-            </section>
             <p class="copyright">© 2024-2026 Aurélien Pont - BTS SIO SISR.</p>
         </footer>
     </div>
 
-    <!-- SCRIPTS ET MODALES EXACTEMENT COMME AVANT -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script>
-    <script src="assets/js/jquery.min.js" defer></script>
-    <script src="assets/js/jquery.scrollex.min.js" defer></script>
-    <script src="assets/js/jquery.scrolly.min.js" defer></script>
-    <script src="assets/js/browser.min.js" defer></script>
-    <script src="assets/js/breakpoints.min.js" defer></script>
-    <script src="assets/js/util.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
+    <!-- SCRIPTS -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
-    <div id="certificate-viewer" class="certificate-viewer" onclick="closeCertificateOnBackground(event)">
-        <div class="certificate-container">
-            <button class="close-button" onclick="closeCertificate()">&times;</button>
-            <img id="certificate-image" src="" alt="Certificat">
-        </div>
+    <!-- MODALES & LOGIQUE FILTRES -->
+    <div id="certificate-viewer" class="certificate-viewer" onclick="this.classList.remove('is-open'); setTimeout(()=>this.style.display='none', 200)">
+        <div class="certificate-container"><img id="certificate-image" src="" alt="Certificat"></div>
     </div>
 
-    <div id="pdf-modal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.95); z-index: 10000; align-items: center; justify-content: center;">
-        <div style="width: 95%; height: 95%; position: relative; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,0.5);">
-            <button onclick="closePdfModal()" style="position: absolute; top: 15px; right: 25px; background: #ef4444; color: white; border: none; border-radius: 50%; width: 45px; height: 45px; font-size: 1.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10001; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: background 0.3s;">
-                &times;
-            </button>
-            <iframe id="pdf-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
-        </div>
-    </div>
-
-    <div id="rgpd-modal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); z-index: 9999; align-items: center; justify-content: center;">
-        <div style="background: #1e293b; border-radius: 14px; border-left: 4px solid #34d399; padding: 2.5rem; max-width: 560px; width: 90%; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
-            <button onclick="document.getElementById('rgpd-modal').style.display = 'none'" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">×</button>
-            <h3 style="color: #34d399; margin-bottom: 1rem;">Politique de Confidentialité</h3>
-            <p style="color: #e2e8f0; line-height: 1.6; margin-bottom: 1rem;">
-                Ce portfolio respecte votre vie privée. La seule donnée collectée est votre <strong>adresse e-mail</strong> via le formulaire de contact.
-            </p>
-            <ul style="color: #cbd5e0; margin-bottom: 1.5rem; padding-left: 1.5rem; line-height: 1.8;">
-                <li>✓ <strong>Usage :</strong> Uniquement pour répondre à vos messages.</li>
-                <li>✓ <strong>Conservation :</strong> Supprimée après 2 ans sans échange.</li>
-                <li>✓ <strong>Sécurité :</strong> Aucune revente ni tracking tiers.</li>
-            </ul>
+    <div id="pdf-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:10000; align-items:center; justify-content:center;">
+        <div style="width:90%; height:90%; background:#fff; position:relative;">
+            <button onclick="document.getElementById('pdf-modal').style.display='none'" style="position:absolute; top:-40px; right:0; color:#fff; background:none; border:none; font-size:2rem; cursor:pointer;">&times;</button>
+            <iframe id="pdf-iframe" src="" style="width:100%; height:100%; border:none;"></iframe>
         </div>
     </div>
 
     <script>
+        // Animation compteurs Novares
         const animateCounters = () => {
-            document.querySelectorAll(".counter").forEach((counter) => {
-                const target = parseFloat(counter.getAttribute("data-target"));
-                const duration = 2000;
-                const steps = 60;
-                const interval = duration / steps;
+            document.querySelectorAll(".counter").forEach(c => {
+                const target = +c.getAttribute("data-target");
                 let current = 0;
-
-                const timer = setInterval(() => {
-                    current += target / steps;
-                    if (current >= target) {
-                        counter.innerText = Math.round(target);
-                        clearInterval(timer);
-                    } else {
-                        counter.innerText = Math.round(current);
-                    }
-                }, interval);
+                const step = target / 50;
+                const inv = setInterval(() => {
+                    current += step;
+                    if(current >= target) { c.innerText = target; clearInterval(inv); }
+                    else { c.innerText = Math.ceil(current); }
+                }, 30);
             });
         };
 
-        let animated = false;
-        const checkNovares = () => {
-            const novares = document.querySelector("#novares");
-            if (novares && !animated) {
-                const rect = novares.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                    animateCounters();
-                    animated = true;
-                }
+        // Détection scroll pour compteurs
+        let done = false;
+        window.addEventListener('scroll', () => {
+            const sec = document.querySelector('#parcours');
+            if(sec && window.scrollY + window.innerHeight > sec.offsetTop && !done) {
+                animateCounters(); done = true;
             }
-        };
-
-        window.addEventListener("scroll", checkNovares);
-        document.addEventListener("DOMContentLoaded", checkNovares);
-
-        function openCertificate(src) {
-            const viewer = document.getElementById("certificate-viewer");
-            const img = document.getElementById("certificate-image");
-            img.src = src;
-            viewer.style.display = "block";
-            setTimeout(() => { viewer.classList.add("is-open"); }, 10);
-        }
-        function closeCertificate() {
-            const viewer = document.getElementById("certificate-viewer");
-            viewer.classList.remove("is-open");
-            setTimeout(() => { viewer.style.display = "none"; document.getElementById("certificate-image").src = ""; }, 180);
-        }
-        function closeCertificateOnBackground(e) {
-            if (e.target.id === "certificate-viewer") { closeCertificate(); }
-        }
-        document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape") { closeCertificate(); }
         });
 
-        function openPdfModal(pdfUrl) {
-            var iframe = document.getElementById('pdf-iframe');
-            var modal = document.getElementById('pdf-modal');
-            iframe.src = pdfUrl;
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+        // Modales
+        function openCertificate(s) { 
+            const v = document.getElementById('certificate-viewer');
+            document.getElementById('certificate-image').src = s;
+            v.style.display = 'block'; setTimeout(()=>v.classList.add('is-open'), 10);
         }
-        function closePdfModal() {
-            var iframe = document.getElementById('pdf-iframe');
-            var modal = document.getElementById('pdf-modal');
-            if (modal) modal.style.display = 'none';
-            if (iframe) iframe.src = ''; 
-            document.body.style.overflow = 'auto'; 
-        }
-        var pdfModalBg = document.getElementById('pdf-modal');
-        if (pdfModalBg) {
-            pdfModalBg.addEventListener('click', function(e) {
-                if (e.target === this) { closePdfModal(); }
-            });
+        function openPdfModal(u) {
+            document.getElementById('pdf-iframe').src = u;
+            document.getElementById('pdf-modal').style.display = 'flex';
         }
 
-        /* --- SCRIPT DES 5 BOUTONS DE FILTRAGE --- */
-        document.addEventListener("DOMContentLoaded", function() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const cards = document.querySelectorAll('#portfolio-grid .cert-card');
-
-            // Au chargement, on clique virtuellement sur le bouton "top"
-            const defaultBtn = document.querySelector('.filter-btn[data-filter="top"]');
-            if(defaultBtn) applyFilter('top', defaultBtn);
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const filterValue = this.getAttribute('data-filter');
-                    applyFilter(filterValue, this);
+        // Filtres Portfolio
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const f = this.dataset.filter;
+                document.querySelectorAll('#portfolio-grid .cert-card').forEach(card => {
+                    const cats = card.dataset.category.split(' ');
+                    card.classList.toggle('hidden-card', f !== 'all' && !cats.includes(f));
                 });
             });
-
-            function applyFilter(filter, buttonClicked) {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                buttonClicked.classList.add('active');
-
-                cards.forEach(card => {
-                    const categories = card.getAttribute('data-category').split(' ');
-                    if (filter === 'all' || categories.includes(filter)) {
-                        card.classList.remove('hidden-card');
-                        card.style.opacity = '0';
-                        setTimeout(() => card.style.opacity = '1', 50);
-                    } else {
-                        card.classList.add('hidden-card');
-                    }
-                });
-            }
         });
     </script>
 </body>
