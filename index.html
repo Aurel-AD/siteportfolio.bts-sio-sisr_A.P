@@ -5,120 +5,94 @@
     <meta name="description" content="Portfolio d'Aurélien Pont, étudiant en BTS SIO SISR spécialisé en cybersécurité et administration système. En alternance chez Novares.">
     <meta name="keywords" content="BTS SIO, SISR, cybersécurité, administration système, Novares">
     <meta name="author" content="Aurélien Pont">
-    <meta name="robots" content="index, follow">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#34d399">
-    <meta property="og:title" content="Portfolio Aurélien Pont">
-    <meta property="og:description" content="Portfolio BTS SIO SISR - administration système et cybersécurité">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/images/photo1.webp">
-    <meta property="og:url" content="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='15' fill='%2334d399'/><text x='50' y='50' font-size='45' text-anchor='middle' dominant-baseline='central' fill='white' font-family='Arial, sans-serif' font-weight='bold'>AP</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="preload" href="assets/css/main.css" as="style">
     <link rel="stylesheet" href="assets/css/main.css">
     <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
     
     <style>
-        /* --- Ajustements Design Professionnel --- */
-        .tools-grid-pro {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-            text-align: left;
-        }
-        .tool-card-pro {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .tool-card-pro:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(52, 211, 153, 0.1);
-            border-color: rgba(52, 211, 153, 0.4);
-        }
-        .tool-card-pro::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: #34d399;
-            opacity: 0.8;
-        }
-        .tool-card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        .tool-card-header i {
-            font-size: 2em;
-            color: #34d399;
-            margin-right: 15px;
-            background: rgba(52, 211, 153, 0.1);
-            padding: 12px;
-            border-radius: 10px;
-        }
-        .tool-card-header h3 { margin: 0; font-size: 1.2em; font-weight: 600; color: inherit; }
-        .tool-tags-pro { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tool-tags-pro span {
-            background: rgba(255, 255, 255, 0.08);
-            color: #e2e8f0;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .tool-card-pro:hover .tool-tags-pro span {
-            background: rgba(52, 211, 153, 0.15);
-            color: #34d399;
-            border-color: rgba(52, 211, 153, 0.3);
-        }
-
-        /* --- Section À Propos optimisée --- */
-        .about-container-expert {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-            align-items: center;
-            margin-top: 2rem;
-        }
-        .cert-card-full {
-            width: 100%;
-            max-width: 900px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 2rem;
-        }
+        /* --- Style spécifique pour l'image Fresque --- */
         .about-image-full {
             width: 100%;
-            max-width: 1000px;
-            margin: 1rem 0;
+            max-width: 1100px;
+            margin: 2rem auto;
         }
         .about-image-full img {
             width: 100%;
-            height: auto; /* Affiche l'image en entier */
+            height: auto; /* Affiche l'image sans aucune coupure */
             display: block;
             border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .timeline-simple {
-            width: 100%;
-            max-width: 800px;
-            background: rgba(52, 211, 153, 0.03);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(52, 211, 153, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* --- Autres outils --- */
+        /* --- Style exact de votre Timeline d'origine --- */
+        .timeline-simple {
+            max-width: 600px;
+            margin: 3rem auto;
+            text-align: left;
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline-simple h4 { text-align: center; margin-bottom: 2rem; margin-left: -2rem; }
+        
+        .timeline-items {
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+            padding-left: 2rem;
+            position: relative;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-2rem - 7px);
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #475569;
+            border: 2px solid #1e293b;
+        }
+        .timeline-item.current::before {
+            background: #34d399;
+            box-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
+        }
+        .timeline-item .year {
+            display: block;
+            font-weight: bold;
+            color: #34d399;
+            font-size: 0.9em;
+            margin-bottom: 0.2rem;
+        }
+        .timeline-item .role {
+            color: #e2e8f0;
+            font-size: 1.1em;
+        }
+
+        /* --- Mise en page Section About --- */
+        .about-container-expert {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        .cert-card-full {
+            width: 100%;
+            max-width: 850px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- Filtres Portfolio --- */
+        .hidden-card { display: none !important; }
         .scrollbox-tasks {
             max-height: 250px;
             overflow-y: auto;
@@ -128,25 +102,10 @@
             scrollbar-width: thin;
             scrollbar-color: #34d399 rgba(255, 255, 255, 0.05);
         }
-        .scrollbox-tasks::-webkit-scrollbar { width: 6px; }
-        .scrollbox-tasks::-webkit-scrollbar-thumb { background: #34d399; border-radius: 10px; }
-        
-        .hidden-card { display: none !important; }
-        .section-divider { border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); width: 60%; margin: 4rem auto; }
     </style>
 </head>
 
 <body class>
-    <!-- TERMINAL DE DÉMARRAGE -->
-    <div id="boot-screen">
-        <div class="terminal-content">
-            <div id="terminal-lines"></div>
-            <div class="cursor-line">
-                <span id="terminal-current-line"></span><span class="blinking-cursor">_</span>
-            </div>
-        </div>
-    </div>
-
     <div id="wrapper">
         <!-- HEADER -->
         <header id="header" class="alt">
@@ -155,26 +114,20 @@
                 <span><i class="fas fa-user-cog"></i> Technicien systèmes & réseaux</span><br>
                 <span><i class="fas fa-shield-alt"></i> Spécialisation cybersécurité</span>
             </p>
-            <p class="hero-skills">
-                <span><i class="fas fa-server"></i> Active Directory</span> • 
-                <span><i class="fas fa-network-wired"></i> SCCM</span> • 
-                <span><i class="fas fa-lock"></i> VPN / MFA</span> • 
-                <span><i class="fas fa-globe"></i> Environnement multi-sites</span>
-            </p>
         </header>
 
-        <!-- NAVIGATION -->
+        <!-- NAV -->
         <nav id="nav">
             <ul>
-                <li><a href="#intro" class="active"><i class="fas fa-home"></i> Accueil</a></li>
-                <li><a href="#about"><i class="fas fa-user"></i> À propos</a></li>
-                <li><a href="#competences"><i class="fas fa-cogs"></i> Compétences</a></li>
-                <li><a href="#parcours"><i class="fas fa-graduation-cap"></i> Parcours & Novares</a></li>
-                <li><a href="#experiences"><i class="fas fa-tasks"></i> Réalisations</a></li>
-                <li><a href="#projet-cicar"><i class="fas fa-laptop-code"></i> Projets BTS</a></li>
-                <li><a href="#veilles"><i class="fas fa-binoculars"></i> Veilles Tech.</a></li>
-                <li><a href="#attestations"><i class="fas fa-certificate"></i> Certifs</a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="#intro" class="active">Accueil</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#parcours">Parcours</a></li>
+                <li><a href="#experiences">Réalisations</a></li>
+                <li><a href="#projet-cicar">Projets BTS</a></li>
+                <li><a href="#veilles">Veilles</a></li>
+                <li><a href="#attestations">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
 
@@ -183,50 +136,42 @@
             <section id="intro" class="main">
                 <div class="spotlight">
                     <div class="content">
-                        <header class="major">
-                            <h2>Bienvenue sur mon portfolio</h2>
-                        </header>
-                        <p>Je suis Aurélien Pont, étudiant en BTS SIO option SISR en alternance chez Novares. Je me spécialise dans l’administration système, la gestion des infrastructures réseau et la cybersécurité en environnement industriel.</p>
-                        <p>Cette alternance me permet d’acquérir une vraie expérience du terrain : déploiement de postes, sécurisation (VPN, MFA) et support sur des sites de production critiques.</p>
+                        <header class="major"><h2>Bienvenue sur mon portfolio</h2></header>
+                        <p>Étudiant en BTS SIO option SISR en alternance chez <strong>Novares</strong>. Je me spécialise dans l’administration système, la gestion des infrastructures réseau et la cybersécurité industrielle.</p>
                     </div>
-                    <span class="image"><img src="images/photo1.webp" alt="Photo Aurélien Pont" width="288" height="288"></span>
+                    <span class="image"><img src="images/photo1.webp" alt="Aurélien Pont"></span>
                 </div>
             </section>
 
-            <!-- SECTION À PROPOS (RÉORGANISÉE) -->
+            <!-- SECTION À PROPOS RÉORGANISÉE -->
             <section id="about" class="main special">
                 <header class="major">
                     <h2>À propos de moi</h2>
-                    <p>Une trajectoire atypique au service de la technologie</p>
+                    <p>Une reconversion passionnée vers l'expertise informatique</p>
                 </header>
-                
-                <div class="about-intro">
-                    <h3>Une reconversion guidée par la passion</h3>
-                    <p>Après 20 ans dans des métiers manuels, j'ai décidé de transformer ma passion pour l'informatique en une carrière solide centrée sur la <strong>résolution de problèmes complexes</strong>.</p>
-                </div>
 
                 <div class="about-container-expert">
                     
                     <!-- 1. MES VALEURS -->
                     <div class="cert-card cert-card-full">
-                        <i class="fas fa-heart" style="font-size: 2.5em; color: #34d399; margin-bottom: 1rem;"></i>
-                        <h4 style="font-size: 1.5em; color: #fff;">Mes Valeurs</h4>
-                        <ul class="card-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: left; gap: 15px; margin-top: 1rem;">
-                            <li><i class="fas fa-check" style="color:#34d399"></i> <strong>Soin :</strong> Rigueur dans chaque mission</li>
-                            <li><i class="fas fa-check" style="color:#34d399"></i> <strong>Débrouillardise :</strong> Initiative et autonomie</li>
-                            <li><i class="fas fa-check" style="color:#34d399"></i> <strong>Expérience :</strong> 20 ans de relation client</li>
-                            <li><i class="fas fa-check" style="color:#34d399"></i> <strong>Curiosité :</strong> Veille technologique active</li>
-                            <li><i class="fas fa-check" style="color:#34d399"></i> <strong>Adaptabilité :</strong> Reconversion réussie à 40 ans</li>
+                        <i class="fas fa-heart" style="font-size: 2.5em; color: #34d399; margin-bottom: 1.5rem;"></i>
+                        <h4>Mes Valeurs</h4>
+                        <ul class="card-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: left; gap: 10px; margin-top: 1rem;">
+                            <li><i class="fas fa-check-circle" style="color: #34d399;"></i> <strong>Soin :</strong> Rigueur technique</li>
+                            <li><i class="fas fa-check-circle" style="color: #34d399;"></i> <strong>Débrouillardise :</strong> Initiative</li>
+                            <li><i class="fas fa-check-circle" style="color: #34d399;"></i> <strong>Expérience :</strong> 20 ans de relation client</li>
+                            <li><i class="fas fa-check-circle" style="color: #34d399;"></i> <strong>Curiosité :</strong> Veille active</li>
+                            <li><i class="fas fa-check-circle" style="color: #34d399;"></i> <strong>Adaptabilité :</strong> Reconversion à 40 ans</li>
                         </ul>
                     </div>
 
-                    <!-- 2. MON PARCOURS (TIMELINE) -->
+                    <!-- 2. MA TIMELINE (STYLE ORIGINE) -->
                     <div class="timeline-simple">
-                        <h4 style="margin-bottom: 1.5rem; color: #fff;">Mon parcours en bref</h4>
+                        <h4>Mon parcours en bref</h4>
                         <div class="timeline-items">
                             <div class="timeline-item">
                                 <span class="year">2003-2023</span>
-                                <span class="role">Expertise manuelle & relation client</span>
+                                <span class="role">Métiers manuels & relation client</span>
                             </div>
                             <div class="timeline-item">
                                 <span class="year">2023-2024</span>
@@ -241,133 +186,95 @@
 
                     <!-- 3. LA FRESQUE (IMAGE ENTIÈRE) -->
                     <div class="about-image-full">
-                        <img src="images/fresc.webp" alt="Frise chronologique du parcours d'Aurélien Pont" loading="lazy">
-                        <p style="margin-top: 1rem; font-style: italic; color: #94a3b8;">"De la matière à la donnée, chaque métier a posé une brique de mon parcours."</p>
+                        <img src="images/fresc.webp" alt="Frise chronologique parcours Aurélien Pont" loading="lazy">
+                        <p style="margin-top: 1.5rem; font-style: italic; color: #94a3b8;">"De la matière à la donnée, chaque métier a posé une brique de mon parcours"</p>
                     </div>
 
                     <!-- 4. MA MOTIVATION -->
                     <div class="cert-card cert-card-full">
-                        <i class="fas fa-bullseye" style="font-size: 2.5em; color: #34d399; margin-bottom: 1rem;"></i>
-                        <h4 style="font-size: 1.5em; color: #fff;">Ma Motivation</h4>
-                        <ul class="card-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: left; gap: 15px; margin-top: 1rem;">
-                            <li><i class="fas fa-shield-alt" style="color:#34d399"></i> <strong>Sécuriser :</strong> Protéger les infrastructures industrielles</li>
-                            <li><i class="fas fa-cogs" style="color:#34d399"></i> <strong>Automatiser :</strong> Optimiser les processus via PowerShell/SCCM</li>
-                            <li><i class="fas fa-user-shield" style="color:#34d399"></i> <strong>Accompagner :</strong> Support utilisateur de proximité</li>
-                            <li><i class="fas fa-chart-line" style="color:#34d399"></i> <strong>Innovation :</strong> IA et outils de demain</li>
-                            <li><i class="fas fa-book" style="color:#34d399"></i> <strong>Documenter :</strong> Pérenniser le savoir-faire</li>
+                        <i class="fas fa-bullseye" style="font-size: 2.5em; color: #34d399; margin-bottom: 1.5rem;"></i>
+                        <h4>Ma Motivation</h4>
+                        <ul class="card-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: left; gap: 10px; margin-top: 1rem;">
+                            <li><i class="fas fa-shield-alt" style="color: #34d399;"></i> <strong>Sécuriser :</strong> Infrastructures critiques</li>
+                            <li><i class="fas fa-sync" style="color: #34d399;"></i> <strong>Automatiser :</strong> Processus & scripts</li>
+                            <li><i class="fas fa-headset" style="color: #34d399;"></i> <strong>Accompagner :</strong> Support & service IT</li>
+                            <li><i class="fas fa-lightbulb" style="color: #34d399;"></i> <strong>Innovation :</strong> IA & Cybersécurité</li>
+                            <li><i class="fas fa-file-alt" style="color: #34d399;"></i> <strong>Documenter :</strong> Pérennité du SI</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- BILAN INTÉGRÉ -->
-                <div style="background: rgba(52, 211, 153, 0.05); padding: 2rem; border-radius: 12px; border: 1px solid rgba(52, 211, 153, 0.3); border-left: 5px solid #34d399; text-align: left; max-width: 900px; margin: 3rem auto 0;">
-                    <h3 style="margin-top: 0; color: #34d399;"><i class="fas fa-flag-checkered"></i> Une reconversion au service de l'expertise</h3>
-                    <p style="font-size: 1.1em; color: #e2e8f0; margin-bottom: 0;">Cette formation m'a permis de consolider mes acquis en <strong>environnement réel</strong>. Je maîtrise aujourd'hui les exigences de la <strong>sécurité industrielle</strong> (TISAX) tout en développant une posture orientée vers le service et la rigueur technique.</p>
+                <!-- BILAN FINAL -->
+                <div style="background: rgba(52, 211, 153, 0.05); padding: 2.5rem; border-radius: 12px; border: 1px solid rgba(52, 211, 153, 0.3); border-left: 5px solid #34d399; text-align: left; max-width: 850px; margin: 4rem auto 0;">
+                    <h3 style="margin-top: 0; color: #34d399;"><i class="fas fa-flag-checkered"></i> Une expertise consolidée sur le terrain</h3>
+                    <p style="font-size: 1.1em; color: #e2e8f0; line-height: 1.7; margin-bottom: 0;">Mon immersion chez Novares m'a permis de confronter mes connaissances aux réalités de la <strong>sécurité industrielle (TISAX)</strong>. Je suis aujourd'hui un technicien polyvalent, capable de gérer des projets de déploiement d'envergure tout en garantissant un support utilisateur rigoureux.</p>
                 </div>
             </section>
 
-            <!-- SECTION COMPÉTENCES -->
+            <!-- COMPÉTENCES -->
             <section id="competences" class="main special">
-                <header class="major">
-                    <h2>Compétences & Outils</h2>
-                </header>
+                <header class="major"><h2>Compétences & Outils</h2></header>
                 <div class="skills-container">
                     <div class="skill-card">
-                        <div class="skill-icon"><i class="fas fa-users-cog"></i></div>
-                        <h3>Active Directory</h3>
-                        <span class="skill-badge niveau-op">Opérationnel</span>
-                        <div class="skill-tags"><span class="tag">ADDS</span><span class="tag">GPO</span><span class="tag">DNS</span></div>
+                        <div class="skill-icon"><i class="fas fa-server"></i></div>
+                        <h3>Systèmes</h3>
+                        <div class="skill-tags"><span class="tag">Active Directory</span><span class="tag">GPO</span><span class="tag">SCCM</span></div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
-                        <h3>Réseau</h3>
-                        <span class="skill-badge niveau-op">Opérationnel</span>
-                        <div class="skill-tags"><span class="tag">TCP/IP</span><span class="tag">VLAN</span><span class="tag">Meraki</span></div>
+                        <h3>Réseaux</h3>
+                        <div class="skill-tags"><span class="tag">VLAN</span><span class="tag">Meraki</span><span class="tag">VPN</span></div>
                     </div>
                     <div class="skill-card">
-                        <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3>Cybersécurité</h3>
-                        <span class="skill-badge niveau-op">Opérationnel</span>
-                        <div class="skill-tags"><span class="tag">MFA</span><span class="tag">VPN</span><span class="tag">TISAX</span></div>
-                    </div>
-                </div>
-
-                <hr class="section-divider">
-                <h3>Environnement Technique</h3>
-                <div class="tools-grid-pro">
-                    <div class="tool-card-pro">
-                        <div class="tool-card-header"><i class="fab fa-windows"></i><h3>Admin Windows</h3></div>
-                        <div class="tool-tags-pro"><span>SCCM</span><span>RSAT</span><span>PowerShell</span><span>DFS</span></div>
-                    </div>
-                    <div class="tool-card-pro">
-                        <div class="tool-card-header"><i class="fas fa-shield-alt"></i><h3>Réseau & Cyber</h3></div>
-                        <div class="tool-tags-pro"><span>Cisco Meraki</span><span>FortiClient</span><span>MFA</span><span>EMS</span></div>
+                        <div class="skill-icon"><i class="fas fa-lock"></i></div>
+                        <h3>Sécurité</h3>
+                        <div class="skill-tags"><span class="tag">MFA</span><span class="tag">TISAX</span><span class="tag">Antivirus</span></div>
                     </div>
                 </div>
             </section>
 
             <!-- PARCOURS & NOVARES -->
             <section id="parcours" class="main special">
-                <header class="major">
-                    <h2>Parcours & Novares Group</h2>
-                </header>
-                <div class="two-columns" style="text-align: left;">
-                    <div class="section-box">
-                        <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Formations</h3>
-                        <ul class="timeline">
-                            <li class="timeline-item"><strong>BTS SIO SISR</strong><span class="timeline-place">AFPI Marcq</span><span class="timeline-date">2024-2026</span></li>
-                            <li class="timeline-item"><strong>T.A.I</strong><span class="timeline-place">M2i Formation</span><span class="timeline-date">2023-2024</span></li>
+                <header class="major"><h2>Expérience chez Novares</h2></header>
+                <div class="section-box" style="text-align: left;">
+                    <h3 class="section-title">Assistant IT / Administrateur Technique</h3>
+                    <div class="scrollbox-tasks">
+                        <ul>
+                            <li>Déploiement automatisé Windows via SCCM</li>
+                            <li>Gestion de la double authentification (MFA)</li>
+                            <li>Maintenance matériel et support utilisateurs (Lens & Libercourt)</li>
+                            <li>Administration des comptes et droits Active Directory</li>
+                            <li>Gestion du Wi-Fi industriel via Cisco Meraki</li>
                         </ul>
                     </div>
-                    <div class="section-box">
-                        <h3 class="section-title"><i class="fas fa-briefcase"></i> Novares</h3>
-                        <div class="scrollbox-tasks">
-                            <ul>
-                                <li>Déploiement SCCM (OS & Logiciels)</li>
-                                <li>Gestion MFA & VPN Fortinet</li>
-                                <li>Administration Active Directory</li>
-                                <li>Support multi-sites (Lens, Libercourt)</li>
-                                <li>Conformité TISAX</li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
-                <ul class="statistics" style="margin-top:3rem;">
-                    <li class="style1"><span class="icon solid fa-users"></span><strong class="counter" data-target="11000">0</strong><span>Staff</span></li>
+                <ul class="statistics" style="margin-top: 3rem;">
+                    <li class="style1"><span class="icon solid fa-users"></span><strong class="counter" data-target="11000">0</strong><span>Salariés</span></li>
                     <li class="style2"><span class="icon solid fa-globe"></span><strong class="counter" data-target="32">0</strong><span>Pays</span></li>
                     <li class="style3"><span class="icon solid fa-industry"></span><strong class="counter" data-target="45">0</strong><span>Usines</span></li>
                 </ul>
             </section>
 
-            <!-- RÉALISATIONS TECHNIQUES -->
+            <!-- RÉALISATIONS -->
             <section id="experiences" class="main special">
-                <header class="major">
-                    <h2>Réalisations Techniques</h2>
-                </header>
+                <header class="major"><h2>Réalisations Techniques</h2></header>
                 <div class="filters">
-                    <button class="filter-btn active" data-filter="top">Top Missions</button>
-                    <button class="filter-btn" data-filter="support">Support</button>
-                    <button class="filter-btn" data-filter="reseau">Réseau</button>
+                    <button class="filter-btn active" data-filter="top">Top</button>
                     <button class="filter-btn" data-filter="securite">Sécurité</button>
+                    <button class="filter-btn" data-filter="reseau">Réseau</button>
                 </div>
                 <div class="cert-grid" id="portfolio-grid">
-                    <div class="cert-card top" data-category="top deploiement">
-                        <i class="fas fa-rocket"></i>
-                        <h4>Déploiement SCCM</h4>
-                        <p>Standardisation des postes et automatisation du déploiement Windows.</p>
-                        <ul class="actions special"><li><a href="mission/sccm.html" class="button small">Voir</a></li></ul>
-                    </div>
                     <div class="cert-card top" data-category="top securite">
                         <i class="fas fa-mobile-alt"></i>
-                        <h4>Double Authentification</h4>
-                        <p>Sécurisation des accès critiques via déploiement MFA global.</p>
-                        <ul class="actions special"><li><a href="mission/mfa.html" class="button small">Voir</a></li></ul>
+                        <h4>Mise en place MFA</h4>
+                        <p>Déploiement de la double authentification pour l'ensemble des accès distants.</p>
+                        <a href="mission/mfa.html" class="button small">Détails</a>
                     </div>
                     <div class="cert-card top" data-category="top reseau">
                         <i class="fas fa-wifi"></i>
-                        <h4>Wi-Fi Meraki</h4>
-                        <p>Gestion isolée du réseau invité sur contrôleur Cisco Cloud.</p>
-                        <ul class="actions special"><li><a href="mission/meraki.html" class="button small">Voir</a></li></ul>
+                        <h4>Wi-Fi Invités Meraki</h4>
+                        <p>Configuration de SSIDs isolés avec portail captif via Cisco Meraki.</p>
+                        <a href="mission/meraki.html" class="button small">Détails</a>
                     </div>
                 </div>
             </section>
@@ -377,43 +284,17 @@
                 <header class="major"><h2>Projets BTS SIO</h2></header>
                 <div class="cert-grid">
                     <div class="cert-card">
-                        <i class="fas fa-server"></i>
+                        <i class="fas fa-laptop-code"></i>
                         <h4>Projet CICAR</h4>
-                        <p>Infrastructure complète (AD, DNS, DHCP) pour une agence automobile.</p>
-                        <a href="mission/projet_cicar.html" class="button small">Détails</a>
+                        <p>Infrastructure réseau complète pour une agence automobile.</p>
+                        <a href="mission/projet_cicar.html" class="button small">Voir le projet</a>
                     </div>
                     <div class="cert-card">
                         <i class="fas fa-file-excel"></i>
                         <h4>Tableau E4</h4>
-                        <p>Synthèse de mes compétences en format officiel.</p>
+                        <p>Référentiel des compétences acquises.</p>
                         <a href="#" onclick="openPdfModal('files/tableau_bts_e4.pdf'); return false;" class="button small">Ouvrir</a>
                     </div>
-                </div>
-            </section>
-
-            <!-- VEILLES -->
-            <section id="veilles" class="main special">
-                <header class="major"><h2>Veilles Technologiques</h2></header>
-                <div class="cert-grid">
-                    <div class="cert-card">
-                        <i class="fas fa-cloud"></i>
-                        <h4>Cloud Computing</h4>
-                        <a href="veilles/veille_cloud.html" class="button small">Lire</a>
-                    </div>
-                    <div class="cert-card">
-                        <i class="fas fa-print"></i>
-                        <h4>Impression 3D/4D</h4>
-                        <a href="veilles/veille_printer_3-4D.html" class="button small">Lire</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ATTESTATIONS -->
-            <section id="attestations" class="main special">
-                <header class="major"><h2>Certifications</h2></header>
-                <div class="cert-grid">
-                    <div class="cert-card"><i class="fas fa-shield-alt"></i><h4>MOOC ANSSI</h4><a href="#" onclick="openCertificate('tof/mooc/ANSSI.jpg'); return false;" class="button small">Voir</a></div>
-                    <div class="cert-card"><i class="fas fa-lock"></i><h4>MOOC RGPD (CNIL)</h4><a href="#" onclick="openCertificate('tof/mooc/RGPD1.jpg'); return false;" class="button small">Voir</a></div>
                 </div>
             </section>
 
@@ -423,7 +304,6 @@
                 <ul class="actions special">
                     <li><a href="mailto:aurelienpont@gmail.com" class="button primary icon solid fa-envelope">Email</a></li>
                     <li><a href="https://linkedin.com/in/aurelienpont" class="button icon brands fa-linkedin">LinkedIn</a></li>
-                    <li><a href="https://github.com/aurel-ad" class="button icon brands fa-github">GitHub</a></li>
                 </ul>
             </section>
         </div>
@@ -432,6 +312,14 @@
         <footer id="footer">
             <p class="copyright">© 2024-2026 Aurélien Pont - BTS SIO SISR.</p>
         </footer>
+    </div>
+
+    <!-- MODALE PDF -->
+    <div id="pdf-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:10000; align-items:center; justify-content:center;">
+        <div style="width:90%; height:90%; background:#fff; position:relative;">
+            <button onclick="document.getElementById('pdf-modal').style.display='none'" style="position:absolute; top:-40px; right:0; color:#fff; background:none; border:none; font-size:2rem; cursor:pointer;">&times;</button>
+            <iframe id="pdf-iframe" src="" style="width:100%; height:100%; border:none;"></iframe>
+        </div>
     </div>
 
     <!-- SCRIPTS -->
@@ -443,50 +331,32 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <!-- MODALES & LOGIQUE FILTRES -->
-    <div id="certificate-viewer" class="certificate-viewer" onclick="this.classList.remove('is-open'); setTimeout(()=>this.style.display='none', 200)">
-        <div class="certificate-container"><img id="certificate-image" src="" alt="Certificat"></div>
-    </div>
-
-    <div id="pdf-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:10000; align-items:center; justify-content:center;">
-        <div style="width:90%; height:90%; background:#fff; position:relative;">
-            <button onclick="document.getElementById('pdf-modal').style.display='none'" style="position:absolute; top:-40px; right:0; color:#fff; background:none; border:none; font-size:2rem; cursor:pointer;">&times;</button>
-            <iframe id="pdf-iframe" src="" style="width:100%; height:100%; border:none;"></iframe>
-        </div>
-    </div>
-
     <script>
-        // Animation compteurs Novares
+        // Animation compteurs
         const animateCounters = () => {
             document.querySelectorAll(".counter").forEach(c => {
-                const target = +c.getAttribute("data-target");
+                const target = +c.dataset.target;
                 let current = 0;
-                const step = target / 50;
-                const inv = setInterval(() => {
-                    current += step;
-                    if(current >= target) { c.innerText = target; clearInterval(inv); }
+                const inc = target / 50;
+                const timer = setInterval(() => {
+                    current += inc;
+                    if(current >= target) { c.innerText = target; clearInterval(timer); }
                     else { c.innerText = Math.ceil(current); }
                 }, 30);
             });
         };
 
-        // Détection scroll pour compteurs
-        let done = false;
+        let countDone = false;
         window.addEventListener('scroll', () => {
-            const sec = document.querySelector('#parcours');
-            if(sec && window.scrollY + window.innerHeight > sec.offsetTop && !done) {
-                animateCounters(); done = true;
+            const el = document.querySelector('#parcours');
+            if(el && window.scrollY + window.innerHeight > el.offsetTop && !countDone) {
+                animateCounters(); countDone = true;
             }
         });
 
-        // Modales
-        function openCertificate(s) { 
-            const v = document.getElementById('certificate-viewer');
-            document.getElementById('certificate-image').src = s;
-            v.style.display = 'block'; setTimeout(()=>v.classList.add('is-open'), 10);
-        }
-        function openPdfModal(u) {
-            document.getElementById('pdf-iframe').src = u;
+        // Modale PDF
+        function openPdfModal(url) {
+            document.getElementById('pdf-iframe').src = url;
             document.getElementById('pdf-modal').style.display = 'flex';
         }
 
