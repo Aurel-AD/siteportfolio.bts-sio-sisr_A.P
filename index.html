@@ -21,10 +21,65 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
     
     <style>
+        /* Optimisation mobile */
+        @media (max-width: 768px) {
+            .tool-card-pro {
+                padding: 1.2rem;
+            }
+        
+            .cert-card {
+                padding: 1.2rem;
+            }
+        
+            .section-box {
+                padding: 1.2rem;
+            }
+        }
+        /* === FIX GLOBAL RESPONSIVE === */
+        #nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        /* Empêche tout débordement horizontal */
+        body {
+            overflow-x: hidden;
+        }
+        
+        /* Toutes les images deviennent adaptatives */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Image profil responsive */
+        .profil-image {
+            max-width: 288px;
+            width: 100%;
+        }
+        /* Layout Novares responsive */
+        .novares-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .novares-flex > div:first-child {
+            flex: 1 1 300px;
+            max-width: 100%;
+        }
+        
+        .novares-flex > div:last-child {
+            flex: 1 1 300px;
+        }
         /* Outils - Design Professionnel */
         .tools-grid-pro {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
             text-align: left;
@@ -198,7 +253,7 @@
                             
                             <p>À travers ce portfolio, je partage mes projets, mes compétences et mon évolution, avec l'ambition de progresser vers des postes à responsabilité en administration systèmes, réseaux et sécurité.</p>                   
                     </div>
-                    <span class="image" style="max-width: 288px; width: 288px;"><img src="images/photo1.webp" alt="Photo professionnelle d'Aurélien Pont" fetchpriority="high" width="288" height="288" style="width: 100%; height: auto; border-radius: 50%;"></span>
+                    <span class="image profil-image"><img src="images/photo1.webp" alt="Photo professionnelle d'Aurélien Pont" fetchpriority="high" width="288" height="288" style="width: 100%; height: auto; border-radius: 50%;"></span>
                 </div>
             </section>
 
@@ -348,7 +403,7 @@
                 <h3 style="font-size:1.6em; margin-bottom:0.5rem;"><i class="fas fa-building" style="color:#34d399;"></i> Novares Group</h3>
                 <p style="margin-bottom:2.5rem;">L'entreprise et mon poste en tant qu'Assistant IT / Administrateur Technique</p>
 
-                <div id="novares" style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: flex-start; margin-bottom: 4rem; text-align: left;">
+                <div id="novares" class="novares-flex">
                     <div style="flex: 0 0 auto; width: 380px; margin: 0 auto; padding-top: 5px;">
                         <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05);">
                             <img src="tof/novares/novares.jpg" alt="Image Novares" loading="lazy" style="width: 100%; height: auto; display: block;">
