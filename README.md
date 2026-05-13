@@ -1,3 +1,6 @@
+![Visiteurs](https://komarev.com/ghpvc/?username=Aurel-AD)
+![Suiveurs](https://img.shields.io/github/followers/Aurel-AD?label=Suiveurs&style=social)
+![Étoiles](https://img.shields.io/github/stars/Aurel-AD?label=Étoiles&style=social)
 # 🎓 Portfolio Professionnel - BTS SIO SISR
 
 **Développé par [Aurélien Pont](https://www.linkedin.com/in/aurelienpont)**  
