@@ -9,11 +9,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#34d399">
+    <meta name="color-scheme" content="dark light">
     <meta property="og:title" content="Portfolio Aurélien Pont">
     <meta property="og:description" content="Portfolio BTS SIO SISR - administration système et cybersécurité">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/images/photo1.webp">
     <meta property="og:url" content="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/">
+    <meta property="og:site_name" content="Portfolio Aurélien Pont">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='15' fill='%2334d399'/><text x='50' y='50' font-size='45' text-anchor='middle' dominant-baseline='central' fill='white' font-family='Arial, sans-serif' font-weight='bold'>AP</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preload" href="assets/css/main.css" as="style">
@@ -488,7 +490,7 @@
                     <div class="skill-card">
                         <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
                         <h3>Réseau</h3>
-                        <p class="skill-description">Configuration et dépannage réseau</p>
+                        <p class="skill-description">Support & administration réseau</p>
                         <span class="skill-badge niveau-op">Opérationnel</span>
                         <div class="skill-tags">
                             <span class="tag">TCP/IP</span><span class="tag">VLAN</span>
@@ -653,7 +655,7 @@
                         <h4>VPN FortiClient</h4>
                         <p><strong>Enjeu :</strong> Garantir aux collaborateurs nomades un accès distant sûr aux ressources de l'entreprise.</p>
                         <p><strong>Action :</strong> Configuration et déploiement du VPN FortiClient (intégrant EMS et MFA).</p>
-                        <p><strong>Impact :</strong> Continuité d'activité assurée avec des connexions distantes hautement sécurisées.</p>
+                        <p><strong>Impact :</strong> Continuité d'activité assurée avec des connexions distantes sécurisées via VPN et MFA.</p>
                         <ul class="actions special"><li><a href="mission/vpn.html" class="button small">Voir la procédure</a></li></ul>
                     </div>
 
@@ -663,7 +665,7 @@
                         <h4>Wi-Fi Invité</h4>
                         <p><strong>Enjeu :</strong> Offrir une connectivité aux visiteurs sans compromettre l'intégrité du réseau LAN interne.</p>
                         <p><strong>Action :</strong> Création d'un SSID dédié et isolé avec portail captif via l'interface Cisco Meraki.</p>
-                        <p><strong>Impact :</strong> Accueil professionnel des visiteurs garantissant la totale étanchéité du réseau d'entreprise.</p>
+                        <p><strong>Impact :</strong> Accueil professionnel des visiteurs garantissant l'isolation du réseau invité du réseau interne de production.</p>
                         <ul class="actions special"><li><a href="mission/meraki.html" class="button small">Voir la procédure</a></li></ul>
                     </div>
 
@@ -718,7 +720,7 @@
                         <h4>Mise à jour</h4>
                         <p><strong>Enjeu :</strong> Protéger le parc informatique contre les vulnérabilités logicielles et matérielles.</p>
                         <p><strong>Action :</strong> Déploiement des correctifs via SCCM, Windows Update et outils de gestion DELL.</p>
-                        <p><strong>Impact :</strong> Parc informatique homogène, à jour, et surface d'attaque considérablement réduite.</p>
+                        <p><strong>Impact :</strong> Parc informatique homogène, à jour, et amélioration du niveau de sécurité du parc informatique.</p>
                         <ul class="actions special"><li><a href="mission/update.html" class="button small">Voir la procédure</a></li></ul>
                     </div>
                     
@@ -727,16 +729,16 @@
                         <h4>Sauvegarde &amp; Restauration</h4>
                         <p><strong>Enjeu :</strong> Prévenir la perte de données critiques et garantir le plan de continuity d'activité (PCA).</p>
                         <p><strong>Action :</strong> Configuration, supervision des jobs de sauvegarde et tests de restauration avec Avamar.</p>
-                        <p><strong>Impact :</strong> Intégrité des données assurée et capacité de récupération rapide éprouvée.</p>
+                        <p><strong>Impact :</strong> Intégrité des données assurée et vérification du bon fonctionnement des restaurations de données.</p>
                         <ul class="actions special"><li><a href="mission/backups.html" class="button small">Voir la procédure</a></li></ul>
                     </div>
                     
                     <div class="cert-card" data-category="support">
                         <i class="fas fa-headset"></i>
                         <h4>Assistance distante</h4>
-                        <p><strong>Enjeu :</strong> Fournir un support technique ultra-réactif, quel que soit le lieu de travail de l'utilisateur.</p>
+                        <p><strong>Enjeu :</strong>Assurer un support technique à distance pour les utilisateurs des différents sites.</p>
                         <p><strong>Action :</strong> Prise en main à distance via des outils sécurisés et standards (DameWare, TeamViewer, RDP).</p>
-                        <p><strong>Impact :</strong> Baisse significative du temps de résolution des incidents et satisfaction utilisateur accrue.</p>
+                        <p><strong>Impact :</strong> Réduction du temps de traitement des incidents grâce à la prise en main à distance.</p>
                         <ul class="actions special"><li><a href="mission/assistance.html" class="button small">Voir la procédure</a></li></ul>
                     </div>
                     
@@ -745,7 +747,7 @@
                         <h4>Gestion incidents</h4>
                         <p><strong>Enjeu :</strong> Centraliser, prioriser et tracer efficacement l'ensemble des sollicitations du support IT.</p>
                         <p><strong>Action :</strong> Exploitation de la solution de ticketing Freshworks pour traiter les demandes selon leur criticité.</p>
-                        <p><strong>Impact :</strong> Respect strict des niveaux de service (SLA) et pilotage optimisé de l'activité support.</p>
+                        <p><strong>Impact :</strong> Respect strict des niveaux de service (SLA) et suivi structuré des demandes et respect des priorités de traitement.</p>
                         <ul class="actions special"><li><a href="mission/sla.html" class="button small">Voir la procédure</a></li></ul>
                     </div>
                     
@@ -761,7 +763,7 @@
                     <div class="cert-card" data-category="securite">
                         <i class="fas fa-eye-slash"></i>
                         <h4>Conformité TISAX</h4>
-                        <p><strong>Enjeu :</strong> Valider les plus hauts standards de cybersécurité exigés par le secteur de l'industrie automobile.</p>
+                        <p><strong>Enjeu :</strong> Valider les exigences de cybersécurité du référentiel TISAX exigés par le secteur de l'industrie automobile.</p>
                         <p><strong>Action :</strong> Réalisation d'audits internes, d'inventaires précis et remédiation technique des écarts sécuritaires.</p>
                         <p><strong>Impact :</strong> Obtention/maintien de la conformité TISAX, gage de confiance pour les partenaires et clients.</p>
                         <ul class="actions special"><li><a href="mission/tisax.html" class="button small">Voir la procédure</a></li></ul>
