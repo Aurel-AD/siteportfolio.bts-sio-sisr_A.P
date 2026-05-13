@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/sitemap.xml
