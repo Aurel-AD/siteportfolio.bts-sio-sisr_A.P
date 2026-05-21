@@ -1,70 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Accueil -->
-  <url>
-    <loc>
-      https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/
-    </loc>
-  </url>
+  <url><loc>https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/</loc></url>
 
-  <!-- Missions -->
-  <url>
-    <loc>
-      https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/mission/sccm.html
-    </loc>
-  </url>
+  <url><loc>https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/mission/sccm.html</loc></url>
+  <url><loc>https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/mission/vpn.html</loc></url>
+  <url><loc>https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/mission/mfa.html</loc></url>
+  <url><loc>https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/mission/meraki.html</loc></url>
+  <url><loc>https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/mission/projet_cicar.html</loc></url>
 
-  <url>
-    <loc>
-      https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/mission/vpn.html
-    </loc>
-  </url>
+  <url><loc>https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/PPE/ppe2.html</loc></url>
+  <url><loc>https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/PPE/ppe4.html</loc></url>
 
-  <url>
-    <loc>
-      https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/mission/mfa.html
-    </loc>
-  </url>
-
-  <url>
-    <loc>
-      https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/mission/meraki.html
-    </loc>
-  </url>
-
-  <!-- PPE -->
-  <url>
-    <loc>
-      https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/PPE/ppe1.html
-    </loc>
-  </url>
-
-  <url>
-    <loc>
-      https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/PPE/ppe2.html
-    </loc>
-  </url>
-
-  <!-- Projet principal -->
-  <url>
-    <loc>
-      https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/mission/projet_cicar.html
-    </loc>
-  </url>
-
-  <!-- Veilles -->
-  <url>
-    <loc>
-      https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/veilles/veille1.html
-    </loc>
-  </url>
-
-  <url>
-    <loc>
-      https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/veilles/veille2.html
-    </loc>
-  </url>
+  <url><loc>https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/veilles/veille_cloud.html</loc></url>
+  <url><loc>https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/veilles/veille_printer_3-4D.html</loc></url>
 
 </urlset>
