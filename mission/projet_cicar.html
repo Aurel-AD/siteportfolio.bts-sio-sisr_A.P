@@ -462,7 +462,7 @@
 
     <!-- PPE 1 -->
     <div class="ppe-section">
-        <div class="ppe-title">PPE 1 : Sécurisation de l'accès WiFi</div>
+        <div class="ppe-title">RP 1 : Sécurisation de l'accès WiFi</div>
         <h3>Définition de la mission</h3>
         <p>Après une première saison touristique passée, le gérant souhaite modifier la partie wifi des agences. Cet accès sert en effet aux employés sur les parkings afin de réaliser les opérations nécessaires à la prise de bord et à la restitution des véhicules (kilométrage, jauge carburant, coups ou rayures éventuelles…) à l'aide de tablettes tactiles.</p>
         <p>Cependant, en raison du nombre important de travailleurs saisonniers et afin de conserver une sécurité du réseau, il est souhaitable de ne plus installer de clés WPA sur ces équipements, trop facilement copiables.</p>
@@ -481,7 +481,7 @@
 
     <!-- PPE 2 -->
     <div class="ppe-section">
-        <div class="ppe-title">PPE 2 : Externalisation des serveurs de réservation</div>
+        <div class="ppe-title">RP 2 : Externalisation des serveurs de réservation</div>
         <h3>Définition du besoin</h3>
         <p>Le directeur de la Cicar souhaite externaliser les serveurs utilisés pour la prise de réservation des véhicules, service actuellement hébergé sur les serveurs du siège (Suite à un incident de perte de connexion inter-îles ayant pénalisé l'activité plusieurs jours).</p>
         <p>Chaque agence disposera maintenant de 2 serveurs en miroir situés dans le LAN. Ils seront installés sur une distribution Debian en ligne de commande limitant les surfaces d'attaque avec les packages Apache, Php, Maria-db et Adminer virtualisé sur l'hyperviseur ESXi. Le site sera identique aux agences existantes et sera installé par l'équipe Dev.</p>
@@ -499,7 +499,7 @@
 
     <!-- PPE 3 -->
     <div class="ppe-section">
-        <div class="ppe-title">PPE 3 : Messagerie et supervision</div>
+        <div class="ppe-title">RP 3 : Messagerie et supervision</div>
         <h3>Définition des besoins</h3>
         <p>La direction souhaite que chaque agence dispose maintenant de son propre serveur de messagerie (avec antispam et antivirus) et qu'il soit installé dans la DMZ.</p>
         <p>La gestion des boites mail sera couplée à votre Active directory. Les boites aux lettres seront créées de façon automatique avec un script bash sur le serveur de messagerie.</p>
@@ -517,7 +517,7 @@
 
     <!-- PPE 4 -->
     <div class="ppe-section">
-        <div class="ppe-title">PPE 4 : Accès distant et gestion des incidents</div>
+        <div class="ppe-title">RP 4 : Accès distant et gestion des incidents</div>
         <h3>Définition du besoin</h3>
         <p>Les iles étant assez disséminées dans tout l'archipel, l'administrateur du siège souhaite un accès distant sécurisé sur tous les équipements paramétrables et serveurs de chaque agence et souhaite également que chaque admin de chaque ile centralise ses besoins en connexion.</p>
         <p>Ces accès seront centralisés sous MobaXterm. Vous appuierez l'administrateur du siège pour l'aider à recenser ces connexions ainsi que pour ouvrir les accès dans les pare-feu de chaque île.</p>
@@ -574,7 +574,7 @@
         <div class="hdr">
             <div>
                 <h1>🗺 Infrastructure Réseau CICAR — Toutes Agences</h1>
-                <div class="sub">Topologie Initiale Complète (Audit de l'existant) · Avant Projets (PPE) · BTS SIO SISR – E6</div>
+                <div class="sub">Topologie Initiale Complète (Audit de l'existant) · Avant Projets (RP) · BTS SIO SISR – E6</div>
             </div>
             <div class="badges">
                 <span class="badge b1">Architecture de Base Complète</span>
@@ -843,7 +843,7 @@
                 <div class="li"><div class="lb" style="background:#dce7f5;border:1px solid #2980b9"></div>Siège Tenerife</div>
                 <div class="li"><div class="lb" style="background:#d1ecf1;border:1px solid #17a2b8"></div>Agences distantes</div>
                 <div class="li"><div style="width:20px;height:3px;background:#c0392b;flex-shrink:0;border-top:2px dashed #c0392b"></div>Liaison VPN IPsec</div>
-                <div class="li"><span style="font-size:.72rem;color:#888">💡 Topologie complète avant implémentation des PPE (Aucun ajout)</span></div>
+                <div class="li"><span style="font-size:.72rem;color:#888">💡 Topologie complète avant implémentation des RP (Aucun ajout)</span></div>
             </div>
         </div>
     </div>
