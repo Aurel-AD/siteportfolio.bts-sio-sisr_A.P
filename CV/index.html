@@ -305,71 +305,9 @@
             }
         }
 
-        /* --- 🖨️ NOUVEAU MODE IMPRESSION / PDF ULTRA COMPRESSÉ --- */
-        @page {
-            size: A4;
-            margin: 0mm; /* Enlève totalement les marges du navigateur */
-        }
-        
-        @media print {
-            body {
-                background-color: #ffffff; 
-                margin: 0;
-                padding: 0;
-                font-size: 11px; /* Réduit la taille globale de la police */
-                line-height: 1.3; /* Resserre les lignes */
-            }
-            .toolbar { display: none !important; }
-            
-            .cv-container {
-                box-shadow: none !important; 
-                margin: 0 !important;
-                border-radius: 0 !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                height: 297mm !important; /* Force la hauteur exacte d'un A4 */
-                max-height: 297mm !important;
-                overflow: hidden !important; /* Empêche de créer une 2ème page */
-                display: flex;
-            }
-            
-            /* Réduction drastique des marges internes pour faire de la place */
-            .sidebar { padding: 20px 15px !important; }
-            .main-content { padding: 20px 25px !important; }
-            
-            /* Tassement des éléments de la colonne gauche */
-            .sidebar-box { margin-bottom: 15px; padding: 8px; font-size: 1.05em; }
-            .sidebar h2 { margin: 15px 0 8px 0; font-size: 1.05em; }
-            .sidebar ul li { margin-bottom: 4px; font-size: 0.95em; }
-            .qr-placeholder i { font-size: 40px; } /* Code QR plus petit */
-            .qr-placeholder { margin-bottom: 5px; }
-            
-            /* Tassement des éléments de la colonne droite */
-            .header { margin-bottom: 15px; }
-            .header h1 { font-size: 1.8em; margin-bottom: 0; }
-            .header h3 { margin-top: 5px; padding-bottom: 5px; font-size: 1em; }
-            
-            .section-title { margin-top: 15px; margin-bottom: 8px; padding-top: 4px; padding-bottom: 4px; font-size: 1.05em; }
-            .section-title-blue { margin-top: 15px; margin-bottom: 10px; font-size: 1.1em; }
-            
-            .job-header { margin-top: 10px; font-size: 1.05em; }
-            .job-company { margin-bottom: 8px; font-size: 0.9em; }
-            
-            .task-group { margin-top: 8px; margin-bottom: 8px; }
-            .task-title { margin-bottom: 4px; font-size: 0.95em; }
-            .tasks { margin-bottom: 8px; }
-            .tasks li { margin-bottom: 3px; font-size: 0.95em; }
-            
-            .modern-link { margin-bottom: 5px; padding: 2px 8px; font-size: 0.85em; }
-        }
     </style>
 </head>
 <body>
-
-<!-- BARRE D'OUTILS : Bouton d'impression -->
-<a href="aurélien-pont_ITQ.pdf" download="CV_Aurelien_PONT.pdf" class="btn-print" style="text-decoration: none; display: inline-block;">
-    <i class="fa-solid fa-file-pdf"></i> Télécharger en PDF
-</a>
 
 <div class="cv-container">
     <!-- COLONNE GAUCHE (SIDEBAR) -->
