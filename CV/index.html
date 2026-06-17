@@ -24,11 +24,11 @@
             print-color-adjust: exact !important;
         }
         
-        /* --- BOUTON D'IMPRESSION (Version Web) --- */
+        /* --- BOUTON D'IMPRESSION --- */
         .toolbar {
             text-align: center;
             margin-top: 30px;
-            margin-bottom: -15px; /* Pour rapprocher le bouton du CV */
+            margin-bottom: -15px; 
         }
         .btn-print {
             background-color: #2563eb;
@@ -104,9 +104,6 @@
             color: #bfdbfe;
             text-decoration: none;
             transition: color 0.2s ease;
-        }
-        .sidebar ul li a:hover {
-            color: #ffffff;
         }
         .sidebar-section-title {
             font-style: italic;
@@ -290,11 +287,6 @@
             background-color: #eff6ff;
             padding: 5px 12px;
             border-radius: 20px;
-            transition: all 0.2s ease;
-        }
-        .modern-link:hover {
-            background-color: #dbeafe;
-            color: #1d4ed8;
         }
 
         /* RESPONSIVE DESIGN (Smartphone) */
@@ -307,60 +299,74 @@
             .sidebar, .main-content {
                 width: 100%;
             }
-            .header h1 {
-                font-size: 1.8em;
-            }
             .job-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .job-dates {
-                margin-top: 5px;
-            }
         }
 
-        /* MODE IMPRESSION / PDF */
+        /* --- 🖨️ NOUVEAU MODE IMPRESSION / PDF ULTRA COMPRESSÉ --- */
         @page {
             size: A4;
-            margin: 0; 
+            margin: 0mm; /* Enlève totalement les marges du navigateur */
         }
+        
         @media print {
             body {
                 background-color: #ffffff; 
                 margin: 0;
                 padding: 0;
+                font-size: 11px; /* Réduit la taille globale de la police */
+                line-height: 1.3; /* Resserre les lignes */
             }
-            /* Masquer le bouton d'impression sur le PDF */
-            .toolbar {
-                display: none !important;
-            }
+            .toolbar { display: none !important; }
+            
             .cv-container {
                 box-shadow: none !important; 
                 margin: 0 !important;
                 border-radius: 0 !important;
                 width: 100% !important;
                 max-width: 100% !important;
-                min-height: 297mm; 
+                height: 297mm !important; /* Force la hauteur exacte d'un A4 */
+                max-height: 297mm !important;
+                overflow: hidden !important; /* Empêche de créer une 2ème page */
+                display: flex;
             }
-            .sidebar {
-                padding: 30px 20px !important; 
-            }
-            .main-content {
-                padding: 30px 35px !important;
-            }
-            .task-group, .job-header, .job-company {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-            .modern-link {
-                border: 1px solid #bfdbfe; 
-            }
+            
+            /* Réduction drastique des marges internes pour faire de la place */
+            .sidebar { padding: 20px 15px !important; }
+            .main-content { padding: 20px 25px !important; }
+            
+            /* Tassement des éléments de la colonne gauche */
+            .sidebar-box { margin-bottom: 15px; padding: 8px; font-size: 1.05em; }
+            .sidebar h2 { margin: 15px 0 8px 0; font-size: 1.05em; }
+            .sidebar ul li { margin-bottom: 4px; font-size: 0.95em; }
+            .qr-placeholder i { font-size: 40px; } /* Code QR plus petit */
+            .qr-placeholder { margin-bottom: 5px; }
+            
+            /* Tassement des éléments de la colonne droite */
+            .header { margin-bottom: 15px; }
+            .header h1 { font-size: 1.8em; margin-bottom: 0; }
+            .header h3 { margin-top: 5px; padding-bottom: 5px; font-size: 1em; }
+            
+            .section-title { margin-top: 15px; margin-bottom: 8px; padding-top: 4px; padding-bottom: 4px; font-size: 1.05em; }
+            .section-title-blue { margin-top: 15px; margin-bottom: 10px; font-size: 1.1em; }
+            
+            .job-header { margin-top: 10px; font-size: 1.05em; }
+            .job-company { margin-bottom: 8px; font-size: 0.9em; }
+            
+            .task-group { margin-top: 8px; margin-bottom: 8px; }
+            .task-title { margin-bottom: 4px; font-size: 0.95em; }
+            .tasks { margin-bottom: 8px; }
+            .tasks li { margin-bottom: 3px; font-size: 0.95em; }
+            
+            .modern-link { margin-bottom: 5px; padding: 2px 8px; font-size: 0.85em; }
         }
     </style>
 </head>
 <body>
 
-<!-- BARRE D'OUTILS : Bouton d'impression (Visible uniquement sur le web) -->
+<!-- BARRE D'OUTILS : Bouton d'impression -->
 <div class="toolbar">
     <button class="btn-print" onclick="window.print()">
         <i class="fa-solid fa-file-pdf"></i> Télécharger en PDF
@@ -370,11 +376,9 @@
 <div class="cv-container">
     <!-- COLONNE GAUCHE (SIDEBAR) -->
     <div class="sidebar">
-        
         <div class="sidebar-box">
             <i class="fa-solid fa-calendar-check" style="margin-right: 8px;"></i>Disponible CDI Sept. 2026
         </div>
-
         <h2><i class="fa-solid fa-address-book sidebar-icon"></i> CONTACT</h2>
         <ul>
             <li><i class="fa-solid fa-phone sidebar-icon"></i> 07 60 75 64 39</li>
@@ -384,15 +388,12 @@
             <li><i class="fa-solid fa-car sidebar-icon"></i> Permis B - Véhiculé</li>
             <li><i class="fa-solid fa-wheelchair sidebar-icon"></i> RQTH - (BOE)</li>
         </ul>
-
         <h2><i class="fa-solid fa-link sidebar-icon"></i> LIEN PORTFOLIO &amp; DEPOT</h2>
         <ul>
-            <li><i class="fa-solid fa-globe sidebar-icon"></i> <a href="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" target="_blank">https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/</a></li>
-            <li><i class="fa-brands fa-github sidebar-icon"></i> <a href="https://github.com/Aurel-AD/Scripts-Administration-Systeme" target="_blank">https://github.com/Aurel-AD/Scripts-Administration-Systeme</a></li>
+            <li><i class="fa-solid fa-globe sidebar-icon"></i> <a href="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" target="_blank">https://aurel-ad.../bts-sio...</a></li>
+            <li><i class="fa-brands fa-github sidebar-icon"></i> <a href="https://github.com/Aurel-AD/Scripts-Administration-Systeme" target="_blank">https://github.com/.../Scripts...</a></li>
         </ul>
-
         <h2><i class="fa-solid fa-laptop-code sidebar-icon"></i> COMPÉTENCES TECHNIQUES</h2>
-        
         <div class="sidebar-section-title"><i class="fa-solid fa-headset sidebar-icon"></i> Support &amp; Assistance :</div>
         <ul class="tech-list">
             <li>Support N1/N2: local &amp; distant</li>
@@ -400,7 +401,6 @@
             <li>Remote support: DameWare, TeamViewer, RDP, UltraVNC</li>
             <li>Documentation : procédures, guides, formations</li>
         </ul>
-
         <div class="sidebar-section-title"><i class="fa-solid fa-server sidebar-icon"></i> Systèmes &amp; Déploiement :</div>
         <ul class="tech-list">
             <li>Systèmes : Windows 10/11, Windows Server 2019/2022</li>
@@ -410,7 +410,6 @@
             <li>Développement/outils : Visual Studio Code, GitHub</li>
             <li>Gestion de versions : GitHub, suivi des modifications</li>
         </ul>
-
         <div class="sidebar-section-title"><i class="fa-solid fa-shield-halved sidebar-icon"></i> Sécurité &amp; Réseau :</div>
         <ul class="tech-list">
             <li>Infrastructure : Active Directory (OU, Groupes, Partages)</li>
@@ -418,13 +417,11 @@
             <li>Réseau : TCP/IP, VLAN, DHCP, DNS, Wi-Fi Meraki (CISCO)</li>
             <li>Sauvegarde : Dell Avamar (Backup/Restore)</li>
         </ul>
-
         <h2><i class="fa-solid fa-certificate sidebar-icon"></i> CERTIFICATIONS</h2>
         <ul class="tech-list">
             <li style="color: #93c5fd; font-style: italic;">2025 - Certifications en ligne</li>
             <li style="list-style-type: none; text-indent: 0;">MOOC ANSSI - Sécurité des SI &amp; MOOC RGPD (CNIL) - Protection des données</li>
         </ul>
-
         <h2><i class="fa-solid fa-graduation-cap sidebar-icon"></i> FORMATIONS</h2>
         <ul class="tech-list">
             <li style="color: #93c5fd; font-style: italic;">2024 - 2026 (En cours) / AFPI-Marcq-en-Barœul</li>
@@ -432,7 +429,6 @@
             <li style="color: #93c5fd; font-style: italic; margin-top: 10px;">2024 / M2I-Formation (100% distanciel)</li>
             <li style="list-style-type: none; text-indent: 0;">Titre Professionnel - Technicien d'Assistance Informatique (BAC)</li>
         </ul>
-
         <h2><i class="fa-solid fa-heart sidebar-icon"></i> ENGAGEMENTS &amp; LOISIRS</h2>
         <ul class="tech-list">
             <li>Plongée : Niveau 3 (RIFAP) <i class="fa-solid fa-water" style="color: #93c5fd; margin-left: 5px;"></i></li>
@@ -444,26 +440,23 @@
 
     <!-- COLONNE DROITE (CONTENU PRINCIPAL) -->
     <div class="main-content">
-        
         <div class="header">
             <h1><i class="fa-solid fa-user-tie icon-margin"></i> Aurélien PONT <span>Technicien / Administrateur Systèmes &amp; Réseaux</span></h1>
             <h3>Support N1/N2 - SCCM - Active Directory - Sécurité des SI</h3>
         </div>
-
         <div class="section-title"><i class="fa-solid fa-id-card icon-margin" style="color: #1e40af;"></i> PROFIL PROFESSIONNEL</div>
         <p style="text-align: justify; color: #334155;">
             <strong>Technicien / Administrateur Systèmes et Réseaux</strong> avec 2 ans d’expérience en alternance en environnement industriel multisites, entre centre d’expertise et sites de production. Compétent en support N1/N2, administration Active Directory, déploiement SCCM et maintien en condition opérationnelle, avec une approche terrain orientée sécurité, documentation et continuité de service.
         </p>
-
         <div class="section-title-blue"><i class="fa-solid fa-briefcase icon-margin"></i> EXPÉRIENCES PROFESSIONNELLES DÉTAILLÉES</div>
-
+        
         <!-- Expérience 1 -->
         <div class="job-header">
             <div><i class="fa-solid fa-user-gear icon-margin"></i> Assistant administrateur technique informatique</div>
             <div class="job-dates"><i class="fa-regular fa-calendar icon-margin"></i> Oct. 2024 - Présent</div>
         </div>
         <div class="job-company"><i class="fa-solid fa-building icon-margin" style="color: #94a3b8;"></i> Novares - Centre d'expertise (Lens) &amp; sites de production (Libercourt, Villers-Bretonneux)</div>
-
+        
         <div class="task-group">
             <div class="task-title"><i class="fa-solid fa-life-ring icon-margin"></i>  SUPPORT UTILISATEUR &amp; GESTION DES INCIDENTS <span>[multisites]</span></div>
             <ul class="tasks">
@@ -473,7 +466,6 @@
                 <li><strong>Formé et accompagné les utilisateurs aux nouvelles procédures</strong>, réduisant les demandes récurrentes et améliorant leur autonomie sur les incidents courants</li>
             </ul>
         </div>
-
         <div class="task-group">
             <div class="task-title"><i class="fa-solid fa-desktop icon-margin"></i>  DÉPLOIEMENT &amp; MAINTENANCE DES POSTES <span>[multisites]</span></div>
             <ul class="tasks">
@@ -483,7 +475,6 @@
                 <li><strong>Déployé et maintenu les pilotes d’impression locaux et partagés</strong>, assurant la disponibilité des services d’impression</li>
             </ul>
         </div>
-
         <div class="task-group">
             <div class="task-title"><i class="fa-solid fa-server icon-margin"></i>  ADMINISTRATION SYSTÈME, SAUVEGARDES &amp; SÉCURITÉ <span>[multisites]</span></div>
             <ul class="tasks">
@@ -492,7 +483,6 @@
                 <li><strong>Configuré les accès sécurisés</strong> : VPN, EMS FortiClient, MFA et Wi-Fi invités via Cisco Meraki, renforçant la sécurité des connexions utilisateurs</li>
             </ul>
         </div>
-
         <div class="task-group">
             <div class="task-title"><i class="fa-solid fa-file-contract icon-margin"></i>  DOCUMENTATION &amp; CONFORMITÉ <span>[multisites]</span></div>
             <ul class="tasks">
@@ -501,23 +491,20 @@
                 <li><strong>Suivi des workflows [SwF] via ROK Solution</strong>, en assurant le traitement, la traçabilité et le respect des étapes définies</li>
             </ul>
         </div>
-
         <div class="task-group">
             <div class="task-title"><i class="fa-solid fa-network-wired icon-margin"></i>  PROJETS BTS– Infrastructure réseau EL-CÍCAR</div>
-            
             <a href="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/mission/projet_cicar.html" target="_blank" class="modern-link">
                 <i class="fa-solid fa-arrow-up-right-from-square" style="margin-right: 5px;"></i> Voir le détail du projet EL-CÍCAR
             </a>
-            
             <ul class="tasks" style="margin-top: 5px;">
                 <li><strong>Conçu et déployé une infrastructure réseau complète</strong> pour une agence de location dans le cadre du projet EL-CÍCAR</li>
                 <li><strong>Configuré les services Active Directory et DHCP</strong>, avec gestion des comptes, adressage réseau et sécurisation des accès utilisateurs</li>
                 <li><strong>Déployé les postes clients et rédigé la documentation technique</strong>, afin d’assurer la cohérence de l’installation et la continuité du projet</li>
             </ul>
         </div>
-
+        
         <!-- Expérience 2 -->
-        <div class="job-header" style="margin-top: 30px;">
+        <div class="job-header" style="margin-top: 20px;">
             <div><i class="fa-solid fa-tools icon-margin"></i> Technicien informatique (Stages)</div>
             <div class="job-dates"><i class="fa-regular fa-calendar icon-margin"></i> 2023 &amp; 2024</div>
         </div>
@@ -527,7 +514,6 @@
             <li><strong>Préparé et installé plus de 200 machines</strong>, via FOG, images ISO/WIM et clés bootables</li>
             <li><strong>Assuré le support N1/N2 et configuré des équipements réseau</strong>, notamment Cisco et D-Link</li>
         </ul>
-
     </div>
 </div>
 
