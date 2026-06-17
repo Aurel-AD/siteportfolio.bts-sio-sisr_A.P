@@ -23,6 +23,36 @@
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
         }
+        
+        /* --- BOUTON D'IMPRESSION (Version Web) --- */
+        .toolbar {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: -15px; /* Pour rapprocher le bouton du CV */
+        }
+        .btn-print {
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1em;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-print:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+        }
+        .btn-print i {
+            margin-right: 8px;
+        }
+
+        /* --- CV CONTAINER --- */
         .cv-container {
             max-width: 1100px;
             margin: 40px auto; 
@@ -271,7 +301,7 @@
         @media (max-width: 768px) {
             .cv-container {
                 flex-direction: column;
-                margin: 10px;
+                margin: 20px 10px;
                 border-radius: 8px;
             }
             .sidebar, .main-content {
@@ -300,6 +330,10 @@
                 margin: 0;
                 padding: 0;
             }
+            /* Masquer le bouton d'impression sur le PDF */
+            .toolbar {
+                display: none !important;
+            }
             .cv-container {
                 box-shadow: none !important; 
                 margin: 0 !important;
@@ -326,6 +360,13 @@
 </head>
 <body>
 
+<!-- BARRE D'OUTILS : Bouton d'impression (Visible uniquement sur le web) -->
+<div class="toolbar">
+    <button class="btn-print" onclick="window.print()">
+        <i class="fa-solid fa-file-pdf"></i> Télécharger en PDF
+    </button>
+</div>
+
 <div class="cv-container">
     <!-- COLONNE GAUCHE (SIDEBAR) -->
     <div class="sidebar">
@@ -345,6 +386,9 @@
         </ul>
 
         <h2><i class="fa-solid fa-link sidebar-icon"></i> LIEN PORTFOLIO &amp; DEPOT</h2>
+        <div class="qr-placeholder">
+            <i class="fa-solid fa-qrcode"></i>
+        </div>
         <ul>
             <li><i class="fa-solid fa-globe sidebar-icon"></i> <a href="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" target="_blank">https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/</a></li>
             <li><i class="fa-brands fa-github sidebar-icon"></i> <a href="https://github.com/Aurel-AD/Scripts-Administration-Systeme" target="_blank">https://github.com/Aurel-AD/Scripts-Administration-Systeme</a></li>
