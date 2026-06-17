@@ -6,8 +6,8 @@
     <title>CV Aurélien PONT</title>
     <!-- Importation de FontAwesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Importation de la police professionnelle Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Importation de la police professionnelle Inter (avec le & encodé en &amp; pour GitHub) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -20,7 +20,6 @@
             background-color: #f3f4f6;
             color: #1f2937;
             line-height: 1.5;
-            /* Permet de forcer l'impression des couleurs de fond sur Chrome/Edge/Safari */
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
         }
@@ -268,7 +267,7 @@
             color: #1d4ed8;
         }
 
-        /* 📱 RESPONSIVE DESIGN (Pour l'affichage sur Smartphone) */
+        /* RESPONSIVE DESIGN (Smartphone) */
         @media (max-width: 768px) {
             .cv-container {
                 flex-direction: column;
@@ -290,38 +289,37 @@
             }
         }
 
-        /* 🖨️ MODE IMPRESSION / GÉNÉRATION PDF */
+        /* MODE IMPRESSION / PDF */
         @page {
             size: A4;
-            margin: 0; /* Enlève les marges par défaut du navigateur */
+            margin: 0; 
         }
         @media print {
             body {
-                background-color: #ffffff; /* Fond blanc propre */
+                background-color: #ffffff; 
                 margin: 0;
                 padding: 0;
             }
             .cv-container {
-                box-shadow: none !important; /* Enlève l'ombre autour du CV */
+                box-shadow: none !important; 
                 margin: 0 !important;
                 border-radius: 0 !important;
                 width: 100% !important;
                 max-width: 100% !important;
-                min-height: 297mm; /* Hauteur A4 */
+                min-height: 297mm; 
             }
             .sidebar {
-                padding: 30px 20px !important; /* Ajuste l'espacement pour que tout rentre sur une page */
+                padding: 30px 20px !important; 
             }
             .main-content {
                 padding: 30px 35px !important;
             }
-            /* Évite que les paragraphes soient coupés au milieu lors du passage à la page 2 si besoin */
             .task-group, .job-header, .job-company {
                 page-break-inside: avoid;
                 break-inside: avoid;
             }
             .modern-link {
-                border: 1px solid #bfdbfe; /* Rend le bouton visible sur papier */
+                border: 1px solid #bfdbfe; 
             }
         }
     </style>
@@ -346,7 +344,7 @@
             <li><i class="fa-solid fa-wheelchair sidebar-icon"></i> RQTH - (BOE)</li>
         </ul>
 
-        <h2><i class="fa-solid fa-link sidebar-icon"></i> LIEN PORTFOLIO & DEPOT</h2>
+        <h2><i class="fa-solid fa-link sidebar-icon"></i> LIEN PORTFOLIO &amp; DEPOT</h2>
         <div class="qr-placeholder">
             <i class="fa-solid fa-qrcode"></i>
         </div>
@@ -357,25 +355,25 @@
 
         <h2><i class="fa-solid fa-laptop-code sidebar-icon"></i> COMPÉTENCES TECHNIQUES</h2>
         
-        <div class="sidebar-section-title"><i class="fa-solid fa-headset sidebar-icon"></i> Support & Assistance :</div>
+        <div class="sidebar-section-title"><i class="fa-solid fa-headset sidebar-icon"></i> Support &amp; Assistance :</div>
         <ul class="tech-list">
-            <li>Support N1/N2: local & distant</li>
+            <li>Support N1/N2: local &amp; distant</li>
             <li>ITSM / Asset Management: Freshservice, SLA</li>
             <li>Remote support: DameWare, TeamViewer, RDP, UltraVNC</li>
             <li>Documentation : procédures, guides, formations</li>
         </ul>
 
-        <div class="sidebar-section-title"><i class="fa-solid fa-server sidebar-icon"></i> Systèmes & Déploiement :</div>
+        <div class="sidebar-section-title"><i class="fa-solid fa-server sidebar-icon"></i> Systèmes &amp; Déploiement :</div>
         <ul class="tech-list">
             <li>Systèmes : Windows 10/11, Windows Server 2019/2022</li>
             <li>Déploiement : SCCM, OSD, applications, ISO/WIM</li>
             <li>Virtualisation: Citrix, VMware Workstation</li>
-            <li>Scripting & automatisation: PowerShell, GPO de base</li>
+            <li>Scripting &amp; automatisation: PowerShell, GPO de base</li>
             <li>Développement/outils : Visual Studio Code, GitHub</li>
             <li>Gestion de versions : GitHub, suivi des modifications</li>
         </ul>
 
-        <div class="sidebar-section-title"><i class="fa-solid fa-shield-halved sidebar-icon"></i> Sécurité & Réseau :</div>
+        <div class="sidebar-section-title"><i class="fa-solid fa-shield-halved sidebar-icon"></i> Sécurité &amp; Réseau :</div>
         <ul class="tech-list">
             <li>Infrastructure : Active Directory (OU, Groupes, Partages)</li>
             <li>Sécurité : VPN FortiClient, EMS, MFA (Authenticator)</li>
@@ -386,7 +384,7 @@
         <h2><i class="fa-solid fa-certificate sidebar-icon"></i> CERTIFICATIONS</h2>
         <ul class="tech-list">
             <li style="color: #93c5fd; font-style: italic;">2025 - Certifications en ligne</li>
-            <li style="list-style-type: none; text-indent: 0;">MOOC ANSSI - Sécurité des SI & MOOC RGPD (CNIL) - Protection des données</li>
+            <li style="list-style-type: none; text-indent: 0;">MOOC ANSSI - Sécurité des SI &amp; MOOC RGPD (CNIL) - Protection des données</li>
         </ul>
 
         <h2><i class="fa-solid fa-graduation-cap sidebar-icon"></i> FORMATIONS</h2>
@@ -397,11 +395,11 @@
             <li style="list-style-type: none; text-indent: 0;">Titre Professionnel - Technicien d'Assistance Informatique (BAC)</li>
         </ul>
 
-        <h2><i class="fa-solid fa-heart sidebar-icon"></i> ENGAGEMENTS & LOISIRS</h2>
+        <h2><i class="fa-solid fa-heart sidebar-icon"></i> ENGAGEMENTS &amp; LOISIRS</h2>
         <ul class="tech-list">
             <li>Plongée : Niveau 3 (RIFAP) <i class="fa-solid fa-water" style="color: #93c5fd; margin-left: 5px;"></i></li>
             <li>Bénévolat : Animation enfant football <i class="fa-solid fa-futbol" style="color: #93c5fd; margin-left: 5px;"></i></li>
-            <li>Gastronomie : Cuisine & Pâtisserie <i class="fa-solid fa-utensils" style="color: #93c5fd; margin-left: 5px;"></i></li>
+            <li>Gastronomie : Cuisine &amp; Pâtisserie <i class="fa-solid fa-utensils" style="color: #93c5fd; margin-left: 5px;"></i></li>
             <li>Jardinage : Potager associatif <i class="fa-solid fa-seedling" style="color: #93c5fd; margin-left: 5px;"></i></li>
         </ul>
     </div>
@@ -410,7 +408,7 @@
     <div class="main-content">
         
         <div class="header">
-            <h1><i class="fa-solid fa-user-tie icon-margin"></i> Aurélien PONT <span>Technicien / Administrateur Systèmes & Réseaux</span></h1>
+            <h1><i class="fa-solid fa-user-tie icon-margin"></i> Aurélien PONT <span>Technicien / Administrateur Systèmes &amp; Réseaux</span></h1>
             <h3>Support N1/N2 - SCCM - Active Directory - Sécurité des SI</h3>
         </div>
 
@@ -426,10 +424,10 @@
             <div><i class="fa-solid fa-user-gear icon-margin"></i> Assistant administrateur technique informatique</div>
             <div class="job-dates"><i class="fa-regular fa-calendar icon-margin"></i> Oct. 2024 - Présent</div>
         </div>
-        <div class="job-company"><i class="fa-solid fa-building icon-margin" style="color: #94a3b8;"></i> Novares - Centre d'expertise (Lens) & sites de production (Libercourt, Villers-Bretonneux)</div>
+        <div class="job-company"><i class="fa-solid fa-building icon-margin" style="color: #94a3b8;"></i> Novares - Centre d'expertise (Lens) &amp; sites de production (Libercourt, Villers-Bretonneux)</div>
 
         <div class="task-group">
-            <div class="task-title"><i class="fa-solid fa-life-ring icon-margin"></i>  SUPPORT UTILISATEUR & GESTION DES INCIDENTS <span>[multisites]</span></div>
+            <div class="task-title"><i class="fa-solid fa-life-ring icon-margin"></i>  SUPPORT UTILISATEUR &amp; GESTION DES INCIDENTS <span>[multisites]</span></div>
             <ul class="tasks">
                 <li><strong>Assuré le support N1/N2 auprès de plus de 250 utilisateurs</strong>, avec 80 % des incidents résolus dans les délais impartis</li>
                 <li><strong>Pris en charge les incidents à distance</strong> via DameWare, TeamViewer et RDP, en garantissant une résolution rapide et efficace</li>
@@ -439,7 +437,7 @@
         </div>
 
         <div class="task-group">
-            <div class="task-title"><i class="fa-solid fa-desktop icon-margin"></i>  DÉPLOIEMENT & MAINTENANCE DES POSTES <span>[multisites]</span></div>
+            <div class="task-title"><i class="fa-solid fa-desktop icon-margin"></i>  DÉPLOIEMENT &amp; MAINTENANCE DES POSTES <span>[multisites]</span></div>
             <ul class="tasks">
                 <li><strong>Installé, configuré et maintenu plus de 250 postes</strong>, avec un gain estimé de 1 à 2 heures par poste grâce à l’automatisation</li>
                 <li><strong>Déployé des environnements Windows 10/11 via SCCM</strong>, avec prise en charge à distance via RDP et UltraVNC</li>
@@ -449,7 +447,7 @@
         </div>
 
         <div class="task-group">
-            <div class="task-title"><i class="fa-solid fa-server icon-margin"></i>  ADMINISTRATION SYSTÈME, SAUVEGARDES & SÉCURITÉ <span>[multisites]</span></div>
+            <div class="task-title"><i class="fa-solid fa-server icon-margin"></i>  ADMINISTRATION SYSTÈME, SAUVEGARDES &amp; SÉCURITÉ <span>[multisites]</span></div>
             <ul class="tasks">
                 <li><strong>Administré Active Directory</strong> : gestion des comptes utilisateurs, droits d’accès et GPO de base</li>
                 <li><strong>Suivi les sauvegardes et restaurations via Dell Avamar</strong> : contrôles hebdomadaires, tests de restauration mensuels et reporting, avec un taux de réussite de 100 % sur 3 sites</li>
@@ -458,7 +456,7 @@
         </div>
 
         <div class="task-group">
-            <div class="task-title"><i class="fa-solid fa-file-contract icon-margin"></i>  DOCUMENTATION & CONFORMITÉ <span>[multisites]</span></div>
+            <div class="task-title"><i class="fa-solid fa-file-contract icon-margin"></i>  DOCUMENTATION &amp; CONFORMITÉ <span>[multisites]</span></div>
             <ul class="tasks">
                 <li><strong>Rédigé des procédures et documents de conformité TISAX</strong>, facilitant les audits, l’amélioration continue et la standardisation des pratiques de l’équipe</li>
                 <li><strong>Créé des guides utilisateurs et FAQ techniques</strong>, afin de faciliter la prise en main des outils et de réduire les sollicitations récurrentes</li>
@@ -483,7 +481,7 @@
         <!-- Expérience 2 -->
         <div class="job-header" style="margin-top: 30px;">
             <div><i class="fa-solid fa-tools icon-margin"></i> Technicien informatique (Stages)</div>
-            <div class="job-dates"><i class="fa-regular fa-calendar icon-margin"></i> 2023 & 2024</div>
+            <div class="job-dates"><i class="fa-regular fa-calendar icon-margin"></i> 2023 &amp; 2024</div>
         </div>
         <div class="job-company"><i class="fa-solid fa-school icon-margin" style="color: #94a3b8;"></i> FRESC (FEDERATION ROUBAISIENNE DE L’ENSEIGNEMENT SECONDAIRE CATHOLIQUE) - Roubaix</div>
         <ul class="tasks">
