@@ -16,20 +16,20 @@
             padding: 0;
         }
         body {
-            /* Police Inter, très utilisée dans la tech */
             font-family: 'Inter', sans-serif; 
             background-color: #f3f4f6;
             color: #1f2937;
             line-height: 1.5;
+            /* Permet de forcer l'impression des couleurs de fond sur Chrome/Edge/Safari */
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
         .cv-container {
             max-width: 1100px;
             margin: 40px auto; 
             background-color: #ffffff;
             display: flex;
-            /* Ombre plus douce et moderne */
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); 
-            /* Coins légèrement arrondis */
             border-radius: 8px; 
             overflow: hidden;
         }
@@ -37,13 +37,13 @@
         /* COLONNE GAUCHE */
         .sidebar {
             width: 33%;
-            background-color: #1e293b; /* Bleu nuit très élégant */
+            background-color: #1e293b; 
             color: #f8fafc;
             padding: 40px 30px;
             font-size: 0.9em;
         }
         .sidebar-box {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); /* Dégradé pro */
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); 
             border: none;
             border-radius: 6px;
             padding: 12px;
@@ -58,7 +58,7 @@
             text-transform: uppercase;
             margin: 25px 0 15px 0;
             font-size: 1.1em;
-            color: #93c5fd; /* Bleu clair pour ressortir sur le fond sombre */
+            color: #93c5fd; 
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 5px;
             font-weight: 600;
@@ -120,14 +120,14 @@
             margin-bottom: 30px;
         }
         .header h1 {
-            color: #1e40af; /* Bleu profond */
+            color: #1e40af; 
             font-size: 2.2em;
             font-weight: 700;
             margin-bottom: 5px;
         }
         .header h1 span {
             font-size: 0.6em;
-            color: #3b82f6; /* Bleu vif */
+            color: #3b82f6; 
             font-style: italic;
             font-weight: 400;
             display: block;
@@ -147,7 +147,7 @@
             text-transform: uppercase;
             font-weight: 700;
             font-size: 1.1em;
-            border-left: 4px solid #3b82f6; /* Accent bleu */
+            border-left: 4px solid #3b82f6; 
             padding-left: 12px;
             margin-top: 25px;
             margin-bottom: 15px;
@@ -249,7 +249,6 @@
             color: #93c5fd;
         }
         
-        /* Lien moderne pour le projet */
         .modern-link {
             display: inline-block;
             margin-bottom: 10px;
@@ -268,26 +267,63 @@
             background-color: #dbeafe;
             color: #1d4ed8;
         }
-      
-          /* Rend le CV parfait sur Mobile */
-    @media (max-width: 768px) {
-        .cv-container {
-            flex-direction: column;
-            margin: 0;
-            border-radius: 0;
+
+        /* 📱 RESPONSIVE DESIGN (Pour l'affichage sur Smartphone) */
+        @media (max-width: 768px) {
+            .cv-container {
+                flex-direction: column;
+                margin: 10px;
+                border-radius: 8px;
+            }
+            .sidebar, .main-content {
+                width: 100%;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .job-dates {
+                margin-top: 5px;
+            }
         }
-        .sidebar, .main-content {
-            width: 100%;
+
+        /* 🖨️ MODE IMPRESSION / GÉNÉRATION PDF */
+        @page {
+            size: A4;
+            margin: 0; /* Enlève les marges par défaut du navigateur */
         }
-    }
-    
-    /* Rend le CV parfait à l'impression (Ctrl+P) */
-    @media print {
-        body { background-color: #fff; }
-        .cv-container { box-shadow: none; margin: 0; max-width: 100%; }
-        .sidebar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        .sidebar-box { border: 2px solid #fff; background: transparent; color: #fff; }
-    }
+        @media print {
+            body {
+                background-color: #ffffff; /* Fond blanc propre */
+                margin: 0;
+                padding: 0;
+            }
+            .cv-container {
+                box-shadow: none !important; /* Enlève l'ombre autour du CV */
+                margin: 0 !important;
+                border-radius: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-height: 297mm; /* Hauteur A4 */
+            }
+            .sidebar {
+                padding: 30px 20px !important; /* Ajuste l'espacement pour que tout rentre sur une page */
+            }
+            .main-content {
+                padding: 30px 35px !important;
+            }
+            /* Évite que les paragraphes soient coupés au milieu lors du passage à la page 2 si besoin */
+            .task-group, .job-header, .job-company {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .modern-link {
+                border: 1px solid #bfdbfe; /* Rend le bouton visible sur papier */
+            }
+        }
     </style>
 </head>
 <body>
@@ -311,6 +347,9 @@
         </ul>
 
         <h2><i class="fa-solid fa-link sidebar-icon"></i> LIEN PORTFOLIO & DEPOT</h2>
+        <div class="qr-placeholder">
+            <i class="fa-solid fa-qrcode"></i>
+        </div>
         <ul>
             <li><i class="fa-solid fa-globe sidebar-icon"></i> <a href="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" target="_blank">https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/</a></li>
             <li><i class="fa-brands fa-github sidebar-icon"></i> <a href="https://github.com/Aurel-AD/Scripts-Administration-Systeme" target="_blank">https://github.com/Aurel-AD/Scripts-Administration-Systeme</a></li>
@@ -430,7 +469,6 @@
         <div class="task-group">
             <div class="task-title"><i class="fa-solid fa-network-wired icon-margin"></i>  PROJETS BTS– Infrastructure réseau EL-CÍCAR</div>
             
-            <!-- Lien propre et moderne comme conseillé -->
             <a href="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/mission/projet_cicar.html" target="_blank" class="modern-link">
                 <i class="fa-solid fa-arrow-up-right-from-square" style="margin-right: 5px;"></i> Voir le détail du projet EL-CÍCAR
             </a>
