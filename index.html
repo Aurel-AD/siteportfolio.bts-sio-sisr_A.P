@@ -1,4 +1,4 @@
-6<!DOCTYPE html>
+76<!DOCTYPE html>
 <html lang="fr">
 <head>
     <title>Aurélien Pont - BTS SIO SISR</title>
@@ -893,50 +893,54 @@
             </section>
 
             <!-- 10. SECTION ATTESTATIONS -->
-            <section id="attestations" class="main special">
-                <header class="major">
-                    <h2>Certifications &amp; Attestations</h2>
-                    <p>Expertise RGPD &amp; Cybersécurité ANSSI</p>
-                </header>
-            
-                <h3 class="certifications-title"><i class="fa fa-shield-alt"></i> Certifications RGPD</h3>
-            
-                <div class="cert-grid">
-                    <div class="cert-card"><i class="fas fa-file-contract"></i><h4>Module 1 : Le RGPD et ses notions clés</h4><ul class="actions special"><li><a href="tof/mooc/RGPD1.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD1.jpg'); return false;">Voir</a></li></ul></div>
-                    <div class="cert-card"><i class="fas fa-lock"></i><h4>Module 2 : Les principes de la protection des données</h4><ul class="actions special"><li><a href="tof/mooc/RGPD2.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD2.jpg'); return false;">Voir</a></li></ul></div>
-                    <div class="cert-card"><i class="fas fa-users"></i><h4>Module 3 : Les responsabilités des acteurs</h4><ul class="actions special"><li><a href="tof/mooc/RGPD3.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD3.jpg'); return false;">Voir</a></li></ul></div>
-                    <div class="cert-card"><i class="fas fa-clipboard-check"></i><h4>Module 4 : Le DPO et les outils de la conformité</h4><ul class="actions special"><li><a href="tof/mooc/RGPD4.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD4.jpg'); return false;">Voir</a></li></ul></div>
-                    <div class="cert-card"><i class="fas fa-landmark"></i><h4>Module 5 : Les collectivités territoriales</h4><ul class="actions special"><li><a href="tof/mooc/RGPD5.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD5.jpg'); return false;">Voir</a></li></ul></div>
-                    <div class="cert-card"><i class="fas fa-user-lock"></i><h4>Module 6 : Travail et données personnelles</h4><ul class="actions special"><li><a href="tof/mooc/RGPD6.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD6.jpg'); return false;">Voir</a></li></ul></div>
-                </div>
-            
-                <h3 class="certifications-title"><i class="fas fa-lock"></i> Certification ANSSI</h3>
-            
-                <div class="cert-grid">
-                    <div class="cert-card"><i class="fas fa-user-shield"></i><h4>Cybersécurité ANSSI</h4><p>Protection des systèmes critiques</p><ul class="actions special"><li><a href="tof/mooc/ANSSI.jpg" class="button small" onclick="openCertificate('tof/mooc/ANSSI.jpg'); return false;">Voir</a></li></ul></div>
-       <!-- Badges Cisco Networking Academy -->
-<h3 class="certifications-title">
-    <i class="fas fa-medal"></i> Cisco Networking Academy
-</h3>
+<section id="attestations" class="main special">
+    <header class="major">
+        <h2>Certifications &amp; Attestations</h2>
+        <p>Expertise RGPD &amp; Cybersécurité ANSSI</p>
+    </header>
 
-<div class="cert-grid">
-
-    <div class="cert-card">
-        <img src="images/introduction-to-cybersecurity.png"
-             alt="Introduction to Cybersecurity Badge"
-             style="width:180px; margin:0 auto 1rem; display:block;">
-        <h4>Introduction to Cybersecurity</h4>
+    <!-- Filtres -->
+    <div class="filters">
+        <button class="filter-btn cert-filter-btn active" data-cert-filter="all">Tout</button>
+        <button class="filter-btn cert-filter-btn" data-cert-filter="rgpd"><i class="fa fa-shield-alt"></i> RGPD</button>
+        <button class="filter-btn cert-filter-btn" data-cert-filter="anssi"><i class="fas fa-lock"></i> ANSSI</button>
+        <button class="filter-btn cert-filter-btn" data-cert-filter="cisco"><i class="fas fa-medal"></i> Cisco</button>
     </div>
 
-    <div class="cert-card">
-        <img src="images/networking-basics.png"
-             alt="Networking Basics Badge"
-             style="width:180px; margin:0 auto 1rem; display:block;">
-        <h4>Networking Basics</h4>
-    </div>
+    <!-- Conteneur unique des cartes -->
+    <div class="cert-grid" id="attestations-grid">
 
-</div>
-            </section>
+        <!-- RGPD -->
+        <div class="cert-card" data-cert-category="rgpd"><i class="fas fa-file-contract"></i><h4>Module 1 : Le RGPD et ses notions clés</h4><ul class="actions special"><li><a href="tof/mooc/RGPD1.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD1.jpg'); return false;">Voir</a></li></ul></div>
+        <div class="cert-card" data-cert-category="rgpd"><i class="fas fa-lock"></i><h4>Module 2 : Les principes de la protection des données</h4><ul class="actions special"><li><a href="tof/mooc/RGPD2.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD2.jpg'); return false;">Voir</a></li></ul></div>
+        <div class="cert-card" data-cert-category="rgpd"><i class="fas fa-users"></i><h4>Module 3 : Les responsabilités des acteurs</h4><ul class="actions special"><li><a href="tof/mooc/RGPD3.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD3.jpg'); return false;">Voir</a></li></ul></div>
+        <div class="cert-card" data-cert-category="rgpd"><i class="fas fa-clipboard-check"></i><h4>Module 4 : Le DPO et les outils de la conformité</h4><ul class="actions special"><li><a href="tof/mooc/RGPD4.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD4.jpg'); return false;">Voir</a></li></ul></div>
+        <div class="cert-card" data-cert-category="rgpd"><i class="fas fa-landmark"></i><h4>Module 5 : Les collectivités territoriales</h4><ul class="actions special"><li><a href="tof/mooc/RGPD5.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD5.jpg'); return false;">Voir</a></li></ul></div>
+        <div class="cert-card" data-cert-category="rgpd"><i class="fas fa-user-lock"></i><h4>Module 6 : Travail et données personnelles</h4><ul class="actions special"><li><a href="tof/mooc/RGPD6.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD6.jpg'); return false;">Voir</a></li></ul></div>
+
+        <!-- ANSSI -->
+        <div class="cert-card" data-cert-category="anssi"><i class="fas fa-user-shield"></i><h4>Cybersécurité ANSSI</h4><p>Protection des systèmes critiques</p><ul class="actions special"><li><a href="tof/mooc/ANSSI.jpg" class="button small" onclick="openCertificate('tof/mooc/ANSSI.jpg'); return false;">Voir</a></li></ul></div>
+
+        <!-- Cisco Networking Academy -->
+        <div class="cert-card" data-cert-category="cisco" style="text-align:center; background: linear-gradient(180deg, rgba(52,211,153,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(52,211,153,0.25); position: relative; overflow: hidden;">
+            <div style="position:absolute; top:0; left:0; width:100%; height:3px; background:#34d399;"></div>
+            <img src="images/introduction-to-cybersecurity.png"
+                 alt="Badge Cisco Networking Academy - Introduction to Cybersecurity"
+                 style="width:120px; margin:0.5rem auto 1rem; display:block; filter: drop-shadow(0 4px 12px rgba(52,211,153,0.25));">
+            <h4 style="margin-bottom:0.3rem;">Introduction to Cybersecurity</h4>
+            <p style="color:#94a3b8; font-size:0.85em; margin:0;"><i class="fas fa-medal" style="color:#34d399;"></i> Cisco Networking Academy</p>
+        </div>
+        <div class="cert-card" data-cert-category="cisco" style="text-align:center; background: linear-gradient(180deg, rgba(52,211,153,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(52,211,153,0.25); position: relative; overflow: hidden;">
+            <div style="position:absolute; top:0; left:0; width:100%; height:3px; background:#34d399;"></div>
+            <img src="images/networking-basics.png"
+                 alt="Badge Cisco Networking Academy - Networking Basics"
+                 style="width:120px; margin:0.5rem auto 1rem; display:block; filter: drop-shadow(0 4px 12px rgba(52,211,153,0.25));">
+            <h4 style="margin-bottom:0.3rem;">Networking Basics</h4>
+            <p style="color:#94a3b8; font-size:0.85em; margin:0;"><i class="fas fa-medal" style="color:#34d399;"></i> Cisco Networking Academy</p>
+        </div>
+
+    </div>
+</section>
 
             <!-- 11. SECTION CONTACT -->
             <section id="contact" class="main special">
