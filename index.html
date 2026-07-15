@@ -891,17 +891,16 @@
                     </div>
                 </div>
             </section>
-
-            <!-- 10. SECTION ATTESTATIONS -->
+<!-- 10. SECTION ATTESTATIONS -->
 <section id="attestations" class="main special">
     <header class="major">
         <h2>Certifications &amp; Attestations</h2>
-        <p>Expertise RGPD &amp; Cybersécurité ANSSI</p>
+        <p>Expertise RGPD, Cybersécurité ANSSI &amp; Cisco Networking Academy</p>
     </header>
 
     <!-- Filtres -->
     <div class="filters">
-        <button class="filter-btn cert-filter-btn active" data-cert-filter="all">Tout</button>
+        <button class="filter-btn cert-filter-btn active" data-cert-filter="all">Tous</button>
         <button class="filter-btn cert-filter-btn" data-cert-filter="rgpd"><i class="fa fa-shield-alt"></i> RGPD</button>
         <button class="filter-btn cert-filter-btn" data-cert-filter="anssi"><i class="fas fa-lock"></i> ANSSI</button>
         <button class="filter-btn cert-filter-btn" data-cert-filter="cisco"><i class="fas fa-medal"></i> Cisco</button>
@@ -910,16 +909,48 @@
     <!-- Conteneur unique des cartes -->
     <div class="cert-grid" id="attestations-grid">
 
-        <!-- RGPD -->
-        <div class="cert-card" data-cert-category="rgpd"><i class="fas fa-file-contract"></i><h4>Module 1 : Le RGPD et ses notions clés</h4><ul class="actions special"><li><a href="tof/mooc/RGPD1.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD1.jpg'); return false;">Voir</a></li></ul></div>
-        <div class="cert-card" data-cert-category="rgpd"><i class="fas fa-lock"></i><h4>Module 2 : Les principes de la protection des données</h4><ul class="actions special"><li><a href="tof/mooc/RGPD2.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD2.jpg'); return false;">Voir</a></li></ul></div>
-        <div class="cert-card" data-cert-category="rgpd"><i class="fas fa-users"></i><h4>Module 3 : Les responsabilités des acteurs</h4><ul class="actions special"><li><a href="tof/mooc/RGPD3.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD3.jpg'); return false;">Voir</a></li></ul></div>
-        <div class="cert-card" data-cert-category="rgpd"><i class="fas fa-clipboard-check"></i><h4>Module 4 : Le DPO et les outils de la conformité</h4><ul class="actions special"><li><a href="tof/mooc/RGPD4.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD4.jpg'); return false;">Voir</a></li></ul></div>
-        <div class="cert-card" data-cert-category="rgpd"><i class="fas fa-landmark"></i><h4>Module 5 : Les collectivités territoriales</h4><ul class="actions special"><li><a href="tof/mooc/RGPD5.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD5.jpg'); return false;">Voir</a></li></ul></div>
-        <div class="cert-card" data-cert-category="rgpd"><i class="fas fa-user-lock"></i><h4>Module 6 : Travail et données personnelles</h4><ul class="actions special"><li><a href="tof/mooc/RGPD6.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD6.jpg'); return false;">Voir</a></li></ul></div>
+        <!-- RGPD (compacté en 1 carte-liste) -->
+        <div class="cert-card" data-cert-category="rgpd" style="grid-column: 1 / -1; text-align:left;">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:1.2rem;">
+                <i class="fa fa-shield-alt" style="font-size:1.6em; color:#34d399;"></i>
+                <h4 style="margin:0;">Parcours RGPD — 6 modules validés</h4>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.6rem 1.5rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span><i class="fas fa-check-circle" style="color:#34d399; margin-right:8px;"></i>Module 1 : Notions clés</span>
+                    <a href="tof/mooc/RGPD1.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD1.jpg'); return false;">Voir</a>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span><i class="fas fa-check-circle" style="color:#34d399; margin-right:8px;"></i>Module 2 : Protection des données</span>
+                    <a href="tof/mooc/RGPD2.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD2.jpg'); return false;">Voir</a>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span><i class="fas fa-check-circle" style="color:#34d399; margin-right:8px;"></i>Module 3 : Responsabilités des acteurs</span>
+                    <a href="tof/mooc/RGPD3.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD3.jpg'); return false;">Voir</a>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span><i class="fas fa-check-circle" style="color:#34d399; margin-right:8px;"></i>Module 4 : Le DPO et la conformité</span>
+                    <a href="tof/mooc/RGPD4.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD4.jpg'); return false;">Voir</a>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span><i class="fas fa-check-circle" style="color:#34d399; margin-right:8px;"></i>Module 5 : Collectivités territoriales</span>
+                    <a href="tof/mooc/RGPD5.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD5.jpg'); return false;">Voir</a>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span><i class="fas fa-check-circle" style="color:#34d399; margin-right:8px;"></i>Module 6 : Travail et données personnelles</span>
+                    <a href="tof/mooc/RGPD6.jpg" class="button small" onclick="openCertificate('tof/mooc/RGPD6.jpg'); return false;">Voir</a>
+                </div>
+            </div>
+        </div>
 
         <!-- ANSSI -->
-        <div class="cert-card" data-cert-category="anssi"><i class="fas fa-user-shield"></i><h4>Cybersécurité ANSSI</h4><p>Protection des systèmes critiques</p><ul class="actions special"><li><a href="tof/mooc/ANSSI.jpg" class="button small" onclick="openCertificate('tof/mooc/ANSSI.jpg'); return false;">Voir</a></li></ul></div>
+        <div class="cert-card" data-cert-category="anssi" style="text-align:center; background: linear-gradient(180deg, rgba(52,211,153,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(52,211,153,0.25); position: relative; overflow: hidden;">
+            <div style="position:absolute; top:0; left:0; width:100%; height:3px; background:#34d399;"></div>
+            <i class="fas fa-user-shield" style="font-size:2.5em; color:#34d399; margin:0.5rem auto 1rem; display:block;"></i>
+            <h4 style="margin-bottom:0.3rem;">Cybersécurité ANSSI</h4>
+            <p style="color:#94a3b8; font-size:0.85em; margin:0 0 1rem;">Protection des systèmes critiques</p>
+            <ul class="actions special"><li><a href="tof/mooc/ANSSI.jpg" class="button small" onclick="openCertificate('tof/mooc/ANSSI.jpg'); return false;">Voir</a></li></ul>
+        </div>
 
         <!-- Cisco Networking Academy -->
         <div class="cert-card" data-cert-category="cisco" style="text-align:center; background: linear-gradient(180deg, rgba(52,211,153,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(52,211,153,0.25); position: relative; overflow: hidden;">
