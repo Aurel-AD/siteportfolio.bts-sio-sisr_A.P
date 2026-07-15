@@ -496,26 +496,34 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+//certif
 document.addEventListener("DOMContentLoaded", function() {
     const certFilterBtns = document.querySelectorAll('.cert-filter-btn');
     const certCards = document.querySelectorAll('#attestations-grid .cert-card');
 
+    function applyCertFilter(filterValue, buttonClicked) {
+        certFilterBtns.forEach(b => b.classList.remove('active'));
+        buttonClicked.classList.add('active');
+
+        certCards.forEach(card => {
+            const category = card.getAttribute('data-cert-category');
+            if (filterValue === 'all' || category === filterValue) {
+                card.classList.remove('hidden-card');
+                card.style.opacity = '0';
+                setTimeout(() => card.style.opacity = '1', 50);
+            } else {
+                card.classList.add('hidden-card');
+            }
+        });
+    }
+
+    const defaultCertBtn = document.querySelector('.cert-filter-btn[data-cert-filter="all"]');
+    if (defaultCertBtn) applyCertFilter('all', defaultCertBtn);
+
     certFilterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             const filterValue = this.getAttribute('data-cert-filter');
-            certFilterBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-
-            certCards.forEach(card => {
-                const category = card.getAttribute('data-cert-category');
-                if (filterValue === 'all' || category === filterValue) {
-                    card.classList.remove('hidden-card');
-                    card.style.opacity = '0';
-                    setTimeout(() => card.style.opacity = '1', 50);
-                } else {
-                    card.classList.add('hidden-card');
-                }
-            });
+            applyCertFilter(filterValue, this);
         });
     });
 });
