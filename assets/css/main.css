@@ -360,3 +360,185 @@ body #wrapper {
   line-height: 1.4;
   color: #e2e8f0;
 }
+
+/* --- Section 10 Certifications Modernisée --- */
+:root {
+    --accent-color: #34d399; /* Vert Émeraude */
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(52, 211, 153, 0.2);
+    --text-muted: #94a3b8;
+}
+
+#attestations {
+    padding: 4rem 2rem;
+}
+
+/* Filtres */
+.cert-filters {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.filter-btn i { margin-right: 8px; font-size: 0.8em; }
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #0f172a;
+    box-shadow: 0 4px 15px rgba(52, 211, 153, 0.3);
+}
+
+/* Grille */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Cartes Communes */
+.cert-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Wide Card (RGPD) */
+.wide-card {
+    grid-column: 1 / -1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.icon-box {
+    background: rgba(52, 211, 153, 0.1);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: var(--accent-color);
+    font-size: 1.8rem;
+}
+
+.badge-status {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* Liste de modules */
+.modules-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.module-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.module-item i { color: var(--accent-color); margin-right: 10px; }
+
+.view-link {
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    border: 1px solid var(--accent-color);
+    padding: 2px 8px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.view-link:hover { background: var(--accent-color); color: #000; }
+
+/* Standard Cards (ANSSI / CISCO) */
+.standard-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.main-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+}
+
+.img-container img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.2));
+}
+
+.card-footer {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    width: 100%;
+}
+
+.issuer {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.btn-view {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    width: 100%;
+}
+
+.btn-view:hover { background: var(--accent-color); color: #000; }
