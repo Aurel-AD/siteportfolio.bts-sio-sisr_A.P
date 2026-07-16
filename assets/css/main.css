@@ -540,5 +540,43 @@ body #wrapper {
     font-size: 0.8rem;
     width: 100%;
 }
+/* Style pour le header de marque dans la carte */
+.brand-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Ligne fine de séparation */
+}
+
+.cisco-brand-logo {
+    height: 25px; /* Taille discrète et élégante */
+    width: auto;
+    filter: brightness(0) invert(1); /* Rend le logo tout blanc pour un look plus "tech" et propre */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.cert-card:hover .cisco-brand-logo {
+    opacity: 1;
+    filter: none; /* Le logo reprend ses couleurs d'origine au survol si vous le souhaitez */
+}
+
+/* Ajustement du conteneur de badge */
+.img-container {
+    padding: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.img-container img {
+    width: 110px; /* Légèrement plus petit pour équilibrer avec le logo au-dessus */
+    height: auto;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cert-card:hover .img-container img {
+    transform: scale(1.1); /* Petit effet de zoom sur le badge au survol */
+}
 
 .btn-view:hover { background: var(--accent-color); color: #000; }
