@@ -368,125 +368,155 @@ body #wrapper {
     --text-muted: #94a3b8;
 }
 
-/* Grille */
-.cert-grid {
+/* Grille et Filtres */
+.cert-filters {
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.cert-filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e0;
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+}
+
+.cert-filter-btn.active, .cert-filter-btn:hover {
+    background: #34d399;
+    color: #0f172a;
+    border-color: #34d399;
+    box-shadow: 0 4px 15px rgba(52, 211, 153, 0.3);
+}
+
+/* Les Nouvelles Cartes */
+.attestations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-/* Carte de base */
-.cert-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
+.new-cert-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
-    position: relative;
+    text-align: left;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.cert-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent-color);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+.new-cert-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(52, 211, 153, 0.5);
+    background: rgba(255, 255, 255, 0.05);
 }
 
-/* Brand Header - Zone Logo Institutionnel */
-.brand-header {
-    width: 100%;
-    height: 40px;
+.cert-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
     margin-bottom: 1.2rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding-bottom: 0.5rem;
 }
 
-.brand-logo {
-    max-height: 25px; /* Taille pro */
+.cert-header img {
+    height: 35px;
     width: auto;
-    filter: brightness(0) invert(1); /* Force le logo en blanc pour le thème sombre */
-    opacity: 0.6;
+    filter: grayscale(1) brightness(1.5);
     transition: 0.3s;
 }
 
-.cert-card:hover .brand-logo {
-    opacity: 1;
-    filter: none; /* Le logo reprend sa couleur d'origine au survol */
+.new-cert-card:hover .cert-header img {
+    filter: grayscale(0) brightness(1);
 }
 
-/* Spécifique pour le logo CNIL qui est très large */
-.cnil-logo { max-height: 20px; }
-
-/* Styles contenu */
-.main-icon {
-    font-size: 3rem;
-    color: var(--accent-color);
-    margin: 1rem 0;
-}
-
-.img-container img {
-    width: 100px;
-    margin-bottom: 1rem;
-    filter: drop-shadow(0 0 8px rgba(52, 211, 153, 0.3));
-}
-
-.cert-card h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #fff;
-}
-
-.card-footer {
-    margin-top: auto;
-    padding-top: 1rem;
-}
-
-.issuer {
-    font-size: 0.8rem;
-    color: var(--text-muted);
+.cert-badge {
+    font-size: 0.7em;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 6px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
+.cert-badge.cyber { background: rgba(52, 211, 153, 0.1); color: #34d399; }
+.cert-badge.network { background: rgba(59, 130, 246, 0.1); color: #60a5fa; }
+.cert-badge.law { background: rgba(245, 158, 11, 0.1); color: #fbbf24; }
+
+.cert-body h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.cert-body p {
+    font-size: 0.9em;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+}
+
+/* Grille RGPD spécifique */
+.rgpd-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.rgpd-mini-grid span {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.7em;
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.rgpd-mini-grid span:hover {
+    background: #34d399;
+    color: #000;
+}
+
 /* Boutons */
+.cert-footer {
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
 .btn-view {
-    background: transparent;
-    border: 1px solid var(--accent-color);
-    color: var(--accent-color);
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
     width: 100%;
+    background: transparent;
+    border: 1px solid #34d399;
+    color: #34d399;
+    padding: 10px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
 }
 
 .btn-view:hover {
-    background: var(--accent-color);
+    background: #34d399;
     color: #0f172a;
 }
 
-/* Wide Card RGPD */
-.wide-card { grid-column: 1 / -1; }
-.modules-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 0.8rem;
-    margin-top: 1rem;
-}
-.module-item {
-    background: rgba(255,255,255,0.03);
-    padding: 0.7rem 1rem;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
+.btn-disabled {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid transparent;
+    color: #475569;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: not-allowed;
+    font-size: 0.9em;
 }
