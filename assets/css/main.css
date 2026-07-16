@@ -361,222 +361,132 @@ body #wrapper {
   color: #e2e8f0;
 }
 
-/* --- Section 10 Certifications Modernisée --- */
 :root {
-    --accent-color: #34d399; /* Vert Émeraude */
-    --card-bg: rgba(255, 255, 255, 0.03);
+    --accent-color: #34d399;
+    --card-bg: rgba(30, 41, 59, 0.5); /* Bleu nuit transparent */
     --card-border: rgba(52, 211, 153, 0.2);
     --text-muted: #94a3b8;
-}
-
-#attestations {
-    padding: 4rem 2rem;
-}
-
-/* Filtres */
-.cert-filters {
-    margin-bottom: 3rem;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    padding: 0.6rem 1.2rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.filter-btn i { margin-right: 8px; font-size: 0.8em; }
-
-.filter-btn.active, .filter-btn:hover {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    color: #0f172a;
-    box-shadow: 0 4px 15px rgba(52, 211, 153, 0.3);
 }
 
 /* Grille */
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    max-width: 1100px;
+    gap: 2rem;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Cartes Communes */
+/* Carte de base */
 .cert-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease;
     backdrop-filter: blur(10px);
+    position: relative;
 }
 
 .cert-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     border-color: var(--accent-color);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-/* Wide Card (RGPD) */
-.wide-card {
-    grid-column: 1 / -1;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.icon-box {
-    background: rgba(52, 211, 153, 0.1);
-    width: 60px;
-    height: 60px;
+/* Brand Header - Zone Logo Institutionnel */
+.brand-header {
+    width: 100%;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
-    color: var(--accent-color);
-    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 0.5rem;
 }
 
-.badge-status {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-}
-
-/* Liste de modules */
-.modules-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
-}
-
-.module-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem;
-    background: rgba(255,255,255,0.02);
-    border-radius: 8px;
-    font-size: 0.9rem;
-}
-
-.module-item i { color: var(--accent-color); margin-right: 10px; }
-
-.view-link {
-    font-size: 0.75rem;
-    color: var(--accent-color);
-    text-decoration: none;
-    border: 1px solid var(--accent-color);
-    padding: 2px 8px;
-    border-radius: 4px;
+.brand-logo {
+    max-height: 25px; /* Taille pro */
+    width: auto;
+    filter: brightness(0) invert(1); /* Force le logo en blanc pour le thème sombre */
+    opacity: 0.6;
     transition: 0.3s;
 }
 
-.view-link:hover { background: var(--accent-color); color: #000; }
-
-/* Standard Cards (ANSSI / CISCO) */
-.standard-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+.cert-card:hover .brand-logo {
+    opacity: 1;
+    filter: none; /* Le logo reprend sa couleur d'origine au survol */
 }
 
+/* Spécifique pour le logo CNIL qui est très large */
+.cnil-logo { max-height: 20px; }
+
+/* Styles contenu */
 .main-icon {
     font-size: 3rem;
     color: var(--accent-color);
-    margin-bottom: 1.5rem;
+    margin: 1rem 0;
 }
 
 .img-container img {
     width: 100px;
-    height: auto;
     margin-bottom: 1rem;
-    filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.2));
+    filter: drop-shadow(0 0 8px rgba(52, 211, 153, 0.3));
+}
+
+.cert-card h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #fff;
 }
 
 .card-footer {
     margin-top: auto;
-    padding-top: 1.5rem;
-    width: 100%;
+    padding-top: 1rem;
 }
 
 .issuer {
-    display: block;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
-    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
+/* Boutons */
 .btn-view {
     background: transparent;
     border: 1px solid var(--accent-color);
-    color: #fff;
-    padding: 0.5rem 1.5rem;
-    border-radius: 6px;
+    color: var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    width: 100%;
     cursor: pointer;
-    font-size: 0.8rem;
-    width: 100%;
+    font-weight: bold;
+    transition: 0.3s;
 }
-/* Style pour le header de marque dans la carte */
-.brand-header {
-    width: 100%;
+
+.btn-view:hover {
+    background: var(--accent-color);
+    color: #0f172a;
+}
+
+/* Wide Card RGPD */
+.wide-card { grid-column: 1 / -1; }
+.modules-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+.module-item {
+    background: rgba(255,255,255,0.03);
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
     display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Ligne fine de séparation */
+    justify-content: space-between;
+    font-size: 0.85rem;
 }
-
-.cisco-brand-logo {
-    height: 25px; /* Taille discrète et élégante */
-    width: auto;
-    filter: brightness(0) invert(1); /* Rend le logo tout blanc pour un look plus "tech" et propre */
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-}
-
-.cert-card:hover .cisco-brand-logo {
-    opacity: 1;
-    filter: none; /* Le logo reprend ses couleurs d'origine au survol si vous le souhaitez */
-}
-
-/* Ajustement du conteneur de badge */
-.img-container {
-    padding: 10px;
-    margin-bottom: 0.5rem;
-}
-
-.img-container img {
-    width: 110px; /* Légèrement plus petit pour équilibrer avec le logo au-dessus */
-    height: auto;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.cert-card:hover .img-container img {
-    transform: scale(1.1); /* Petit effet de zoom sur le badge au survol */
-}
-
-.btn-view:hover { background: var(--accent-color); color: #000; }
