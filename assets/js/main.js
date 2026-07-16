@@ -496,34 +496,26 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-//certif
-document.addEventListener("DOMContentLoaded", function() {
-    const certFilterBtns = document.querySelectorAll('.cert-filter-btn');
-    const certCards = document.querySelectorAll('#attestations-grid .cert-card');
 
-    function applyCertFilter(filterValue, buttonClicked) {
-        certFilterBtns.forEach(b => b.classList.remove('active'));
-        buttonClicked.classList.add('active');
+// Filtre attestations
 
-        certCards.forEach(card => {
-            const category = card.getAttribute('data-cert-category');
-            if (filterValue === 'all' || category === filterValue) {
-                card.classList.remove('hidden-card');
+document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        // Supprimer la classe active des autres boutons
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-cert-filter');
+        const cards = document.querySelectorAll('.cert-card');
+
+        cards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-cert-category') === filter) {
+                card.style.display = 'flex';
                 card.style.opacity = '0';
-                setTimeout(() => card.style.opacity = '1', 50);
+                setTimeout(() => { card.style.opacity = '1'; }, 10);
             } else {
-                card.classList.add('hidden-card');
+                card.style.display = 'none';
             }
-        });
-    }
-
-    const defaultCertBtn = document.querySelector('.cert-filter-btn[data-cert-filter="all"]');
-    if (defaultCertBtn) applyCertFilter('all', defaultCertBtn);
-
-    certFilterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const filterValue = this.getAttribute('data-cert-filter');
-            applyCertFilter(filterValue, this);
         });
     });
 });
