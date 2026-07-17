@@ -520,3 +520,17 @@ body #wrapper {
     cursor: not-allowed;
     font-size: 0.9em;
 }
+
+/* Encadres HEADER */
+.profil-resume {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border: 1px solid rgba(52,211,153,0.3);
+    border-radius: 12px;
+    background: rgba(52,211,153,0.05);
+}
+
+.profil-resume p {
+    margin: 0.4rem 0;
+}
