@@ -4,7 +4,7 @@
 # 🎓 Portfolio Professionnel - BTS SIO SISR
 
 **Développé par [Aurélien Pont](https://www.linkedin.com/in/aurelienpont)**  
-*Étudiant en BTS SIO (Services Informatiques aux Organisations) option SISR (Solutions d’Infrastructure, Systèmes et Réseaux) - Spécialisation Cybersécurité.*
+*Diplomé en BTS SIO (Services Informatiques aux Organisations) option SISR (Solutions d’Infrastructure, Systèmes et Réseaux) - Spécialisation Cybersécurité.*
 
 🌐 **[Voir mon portfolio en ligne ici](https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/)**
 
