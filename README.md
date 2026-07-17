@@ -35,7 +35,7 @@ Le portfolio est divisé en plusieurs sections clés pour faciliter la lecture p
 | **💻 Projets Académiques** | Projets réalisés en formation (Infrastructure complète CICAR, Haute disponibilité avec HAProxy, Supervision avec Centreon). |
 | **📊 Tableau E4** | Synthèse des situations professionnelles validant les compétences du référentiel BTS SIO. |
 | **📡 Veille & Sources** | Mes outils de veille (Feedly) et mes sujets d'étude (Cloud, Impression 3D/4D, alertes ANSSI/CERT-FR). |
-| **📜 Certifications** | Mes attestations officielles (Mooc RGPD de la CNIL, SecNumacadémie de l'ANSSI). |
+| **📜 Certifications** | Mes attestations officielles (Mooc RGPD de la CNIL, SecNumacadémie de l'ANSSI) et Badge Cisco. |
 
 ---
 
