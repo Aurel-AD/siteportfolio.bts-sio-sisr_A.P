@@ -80,6 +80,14 @@ body {
   color: var(--navy);
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   font-family: 'Playfair Display', serif;
+  overflow: hidden; /* Added to keep image perfectly round */
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .name-header {
@@ -621,12 +629,18 @@ body {
 
 .project-link i { font-size: 9px; }
 
+/* OPTIMISATION IMPRESSION / PDF */
 @media print {
-  body { background: white; }
+  body { 
+    background: white; 
+    -webkit-print-color-adjust: exact; 
+    print-color-adjust: exact; 
+  }
   .page {
     margin: 0;
     box-shadow: none;
     border-radius: 0;
+    width: 100%;
   }
 }
 
@@ -638,22 +652,6 @@ body {
   }
   .sidebar, .main { width: 100%; }
 }
-.profile-photo {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  margin: 0 auto 18px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
-}
-
-.profile-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 </style>
 </head>
 <body>
@@ -662,7 +660,12 @@ body {
 
   <!-- ============ SIDEBAR ============ -->
   <aside class="sidebar">  
-  <div class="profile-photo">../images/photo1.webp alt="Photo CV"></div>
+    <div class="profile-photo">
+      <!-- CORRECTION DE LA BALISE IMAGE ICI -->
+      <img src="images/photo1.webp" alt="Photo Aurélien PONT">
+      <!-- Si vous n'avez pas de photo temporairement, supprimez la balise <img> et écrivez vos initiales : AP -->
+    </div>
+    
     <h1 class="name-header">Aurélien PONT</h1>
     <div class="title-header">Support N1/N2 • SCCM • Active Directory</div>
 
@@ -797,8 +800,6 @@ body {
         <b>2025</b> — MOOC RGPD (CNIL)<br>
       </div>
     </div>
-          </div>
-        </div>
 
     <!-- CENTRES D'INTÉRÊT -->
     <div class="side-section">
@@ -822,8 +823,9 @@ body {
     </header>
 
     <div class="profile-box"> 
-<b>PROFIL</b> — Technicien systèmes et réseaux diplômé d'un BTS SIO SISR, avec 2 ans d'alternance chez Novares en environnement multisite. Expérience en support N1/N2 auprès de plus de 250 utilisateurs, déploiement SCCM, administration Active Directory, gestion des accès sécurisés, sauvegardes et documentation technique.
-      </div> 
+      <b>PROFIL</b> — Technicien systèmes et réseaux diplômé d'un BTS SIO SISR, avec 2 ans d'alternance chez Novares en environnement multisite. Expérience en support N1/N2 auprès de plus de 250 utilisateurs, déploiement SCCM, administration Active Directory, gestion des accès sécurisés, sauvegardes et documentation technique.
+    </div> 
+
     <!-- EXPÉRIENCES -->
     <section class="section">
       <div class="section-title">Expériences professionnelles <span></span></div>
@@ -866,7 +868,7 @@ body {
         </ul>
       </div>
 
-      <!-- PROJET (avec 2 liens) -->
+      <!-- PROJET -->
       <div class="project-card">
         <div class="project-header">
           <i class="fa-solid fa-diagram-project"></i>
@@ -892,7 +894,7 @@ body {
       <div class="exp-item">
         <div class="exp-header">
           <span class="exp-role">Technicien informatique — Stage</span>
-          <span class="exp-date">Sept. 2023 & Fév. 2024</span>
+          <span class="exp-date">Sept. 2023 et Fév. 2024</span>
         </div>
         <div class="company-line"><b>FRESC</b> — Fédération Roubaisienne de l'Enseignement Secondaire Catholique — Roubaix</div>
         <ul class="main-list">
@@ -902,23 +904,26 @@ body {
         </ul>
       </div>
 
-      <section class="section">
+    </section>
+
+    <!-- EXP COMPLEMENTAIRES -->
+    <section class="section">
       <div class="section-title">Expériences complémentaires<span></span></div>
         
       <div class="exp-item">
         <div class="exp-header">
           <span class="exp-role">Ouvrier vendeur produit frais — Poissonnier</span>
-          <span class="exp-date">Sept. 2016 & Juil. 2023</span>
+          <span class="exp-date">Sept. 2016 — Juil. 2023</span>
         </div>
-        <div class="company-line"><b>Auchan Retail</b> Haut de France</div>
+        <div class="company-line"><b>Auchan Retail</b> Hauts-de-France</div>
       </div>
 
       <div class="exp-item">
         <div class="exp-header">
           <span class="exp-role">Ouvrier polyvalent</span>
-          <span class="exp-date">Sept. 2003 & Juil. 2015</span>
+          <span class="exp-date">Sept. 2003 — Juil. 2015</span>
         </div>
-        <div class="company-line"><b>BTP</b> Haut de France</div>
+        <div class="company-line"><b>BTP</b> Hauts-de-France</div>
       </div>
 
     </section>
