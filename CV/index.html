@@ -638,6 +638,22 @@ body {
   }
   .sidebar, .main { width: 100%; }
 }
+.profile-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 </style>
 </head>
 <body>
@@ -645,11 +661,10 @@ body {
 <div class="page">
 
   <!-- ============ SIDEBAR ============ -->
-  <aside class="sidebar">
-
-    <div class="profile-photo">AP</div>
+  <aside class="sidebar">  
+  <div class="profile-photo">../images/photo1.webp alt="Photo CV"></div>
     <h1 class="name-header">Aurélien PONT</h1>
-    <div class="title-header">Technicien Systèmes & Réseaux</div>
+    <div class="title-header">Support N1/N2 • SCCM • Active Directory</div>
 
     <div class="availability-badge">
       <i class="fa-solid fa-circle"></i>
@@ -663,7 +678,8 @@ body {
         <li><i class="fa-solid fa-location-dot"></i> Wattrelos (59) — Hauts-de-France</li>
         <li><i class="fa-solid fa-phone"></i> <a href="tel:+33760756439">07 60 75 64 39</a></li>
         <li><i class="fa-solid fa-envelope"></i> <a href="mailto:aurelienpont@gmail.com">aurelienpont@gmail.com</a></li>
-        <li><i class="fa-brands fa-linkedin"></i> <a href="#">linkedin.com/in/aurelienpont</a></li>
+        <li>
+        <i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/aurelienpont" target="_blank">linkedin.com/in/aurelienpont</a></li>
         <li><i class="fa-solid fa-car"></i> Permis B — Véhiculé</li>
         <li><i class="fa-solid fa-handshake-angle"></i> RQTH </li>
       </ul>
@@ -671,12 +687,12 @@ body {
 
     <!-- ====== LIENS GITHUB & PORTFOLIO ====== -->
     <div class="side-section">
-      <div class="side-title">Portfolio & Code</div>
+      <div class="side-title">Portfolio & Projets</div>
       <div class="github-links">
         <a href="https://aurel-ad.github.io/siteportfolio.bts-sio-sisr_A.P/" target="_blank" class="github-link">
           <i class="fa-solid fa-globe"></i>
           <div class="github-link-text">
-            <span class="github-link-label">Portfolio BTS SIO</span>
+            <span class="github-link-label">Portfolio professionnel</span>
             <span class="github-link-url">aurel-ad.github.io</span>
           </div>
         </a>
@@ -739,7 +755,7 @@ body {
     <div class="side-section">
       <div class="side-title">Langues</div>
       <div class="lang-bar">
-        <span>Anglais professionnel</span>
+        <span>Anglais technique</span>
         <div class="lang-level">
           <div class="lang-dot filled"></div>
           <div class="lang-dot"></div>
@@ -748,7 +764,7 @@ body {
           <div class="lang-dot"></div>
         </div>
       </div>
-      <div style="font-size: 10px; color: var(--accent); margin-top: 3px; letter-spacing: 0.5px;">NIVEAU A2</div>
+      <div style="font-size: 10px; color: var(--accent); margin-top: 3px; letter-spacing: 0.5px;">A2</div>
     </div>
 
     <!-- FORMATIONS -->
@@ -772,12 +788,17 @@ body {
 
     <!-- CERTIFICATIONS -->
     <div class="side-section">
-      <div class="side-title">Certifications</div>
+      <div class="side-title">Certifications & badges</div>
+    
       <div class="cert-item">
-        <b>2025</b> — MOOC ANSSI (Sécurité des SI)<br>
-        <b>2025</b> — MOOC RGPD (CNIL)
+        <b>2026</b> — Cisco Networking Basics<br>
+        <b>2026</b> — Cisco Introduction to Cybersecurity<br>
+        <b>2025</b> — MOOC ANSSI (SecNumacadémie – Sécurité des SI)<br>
+        <b>2025</b> — MOOC RGPD (CNIL)<br>
       </div>
     </div>
+          </div>
+        </div>
 
     <!-- CENTRES D'INTÉRÊT -->
     <div class="side-section">
@@ -800,10 +821,9 @@ body {
       <div class="job-subtitle">Support N1/N2 · Déploiement SCCM · Sécurité des SI</div>
     </header>
 
-    <div class="profile-box">
-      <b>PROFIL</b> — Technicien systèmes et réseaux avec <b>2 ans d'alternance</b> en environnement multisite (centre d'expertise et production), spécialisé en support N1/N2, déploiement de postes via <b>SCCM</b> et administration <b>Active Directory</b>. Habitué à intervenir sur incidents utilisateurs et infrastructure, avec rédaction de procédures et amélioration continue.
-    </div>
-
+    <div class="profile-box"> 
+<b>PROFIL</b> — Technicien systèmes et réseaux diplômé d'un BTS SIO SISR, avec 2 ans d'alternance chez Novares en environnement multisite. Expérience en support N1/N2 auprès de plus de 250 utilisateurs, déploiement SCCM, administration Active Directory, gestion des accès sécurisés, sauvegardes et documentation technique.
+      </div> 
     <!-- EXPÉRIENCES -->
     <section class="section">
       <div class="section-title">Expériences professionnelles <span></span></div>
@@ -882,10 +902,13 @@ body {
         </ul>
       </div>
 
+      <section class="section">
+      <div class="section-title">Expériences complémentaires<span></span></div>
+        
       <div class="exp-item">
         <div class="exp-header">
           <span class="exp-role">Ouvrier vendeur produit frais — Poissonnier</span>
-          <span class="exp-date">Sept. 2016 & Jui. 2023</span>
+          <span class="exp-date">Sept. 2016 & Juil. 2023</span>
         </div>
         <div class="company-line"><b>Auchan Retail</b> Haut de France</div>
       </div>
@@ -893,7 +916,7 @@ body {
       <div class="exp-item">
         <div class="exp-header">
           <span class="exp-role">Ouvrier polyvalent</span>
-          <span class="exp-date">Sept. 2003 & Jui. 2015</span>
+          <span class="exp-date">Sept. 2003 & Juil. 2015</span>
         </div>
         <div class="company-line"><b>BTP</b> Haut de France</div>
       </div>
